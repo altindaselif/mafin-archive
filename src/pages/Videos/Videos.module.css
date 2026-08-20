@@ -1,0 +1,165 @@
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-bottom: 36px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+/* Loading skeleton: same footprint as a card, quiet shimmer */
+.skeleton {
+  aspect-ratio: 16 / 13;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-border);
+  background: linear-gradient(
+    100deg,
+    #efece6 40%,
+    #f6f4ef 50%,
+    #efece6 60%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  from { background-position: 120% 0; }
+  to { background-position: -80% 0; }
+}
+
+.status {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.loadMoreWrap {
+  display: grid;
+  place-items: center;
+  margin-top: 48px;
+}
+
+.loadMore {
+  padding: 12px 32px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-accent);
+  font: 500 0.85rem var(--font-family-main);
+  letter-spacing: 0.06em;
+  transition: var(--transition-smooth);
+}
+
+.loadMore:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+/* ── Player modal ── */
+.player {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.playerFrame {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: #16130f;
+}
+
+.playerFrame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.playerInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.playerEpisode {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text-main);
+}
+
+.playerMeta {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+}
+
+.seasonSlot {
+  margin: 0 0 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.count {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Small legal note under the subtitle */
+.copyright {
+  margin: -36px 0 0;
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+/* Link to the matching moments on the timeline */
+.storyLink {
+  margin: 14px 0 48px;
+  font-size: 0.9rem;
+}
+
+.storyLink a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.storyLink a:hover {
+  border-bottom-color: var(--color-accent);
+}
+
+/* Attribution for the video cuts and subtitles — sits at the very foot,
+   right-aligned, like the credit on the actors page */
+.credit {
+  margin: 40px 0 0;
+  text-align: right;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.credit a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  font-style: normal;
+  transition: var(--transition-smooth);
+}
+
+.credit a:hover {
+  border-bottom-color: var(--color-accent);
+}

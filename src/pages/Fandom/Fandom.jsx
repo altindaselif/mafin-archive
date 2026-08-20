@@ -1,0 +1,270 @@
+import { useMemo, useState } from "react";
+import styles from "./Fandom.module.css";
+import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
+import Modal from "../../components/Modal/Modal.jsx";
+import entries from "../../data/fandom.json";
+import { useLang } from "../../i18n.js";
+
+const L = {
+  title: { es: "El Fandom", en: "The Fandom" },
+  subtitle: {
+    es: "Canciones, fanfics y arte inspirados en Marta y Fina, creados por los fans que mantienen viva su historia. Cada aportación se revisa antes de aparecer aquí.",
+    en: "Songs, fanfics and art inspired by Marta and Fina, made by the fans who keep their story alive. Every submission is reviewed before it appears here.",
+  },
+};
+
+const TYPES = ["Canción", "Fanfic", "Arte"];
+const VERB = { Canción: "Escuchar", Fanfic: "Leer", Arte: "Ver" };
+
+const formatDate = (iso) =>
+  new Date(iso).toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+
+const EMPTY_FORM = {
+  type: "Canción",
+  title: "",
+  author: "",
+  url: "",
+  note: "",
+  website: "",
+};
+
+export default function Fandom() {
+  const { t } = useLang();
+  const [activeType, setActiveType] = useState(null); // null = todas las obras
+  const [formOpen, setFormOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [form, setForm] = useState(EMPTY_FORM);
+  const [error, setError] = useState("");
+
+  // Only curator-approved donations reach the shelves.
+  const visible = useMemo(
+    () =>
+      entries.filter(
+        (e) => e.approved && (activeType === null || e.type === activeType),
+      ),
+    [activeType],
+  );
+
+  const setField = (key) => (e) => setForm({ ...form, [key]: e.target.value });
+
+  const submit = () => {
+    // Honeypot: humans never see this field; if it's filled, a bot did it.
+    // Pretend success and quietly discard.
+    if (form.website) {
+      setSubmitted(true);
+      return;
+    }
+    if (
+      !form.title.trim() ||
+      !form.author.trim() ||
+      !/^https?:\/\//i.test(form.url.trim())
+    ) {
+      setError(
+        "Título, autor/a y un enlace válido (que empiece por https://) son necesarios.",
+      );
+      return;
+    }
+    setError("");
+    // TODO (fase 2 — Supabase): insertar en la tabla `donations` con
+    // approved=false; el archivero aprueba desde su panel. De momento la
+    // aportación solo se simula.
+    setSubmitted(true);
+  };
+
+  const closeForm = () => {
+    setFormOpen(false);
+    setSubmitted(false);
+    setError("");
+    setForm(EMPTY_FORM);
+  };
+
+  return (
+    <div
+      className="page"
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep616.webp)" }}
+    >
+      <h1 className="page-title">{t(L.title)}</h1>
+      <p className="page-subtitle">{t(L.subtitle)}</p>
+
+      <div className={styles.sectionHeader}>
+        <SectionTabs
+          allLabel="Todas las obras"
+          sections={TYPES}
+          active={activeType}
+          onChange={setActiveType}
+        />
+        <span className={styles.count} aria-live="polite">
+          {visible.length} {visible.length === 1 ? "obra" : "obras"}
+        </span>
+      </div>
+
+      <ul className={styles.ledger}>
+        {visible.map((entry) => (
+          <li key={entry.id}>
+            <a
+              className={styles.row}
+              href={entry.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className={styles.rowMeta}>
+                <span className={styles.type}>{entry.type}</span>
+                <time className={styles.date} dateTime={entry.date}>
+                  {formatDate(entry.date)}
+                </time>
+              </div>
+              <div className={styles.rowBody}>
+                <h2 className={styles.workTitle}>{entry.title}</h2>
+                <p className={styles.byline}>
+                  <em>por {entry.author}</em>
+                  {entry.note && <> — &laquo;{entry.note}&raquo;</>}
+                </p>
+              </div>
+              <span className={styles.verb}>
+                {VERB[entry.type] ?? "Ver"}
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 10L10 2M4 2h6v6"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      {visible.length === 0 && (
+        <p className={styles.empty}>
+          Todavía no hay aportaciones de este tipo. Quizá la primera sea la
+          tuya.
+        </p>
+      )}
+
+      {/* ── Invitation ── */}
+      <section className={styles.invite}>
+        <p className={styles.inviteLine}>
+          ¿Has creado algo inspirado en su historia?
+        </p>
+        <button
+          className={styles.inviteButton}
+          onClick={() => setFormOpen(true)}
+        >
+          Donar al archivo
+        </button>
+      </section>
+
+      {/* ── Donation form ── */}
+      <Modal open={formOpen} onClose={closeForm} label="Donar al archivo">
+        {submitted ? (
+          <div className={styles.thanks}>
+            <span className={styles.thanksLozenge} aria-hidden="true" />
+            <h2 className={styles.formTitle}>Recibido</h2>
+            <p className={styles.thanksText}>
+              Tu aportación espera la revisión del archivero. Si pasa a la
+              colección, aparecerá en esta página con tu nombre.
+            </p>
+          </div>
+        ) : (
+          <div className={styles.form}>
+            <h2 className={styles.formTitle}>Donar al archivo</h2>
+            <p className={styles.formIntro}>
+              El archivo acepta enlaces a obras publicadas: canciones, fanfics,
+              arte. Nada se publica sin revisión.
+            </p>
+
+            <label className={styles.field}>
+              <span className={styles.label}>Tipo</span>
+              <select
+                className={styles.select}
+                value={form.type}
+                onChange={setField("type")}
+              >
+                {TYPES.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </select>
+            </label>
+
+            <label className={styles.field}>
+              <span className={styles.label}>Título de la obra</span>
+              <input
+                className={styles.input}
+                type="text"
+                value={form.title}
+                onChange={setField("title")}
+              />
+            </label>
+
+            <label className={styles.field}>
+              <span className={styles.label}>Tu nombre o alias</span>
+              <input
+                className={styles.input}
+                type="text"
+                value={form.author}
+                onChange={setField("author")}
+              />
+            </label>
+
+            <label className={styles.field}>
+              <span className={styles.label}>Enlace</span>
+              <input
+                className={styles.input}
+                type="url"
+                placeholder="https://…"
+                value={form.url}
+                onChange={setField("url")}
+              />
+            </label>
+
+            <label className={styles.field}>
+              <span className={styles.label}>
+                Una línea sobre la obra <em>(opcional)</em>
+              </span>
+              <textarea
+                className={styles.textarea}
+                rows="2"
+                maxLength="140"
+                value={form.note}
+                onChange={setField("note")}
+              />
+            </label>
+
+            {/* Honeypot — hidden from humans, irresistible to bots */}
+            <label className={styles.honeypot} aria-hidden="true">
+              Website
+              <input
+                type="text"
+                tabIndex="-1"
+                autoComplete="off"
+                value={form.website}
+                onChange={setField("website")}
+              />
+            </label>
+
+            {error && (
+              <p className={styles.error} role="alert">
+                {error}
+              </p>
+            )}
+
+            <button className={styles.submit} onClick={submit}>
+              Enviar a revisión
+            </button>
+          </div>
+        )}
+      </Modal>
+    </div>
+  );
+}

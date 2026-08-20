@@ -1,0 +1,113 @@
+.pager {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  margin-top: 36px;
+}
+
+/* PREVIOUS hugs the numbers from the left, NEXT from the right —
+   equal 1fr columns keep the two perfectly symmetrical. */
+.pager > .step:first-of-type {
+  justify-self: end;
+}
+.pager > .step:last-of-type {
+  justify-self: start;
+}
+
+/* PREVIOUS / NEXT — small caps, like the running foot of a book */
+.step {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  padding: 4px 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: var(--transition-smooth);
+}
+
+.step:hover:not(:disabled) {
+  color: var(--color-accent);
+}
+
+.step:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* The page numbers, centred — same italic serif as the old "Page x of y" */
+.pages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Every slot is one fixed-width column (rem, not em) so numbers of any
+   size — including the larger active one — line up on an even grid. */
+.folio,
+.gap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2rem;
+  height: 2rem;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  line-height: 1;
+}
+
+.folio {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.folio:hover {
+  color: var(--color-accent);
+}
+
+/* Active page: wine and clearly larger. The column stays 2rem wide, so
+   the extra size never nudges its neighbours. */
+.current {
+  color: var(--color-accent);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.gap {
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  user-select: none;
+  cursor: default;
+}
+
+@media (max-width: 520px) {
+  .pager {
+    gap: 10px;
+  }
+  .step {
+    font-size: 0.66rem;
+  }
+  .folio,
+  .gap {
+    min-width: 1.7rem;
+    height: 1.7rem;
+  }
+  .folio {
+    font-size: 1rem;
+  }
+  .current {
+    font-size: 1.3rem;
+  }
+}

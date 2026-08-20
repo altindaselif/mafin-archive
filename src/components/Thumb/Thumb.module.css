@@ -1,0 +1,38 @@
+.thumb {
+  --tone: 0;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(
+      calc(135deg + var(--tone) * 30deg),
+      #efece6 0%,
+      #e4dfd5 45%,
+      #d8d1c2 100%
+    );
+}
+
+.thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(114, 47, 55, 0.07), transparent 60%);
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  background: #efece6; /* visible while the lazy image loads */
+}

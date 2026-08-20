@@ -1,0 +1,14 @@
+{
+  "number": 3,
+  "id": "c2",
+  "name": "Damián de la Reina",
+  "role": {
+    "es": "Fundador y patriarca",
+    "en": "Founder and patriarch"
+  },
+  "bio": {
+    "es": "Damián es el padre de Marta y es el típico cabeza de familia. Siempre esperó que su hija estuviera a la altura de las circunstancias, sin importarle sus sentimientos. Para él, lo que dirán siempre era más importante que el bienestar emocional de su familia. Durante mucho tiempo, Marta vivió con el temor de que su padre descubriera su relación con Fina. Al principio, Damián era incapaz de aceptarla. Sin embargo, con el paso del tiempo comprendió que la felicidad de su hija era más importante que cualquier prejuicio o la opinión ajena. Finalmente, aceptó a Marta y a Fina como pareja y apoyó su relación.",
+    "en": "Damián is Marta's father and the classic head of the family. He always expected his daughter to rise to the occasion, regardless of her feelings. For him, what people would say was always more important than his family's emotional well-being. For a long time, Marta lived in fear that her father would discover her relationship with Fina. At first, Damián was unable to accept it. However, as time passed he came to understand that his daughter's happiness was more important than any prejudice or other people's opinions. In the end, he accepted Marta and Fina as a couple and supported their relationship."
+  },
+  "group": "family"
+}

@@ -1,0 +1,89 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  text-align: left;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+
+  /*
+   * Performance: the browser skips layout & paint for cards that are
+   * off-screen. With hundreds of cards this is the single cheapest win.
+   * contain-intrinsic-size reserves an estimated height so the
+   * scrollbar doesn't jump while skipped cards get measured.
+   */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lift);
+}
+
+.thumbWrap {
+  position: relative;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(28, 24, 22, 0.45);
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.card:hover .playOverlay,
+.card:focus-visible .playOverlay {
+  opacity: 1;
+}
+
+.playIcon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border: 1px solid rgba(249, 248, 246, 0.7);
+  border-radius: 50%;
+  color: #f9f8f6;
+  backdrop-filter: blur(4px);
+  transform: scale(0.85);
+  transition: var(--transition-smooth);
+}
+
+.playIcon svg {
+  margin-left: 3px; /* optical centering of the triangle */
+}
+
+.card:hover .playIcon {
+  transform: scale(1);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 20px 20px;
+}
+
+.episode {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  color: var(--color-text-main);
+}
+
+.meta {
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

@@ -1,0 +1,559 @@
+[
+  {
+    "id": "marta-belmonte",
+    "name": "Marta Belmonte",
+    "character": "Marta de la Reina",
+    "birthPlace": "Barcelona",
+    "birthDate": "1982-09-27",
+    "photo": "actors/marta-belmonte.webp",
+    "bio": {
+      "es": [
+        "Marta Belmonte Ibáñez es una actriz española de televisión y teatro. Nacida en Barcelona el 27 de septiembre de 1982, a los catorce años se trasladó a Zaragoza y más tarde regresó a Barcelona para estudiar artes escénicas (2000–2003). Con el tiempo se instaló en Madrid, donde reside desde hace más de veinte años."
+      ],
+      "en": [
+        "Marta Belmonte Ibáñez is a Spanish television and stage actress. Born in Barcelona on 27 September 1982, she moved to Zaragoza at the age of fourteen, then returned to Barcelona to study performing arts (2000–2003). She eventually settled in Madrid, where she has been based for over twenty years."
+      ]
+    },
+    "filmography": {
+      "tv": [
+        {
+          "year": "2024–",
+          "title": "Sueños de Libertad",
+          "role": "Marta de la Reina",
+          "detail": {
+            "es": "T1, ep. 1 — en emisión",
+            "en": "S1, ep. 1 — on air"
+          },
+          "featured": true
+        },
+        {
+          "year": "2024",
+          "title": "Una vida menos en Canarias",
+          "role": "Camila Salazar Turino",
+          "detail": {
+            "es": "T1, ep. 3",
+            "en": "S1, ep. 3"
+          }
+        },
+        {
+          "year": "2024",
+          "title": "Mano de hierro",
+          "role": "Cristina",
+          "detail": {
+            "es": "T1, ep. 2, 4, 5, 6, 8",
+            "en": "S1, ep. 2, 4, 5, 6, 8"
+          }
+        },
+        {
+          "year": "2023",
+          "title": "Isla brava",
+          "role": "Samantha Cruz",
+          "detail": {
+            "es": "T1, ep. 1–7",
+            "en": "S1, ep. 1–7"
+          },
+          "featured": true
+        },
+        {
+          "year": "2021",
+          "title": "La Fortuna",
+          "role": "María Esperanza",
+          "detail": {
+            "es": "T1, ep. 4",
+            "en": "S1, ep. 4"
+          }
+        },
+        {
+          "year": "2020",
+          "title": "Los favoritos de Midas",
+          "role": "Mónica Báez",
+          "detail": {
+            "es": "T1, ep. 1–6",
+            "en": "S1, ep. 1–6"
+          },
+          "featured": true
+        },
+        {
+          "year": "2020",
+          "title": "Meme",
+          "role": "Liliam",
+          "detail": ""
+        },
+        {
+          "year": "2018–19",
+          "title": "Servir y proteger",
+          "role": "Silvia Orestes",
+          "detail": {
+            "es": "T3–4, ep. 408–654",
+            "en": "S3–4, ep. 408–654"
+          },
+          "featured": true
+        },
+        {
+          "year": "2015",
+          "title": "La que se avecina",
+          "role": "Bibi",
+          "detail": {
+            "es": "T8, ep. 13",
+            "en": "S8, ep. 13"
+          }
+        },
+        {
+          "year": "2014",
+          "title": "Isabel",
+          "role": "Ana de Bretaña",
+          "detail": {
+            "es": "T3, ep. 1–4, 6, 9, 12",
+            "en": "S3, ep. 1–4, 6, 9, 12"
+          }
+        },
+        {
+          "year": "2013",
+          "title": "Entre pipas",
+          "role": "Nancy",
+          "detail": {
+            "es": "T3, ep. 6",
+            "en": "S3, ep. 6"
+          }
+        },
+        {
+          "year": "2013",
+          "title": "Familia",
+          "role": "Marina",
+          "detail": {
+            "es": "T1, ep. 5",
+            "en": "S1, ep. 5"
+          }
+        },
+        {
+          "year": "2012",
+          "title": "Kubala, Moreno i Manchón",
+          "role": {
+            "es": "Invitada",
+            "en": "Guest"
+          },
+          "detail": {
+            "es": "T2, ep. 6",
+            "en": "S2, ep. 6"
+          }
+        },
+        {
+          "year": "2011–13",
+          "title": "Gran Reserva",
+          "role": "Nuria Asensi",
+          "detail": {
+            "es": "T2, ep. 1–5, 10 · T3, ep. 6–7",
+            "en": "S2, ep. 1–5, 10 · S3, ep. 6–7"
+          },
+          "featured": true
+        },
+        {
+          "year": "2011",
+          "title": "Piratas",
+          "role": {
+            "es": "Invitada",
+            "en": "Guest"
+          },
+          "detail": {
+            "es": "T1, ep. 1–2",
+            "en": "S1, ep. 1–2"
+          }
+        },
+        {
+          "year": "2011",
+          "title": "Ángel o demonio",
+          "role": "Bárbara",
+          "detail": {
+            "es": "T1, ep. 2",
+            "en": "S1, ep. 2"
+          }
+        },
+        {
+          "year": "2010",
+          "title": "Valientes",
+          "role": "Juana Gómez Acuña",
+          "detail": {
+            "es": "T1, ep. 1–45",
+            "en": "S1, ep. 1–45"
+          }
+        },
+        {
+          "year": "2009",
+          "title": "Los misterios de Laura",
+          "role": "Vanessa López",
+          "detail": {
+            "es": "T1, ep. 6",
+            "en": "S1, ep. 6"
+          }
+        },
+        {
+          "year": "2009",
+          "title": "El porvenir es largo",
+          "role": "Natalia",
+          "detail": {
+            "es": "T1, ep. 1–64",
+            "en": "S1, ep. 1–64"
+          }
+        },
+        {
+          "year": "2007–08",
+          "title": "Desaparecida",
+          "role": "María",
+          "detail": {
+            "es": "T1, ep. 2, 9",
+            "en": "S1, ep. 2, 9"
+          }
+        },
+        {
+          "year": "2007",
+          "title": "Círculo rojo",
+          "role": "Belén",
+          "detail": {
+            "es": "T1, ep. 1–10",
+            "en": "S1, ep. 1–10"
+          },
+          "featured": true
+        },
+        {
+          "year": "2007",
+          "title": "Hospital Central",
+          "role": "María José",
+          "detail": {
+            "es": "T13, ep. 11–13",
+            "en": "S13, ep. 11–13"
+          }
+        },
+        {
+          "year": "2006",
+          "title": "Los simuladores",
+          "role": "",
+          "detail": {
+            "es": "T1, ep. 1–2",
+            "en": "S1, ep. 1–2"
+          }
+        },
+        {
+          "year": "2005",
+          "title": "Ventdelplà",
+          "role": "Amaia",
+          "detail": {
+            "es": "T2, ep. 16",
+            "en": "S2, ep. 16"
+          }
+        },
+        {
+          "year": "2003",
+          "title": "Jet lag",
+          "role": {
+            "es": "Invitada",
+            "en": "Guest"
+          },
+          "detail": {
+            "es": "T2, ep. 11",
+            "en": "S2, ep. 11"
+          }
+        }
+      ],
+      "film": [
+        {
+          "year": "2026",
+          "title": "Antes del Amor",
+          "role": "Elisa",
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2019",
+          "title": "Gente que viene y bah",
+          "role": "Rebeca Ramos",
+          "detail": ""
+        },
+        {
+          "year": "2019",
+          "title": "Puenting",
+          "role": {
+            "es": "Ella misma",
+            "en": "Herself"
+          },
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2017",
+          "title": "Deseos",
+          "role": "",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2016",
+          "title": "IXTAB",
+          "role": "Brenda",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2015",
+          "title": "Fuera de foco",
+          "role": {
+            "es": "Ella misma",
+            "en": "Herself"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2014",
+          "title": "Asmodexia",
+          "role": "Diana",
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2010",
+          "title": "Campamento Flipy",
+          "role": "Violeta",
+          "detail": ""
+        },
+        {
+          "year": "2007",
+          "title": "Cinemart",
+          "role": "",
+          "detail": ""
+        },
+        {
+          "year": "2006",
+          "title": "El postre",
+          "role": "",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2006",
+          "title": "Cineastas contra magnates",
+          "role": {
+            "es": "Presentadora",
+            "en": "Presenter"
+          },
+          "detail": {
+            "es": "Documental",
+            "en": "Documentary"
+          }
+        },
+        {
+          "year": "2005",
+          "title": "Cineastas en acción",
+          "role": {
+            "es": "Presentadora",
+            "en": "Presenter"
+          },
+          "detail": {
+            "es": "Documental",
+            "en": "Documentary"
+          }
+        },
+        {
+          "year": "2004",
+          "title": "Estúpidos, basado en hechos reales",
+          "role": {
+            "es": "Presentadora",
+            "en": "Presenter"
+          },
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2002",
+          "title": "Desire on a Fall Afternoon",
+          "role": "Ana",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          },
+          "featured": true
+        }
+      ],
+      "theatre": [
+        {
+          "year": "2023–24",
+          "title": "Cielos",
+          "role": "Dolorosa Haché",
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2022",
+          "title": "La cofradía de las invisibles",
+          "role": {
+            "es": "Creación · Autora · co-dirección",
+            "en": "Creator · Writer · co-director"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2022",
+          "title": "El orden de las cosas",
+          "role": {
+            "es": "Creación · Autora · dirección",
+            "en": "Creator · Writer · director"
+          },
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2018",
+          "title": "La cura",
+          "role": {
+            "es": "Ayudante artística · diseñadora de vestuario",
+            "en": "Artistic assistant · costume designer"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2016–17",
+          "title": "La Celestina",
+          "role": "Melibea",
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2016",
+          "title": "Ella(s)",
+          "role": "Tyler",
+          "detail": ""
+        },
+        {
+          "year": "2015",
+          "title": "Water ego",
+          "role": {
+            "es": "Co-autora · co-dirección · actriz",
+            "en": "Co-writer · co-director · actress"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2013–14",
+          "title": "Juicio a Don Juan",
+          "role": "Doña Inés",
+          "detail": ""
+        },
+        {
+          "year": "2013–14",
+          "title": "Los Cenci",
+          "role": "Marcela",
+          "detail": ""
+        },
+        {
+          "year": "2011",
+          "title": "Los pecados en Shakespeare",
+          "role": {
+            "es": "Reparto",
+            "en": "Cast"
+          },
+          "detail": ""
+        }
+      ],
+      "music": [
+        {
+          "year": "2013",
+          "title": {
+            "es": "«Cheque al portamor», de Melendi",
+            "en": "«Cheque al portamor», by Melendi"
+          },
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2009",
+          "title": {
+            "es": "«Tu mano dirá», de Miguel Bosé",
+            "en": "«Tu mano dirá», by Miguel Bosé"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2008",
+          "title": {
+            "es": "«Siempre tú», de OBK",
+            "en": "«Siempre tú», by OBK"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2001",
+          "title": {
+            "es": "«Completo Incompleto», de Jarabe de Palo",
+            "en": "«Completo Incompleto», by Jarabe de Palo"
+          },
+          "detail": ""
+        }
+      ]
+    },
+    "credit": {
+      "handle": "yvsunflower",
+      "url": "https://x.com/yvsunflower"
+    }
+  },
+  {
+    "id": "alba-brunet",
+    "name": "Alba Brunet",
+    "character": "Serafina “Fina” Valero",
+    "birthPlace": "Palma de Mallorca",
+    "birthDate": "1993-10-18",
+    "photo": "actors/alba-brunet.webp",
+    "bio": {
+      "es": [
+        "Alba Brunet es una actriz mallorquina que, con tan solo 16 años, dejó su isla para trasladarse a Barcelona y formarse en interpretación en el Institut del Teatre. Desde entonces ha seguido completando su formación con diferentes cursos y profesionales.",
+        "Ha participado en numerosos proyectos de cine y televisión, destacando especialmente por sus interpretaciones de Leonor Hidalgo en Acacias 38 y Fina Valero en Sueños de libertad. Aunque el teatro ha sido el ámbito en el que menos ha trabajado, ha expresado su deseo de seguir profundizando en él.",
+        "También ha sido docente y coach de interpretación, acompañando a niños, jóvenes y otros actores en su formación.",
+        "En el plano personal comparte su vida con el actor Pep Ambròs y juntos son padres de Rai."
+      ],
+      "en": [
+        "Alba Brunet is a Mallorcan actress who, at just 16, left her island to move to Barcelona and train in acting at the Institut del Teatre. She has kept building on that training ever since through various courses and mentors.",
+        "She has taken part in numerous film and television projects, standing out in particular for her performances as Leonor Hidalgo in Acacias 38 and Fina Valero in Sueños de libertad. Although theatre is the field she has worked in least, she has said she hopes to keep delving deeper into it.",
+        "She has also worked as an acting teacher and coach, guiding children, young people and fellow actors through their training.",
+        "In her personal life she shares her days with the actor Pep Ambròs, and together they are parents to Rai."
+      ]
+    },
+    "filmography": {
+      "tv": [
+        {
+          "year": "2024–",
+          "title": "Sueños de Libertad",
+          "role": "Serafina «Fina» Valero",
+          "detail": {
+            "es": "T1, capítulo 1 — en emisión",
+            "en": "S1, episode 1 — on air"
+          }
+        },
+        {
+          "year": "2020",
+          "title": "La Marea",
+          "role": "",
+          "detail": ""
+        }
+      ],
+      "film": [
+        {
+          "year": "2022",
+          "title": "Días de Verano",
+          "role": "",
+          "detail": ""
+        }
+      ],
+      "theatre": [],
+      "music": []
+    },
+    "credit": {
+      "handle": "PerfectlyEspos",
+      "url": "https://x.com/PerfectlyEspos"
+    }
+  }
+]

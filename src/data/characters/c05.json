@@ -1,0 +1,14 @@
+{
+  "number": 6,
+  "id": "c4",
+  "name": "Andrés de la Reina",
+  "role": {
+    "es": "El hijo menor",
+    "en": "The youngest son"
+  },
+  "bio": {
+    "es": "Andrés es el hermano menor de Marta, con quien siempre ha mantenido un vínculo muy estrecho. Es una persona sensible y fue el primero de la familia en preocuparse de verdad por los sentimientos de Marta. Desde que descubrió la relación entre Marta y Fina, no dejó de apoyarlas, defenderlas y ayudarlas en todo lo que pudo. Estuvo al lado de Marta para consolarla y darle fuerzas en los momentos más difíciles.",
+    "en": "Andrés is Marta's younger brother, with whom she has always had a very close bond. He is a sensitive person and was the first in the family to truly care about Marta's feelings. From the moment he discovered the relationship between Marta and Fina, he never stopped supporting them, defending them, and helping them in every way he could. He was by Marta's side to comfort her and give her strength in the most difficult moments."
+  },
+  "group": "family"
+}

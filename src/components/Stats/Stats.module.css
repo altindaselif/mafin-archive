@@ -1,0 +1,135 @@
+/* ── En cifras: engraved counting table (closes the foyer) ── */
+.stats {
+  max-width: var(--page-max);
+  margin: 24px auto 0;
+  padding: 0 24px 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.label {
+  margin-bottom: 30px;
+  font-size: 0.82rem; /* rhymes with the quote and ephemeris headers */
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  max-width: 680px; /* equal thirds so the figures line up evenly */
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 20px;
+}
+
+/* Hairline between figures, like column rules in a ledger */
+.item + .item {
+  border-left: 1px solid var(--color-border);
+}
+
+.value {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-main);
+}
+
+.name {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* Third parties: a quiet horizontal roll call under the figures */
+.terceros {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 680px; /* matches the figures row above */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.tercerosLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.tercerosList {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  max-width: 520px; /* narrower than the figures row so names stay close */
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  row-gap: 20px;
+}
+
+.tercero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.terceroName {
+  font-family: var(--font-family-display);
+  font-size: 1.35rem;
+  color: var(--color-text-main);
+}
+
+.terceroChapters {
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.lead {
+  margin: 60px 0 0;
+  max-width: 52ch;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--color-text-muted);
+}
+
+.verdict {
+  margin: 10px 0 20px 0;
+  font-family: var(--font-family-display);
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+@media (max-width: 720px) {
+  .row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    max-width: 420px;
+  }
+
+  .item {
+    padding: 0 8px;
+  }
+}

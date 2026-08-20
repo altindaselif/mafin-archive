@@ -1,0 +1,147 @@
+:root {
+  --color-bg: #f9f8f6;
+  --color-text-main: #2b2b2b;
+  --color-text-muted: #666666;
+  --color-accent: #722f37;
+  --color-accent-hover: #5a252b;
+  --color-border: #e0dcd3;
+  --font-family-main: "Inter", sans-serif;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Derived tokens (kept in one place so modules stay lean) */
+  --font-family-display: "Cormorant Garamond", Georgia, serif;
+  --color-surface: #ffffff;
+  --color-accent-soft: rgba(114, 47, 55, 0.08);
+  --shadow-soft: 0 8px 30px rgba(43, 43, 43, 0.06);
+  --shadow-lift: 0 16px 40px rgba(43, 43, 43, 0.12);
+  --radius-card: 6px;
+  --radius-pill: 999px;
+  --page-max: 1080px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Reserve the scrollbar's space always, so locking body scroll when a
+     modal opens never shifts the page (or the fixed header) sideways. */
+  scrollbar-gutter: stable;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text-main);
+  font-family: var(--font-family-main);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+iframe {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* Shared page scaffolding */
+.page {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 140px 24px 96px;
+  position: relative;
+}
+
+/* Mafin line drawing in the top-right margin, level with the page title.
+   Decorative only; hidden where there is no room (narrow screens). */
+.page::after {
+  content: "";
+  position: absolute;
+  top: 120px;
+  right: 24px;
+  width: 300px;
+  aspect-ratio: 1690 / 970;
+  background: var(--page-art) no-repeat right top / contain;
+  opacity: 0.9;
+  pointer-events: none;
+  /* Bordeaux wash applied in CSS (not baked into the image), so any raw
+     cut-out still dropped into /img/silhouettes/ is tinted automatically.
+     Mono #722f37 duotone approximation; alpha/transparency is preserved. */
+  filter: url(#mafin-duo);
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 7px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    black calc(100% - 7px),
+    transparent 100%
+  );
+}
+
+/* Pages that opt out of the stamp (they use the top-right corner already) */
+.page-no-art::after {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .page::after {
+    display: none;
+  }
+}
+
+.page-title {
+  font-family: var(--font-family-display);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  letter-spacing: 0.04em;
+  margin: 0 0 8px;
+}
+
+.page-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 48px;
+  max-width: 60ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

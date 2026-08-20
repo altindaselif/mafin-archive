@@ -1,0 +1,14 @@
+{
+  "number": 5,
+  "id": "c3",
+  "name": "Jesús de la Reina",
+  "role": {
+    "es": "El primogénito",
+    "en": "The firstborn"
+  },
+  "bio": {
+    "es": "Jesús es el difunto hermano mayor de Marta. Fue un director de fábrica cruel y manipulador, dispuesto a aprovechar cualquier situación para su propio beneficio. No dudó en utilizar la relación entre Marta y Fina para chantajear a Marta e impedir que ascendiera dentro de la empresa.",
+    "en": "Jesús is Marta's late older brother. He was a cruel and manipulative factory director, willing to take advantage of any situation for his own benefit. He did not hesitate to use the relationship between Marta and Fina to blackmail Marta and prevent her from rising within the company."
+  },
+  "group": "family"
+}

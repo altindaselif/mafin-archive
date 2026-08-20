@@ -1,0 +1,14 @@
+{
+  "number": 8,
+  "id": "c6",
+  "name": "Carmen Recas",
+  "role": {
+    "es": "Dependienta",
+    "en": "Shop assistant"
+  },
+  "bio": {
+    "es": "Carmen es una mujer de carácter fuerte, decidida y que siempre dice lo que piensa, sin rodeos. Trabaja como dependienta en la tienda y es una de las mejores amigas de Fina. Siempre le habla con sinceridad, incluso cuando sabe que la verdad puede resultar difícil de escuchar. Gracias a su lealtad y franqueza, se convierte en un apoyo imprescindible para Fina en los momentos más complicados.",
+    "en": "Carmen is a strong-willed, determined woman who always says what she thinks, without beating around the bush. She works as a shop assistant in the store and is one of Fina's best friends. She always speaks to her honestly, even when she knows the truth may be hard to hear. Thanks to her loyalty and frankness, she becomes an essential source of support for Fina in the most complicated moments."
+  },
+  "group": "shop"
+}

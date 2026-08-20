@@ -1,0 +1,179 @@
+import { useEffect, useRef, useState } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
+import styles from "./Header.module.css";
+import { useLang } from "../../i18n.js";
+
+const MORE_LINKS = [
+  { to: "/gallery", label: { es: "Galería", en: "Gallery" } },
+  { to: "/quotes", label: { es: "Citas", en: "Quotes" } },
+  { to: "/characters", label: { es: "Personajes", en: "Characters" } },
+  { to: "/actors", label: { es: "Actrices", en: "Actresses" } },
+  { to: "/press", label: { es: "Prensa", en: "Press" } },
+  { to: "/fandom", label: { es: "El Fandom", en: "The Fandom" } },
+];
+
+const L = {
+  home: { es: "Inicio", en: "Home" },
+  story: { es: "Su historia", en: "The Story" },
+  guide: { es: "Guía", en: "Guide" },
+  videos: { es: "Vídeos", en: "Videos" },
+  more: { es: "Más", en: "More" },
+  openMenu: { es: "Abrir menú", en: "Open menu" },
+  language: { es: "Idioma", en: "Language" },
+};
+
+export default function Header() {
+  const { pathname } = useLocation();
+  const { t, lang, setLang } = useLang();
+  const isHome = pathname === "/";
+  const [scrolled, setScrolled] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const moreRef = useRef(null);
+
+  // Solid vs transparent: only the Home page starts transparent over the hero.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close the "More" dropdown on outside click / Escape.
+  useEffect(() => {
+    if (!moreOpen) return;
+    const onDown = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target))
+        setMoreOpen(false);
+    };
+    const onKey = (e) => e.key === "Escape" && setMoreOpen(false);
+    document.addEventListener("pointerdown", onDown);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("pointerdown", onDown);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [moreOpen]);
+
+  // Reset transient UI state on navigation.
+  useEffect(() => {
+    setMoreOpen(false);
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // On the home page the URL doesn't change when the brand/Home link is
+  // clicked, so ScrollToTop never fires — handle that case here.
+  const scrollTopIfHome = () => {
+    if (isHome) window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const solid = !isHome || scrolled || menuOpen;
+  const moreActive = MORE_LINKS.some((l) => l.to === pathname);
+  const linkClass = ({ isActive }) =>
+    isActive ? `${styles.link} ${styles.linkActive}` : styles.link;
+
+  return (
+    <header
+      className={`${styles.header} ${solid ? styles.solid : styles.transparent}`}
+    >
+      <div className={styles.inner}>
+        <Link to="/" className={styles.brand} onClick={scrollTopIfHome}>
+          Mafin
+        </Link>
+
+        <button
+          className={styles.burger}
+          aria-expanded={menuOpen}
+          aria-label={t(L.openMenu)}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+
+        <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
+          <NavLink to="/" end className={linkClass} onClick={scrollTopIfHome}>
+            {t(L.home)}
+          </NavLink>
+          <NavLink to="/timeline" className={linkClass}>
+            {t(L.story)}
+          </NavLink>
+          <NavLink to="/guide" className={linkClass}>
+            {t(L.guide)}
+          </NavLink>
+          <NavLink to="/videos" className={linkClass}>
+            {t(L.videos)}
+          </NavLink>
+
+          <div className={styles.more} ref={moreRef}>
+            <button
+              className={`${styles.link} ${styles.moreButton} ${moreActive ? styles.linkActive : ""}`}
+              aria-haspopup="true"
+              aria-expanded={moreOpen}
+              onClick={() => setMoreOpen((v) => !v)}
+            >
+              {t(L.more)}
+              <svg
+                className={styles.chevron}
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+                aria-hidden="true"
+              >
+                <path
+                  d="M1 3l4 4 4-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </button>
+            <div
+              className={`${styles.dropdown} ${moreOpen ? styles.dropdownOpen : ""}`}
+              role="menu"
+            >
+              {MORE_LINKS.map((l) => (
+                <NavLink
+                  key={l.to}
+                  to={l.to}
+                  role="menuitem"
+                  className={({ isActive }) =>
+                    isActive
+                      ? `${styles.dropLink} ${styles.dropLinkActive}`
+                      : styles.dropLink
+                  }
+                >
+                  {t(l.label)}
+                </NavLink>
+              ))}
+
+              <div
+                className={styles.dropLang}
+                role="group"
+                aria-label={t(L.language)}
+              >
+                <button
+                  className={`${styles.dropLangOption} ${lang === "es" ? styles.dropLangActive : ""}`}
+                  aria-pressed={lang === "es"}
+                  onClick={() => setLang("es")}
+                >
+                  Español
+                </button>
+                <span className={styles.dropLangSep} aria-hidden="true">·</span>
+                <button
+                  className={`${styles.dropLangOption} ${lang === "en" ? styles.dropLangActive : ""}`}
+                  aria-pressed={lang === "en"}
+                  onClick={() => setLang("en")}
+                >
+                  English
+                </button>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+  );
+}

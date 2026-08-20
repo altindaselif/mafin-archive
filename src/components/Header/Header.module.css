@@ -1,0 +1,246 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  transition: var(--transition-smooth);
+}
+
+.transparent {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.transparent .brand,
+.transparent .link {
+  color: #f9f8f6;
+}
+
+.solid {
+  background: rgba(249, 248, 246, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: var(--font-family-display);
+  font-size: 1.85rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.link {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 4px 0;
+  font: 500 0.85rem/1 var(--font-family-main);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-main);
+  transition: var(--transition-smooth);
+}
+
+.link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: var(--transition-smooth);
+}
+
+.link:hover::after,
+.linkActive::after {
+  transform: scaleX(1);
+}
+
+.solid .link:hover,
+.solid .linkActive {
+  color: var(--color-accent);
+}
+
+/* ── "More" dropdown ── */
+.more {
+  position: relative;
+}
+
+.moreButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chevron {
+  transition: var(--transition-smooth);
+}
+
+.moreButton[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  min-width: 172px;
+  padding: 8px 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-lift);
+  opacity: 0;
+  transform: translateY(-6px);
+  visibility: hidden;
+  transition: var(--transition-smooth);
+}
+
+.dropdownOpen {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.dropLink {
+  display: block;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-main);
+}
+
+.dropLink:hover {
+  background: var(--color-accent-soft);
+  color: var(--color-accent);
+}
+
+.dropLinkActive {
+  color: var(--color-accent);
+}
+
+/* ── Mobile ── */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+
+.burger span {
+  width: 22px;
+  height: 1.5px;
+  background: currentColor;
+  color: inherit;
+  transition: var(--transition-smooth);
+}
+
+.transparent .burger {
+  color: #f9f8f6;
+}
+
+.solid .burger {
+  color: var(--color-text-main);
+}
+
+@media (max-width: 720px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding: 12px 24px 20px;
+    background: rgba(249, 248, 246, 0.98);
+    border-bottom: 1px solid var(--color-border);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: var(--transition-smooth);
+  }
+
+  .navOpen {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .nav .link {
+    color: var(--color-text-main);
+    padding: 12px 0;
+  }
+
+  .dropdown {
+    position: static;
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    padding: 0 0 0 16px;
+  }
+}
+
+/* Language toggle lives inside the "More" dropdown, set off by a rule */
+.dropLang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+
+.dropLangOption {
+  background: none;
+  border: none;
+  padding: 2px 2px;
+  font: 500 0.8rem/1 var(--font-family-main);
+  letter-spacing: 0.04em;
+  color: var(--color-text-main);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.dropLangOption:hover {
+  opacity: 1;
+}
+
+.dropLangActive {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.dropLangSep {
+  color: var(--color-text-main);
+  opacity: 0.4;
+}

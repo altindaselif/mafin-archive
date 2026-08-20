@@ -1,0 +1,198 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+# GitHub repository: content is committed directly here
+backend:
+  name: github
+  repo: altindaselif/mafin-archive
+  branch: main
+
+# Where images live (galleries, posters, actress photos)
+media_folder: public/img
+public_folder: /img
+
+# 4K bölüm fotoğrafları GitHub'a değil, Cloudflare R2'ye yüklenir.
+# Secret Access Key BURAYA yazılmaz — editör CMS'te ilk kez bir foto
+# eklerken bir kez girer, tarayıcısında güvenle saklanır.
+media_libraries:
+  # Fotoğraflar ORİJİNAL haliyle (tam 4K, hiç küçültülmeden) R2'ye yüklenir.
+  cloudflare_r2:
+    access_key_id: d37d72c948ff29ec755577c41c1bb917
+    bucket: mafin-photos
+    account_id: 21d9a10b9e439b63b16c4f24890356d3
+    public_url: https://pub-17a4e1676af940bea88a2f26ef361d81.r2.dev
+
+collections:
+  # ── Episodes: each one its own file under src/data/episodes/ ──
+  - name: episodes
+    label: Episodes
+    label_singular: Episode
+    folder: src/data/episodes
+    extension: json
+    format: json
+    identifier_field: number
+    summary: "#{{fields.number}} — {{fields.title.en}}"
+    sortable_fields: [number, airDate]
+    create: true
+    slug: "e{{fields.number}}"
+    fields:
+      # id auto: "e" + episode number (editors never touch it)
+      - { label: ID, name: id, widget: compute, value: "e{{fields.number}}" }
+      - { label: Number, name: number, widget: number, value_type: int, min: 1 }
+      - label: Title
+        name: title
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: string, required: false }
+          - { label: English, name: en, widget: string, required: false }
+      - label: Moods
+        name: moods
+        widget: select
+        multiple: true
+        required: false
+        options: [iconic, argue, hug, kiss, baby, miento, cloe]
+      - label: Description
+        name: description
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: text, required: false }
+          - { label: English, name: en, widget: text, required: false }
+      - label: Air date
+        name: airDate
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        required: false
+
+  # ── Galleries: her kayıt bir bölümün foto albümü, fotolar R2'ye gider ──
+  - name: gallery
+    label: Galleries
+    label_singular: Gallery
+    folder: src/data/gallery
+    extension: json
+    format: json
+    identifier_field: episode
+    summary: "Episode #{{fields.episode}}"
+    sortable_fields: [episode]
+    create: true
+    slug: "g{{fields.episode}}"
+    fields:
+      - { label: Episode number, name: episode, widget: number, value_type: int, min: 1 }
+      - label: Photos
+        name: photos
+        widget: image
+        multiple: true
+        required: false
+
+  # ── Quotes: each quote its own file under src/data/quotes/ ──
+  - name: quotes
+    label: Quotes
+    label_singular: Quote
+    folder: src/data/quotes
+    extension: json
+    format: json
+    identifier_field: number
+    summary: "#{{fields.number}} — Episode {{fields.episode}}"
+    sortable_fields:
+      fields: [episode, number]
+      default: { field: episode, direction: ascending }
+    create: true
+    slug: "q{{fields.number}}"
+    fields:
+      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "For a new entry, continue from the last number in the list" }
+      - { label: ID, name: id, widget: compute, value: "q{{fields.number}}" }
+      - { label: Episode, name: episode, widget: number, value_type: int, min: 1 }
+      - label: Speaker
+        name: speaker
+        widget: select
+        options: ["Marta", "Fina", "Mafin"]
+      - label: Text
+        name: text
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: text }
+          - { label: English, name: en, widget: text }
+
+  # ── Timeline: each milestone its own file under src/data/timeline/ ──
+  - name: timeline
+    label: Timeline
+    label_singular: Milestone
+    folder: src/data/timeline
+    extension: json
+    format: json
+    identifier_field: number
+    summary: "#{{fields.number}} — Episode {{fields.episode}} — {{fields.title.en}}"
+    sortable_fields: [number, episode]
+    create: true
+    slug: "m{{fields.number}}"
+    fields:
+      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "For a new entry, continue from the last number in the list" }
+      - { label: ID, name: id, widget: compute, value: "m{{fields.number}}" }
+      - { label: Episode, name: episode, widget: number, value_type: int, min: 1 }
+      - { label: Video file, name: video, widget: compute, value: "timeline-ep{{fields.episode}}.mp4" }
+      - label: Title
+        name: title
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: string }
+          - { label: English, name: en, widget: string }
+      - label: Text
+        name: text
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: text }
+          - { label: English, name: en, widget: text }
+
+  # ── Characters ──
+  - name: characters
+    label: Characters
+    label_singular: Character
+    folder: src/data/characters
+    extension: json
+    format: json
+    identifier_field: number
+    summary: "#{{fields.number}} — {{fields.name}}"
+    sortable_fields: [number]
+    create: true
+    slug: "c{{fields.number}}"
+    fields:
+      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "display order (family, then shop, then thirds)" }
+      - { label: ID, name: id, widget: compute, value: "c{{fields.number}}" }
+      - { label: Name, name: name, widget: string }
+      - label: Role
+        name: role
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: string }
+          - { label: English, name: en, widget: string }
+      - label: Bio
+        name: bio
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: text }
+          - { label: English, name: en, widget: text }
+      - { label: Group, name: group, widget: select, options: [family, shop, thirds] }
+
+  # ── Press ──
+  - name: press
+    label: Press
+    label_singular: Press item
+    folder: src/data/press
+    extension: json
+    format: json
+    identifier_field: number
+    summary: "#{{fields.number}} — {{fields.outlet}}"
+    sortable_fields: [number, date]
+    create: true
+    slug: "p{{fields.number}}"
+    fields:
+      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "For a new entry, continue from the last number in the list" }
+      - { label: ID, name: id, widget: compute, value: "p{{fields.number}}" }
+      - { label: Outlet, name: outlet, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - label: Title
+        name: title
+        widget: object
+        fields:
+          - { label: Spanish, name: es, widget: string }
+          - { label: English, name: en, widget: string }
+      - { label: URL, name: url, widget: string }

@@ -1,0 +1,60 @@
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 4px 18px;
+}
+
+.tab {
+  position: relative;
+  padding: 4px 2px 14px;
+  border: none;
+  background: none;
+  font-family: var(--font-family-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.tab:hover {
+  opacity: 1;
+  color: var(--color-text-main);
+}
+
+/* Lozenge bookmark on the header rule — the archive's shared mark */
+.tab::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2.5px;
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  transform: translateX(-50%) rotate(45deg) scale(0);
+  transition: var(--transition-smooth);
+}
+
+.active {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.active:hover {
+  color: var(--color-accent);
+}
+
+.active::after {
+  transform: translateX(-50%) rotate(45deg) scale(1);
+}
+
+.dot {
+  font-family: var(--font-family-display);
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  user-select: none;
+}

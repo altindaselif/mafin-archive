@@ -1,0 +1,52 @@
+[
+  {
+    "id": "f1",
+    "type": "Canción",
+    "title": "Perfume de lavanda",
+    "author": "@martafina_edits",
+    "url": "https://example.com/cancion-lavanda",
+    "note": "Balada inspirada en la escena de la carta.",
+    "date": "2026-03-14",
+    "approved": true
+  },
+  {
+    "id": "f2",
+    "type": "Fanfic",
+    "title": "Los trenes que no tomamos",
+    "author": "Luna V.",
+    "url": "https://example.com/fanfic-trenes",
+    "note": "Un final alternativo del capítulo 24, en tres capítulos.",
+    "date": "2026-04-02",
+    "approved": true
+  },
+  {
+    "id": "f3",
+    "type": "Arte",
+    "title": "Retrato: el baile de la verbena",
+    "author": "dibuja_sueños",
+    "url": "https://example.com/arte-verbena",
+    "note": "Acuarela sobre papel, farolillos incluidos.",
+    "date": "2026-04-20",
+    "approved": true
+  },
+  {
+    "id": "f4",
+    "type": "Canción",
+    "title": "Siete en punto",
+    "author": "@acordesdefina",
+    "url": "https://example.com/cancion-siete",
+    "note": "Guitarra y voz, grabada en una sola toma.",
+    "date": "2026-05-08",
+    "approved": true
+  },
+  {
+    "id": "f5",
+    "type": "Fanfic",
+    "title": "La trastienda a medianoche",
+    "author": "M. Robles",
+    "url": "https://example.com/fanfic-trastienda",
+    "note": "Ejemplo de aportación pendiente: no se muestra hasta que el archivero la apruebe.",
+    "date": "2026-06-30",
+    "approved": false
+  }
+]
