@@ -12,7 +12,7 @@ const L = { play: { es: "Reproducir", en: "Play" } };
  * don't re-render hundreds of cards. `onPlay` must be a stable
  * reference (useCallback) for the memo to be effective.
  */
-function VideoCard({ video, tone, onPlay }) {
+function VideoCard({ video, tone, onPlay, priority = false }) {
   const { t } = useLang();
   return (
     <button
@@ -21,7 +21,13 @@ function VideoCard({ video, tone, onPlay }) {
       aria-label={`${t(L.play)}: ${t(video.title)}`}
     >
       <div className={styles.thumbWrap}>
-        <Thumb label={t(video.title)} src={video.poster} ratio="16 / 9" tone={tone} />
+        <Thumb
+          label={t(video.title)}
+          src={video.poster}
+          ratio="16 / 9"
+          tone={tone}
+          priority={priority}
+        />
         <span className={styles.playOverlay} aria-hidden="true">
           <span className={styles.playIcon}>
             <svg width="18" height="20" viewBox="0 0 18 20">

@@ -12,12 +12,16 @@ const L = {
   essentialsNote: { es: "Imprescindibles", en: "Essential works" },
 };
 
-/* Catalogue order — the categories that make up the raisonné */
+/* Catalogue order — the categories that make up the raisonné.
+   Boş kategoriler render edilmiyor, yani her oyuncuda hepsi olmak
+   zorunda değil. */
 const CATEGORIES = [
   { key: "film", label: { es: "Cine", en: "Film" } },
-  { key: "tv", label: { es: "Televisión", en: "Television" } },
+  { key: "tv", label: { es: "Series", en: "Series" } },
   { key: "theatre", label: { es: "Teatro", en: "Theatre" } },
   { key: "music", label: { es: "Videoclips", en: "Music videos" } },
+  { key: "shorts", label: { es: "Cortometrajes", en: "Short films" } },
+  { key: "tvShows", label: { es: "Programas de televisión", en: "TV programmes" } },
 ];
 
 const DATE_LOCALE = { es: "es-ES", en: "en-GB" };
@@ -42,7 +46,12 @@ export default function Actors() {
       <div className={styles.record}>
         <div className={styles.portrait}>
           {actor.photo ? (
-            <img src={`${import.meta.env.BASE_URL}img/${actor.photo}`} alt={actor.name} loading="lazy" />
+            /* Portre sayfanın en üstünde — ertelemek LCP'yi geciktirir */
+            <img
+              src={`${import.meta.env.BASE_URL}img/${actor.photo}`}
+              alt={actor.name}
+              fetchPriority="high"
+            />
           ) : (
             <span className={styles.portraitEmpty}>{t(L.photo)}</span>
           )}

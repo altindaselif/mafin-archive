@@ -1,0 +1,67 @@
+/* 404 künyesiyle aynı dil. Hata ekranı i18n context'ine güvenemez —
+   kırılan şey o context'in kendisi olabilir — o yüzden iki dil de
+   birlikte, üst üste gösteriliyor. */
+.plate {
+  max-width: 48ch;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 0 0 26px;
+}
+
+.line {
+  height: 1px;
+  width: 64px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border),
+    transparent
+  );
+}
+
+.lozenge {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: var(--color-accent);
+  opacity: 0.6;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  letter-spacing: 0.03em;
+  margin: 0 0 14px;
+}
+
+.text {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 32px;
+}
+
+/* İkinci dil: aynı bloğun altında, daha soluk */
+.en {
+  display: block;
+  margin-top: 6px;
+  font-style: italic;
+  opacity: 0.65;
+}
+
+.title .en {
+  font-size: 0.6em;
+  font-style: normal;
+}
+
+.links {
+  margin: 0;
+  font-size: 0.9rem;
+}

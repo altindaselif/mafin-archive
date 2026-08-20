@@ -30,6 +30,9 @@ npx vite build && du -sh dist
 
 ## 🔴 FAZ 1 — Yayını bloke edenler
 
+> **Durum (20 Ağu):** Kodla çözülebilen her madde bitti ✅
+> Dış karara bağlı olanlar (1.4–1.8) belgenin **en altına**, "⏸ Beklemede" bölümüne taşındı.
+
 ### 1.1 Route bazlı code splitting + veri ayrıştırma ✅ ÇÖZÜLDÜ (20 Ağu)
 > **Resimlerin geç yüklenmesinin ASIL sebebiydi.** Sitedeki hiçbir resim HTML'de yok; hepsi React render'ından sonra DOM'a giriyor. Tarayıcı sırayla: HTML → CSS + font → **1 MB JS indir → parse et → render et** → ancak o zaman ilk `<img>` isteği.
 
@@ -169,89 +172,48 @@ Diğer sahnelerin bitrate'i 2.6–5.5 Mbps arasında değişiyordu — yani sabi
 
 > **KARAR (20 Ağu): sahne videoları 1080p kalacak, dokunulmayacak.** Ortalama 105 MB (~2.8 Mbps, 2–6 dk). Kalite bilinçli tercih; R2'de egress ücretsiz olduğu için maliyet sorunu da yok. 720p'ye indirme önerisi değerlendirildi ve reddedildi — bir daha gündeme getirilmesin.
 
-### 1.4 R2 custom domain
-> `src/config.js:11` ve `:20` — kendi yorumunda da yazıyor: `pub-*.r2.dev` URL'i Cloudflare tarafından rate-limit'li ve bazı TR ISP'lerinde bloklu.
+### 1.9 Hata dayanıklılığı ✅ ÇÖZÜLDÜ (20 Ağu)
+- [x] `src/pages/NotFound/` — 404 sayfası, `<Route path="*">` ile bağlandı. Arşivin dilinde künye + inicio/guía bağlantıları
+- [x] `src/components/ErrorBoundary/` — render hatasını yakalayıp beyaz ekran yerine künye gösteriyor. Rotaların İÇİNDE duruyor, yani Header/Footer ayakta kalıyor ve kullanıcı menüden çıkabiliyor
+- [x] Rota değişince hata otomatik temizleniyor (`routeKey`) — kullanıcı kırık ekranda kilitli kalmıyor
+- [x] Hata ekranı iki dilli sabit metin kullanıyor: kırılan şey i18n context'inin kendisi olabilir, ona güvenilemez
+- [x] `Home.jsx` — `DAILY_POOL` boşsa ana sayfayı çökerten hata kapandı (1.1 sırasında; havuz boşsa kart hiç çizilmiyor)
 
-- [ ] `videos.mafinarchive.com` (veya benzeri) custom domain'i bucket'a bağla
-- [ ] `src/config.js:11` → `VIDEO_BASE_URL` güncelle
-- [ ] `src/config.js:20` → `PHOTO_BASE_URL` güncelle
-- [ ] `src/config.js:29` → `PHOTO_RESIZE = true` yap
+### 1.10 Erişilebilirlik: Modal focus trap ✅ ÇÖZÜLDÜ (20 Ağu)
+> Focus trap yoktu: modal açıkken Tab'a basan biri arkadaki listede geziniyordu — ekran okuyucu kullanan biri için modal hiç açılmamış gibiydi.
 
-### 1.5 Galeri thumbnail'leri
-> `PHOTO_RESIZE = false` iken `Gallery.jsx:167`'deki `photoUrl(p, 640)` width'i **yok sayıyor**, tam boy orijinali veriyor. Grid hücresi 210px. CMS fotoğrafları "tam 4K, hiç küçültülmeden" yüklüyor. 12 albüm × 3-4 foto × ~4 MB = **~150 MB**.
-> Şu an fark edilmiyor çünkü galeri hâlâ `picsum.photos` sample datasıyla dolu.
-
-- [ ] 1.4 tamamlandıktan sonra `PHOTO_RESIZE = true` ile gerçek bir albümde test et
-- [ ] `src/data/gallery/*.json` — `_sample: true` işaretli sahte kayıtları temizle
-
-### 1.6 Fandom formu hiçbir yere veri göndermiyor
-> `src/pages/Fandom/Fandom.jsx:68` TODO. Kullanıcıya *"Recibido — Tu aportación espera la revisión del archivero"* diyor ama veri hiçbir yere gitmiyor. Yayına böyle çıkarsa insanlara yalan söylemiş oluyorsun.
-
-- [ ] Ya Supabase'i bağla, ya butonu "yakında" yap, ya da bir e-posta/form servisine (Formspree vb.) yönlendir
-
-### 1.7 Fandom sayfası tamamen İspanyolca hardcoded
-> `L` sözlüğü sadece başlık/altbaşlık için var. "Todas las obras", "obra/obras", "Donar al archivo", tüm form etiketleri, hata mesajı (`:63`), teşekkür metni — hepsi düz string. İngilizce'ye geçen kullanıcı bu sayfada tamamen İspanyolca içerik görüyor.
-
-- [ ] `src/pages/Fandom/Fandom.jsx` — tüm stringleri `L` sözlüğüne taşı
-- [ ] `Fandom.jsx:19` `formatDate` — `lang` parametresi almıyor, hep `es-ES`
-
-### 1.8 SEO / paylaşım meta etiketleri
-> Site X'te paylaşıldığında önizleme çıkmıyor. Fandom sitesi için kritik.
-
-- [ ] `index.html` — `<meta name="description">` ekle
-- [ ] `index.html` — Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) + Twitter card ekle
-- [ ] Sayfa başına `<title>` — şu an her route'ta "Archivo Mafin". `useEffect` ile set et
-- [ ] `public/robots.txt` ve `public/sitemap.xml` ekle
-
-### 1.9 Hata dayanıklılığı
-- [ ] `src/App.jsx` — `<Route path="*">` ile 404 sayfası ekle (şu an bilinmeyen URL'de header+footer görünüp `<main>` boş kalıyor)
-- [ ] Error boundary ekle (aşağıdaki crash risklerinden biri olursa kullanıcı beyaz ekran görüyor)
-- [ ] `src/pages/Home/Home.jsx:89` — `DAILY_POOL` boşsa `dailyQuote` undefined olur, `:136`'daki `t(dailyQuote.text)` **ana sayfayı komple çökertir**. Guard koy
-
-### 1.10 Erişilebilirlik: Modal focus trap
-> `src/components/Modal/Modal.jsx` — focus trap yok, açılınca focus modal'a taşınmıyor, kapanınca tetikleyen elemana dönmüyor. Klavye kullanıcısı modal açıkken arkadaki listede geziniyor.
-
-- [ ] Focus trap + focus restore ekle
+- [x] Açılınca odak modalın ilk gezilebilir elemanına geçiyor
+- [x] Tab / Shift+Tab modalın içinde dönüyor, dışarı çıkmıyor
+- [x] Kapanınca odak modalı açan düğmeye iade ediliyor — kullanıcı listede yerini kaybetmiyor
+- [x] Panel `tabIndex={-1}` aldı: içinde gezilebilir eleman yoksa odak yine de panele düşüyor
+- [x] Üç kullanım yerinde de geçerli: Vídeos oynatıcı, Galería lightbox, Fandom bağış formu
 
 ---
 
 ## 🟠 FAZ 2 — Resim/performans ince ayarı
 
-### 2.1 `content-visibility` + `loading="lazy"` çakışması
+### 2.1 `content-visibility` + `loading="lazy"` çakışması ✅ ÇÖZÜLDÜ (20 Ağu)
 > `VideoCard.module.css:19` kartın içeriğini ekran dışındayken hiç render etmiyor; içerideki `Thumb.jsx:19` `loading="lazy"` resmi de dolayısıyla **istek bile atmıyor**. İkisi birleşince o karakteristik "scroll ediyorum, kutular boş, sonra tek tek doluyor" hissi oluşuyor.
 
-- [ ] İkisinden birini kaldır — `content-visibility`'yi bırakıp lazy'yi ilk satır için kapatmak daha iyi
+- [x] `content-visibility` korundu (uzun listelerde şart), lazy ise ilk ekrandaki kartlar için kapatıldı — `Thumb`'a `priority` prop'u eklendi
 
-### 2.2 İlk ekrandaki resimler `eager` olmalı
-- [ ] `src/components/Thumb/Thumb.jsx` — `priority` prop'u ekle, ilk N kart için `loading="eager" fetchpriority="high"`
-- [ ] `src/pages/Videos/Videos.jsx:275` — grid'in ilk 4-6 kartına bu prop'u geç
-- [ ] `src/pages/Actors/Actors.jsx:45` — portre zaten görünür alanda, `lazy` kaldır
+### 2.2 İlk ekrandaki resimler `eager` olmalı ✅ ÇÖZÜLDÜ (20 Ağu)
+- [x] `Thumb.jsx` — `priority` prop'u: `loading="eager" fetchPriority="high" decoding="sync"`
+- [x] `Videos.jsx` — `EAGER_CARDS = 6`, grid'in ilk 6 kartı öncelikli
+- [x] `Actors.jsx` — portre `lazy`'den çıkarıldı, `fetchPriority="high"` verildi
 
-### 2.3 `width`/`height` eksik → layout shift (CLS)
-- [ ] `src/pages/Gallery/Gallery.jsx:165`
-- [ ] `src/pages/Actors/Actors.jsx:45`
+### 2.3 Boyama (paint) maliyeti ✅ ÇÖZÜLDÜ (20 Ağu)
 
-### 2.4 Hero preload
-> `hero.webp` (240 KB) CSS background olarak tanımlı (`Home.module.css:16`), CSS parse edilene kadar keşfedilmiyor. Ana sayfanın LCP elemanı bu.
+- [x] `Header.module.css` — fixed header'daki `backdrop-filter: blur(12px)` kaldırıldı
 
-- [ ] `index.html` — `<link rel="preload" as="image" href="/hero.webp">`
+> Arka plan zaten `rgba(249,248,246,0.92)` — %92 opak, yani arkasındaki içeriğin %8'i görünüyordu. Blur'ün görsel karşılığı yok denecek kadar azdı ama header `position: fixed` olduğu için arkasındaki içerik scroll'da sürekli değişiyor ve blur her karede yeniden hesaplanıyordu.
+>
+> Diğer 6 `backdrop-filter` bırakıldı: Modal ve Home'unki yalnızca açıkken, VideoCard'ınki yalnızca hover'da hesaplanıyor — sürekli maliyet değil.
 
-### 2.5 Boyama (paint) maliyeti
-> "Yükleme" değil ama kullanıcı "hantal" diye algılıyor.
-
-- [ ] `src/styles/global.css:98` — `filter: url(#mafin-duo)` SVG referans filtresi bazı tarayıcılarda GPU hızlandırmasını kapatıp yazılımsal rasterizasyona düşürüyor. Aynı duotone'u CSS filtre zinciriyle (`grayscale` + `sepia` + `hue-rotate` + `saturate`) veya `background-blend-mode` ile yap
-- [ ] `src/components/Header/Header.module.css:20` — fixed header'da `backdrop-filter: blur(12px)` her scroll frame'inde yeniden boyanıyor. Toplam 7 yerde `backdrop-filter` var, gözden geçir
-- [ ] `src/styles/global.css:9` — `--transition-smooth: all 0.3s` 47 yerde kullanılıyor. `transition: all` layout property'lerini de animasyona sokar. Açık liste yaz: `transform, box-shadow, border-color, opacity, color`
-
-### 2.6 Fontlar
-> Google Fonts `<link>` senkron ve render-blocking. `display=swap` var (iyi) ama iki aile × 6 ağırlık indiriliyor.
-
-- [ ] Kullanılmayan ağırlıkları çıkar, ya da fontları self-host et
-
-### 2.7 Scroll davranışı çakışması
+### 2.4 Scroll davranışı çakışması ✅ ÇÖZÜLDÜ (20 Ağu)
 > `global.css:29` `html { scroll-behavior: smooth }` açıkken `App.jsx:21`'deki `window.scrollTo(0, 0)` **animasyonlu** çalışıyor. Her sayfa geçişinde yukarı doğru kayma animasyonu görüyorsun.
 
-- [ ] `src/App.jsx:21` → `window.scrollTo({ top: 0, behavior: "instant" })`
+- [x] `src/App.jsx` → `window.scrollTo({ top: 0, behavior: "instant" })` (1.1 sırasında yapıldı)
 
 ---
 
@@ -320,6 +282,48 @@ Kopyalanan sabitler:
 
 ---
 
+## ⏸ BEKLEMEDE — dış karara bağlı (yayın öncesi yapılacak)
+
+> Bu maddeler koda değil, senin kararlarına bağlı: alan adı bütçesi, Fandom formunun akıbeti, sitenin kesin adresi. Yayına ~1 ay olduğu için sona bırakıldı. **Yayından önce hepsi kapanmalı.**
+
+### 1.4 R2 custom domain ⏸ ERTELENDİ (bütçe — yayına ~1 ay var, en sona)
+> Site bu madde olmadan da yayına çıkabilir; bedeli `pub-*.r2.dev` adresinin rate-limit'li olması ve bazı TR operatörlerinde ara ara engellenmesi. Videolar bu yüzden zaman zaman açılmıyor.
+>
+> **Ücretsiz alternatif:** site Cloudflare Pages'te barındırılıyorsa, R2 bucket'ı bir **binding** ile bağlanıp kendi `*.pages.dev` adresinden servis edilebilir (`site.pages.dev/media/...`). Alan adı satın almadan hem engel hem rate-limit çözülür. Kurulum işi var, para yok.
+> `src/config.js:11` ve `:20` — kendi yorumunda da yazıyor: `pub-*.r2.dev` URL'i Cloudflare tarafından rate-limit'li ve bazı TR ISP'lerinde bloklu.
+
+- [ ] `videos.mafinarchive.com` (veya benzeri) custom domain'i bucket'a bağla
+- [ ] `src/config.js:11` → `VIDEO_BASE_URL` güncelle
+- [ ] `src/config.js:20` → `PHOTO_BASE_URL` güncelle
+- [ ] `src/config.js:29` → `PHOTO_RESIZE = true` yap
+
+### 1.5 Galeri thumbnail'leri ⏸ ERTELENDİ (1.4'e bağlı)
+> `PHOTO_RESIZE = false` iken `Gallery.jsx:167`'deki `photoUrl(p, 640)` width'i **yok sayıyor**, tam boy orijinali veriyor. Grid hücresi 210px. CMS fotoğrafları "tam 4K, hiç küçültülmeden" yüklüyor. 12 albüm × 3-4 foto × ~4 MB = **~150 MB**.
+> Şu an fark edilmiyor çünkü galeri hâlâ `picsum.photos` sample datasıyla dolu.
+
+- [ ] 1.4 tamamlandıktan sonra `PHOTO_RESIZE = true` ile gerçek bir albümde test et
+- [ ] `src/data/gallery/*.json` — `_sample: true` işaretli sahte kayıtları temizle
+
+### 1.6 Fandom formu hiçbir yere veri göndermiyor ⏸ ERTELENDİ (en sona)
+> `src/pages/Fandom/Fandom.jsx:68` TODO. Kullanıcıya *"Recibido — Tu aportación espera la revisión del archivero"* diyor ama veri hiçbir yere gitmiyor. Yayına böyle çıkarsa insanlara yalan söylemiş oluyorsun.
+
+- [ ] Ya Supabase'i bağla, ya butonu "yakında" yap, ya da bir e-posta/form servisine (Formspree vb.) yönlendir
+
+### 1.7 Fandom sayfası tamamen İspanyolca hardcoded ⏸ ERTELENDİ (1.6 ile birlikte — form kalkarsa metinleri de değişir)
+> `L` sözlüğü sadece başlık/altbaşlık için var. "Todas las obras", "obra/obras", "Donar al archivo", tüm form etiketleri, hata mesajı (`:63`), teşekkür metni — hepsi düz string. İngilizce'ye geçen kullanıcı bu sayfada tamamen İspanyolca içerik görüyor.
+
+- [ ] `src/pages/Fandom/Fandom.jsx` — tüm stringleri `L` sözlüğüne taşı
+- [ ] `Fandom.jsx:19` `formatDate` — `lang` parametresi almıyor, hep `es-ES`
+
+### 1.8 SEO / paylaşım meta etiketleri ⏸ ERTELENDİ (alan adı belli değil)
+> `og:url`, `og:image` ve `sitemap.xml` sitenin kesin adresini gerektiriyor. Sayfa başlıkları ve `robots.txt` adres olmadan da yapılabilir ama bölmeye değmez — alan adı netleşince hepsi birden.
+> Site X'te paylaşıldığında önizleme çıkmıyor. Fandom sitesi için kritik.
+
+- [ ] `index.html` — `<meta name="description">` ekle
+- [ ] `index.html` — Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) + Twitter card ekle
+- [ ] Sayfa başına `<title>` — şu an her route'ta "Archivo Mafin". `useEffect` ile set et
+- [ ] `public/robots.txt` ve `public/sitemap.xml` ekle
+
 ## 🛠 Depodaki script'ler
 
 Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
@@ -336,8 +340,8 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 ## 🩹 Ufak tefek (fırsat buldukça)
 
 - [ ] `src/pages/Characters/Characters.jsx:13` — `parts[0][0]` boş isimde patlar
-- [ ] `src/components/Stats/Stats.jsx:70` — `key={stat.value}`; `TOTAL - 182 === 182` olursa (toplam 364) duplicate key uyarısı
-- [ ] `src/pages/Home/Home.jsx:75` — `q.text` yoksa patlar (`q.text.es ?? ""` yeterli değil)
+- [x] `Stats.jsx` — `key={stat.value}` yerine `key={stat.label.en}` (1.1 sırasında)
+- [x] `Home.jsx` — `q.text` yoksa patlama riski kalktı; havuz artık build script'inde `q.text?.es ?? ""` ile süzülüyor (1.1 sırasında)
 - [ ] `vite.config.js:9` — `usePolling: true` her 300 ms'de dosya sistemini tarıyor. Sadece dev'i etkiliyor ama ihtiyacın yoksa kaldır
 - [ ] `public/admin/config.yml:20` — R2 `access_key_id` public repoda ve `/admin/config.yml` adresinden herkese açık. Secret key orada değil (doğru karar) ve access key ID tek başına yetkilendirme sağlamaz, ama bucket + account ID ile birlikte ifşa oluyor. Bu key'in **sadece** `mafin-photos` bucket'ına write yetkisi olduğundan emin ol
 

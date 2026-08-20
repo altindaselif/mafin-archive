@@ -22,6 +22,33 @@ const L = {
   language: { es: "Idioma", en: "Language" },
 };
 
+/**
+ * Dil değişince menünün kaymasını önler.
+ *
+ * İki dilin metni de aynı ızgara hücresine konuyor: hücre her zaman
+ * GENİŞ olana göre şekilleniyor, aktif olmayan `visibility: hidden` ile
+ * gizleniyor. Böylece "hangisi daha uzun" diye elle hesaplamak gerekmiyor —
+ * yeni bir dil eklense de kendiliğinden çalışır.
+ *
+ * `visibility: hidden` erişilebilirlik ağacından da çıkarıyor, yani ekran
+ * okuyucu metni iki kez okumuyor.
+ */
+function StableLabel({ field }) {
+  const { lang } = useLang();
+  return (
+    <span className={styles.slot}>
+      {["es", "en"].map((code) => (
+        <span
+          key={code}
+          className={code === lang ? styles.slotOn : styles.slotOff}
+        >
+          {field[code]}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 export default function Header() {
   const { pathname } = useLocation();
   const { t, lang, setLang } = useLang();
@@ -94,16 +121,16 @@ export default function Header() {
 
         <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
           <NavLink to="/" end className={linkClass} onClick={scrollTopIfHome}>
-            {t(L.home)}
+            <StableLabel field={L.home} />
           </NavLink>
           <NavLink to="/timeline" className={linkClass}>
-            {t(L.story)}
+            <StableLabel field={L.story} />
           </NavLink>
           <NavLink to="/guide" className={linkClass}>
-            {t(L.guide)}
+            <StableLabel field={L.guide} />
           </NavLink>
           <NavLink to="/videos" className={linkClass}>
-            {t(L.videos)}
+            <StableLabel field={L.videos} />
           </NavLink>
 
           <div className={styles.more} ref={moreRef}>
@@ -113,7 +140,7 @@ export default function Header() {
               aria-expanded={moreOpen}
               onClick={() => setMoreOpen((v) => !v)}
             >
-              {t(L.more)}
+              <StableLabel field={L.more} />
               <svg
                 className={styles.chevron}
                 width="10"
@@ -145,7 +172,7 @@ export default function Header() {
                       : styles.dropLink
                   }
                 >
-                  {t(l.label)}
+                  <StableLabel field={l.label} />
                 </NavLink>
               ))}
 

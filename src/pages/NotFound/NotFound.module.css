@@ -1,0 +1,78 @@
+/* Kayıp sayfa da arşivin diliyle konuşur: ortalanmış bir künye,
+   Footer'daki kolofon çizgisinin aynısı, gösterişsiz. */
+.plate {
+  /* Başlığı tam puntosunda tek satırda tutacak kadar geniş — İspanyolca
+     metin ("Esta página no está en el archivo") en uzun olanı. */
+  max-width: 72ch;
+  margin: 40px auto 0;
+  text-align: center;
+}
+
+.code {
+  display: block;
+  font-family: var(--font-family-display);
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  opacity: 0.22;
+}
+
+.rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 18px 0 26px;
+}
+
+.line {
+  height: 1px;
+  width: 64px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border),
+    transparent
+  );
+}
+
+.lozenge {
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: var(--color-accent);
+  opacity: 0.6;
+}
+
+.title {
+  font-family: var(--font-family-display);
+  font-weight: 500;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  letter-spacing: 0.03em;
+  margin: 0 0 14px;
+}
+
+/* Masaüstünde tek satır garanti. Dar ekranda serbest bırakılıyor —
+   orada iki satır zaten doğal. */
+@media (min-width: 640px) {
+  .title {
+    white-space: nowrap;
+  }
+}
+
+.text {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  /* Künye başlık için geniş (72ch), ama paragraf o kadar uzun satırda
+     okunmuyor — kendi ölçüsünde, ortalı. */
+  max-width: 56ch;
+  margin: 0 auto 32px;
+}
+
+.links {
+  margin: 0;
+  font-size: 0.9rem;
+}
+

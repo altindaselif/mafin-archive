@@ -42,6 +42,25 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/*
+ * Yapışkan footer. İçeriği kısa olan sayfalarda (404, Prensa, Personajes)
+ * footer ekranın ortasında asılı kalıyordu. Kolon düzeni + main'in boşluğu
+ * yemesi footer'ı her zaman en alta itiyor; içerik uzunsa normal akışta,
+ * kısaysa ekranın dibinde.
+ *
+ * Header position:fixed olduğu için bu düzenin dışında, etkilenmiyor.
+ */
+#root {
+  min-height: 100vh;
+  min-height: 100dvh; /* mobilde adres çubuğu payı */
+  display: flex;
+  flex-direction: column;
+}
+
+#root > main {
+  flex: 1 0 auto;
+}
+
 img,
 iframe {
   max-width: 100%;

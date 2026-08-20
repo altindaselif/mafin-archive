@@ -78,6 +78,10 @@ const MILESTONE_BY_EPISODE = new Map(milestones.map((m) => [m.episode, m]));
  * first paint light even when the filtered result is huge. */
 const PAGE_SIZE = 20;
 
+/* İlk ekrana sığan kart sayısı — bunların posterleri ertelenmeden,
+   öncelikli indiriliyor. Gerisi görünür alana yaklaştıkça geliyor. */
+const EAGER_CARDS = 6;
+
 /* Baby videos are unwanted: the tag excludes instead of includes
  * (same convention as the episode guide). It renders last, in ink. */
 const EXCLUDED_MOODS = ["baby", "cloe"];
@@ -280,6 +284,7 @@ export default function Videos() {
                 video={video}
                 tone={i % 6}
                 onPlay={handlePlay}
+                priority={i < EAGER_CARDS}
               />
             ))}
           </div>

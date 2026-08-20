@@ -15,6 +15,132 @@
       ]
     },
     "filmography": {
+      "film": [
+        {
+          "year": "2026",
+          "title": "Antes del Amor",
+          "role": "Elisa",
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2019",
+          "title": "Gente que viene y bah",
+          "role": "Rebeca Ramos",
+          "detail": ""
+        },
+        {
+          "year": "2019",
+          "title": "Puenting",
+          "role": {
+            "es": "Ella misma",
+            "en": "Herself"
+          },
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2017",
+          "title": "Deseos",
+          "role": "",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2016",
+          "title": "IXTAB",
+          "role": "Brenda",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2015",
+          "title": "Fuera de foco",
+          "role": {
+            "es": "Ella misma",
+            "en": "Herself"
+          },
+          "detail": ""
+        },
+        {
+          "year": "2014",
+          "title": "Asmodexia",
+          "role": "Diana",
+          "detail": "",
+          "featured": true
+        },
+        {
+          "year": "2010",
+          "title": "Campamento Flipy",
+          "role": "Violeta",
+          "detail": ""
+        },
+        {
+          "year": "2007",
+          "title": "Cinemart",
+          "role": "",
+          "detail": ""
+        },
+        {
+          "year": "2006",
+          "title": "El postre",
+          "role": "",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2006",
+          "title": "Cineastas contra magnates",
+          "role": {
+            "es": "Presentadora",
+            "en": "Presenter"
+          },
+          "detail": {
+            "es": "Documental",
+            "en": "Documentary"
+          }
+        },
+        {
+          "year": "2005",
+          "title": "Cineastas en acción",
+          "role": {
+            "es": "Presentadora",
+            "en": "Presenter"
+          },
+          "detail": {
+            "es": "Documental",
+            "en": "Documentary"
+          }
+        },
+        {
+          "year": "2004",
+          "title": "Estúpidos, basado en hechos reales",
+          "role": {
+            "es": "Presentadora",
+            "en": "Presenter"
+          },
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          }
+        },
+        {
+          "year": "2002",
+          "title": "Desire on a Fall Afternoon",
+          "role": "Ana",
+          "detail": {
+            "es": "Cortometraje",
+            "en": "Short film"
+          },
+          "featured": true
+        }
+      ],
       "tv": [
         {
           "year": "2024–",
@@ -254,132 +380,6 @@
           }
         }
       ],
-      "film": [
-        {
-          "year": "2026",
-          "title": "Antes del Amor",
-          "role": "Elisa",
-          "detail": "",
-          "featured": true
-        },
-        {
-          "year": "2019",
-          "title": "Gente que viene y bah",
-          "role": "Rebeca Ramos",
-          "detail": ""
-        },
-        {
-          "year": "2019",
-          "title": "Puenting",
-          "role": {
-            "es": "Ella misma",
-            "en": "Herself"
-          },
-          "detail": "",
-          "featured": true
-        },
-        {
-          "year": "2017",
-          "title": "Deseos",
-          "role": "",
-          "detail": {
-            "es": "Cortometraje",
-            "en": "Short film"
-          }
-        },
-        {
-          "year": "2016",
-          "title": "IXTAB",
-          "role": "Brenda",
-          "detail": {
-            "es": "Cortometraje",
-            "en": "Short film"
-          }
-        },
-        {
-          "year": "2015",
-          "title": "Fuera de foco",
-          "role": {
-            "es": "Ella misma",
-            "en": "Herself"
-          },
-          "detail": ""
-        },
-        {
-          "year": "2014",
-          "title": "Asmodexia",
-          "role": "Diana",
-          "detail": "",
-          "featured": true
-        },
-        {
-          "year": "2010",
-          "title": "Campamento Flipy",
-          "role": "Violeta",
-          "detail": ""
-        },
-        {
-          "year": "2007",
-          "title": "Cinemart",
-          "role": "",
-          "detail": ""
-        },
-        {
-          "year": "2006",
-          "title": "El postre",
-          "role": "",
-          "detail": {
-            "es": "Cortometraje",
-            "en": "Short film"
-          }
-        },
-        {
-          "year": "2006",
-          "title": "Cineastas contra magnates",
-          "role": {
-            "es": "Presentadora",
-            "en": "Presenter"
-          },
-          "detail": {
-            "es": "Documental",
-            "en": "Documentary"
-          }
-        },
-        {
-          "year": "2005",
-          "title": "Cineastas en acción",
-          "role": {
-            "es": "Presentadora",
-            "en": "Presenter"
-          },
-          "detail": {
-            "es": "Documental",
-            "en": "Documentary"
-          }
-        },
-        {
-          "year": "2004",
-          "title": "Estúpidos, basado en hechos reales",
-          "role": {
-            "es": "Presentadora",
-            "en": "Presenter"
-          },
-          "detail": {
-            "es": "Cortometraje",
-            "en": "Short film"
-          }
-        },
-        {
-          "year": "2002",
-          "title": "Desire on a Fall Afternoon",
-          "role": "Ana",
-          "detail": {
-            "es": "Cortometraje",
-            "en": "Short film"
-          },
-          "featured": true
-        }
-      ],
       "theatre": [
         {
           "year": "2023–24",
@@ -523,7 +523,33 @@
       ]
     },
     "filmography": {
+      "film": [
+        {
+          "year": "2024",
+          "title": "El Rei Peret",
+          "role": "Rosita Pubill",
+          "detail": ""
+        },
+        {
+          "year": "2022",
+          "title": "Operation Mincemeat",
+          "role": "Ana Flores",
+          "detail": ""
+        },
+        {
+          "year": "2019",
+          "title": "Barcelona 1714",
+          "role": "Agnès",
+          "detail": ""
+        }
+      ],
       "tv": [
+        {
+          "year": "2025",
+          "title": "A muerte",
+          "role": "Luna",
+          "detail": ""
+        },
         {
           "year": "2024–",
           "title": "Sueños de Libertad",
@@ -534,22 +560,158 @@
           }
         },
         {
-          "year": "2020",
-          "title": "La Marea",
-          "role": "",
+          "year": "2022",
+          "title": "Los Protegidos. ADN",
+          "role": "Paula",
           "detail": ""
-        }
-      ],
-      "film": [
+        },
         {
           "year": "2022",
-          "title": "Días de Verano",
+          "title": "Crossfire",
+          "role": "Bea",
+          "detail": ""
+        },
+        {
+          "year": "2022",
+          "title": "Mopies",
+          "role": "Judith",
+          "detail": ""
+        },
+        {
+          "year": "2021",
+          "title": "Paraíso",
+          "role": "Marina Santolaya",
+          "detail": ""
+        },
+        {
+          "year": "2021",
+          "title": "The Mallorca Files",
+          "role": "Paz Casals",
+          "detail": ""
+        },
+        {
+          "year": "2020–21",
+          "title": "Pep",
+          "role": "Marta",
+          "detail": ""
+        },
+        {
+          "year": "2019",
+          "title": "Bany compartit",
+          "role": "",
+          "detail": ""
+        },
+        {
+          "year": "2015–19",
+          "title": "Acacias 38",
+          "role": "Leonor Hidalgo",
+          "detail": ""
+        }
+      ],
+      "theatre": [
+        {
+          "year": "2026",
+          "title": "La Segona Línea",
+          "role": "Maria",
+          "detail": {
+            "es": "Lectura dramatizada",
+            "en": "Staged reading"
+          }
+        },
+        {
+          "year": "2017",
+          "title": "Amor en vena",
+          "role": "Paula",
+          "detail": {
+            "es": "Microteatro",
+            "en": "Microtheatre"
+          }
+        },
+        {
+          "year": "2014",
+          "title": "Dansa d'Agost",
+          "role": "Maggie Mundy",
+          "detail": {
+            "es": "Taller de interpretación",
+            "en": "Acting workshop"
+          }
+        }
+      ],
+      "music": [
+        {
+          "year": "2020",
+          "title": "Como si fueras a morir mañana",
+          "role": "",
+          "detail": {
+            "es": "Gala final del LCI Barcelona Fashion Film Festival",
+            "en": "LCI Barcelona Fashion Film Festival closing gala"
+          }
+        },
+        {
+          "year": "2019",
+          "title": "Mi camerino",
           "role": "",
           "detail": ""
         }
       ],
-      "theatre": [],
-      "music": []
+      "shorts": [
+        {
+          "year": "2021",
+          "title": "Andy y las demás",
+          "role": "Andy",
+          "detail": ""
+        },
+        {
+          "year": "2021",
+          "title": "Contiguo",
+          "role": "Bruna",
+          "detail": ""
+        },
+        {
+          "year": "2021",
+          "title": "Encore",
+          "role": "Lola",
+          "detail": ""
+        },
+        {
+          "year": "2016",
+          "title": "La Melodía del Mal",
+          "role": "Laura",
+          "detail": ""
+        },
+        {
+          "year": "2008",
+          "title": "La Filosofía de la futilidad",
+          "role": "Arancha",
+          "detail": ""
+        }
+      ],
+      "tvShows": [
+        {
+          "year": "2025–26",
+          "title": "Pasapalabra",
+          "role": "",
+          "detail": ""
+        },
+        {
+          "year": "2021",
+          "title": "Gent de la Mar",
+          "role": "",
+          "detail": ""
+        },
+        {
+          "year": "2021",
+          "title": "El club del tupper, Cuina de proximitat",
+          "role": "",
+          "detail": ""
+        },
+        {
+          "year": "2020",
+          "title": "Agafam si pots",
+          "role": "",
+          "detail": ""
+        }
+      ]
     },
     "credit": {
       "handle": "PerfectlyEspos",

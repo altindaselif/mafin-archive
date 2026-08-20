@@ -16,9 +16,11 @@
 }
 
 .solid {
+  /* Arka plan %92 opak: arkasındaki içeriğin ancak %8'i görünüyor, yani
+     blur'ün görsel karşılığı yok denecek kadar azdı. Ama header fixed
+     olduğu için arkasındaki içerik scroll'da sürekli değişiyor ve blur
+     HER KAREDE yeniden hesaplanıyordu. Bedeli var, karşılığı yoktu. */
   background: rgba(249, 248, 246, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -243,4 +245,31 @@
 .dropLangSep {
   color: var(--color-text-main);
   opacity: 0.4;
+}
+
+/* ── Dil değişince kaymayı önleyen yuva ──────────────────────────────
+   İki dilin metni de aynı ızgara hücresinde; hücre geniş olana göre
+   şekilleniyor, aktif olmayan gizleniyor. Menü genişliği dilden
+   bağımsız sabit kalıyor. */
+.slot {
+  /* inline-grid: yuva yalnızca en geniş metin kadar yer kaplar ve satır
+     içinde kalır. Düz `grid` blok seviyesi olurdu ve açılır menüde tüm
+     genişliği yerdi. */
+  display: inline-grid;
+  justify-items: center;
+}
+
+/* Açılır menüdeki bağlantılar sola hizalı — kısa metin ortalanınca
+   içeri kaçmış gibi durur. */
+.dropLink .slot {
+  justify-items: start;
+}
+
+.slot > * {
+  grid-area: 1 / 1;
+}
+
+.slotOff {
+  visibility: hidden;
+  pointer-events: none;
 }
