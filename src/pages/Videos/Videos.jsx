@@ -14,7 +14,7 @@ import VideoCard from "../../components/VideoCard/VideoCard.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import { COMMON, useLang } from "../../i18n.js";
 import { VIDEO_BASE_URL, SCENE_PATH } from "../../config.js";
-import episodes from "../../data/episodes.js";
+import episodeMeta from "../../data/generated/episodeMeta.json";
 import milestones from "../../data/timeline.js";
 import { seasonOf } from "../../data/seasonInfo.js";
 
@@ -62,10 +62,14 @@ const L = {
  */
 const DATA_URL = `${import.meta.env.BASE_URL}data/videos.json`;
 
-/* Title, moods and season live in the episode guide — a video only
- * stores its episode number and file, and inherits the rest by number.
- * No duplicate data to keep in sync. */
-const EPISODE_BY_NUMBER = new Map(episodes.map((e) => [e.number, e]));
+/* Başlık ve mood bölüm rehberinden gelir — bir video sadece bölüm
+ * numarasını ve dosya adını tutar, gerisini numaradan devralır.
+ * Senkronda tutulacak ikinci bir veri yok.
+ *
+ * episodes.js'in tamamı (409 KB) yerine build'de üretilen meta indeksi
+ * (62 KB) kullanılıyor: bu sayfa bölüm açıklamalarını hiç göstermiyor,
+ * açıklamalar da verinin dörtte üçü. Sezon numaradan seasonOf() ile
+ * türüyor, o yüzden indekste saklanmıyor. */
 /* These clips are the scenes of the timeline's milestones, so titles
  * come from there ("El primer beso"), not the raw episode names. */
 const MILESTONE_BY_EPISODE = new Map(milestones.map((m) => [m.episode, m]));
@@ -109,7 +113,7 @@ export default function Videos() {
         if (!Array.isArray(data)) throw new Error("Invalid catalogue format");
         setVideos(
           data.map((v) => {
-            const ep = EPISODE_BY_NUMBER.get(v.episode);
+            const ep = episodeMeta[v.episode];
             const ms = MILESTONE_BY_EPISODE.get(v.episode);
             const file = typeof v.file === "string" && v.file ? v.file : null;
             return {
@@ -117,11 +121,9 @@ export default function Videos() {
               episode: v.episode,
               file,
               // scene title from the timeline; fall back to episode name
-              title: ms?.title ?? ep?.title ?? L.untitled,
-              moods: Array.isArray(ep?.moods) ? ep.moods : [],
-              season: Number.isFinite(ep?.season)
-                ? ep.season
-                : seasonOf(v.episode),
+              title: ms?.title ?? ep?.t ?? L.untitled,
+              moods: Array.isArray(ep?.m) ? ep.m : [],
+              season: seasonOf(v.episode),
               poster: file
                 ? `${import.meta.env.BASE_URL}img/videos-posters/${file.replace(/\.mp4$/, ".jpg")}`
                 : null,

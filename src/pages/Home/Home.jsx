@@ -2,9 +2,8 @@ import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import SectionIcon from "../../components/SectionIcon/SectionIcon.jsx";
-import quotes from "../../data/quotes.js";
-import episodes from "../../data/episodes.js";
 import { COMMON, useLang } from "../../i18n.js";
+import { useHomeIndex } from "../../data/homeIndex.js";
 import Stats from "../../components/Stats/Stats.jsx";
 
 /* The foyer's doors: every section, one symmetric card each. Icons are
@@ -65,50 +64,49 @@ const agoPhrase = (years, t) =>
     ? `${t(L.agoPrefix)} ${years} ${years === 1 ? t(L.yearAgo) : t(L.yearsAgoWord)}: `.trimStart()
     : "";
 
-/*
- * Pool for the daily card: solo voices only (dialogues need the script
- * layout of the quotes page) and short enough to sit comfortably in a
- * single card. Spanish text is the reference length.
- */
-const DAILY_MAX_LENGTH = 160;
-const DAILY_POOL = quotes.filter(
-  (q) => q.speaker !== "Mafin" && (q.text.es ?? "").length <= DAILY_MAX_LENGTH
-);
-
 export default function Home() {
   const { t } = useLang();
+  /*
+   * Eskiden bu sayfa quotes.js (96 KB) ve episodes.js (408 KB) dosyalarının
+   * tamamını import ediyordu — ikisinden de sadece birkaç alan kullandığı
+   * halde. Artık build'de üretilen hafif indeksi (87 KB) fetch ediyor;
+   * hero ve bölüm kartları veriyi beklemeden çiziliyor.
+   */
+  const index = useHomeIndex();
+
   // Deterministic "quote of the day": same quote for everyone all day,
   // changing at midnight. The multiplicative hash (Knuth) scatters the
   // sequence so consecutive days don't read the array in order.
   const dailyQuote = useMemo(() => {
+    const pool = index?.quotePool;
+    if (!pool?.length) return null; // veri yok / havuz boş -> kart çizilmez
     const now = new Date();
     const dayOfYear = Math.floor(
       (now - new Date(now.getFullYear(), 0, 0)) / 86_400_000
     );
     const seed = (now.getFullYear() * 366 + dayOfYear) * 2654435761;
-    return DAILY_POOL[seed % DAILY_POOL.length];
-  }, []);
+    return pool[seed % pool.length];
+  }, [index]);
 
-  // "En este día": the broadcast anniversary of an episode aired on this
-  // date (the oldest broadcast makes the biggest anniversary); failing
-  // that, a quiet neutral line so the block is never an empty gap.
+  /*
+   * "En este día": bugünün ay-gününe düşen bölümün yıldönümü.
+   * Kazanan bölüm (aynı güne düşenlerin en eskisi) build sırasında
+   * hesaplanıp gün tablosuna yazıldı — burada tek anahtarla okunuyor,
+   * 616 kayıt taranmıyor.
+   */
   const todayLine = useMemo(() => {
+    if (!index) return null;
     const now = new Date();
-    const m = now.getMonth() + 1;
-    const d = now.getDate();
-    const mmdd = `${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
-    const aired = episodes
-      .filter((e) => e.airDate?.slice(5) === mmdd)
-      .sort((a, b) => a.airDate.localeCompare(b.airDate))[0];
-    if (aired) {
-      return {
-        years: now.getFullYear() - Number(aired.airDate.slice(0, 4)),
-        aired,
-      };
-    }
-
-    return null;
-  }, []);
+    const mmdd = `${String(now.getMonth() + 1).padStart(2, "0")}-${String(
+      now.getDate()
+    ).padStart(2, "0")}`;
+    const hit = index.days[mmdd];
+    if (!hit) return null;
+    return {
+      years: now.getFullYear() - hit.y,
+      aired: { number: hit.n, title: hit.t },
+    };
+  }, [index]);
 
   // Language-dependent strings resolve at render time, not inside the memo
   const todayText = todayLine
@@ -128,7 +126,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Daily quote ── */}
+      {/* ── Daily quote (veri gelene kadar çizilmez) ── */}
+      {dailyQuote && (
       <section className={styles.quoteSection}>
         <figure className={styles.quoteCard}>
           <figcaption className={styles.quoteLabel}>{t(L.quoteLabel)}</figcaption>
@@ -140,6 +139,7 @@ export default function Home() {
           </p>
         </figure>
       </section>
+      )}
 
       {/* ── En este día (always shown; falls back to a neutral line) ── */}
       <section className={styles.ephemeris}>

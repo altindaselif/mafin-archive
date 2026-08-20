@@ -12,9 +12,9 @@
  */
 export const MOOD_LABELS = {
   iconic: { es: "Icónico", en: "Iconic" },
-  kiss: { es: "Besos", en: "Kisses" },
-  argue: { es: "Peleas", en: "Fights" },
-  hug: { es: "Abrazos", en: "Hugs" },
+  kiss: { es: "Beso", en: "Kiss" },
+  argue: { es: "Pelea", en: "Argue" },
+  hug: { es: "Abrazo", en: "Hug" },
   miento: { es: "Miento", en: "Miento" },
   baby: { es: "Bebé", en: "Baby" },
   cloe: { es: "Cloe", en: "Cloe" },

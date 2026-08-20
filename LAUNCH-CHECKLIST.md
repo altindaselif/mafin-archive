@@ -12,12 +12,12 @@ Her madde `- [ ]` ile işaretlenebilir. Sıra önem sırasıdır: Faz 1 bitmeden
 
 | Metrik | Şu an | Hedef |
 |---|---|---|
-| JS bundle (tek chunk) | **998.84 KB** (gzip 305 KB) | < 250 KB (gzip < 90 KB) |
-| CSS bundle | 47.00 KB (gzip 8.86 KB) | < 35 KB |
+| ~~JS bundle (tek chunk)~~ | ~~998.84 KB~~ (gzip 305 KB) | ✅ **181.6 KB** (gzip 59.8 KB) |
+| ~~CSS bundle~~ | ~~47.00 KB~~ | ✅ **13.2 KB** (sayfa başına bölündü) |
 | ~~`dist/` toplam~~ | ~~54 MB~~ | ✅ **5.6 MB** |
 | ~~`public/videos/`~~ | ~~46 MB~~ | ✅ **silindi** |
-| `.git` deposu | 91 MB | — |
-| Bundle'daki ham veri | episodes 457 KB + quotes 110 KB + characters 18 KB + timeline 16 KB | ana route'ta ~0 |
+| ~~`.git` deposu~~ | ~~91 MB~~ | ✅ **8.8 MB** |
+| ~~Ana route'taki ham veri~~ | ~~504 KB~~ | ✅ **87 KB** (paralel fetch) |
 | ~~Timeline scroll'da inen video~~ | ~~46 MB~~ | ✅ **1 klip** |
 
 Ölçüm komutu:
@@ -30,13 +30,52 @@ npx vite build && du -sh dist
 
 ## 🔴 FAZ 1 — Yayını bloke edenler
 
-### 1.1 Route bazlı code splitting + veri ayrıştırma
-> **Resimlerin geç yüklenmesinin ASIL sebebi bu.** Sitedeki hiçbir resim HTML'de yok; hepsi React render'ından sonra DOM'a giriyor. Tarayıcı sırayla: HTML → CSS + font → **1 MB JS indir → parse et → render et** → ancak o zaman ilk `<img>` isteği. Resim 20 KB olsa bile önündeki kuyruk 3–5 saniye.
+### 1.1 Route bazlı code splitting + veri ayrıştırma ✅ ÇÖZÜLDÜ (20 Ağu)
+> **Resimlerin geç yüklenmesinin ASIL sebebiydi.** Sitedeki hiçbir resim HTML'de yok; hepsi React render'ından sonra DOM'a giriyor. Tarayıcı sırayla: HTML → CSS + font → **1 MB JS indir → parse et → render et** → ancak o zaman ilk `<img>` isteği.
 
-- [ ] `src/App.jsx` — 10 sayfanın statik import'unu `React.lazy()` + `<Suspense>` ile değiştir
-- [ ] `src/components/Stats/Stats.jsx:3` — `episodes.js`'in tamamını (457 KB) sadece `.length` ve `airDate` için import ediyor. Build sırasında üretilen hafif bir `episodeIndex.json` (number + airDate + title) ile değiştir
-- [ ] `src/pages/Home/Home.jsx:5-6` — aynı sorun: `quotes` (110 KB) ve `episodes` (457 KB) ana sayfaya bağlı. "Günün sözü" ve "Tal día como hoy" için hafif indeks kullan
-- [ ] Build'i tekrar ölç: ana chunk < 250 KB olmalı
+- [x] `src/App.jsx` — 9 sayfa `React.lazy()` + `<Suspense>` ile ayrıldı (Home hariç: açılış rotası, ayırmak fazladan gidiş-geliş demek)
+- [x] `scripts/build-home-index.mjs` — Home + Stats için hafif indeks üretiyor. `package.json`'daki `prebuild` / `predev` kancalarıyla otomatik çalışıyor; çıktı `.gitignore`'da (kaynaktan türüyor, bayatlamıyor)
+- [x] `src/data/homeIndex.js` — ortak okuyucu, tek fetch + önbellek
+- [x] `Stats.jsx` — 616 bölüm import'u yerine tarih listesinden sayım
+- [x] `Home.jsx` — `episodes.js` + `quotes.js` import'ları kaldırıldı
+- [x] Yan fayda: `DAILY_POOL` boş kalırsa ana sayfayı çökerten hata ve `Stats`'taki duplicate key uyarısı kapandı
+- [x] Tarayıcıda doğrulandı — "tüm sayfalardaki resimler şak diye açılıyor"
+
+**İndeks nasıl küçüldü (504 KB → 87 KB):**
+
+| ne | önce | sonra | nasıl |
+|---|---|---|---|
+| Stats sayacı | 408 KB | 7.8 KB | sadece yayın tarihleri listesi |
+| "Tal día como hoy" | 408 KB | 36.7 KB | yılda 366 gün var → kazanan bölüm build'de hesaplandı |
+| "Günün sözü" | 96 KB | 42.6 KB | süzme build'de, sadece uygun 206 alıntı |
+
+**Ölçülen sonuç:**
+
+| | önce | sonra |
+|---|---|---|
+| Ana sayfa toplam | 1045.8 KB (gzip 314.4) | **282.4 KB** (gzip 88.1) |
+| **Resimlerden önce parse edilen JS** | **998.8 KB** | **181.6 KB** (−82%) |
+| CSS | 47 KB tek dosya | sayfa başına 1–6 KB |
+
+> `home.json` (87 KB) bundle'a gömülmedi, paralel fetch ediliyor — hero ve bölüm kartları veriyi beklemiyor.
+
+**Sayfa chunk'ları (sadece gidilince iner):** `episodes` 541 KB · `Quotes` 158 KB · `timeline` 24 KB · kalanlar < 20 KB
+
+**Ek: `episodeMeta` indeksi (aynı gün yapıldı)**
+
+`episodes` chunk'ı 541 KB'tı ve Guía / Vídeos / Galería paylaşıyordu. Ama bölüm açıklamaları tek başına **308 KB — verinin %75'i** ve onlara sadece Guía'nın ihtiyacı var; Vídeos ile Galería yalnızca başlık + mood kullanıyor.
+
+- [x] `scripts/build-indexes.mjs` ikinci bir indeks üretiyor: `src/data/generated/episodeMeta.json` (62 KB, numara → başlık + mood)
+- [x] `Videos.jsx` + `Gallery.jsx` bu indeksi kullanıyor, `episodes.js` import'u kalktı
+- [x] Sezon indekste saklanmıyor — `seasonOf(number)` ile türüyor, `seasonInfo.js` tek kaynak olarak kalıyor
+
+> `home.json`'un aksine bu dosya fetch edilmiyor, **import** ediliyor: Vídeos ve Galería zaten lazy chunk, 62 KB ana sayfaya dokunmuyor — ve yükleniyor durumu / iskelet yönetmeye gerek kalmıyor.
+
+| sayfa | önce | sonra | |
+|---|---|---|---|
+| Vídeos | 548 KB | **87.9 KB** | −84% |
+| Galería | 547 KB | **63.0 KB** | −88% |
+| Guía | 546 KB | 546 KB | değişmedi (açıklamalar gerçekten lazım) |
 
 ### 1.2 `public/videos/` klasörünü R2'ye taşı ✅ ÇÖZÜLDÜ (20 Ağu)
 > Klipler doğru hazırlanmıştı (ses yok, faststart var, süreler kasıtlı) — dosyalarda yapılacak iş yoktu. Tek sorun 46 MB'ın repoda durup her deploy'a gitmesiydi.
@@ -44,7 +83,7 @@ npx vite build && du -sh dist
 - [x] 54 klip R2'ye yüklendi → `mafin-videos/timeline/` (`scripts/r2-upload-timeline.sh`)
 - [x] `Milestone.jsx` artık `VIDEO_BASE_URL` + `TIMELINE_PATH` kullanıyor, yerel yol değil
 - [x] `public/videos/` repodan silindi
-- [ ] (opsiyonel) git history'den temizle — repo hâlâ ~91 MB, çalışma ağacı temiz ama geçmiş şişkin
+- [x] Git geçmişi sıfırlandı — repo **91 MB → 8.8 MB** (geçmiş silinip tek commit ile yeniden başlatıldı, GitHub'a force push edildi). Yedek: `../mafin-git-yedek`
 
 **Ölçülen sonuç:**
 
@@ -52,6 +91,7 @@ npx vite build && du -sh dist
 |---|---|---|
 | `dist/` | 54 MB | **5.6 MB** |
 | `public/videos/` | 46 MB | silindi |
+| `.git` | 91 MB | **8.8 MB** |
 
 ### 1.3 Timeline: 54 otomatik oynayan video ✅ ÇÖZÜLDÜ (20 Ağu)
 > **Sorun:** `Milestone.jsx` her kart için IntersectionObserver kurup görünür olunca `play()` çağırıyordu. Oynamaya başlayınca tam dosya akıyordu — Timeline'ı baştan sona scroll eden kullanıcı **46 MB'ın tamamını** indiriyordu.
@@ -105,6 +145,29 @@ R2 mafin-videos/            public/img/
 - [x] Kod ↔ bucket birebir eşleşme doğrulandı (eksik 0, fazla 0)
 
 > Dosya adındaki ön ek klasörle birlikte tekrar gibi duruyor ama kasıtlı: dosya indirilince klasör bilgisi kaybolur, ön ek dosyayla seyahat eder — yeni klip hazırlarken karışmasın diye.
+
+### 1.3c `scene-ep377` aykırı dosyası ✅ ÇÖZÜLDÜ (20 Ağu)
+> Md'de yoktu. R2 panelinde bucket boyutu kontrol edilirken çıktı: `scenes/` klasörü 5.53 GB'tı ve tek bir dosya bunun altıda birini yiyordu.
+
+`scene-ep377.mp4` sıkıştırılmadan yüklenmiş bir export'tu — süresi normaldi (6.5 dk), sorun bitrate'ti:
+
+| | önce | sonra |
+|---|---|---|
+| boyut | **939.7 MB** | 135.5 MB |
+| video bitrate | **19.95 Mbps** | 2.72 Mbps |
+| profil | High | Main |
+| ses | 126 kbps | 165 kbps |
+| süre / çözünürlük | 392.6 sn · 1080p | değişmedi |
+
+Diğer sahnelerin bitrate'i 2.6–5.5 Mbps arasında değişiyordu — yani sabit bitrate değil, CRF ile encode edilmişlerdi. Aynı mantık korunarak CRF 22 kullanıldı; sonuç 2.72 Mbps ile referans aralığın tam ortasına oturdu.
+
+- [x] Yeniden encode edildi (CRF 22, Main@4.0, aac 165k, +faststart)
+- [x] Kalite doğrulandı — **SSIM 0.9915** (0.98 üstü gözle ayırt edilemez)
+- [x] R2'ye yüklendi, geri okunarak doğrulandı
+
+**Bucket:** 5.94 GB → **4.79 GB**
+
+> **KARAR (20 Ağu): sahne videoları 1080p kalacak, dokunulmayacak.** Ortalama 105 MB (~2.8 Mbps, 2–6 dk). Kalite bilinçli tercih; R2'de egress ücretsiz olduğu için maliyet sorunu da yok. 720p'ye indirme önerisi değerlendirildi ve reddedildi — bir daha gündeme getirilmesin.
 
 ### 1.4 R2 custom domain
 > `src/config.js:11` ve `:20` — kendi yorumunda da yazıyor: `pub-*.r2.dev` URL'i Cloudflare tarafından rate-limit'li ve bazı TR ISP'lerinde bloklu.
@@ -299,6 +362,9 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 - Kliplerin encoding'iyle ilgili tüm bulgular **geçersiz**: ses zaten yoktu (54/54), faststart zaten vardı (moov @ byte 36), bitrate yayılımı içerikten geliyor, süreler kasıtlı. Yeniden encode önerisi tamamen kaldırıldı.
 - Geçerli kalan: dosyaların repoda durması (deploy boyutu) ve Timeline'da 54'ünün birden oynaması. **İkisi de çözüldü.**
 - 1.3b (isimlendirme + klasör düzeni) ilk listede yoktu, iş sırasında ortaya çıkıp tamamlandı.
+- 1.3c (`scene-ep377` aykırı dosyası) ilk listede yoktu, R2 boyutu kontrol edilirken bulunup düzeltildi.
+- 1.1 tamamlandı: ana sayfa 1045 KB → 282 KB, parse edilen JS 999 KB → 182 KB. Resim gecikmesi şikayeti kapandı.
+- Git geçmişi sıfırlandı: repo 91 MB → 8.8 MB (node_modules 41 MB + eski videolar 46 MB + eski hero.png 5.7 MB geçmişten çıktı). Yedek: `../mafin-git-yedek`.
 
 **Resim yavaşlığının teşhisi:** `config.js`'i düzeltmek (Faz 1.4/1.5) galeri gerçek fotoğraflara geçtiğinde *o sayfayı* kurtarır, ama **bugünkü yavaşlığı çözmez.** Bugün gördüğün resimler yerel: Videos poster'ları `/img/posters/*.jpg` (en büyüğü 56 KB), hero 240 KB, siluetler, portreler. Galeri hâlâ `picsum.photos` sample datasıyla dolu, R2'ye hiç gitmiyor. Yani bugünkü sebep **Faz 1.1 (bundle) + Faz 2.1 (content-visibility/lazy çakışması)**.
 

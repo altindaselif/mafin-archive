@@ -3,7 +3,7 @@ import styles from "./Gallery.module.css";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import galleries from "../../data/gallery.js";
-import episodes from "../../data/episodes.js";
+import episodeMeta from "../../data/generated/episodeMeta.json";
 import { PHOTO_BASE_URL, PHOTO_RESIZE } from "../../config.js";
 import { COMMON, useLang } from "../../i18n.js";
 
@@ -49,8 +49,9 @@ const photoUrl = (p, width) => {
 const PAGE_SIZE = 12; // episode plates revealed per "load more"
 const THUMB_WIDTH = 640; // grid thumbnail width when resizing is on
 
-/* Episode number -> its { es, en } title, for the plate captions. */
-const EP_TITLE = new Map(episodes.map((e) => [e.number, e.title]));
+/* Bölüm numarası -> { es, en } başlığı, lamina başlıkları için.
+   episodes.js'in tamamı yerine hafif meta indeksinden okunuyor. */
+const epTitle = (n) => episodeMeta[n]?.t;
 
 export default function Gallery() {
   const { t } = useLang();
@@ -142,10 +143,10 @@ export default function Gallery() {
                   <span className={styles.plateCap}>
                     {t(COMMON.episode)} {g.episode}
                   </span>
-                  {EP_TITLE.has(g.episode) && (
+                  {epTitle(g.episode) && (
                     <span className={styles.plateName}>
                       {" · "}
-                      {t(EP_TITLE.get(g.episode))}
+                      {t(epTitle(g.episode))}
                     </span>
                   )}
                 </h2>

@@ -4,6 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/build-indexes.mjs",
+    "predev": "node scripts/build-indexes.mjs",
     "dev": "vite --open",
     "build": "vite build",
     "preview": "vite preview"

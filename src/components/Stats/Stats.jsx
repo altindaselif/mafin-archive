@@ -1,38 +1,26 @@
 import styles from "./Stats.module.css";
 import { useLang } from "../../i18n.js";
-import episodes from "../../data/episodes.js";
+import { useHomeIndex } from "../../data/homeIndex.js";
 
 /*
  * "En cifras": the fandom's accounting of the story (compiled by a fan,
- * shared with permission). The total chapter count is read from
- * seasonInfo.js so it stays in sync as the show airs — nothing here is
- * updated by hand day to day. Only these two constants drift slowly and
- * are updated on the rare occasion they change.
+ * shared with permission). Yalnızca bu iki sabit elle güncellenir; bölüm
+ * sayısı verinin kendisinden türer.
  */
 const CHAPTERS_WITHOUT_FINA = 182;
 const CHAPTERS_OF_CALM = 58;
 
-// Self-syncing chapter count: every episode already aired. Adding new
-// episode files updates this automatically — no manual bump needed.
-const TODAY = new Date();
-const TOTAL_CHAPTERS = episodes.filter(
-  (e) => !e.airDate || new Date(e.airDate) <= TODAY
-).length;
-
-const STATS = [
-  {
-    value: TOTAL_CHAPTERS,
-    label: { es: "capítulos de la historia", en: "chapters of the story" },
-  },
-  {
-    value: TOTAL_CHAPTERS - CHAPTERS_WITHOUT_FINA,
-    label: { es: "juntas en pantalla", en: "both on screen" },
-  },
-  {
-    value: CHAPTERS_WITHOUT_FINA,
-    label: { es: "sin Fina", en: "without Fina" },
-  },
-];
+/*
+ * Yayınlanmış bölüm sayısı. Eskiden 616 bölümün TAMAMI (408 KB) sadece bu
+ * sayı için import ediliyordu; artık home.json'daki tarih listesinden
+ * sayılıyor. Bugüne bağlı olduğu için build'de dondurulamaz — o yüzden
+ * sayma işi burada, tarayıcıda yapılıyor.
+ * Tarihsiz bölümler her zaman sayılır (eski davranış).
+ */
+function airedCount(index) {
+  const today = new Date().toISOString().slice(0, 10);
+  return index.airDates.filter((d) => d <= today).length + index.noDateCount;
+}
 
 /* The third parties who stood between them, and how long each lingered. */
 const THIRD_PARTIES = [
@@ -55,6 +43,27 @@ const L = {
 
 export default function Stats() {
   const { t } = useLang();
+  const index = useHomeIndex();
+
+  // Veri gelmeden sayılar çizilmez; yer tutucu da göstermiyoruz çünkü
+  // bu bölüm sayfanın en altında, kullanıcı oraya varmadan veri geliyor.
+  if (!index) return null;
+
+  const TOTAL_CHAPTERS = airedCount(index);
+  const STATS = [
+    {
+      value: TOTAL_CHAPTERS,
+      label: { es: "capítulos de la historia", en: "chapters of the story" },
+    },
+    {
+      value: TOTAL_CHAPTERS - CHAPTERS_WITHOUT_FINA,
+      label: { es: "juntas en pantalla", en: "both on screen" },
+    },
+    {
+      value: CHAPTERS_WITHOUT_FINA,
+      label: { es: "sin Fina", en: "without Fina" },
+    },
+  ];
 
   const turbulentChapters = TOTAL_CHAPTERS - CHAPTERS_OF_CALM;
   const lead = {
@@ -67,7 +76,7 @@ export default function Stats() {
       <span className={styles.label}>{t(L.label)}</span>
       <dl className={styles.row}>
         {STATS.map((stat) => (
-          <div key={stat.value} className={styles.item}>
+          <div key={stat.label.en} className={styles.item}>
             <dd className={styles.value}>{stat.value}</dd>
             <dt className={styles.name}>{t(stat.label)}</dt>
           </div>
