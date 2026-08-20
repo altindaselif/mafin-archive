@@ -1,0 +1,39 @@
+# Netlify önbellek kuralları.
+#
+# Netlify'ın varsayılanı her dosya için "public, max-age=0, must-revalidate":
+# tarayıcı her sayfa açılışında her dosyayı sunucuya soruyor. Sunucu
+# "değişmedi" (304) deyip 0 byte gönderiyor ama soru-cevabın kendisi bir
+# gidiş-geliş — ölçüldüğünde dosya başına ~0.42 sn.
+
+# Vite bu dosyaların adına içerik parmak izi basıyor (index-Dr4navzR.js).
+# İçerik değişirse dosya ADI değişir, yani bu dosyalar asla değişmez —
+# sonsuza kadar önbelleğe alınabilir, hiç sorulmasına gerek yok.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Resimlerin adında parmak izi yok, ama içerikleri de neredeyse hiç
+# değişmiyor. Bir gün önbellek + bir hafta "eskisini göster, arkada
+# yenile": kullanıcı beklemeden görür, yeni sürüm sessizce gelir.
+/img/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/hero.webp
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/favicon.webp
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Veri dosyaları her build'de aynı adla yeniden üretiliyor ve CMS'ten
+# içerik girildikçe değişiyor. Kısa önbellek: aynı oturumda tekrar
+# sorulmaz, ama yeni bölüm eklendiğinde beş dakikada yayılır.
+/data/*
+  Cache-Control: public, max-age=300, stale-while-revalidate=3600
+
+# index.html asla önbelleğe alınmamalı: yeni deploy'da hangi parmak izli
+# dosyaların yükleneceğini o söylüyor. Önbellekte kalırsa kullanıcı eski
+# sürümde takılı kalır.
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
