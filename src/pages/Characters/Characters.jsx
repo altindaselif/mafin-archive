@@ -13,9 +13,16 @@ const L = {
   },
 };
 
+/* Ad ve soyadın baş harfleri. Tek kelimelik adlarda tek harf, boş/eksik
+   adda hiçbir şey döner — eskiden boş adda "NAN" yazıyordu. */
 const monogram = (name) => {
-  const parts = name.split(" ");
-  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+  // `?? ""` şart: varsayılan parametre yalnız undefined'ı yakalar,
+  // null gelirse String(null) "null" olup "N" üretirdi.
+  const parts = String(name ?? "").trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "";
+  const first = parts[0][0] ?? "";
+  const last = parts.length > 1 ? (parts.at(-1)[0] ?? "") : "";
+  return (first + last).toUpperCase();
 };
 
 export default function Characters() {

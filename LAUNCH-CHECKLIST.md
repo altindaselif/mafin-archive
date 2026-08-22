@@ -343,10 +343,10 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 
 ## 🩹 Ufak tefek (fırsat buldukça)
 
-- [ ] `src/pages/Characters/Characters.jsx:13` — `parts[0][0]` boş isimde patlar
+- [x] `Characters.jsx` — `monogram()` boş, tek kelimelik, `null` ve `undefined` adlarda güvenli. Eskiden boş adda `"NAN"` yazıyordu
 - [x] `Stats.jsx` — `key={stat.value}` yerine `key={stat.label.en}` (1.1 sırasında)
 - [x] `Home.jsx` — `q.text` yoksa patlama riski kalktı; havuz artık build script'inde `q.text?.es ?? ""` ile süzülüyor (1.1 sırasında)
-- [ ] `vite.config.js:9` — `usePolling: true` her 300 ms'de dosya sistemini tarıyor. Sadece dev'i etkiliyor ama ihtiyacın yoksa kaldır
+- [x] `vite.config.js` — `usePolling` kaldırıldı, işletim sisteminin kendi dosya bildirimleri kullanılıyor. Ağ sürücüsü/Docker'da çalışırken gerekirse geri eklemek için not bırakıldı
 - [ ] `public/admin/config.yml:20` — R2 `access_key_id` public repoda ve `/admin/config.yml` adresinden herkese açık. Secret key orada değil (doğru karar) ve access key ID tek başına yetkilendirme sağlamaz, ama bucket + account ID ile birlikte ifşa oluyor. Bu key'in **sadece** `mafin-photos` bucket'ına write yetkisi olduğundan emin ol
 
 ---

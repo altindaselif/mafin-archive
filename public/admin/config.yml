@@ -15,8 +15,16 @@ public_folder: /img
 # eklerken bir kez girer, tarayıcısında güvenle saklanır.
 media_libraries:
   # Fotoğraflar ORİJİNAL haliyle (tam 4K, hiç küçültülmeden) R2'ye yüklenir.
+  #
+  # access_key_id herkese açık (bu dosya /admin/config.yml adresinden
+  # okunabiliyor) ama tek başına hiçbir kapı açmıyor — secret olmadan
+  # kullanılamaz, secret da editörün tarayıcısında duruyor, burada değil.
+  #
+  # Yine de bu anahtar "mafin-cms-photos" token'ına ait ve YALNIZCA
+  # mafin-photos bucket'ına yazabiliyor. Eskiden burada tüm bucket'lara
+  # yetkili bir token vardı; secret sızsaydı video bucket'ı da gidiyordu.
   cloudflare_r2:
-    access_key_id: d37d72c948ff29ec755577c41c1bb917
+    access_key_id: aea29340f3032515168ee82b130ae9ec
     bucket: mafin-photos
     account_id: 21d9a10b9e439b63b16c4f24890356d3
     public_url: https://pub-17a4e1676af940bea88a2f26ef361d81.r2.dev
