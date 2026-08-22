@@ -302,6 +302,9 @@ Kopyalanan sabitler:
 - [ ] `src/config.js:29` → `PHOTO_RESIZE = true` yap
 
 ### 1.5 Galeri thumbnail'leri ⏸ ERTELENDİ (1.4'e bağlı)
+> **CMS akışı doğrulandı (20 Ağu):** `media_libraries.default: false` ve `stock_assets: false` ile depo ve stok servisleri seçenek olmaktan çıkarıldı; yükleme artık yalnızca R2'ye gidiyor ve kayda tam R2 adresi yazılıyor. Alan bazında `media_library: cloudflare_r2` yazmak işe yaramamıştı — kapatılması gereken varsayılanın kendisiymiş.
+>
+> **`r2.dev` kararsızlığı doğrulandı:** VPN'siz fotoğraflar bazen açılıyor bazen açılmıyor, VPN'le sorunsuz. Kod, ayar ve bucket erişimi doğru — sorun Cloudflare'in geliştirme adresinin kendisi. Galeri gerçek fotoğraflarla yayına çıkmadan **1.4 mutlaka çözülmeli**, yoksa ziyaretçiler resimlerin bir kısmını göremeyecek.
 > `PHOTO_RESIZE = false` iken `Gallery.jsx:167`'deki `photoUrl(p, 640)` width'i **yok sayıyor**, tam boy orijinali veriyor. Grid hücresi 210px. CMS fotoğrafları "tam 4K, hiç küçültülmeden" yüklüyor. 12 albüm × 3-4 foto × ~4 MB = **~150 MB**.
 > Şu an fark edilmiyor çünkü galeri hâlâ `picsum.photos` sample datasıyla dolu.
 
@@ -349,7 +352,7 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 - [x] `vite.config.js` — `usePolling` kaldırıldı, işletim sisteminin kendi dosya bildirimleri kullanılıyor. Ağ sürücüsü/Docker'da çalışırken gerekirse geri eklemek için not bırakıldı
 - [x] **R2 anahtarı dar kapsama alındı (20 Ağu).** `config.yml`'daki anahtar `R2 Account Token`'a aitti ve **tüm bucket'lara yazma** yetkisi taşıyordu — secret sızsaydı video bucket'ı da gidiyordu. Yerine yalnızca `mafin-photos`'a yazabilen `mafin-cms-photos` token'ı üretildi, `config.yml` güncellendi ve deploy edildi
 - [x] Kullanılmayan `Cloudflare Agent Token` (tüm bucket'larda okuma) silindi
-- [ ] CMS'ten foto yükleyip yeni anahtarın çalıştığını doğrula
+- [x] CMS'ten foto yüklendi, yeni dar kapsamlı anahtar çalışıyor (`g126` kaydı R2 adresiyle oluştu)
 - [ ] Doğrulandıktan **sonra** eski `R2 Account Token`'ı Cloudflare'den sil
 
 > Not: `access_key_id` herkese açık olmaya devam ediyor ve bu sorun değil — secret olmadan kullanılamaz, secret da editörün tarayıcısında duruyor. Yapılan şey katmanlı savunma: anahtar bir gün sızarsa hasar foto bucket'ıyla sınırlı kalsın.
