@@ -90,6 +90,12 @@ collections:
         widget: image
         multiple: true
         required: false
+        # R2'yi ZORUNLU kıl. Bu satır olmadan yükleme penceresi hem depoyu
+        # hem R2'yi seçenek olarak sunuyor; depo seçilirse 4K foto git'e
+        # giriyor (bir kez oldu: 7.4 MB'lık PNG) ve kayıtta `/img/...` yolu
+        # kalıyor — Gallery.jsx onu R2 adresi sanıp bozuk bağlantı üretiyor.
+        media_library:
+          name: cloudflare_r2
 
   # ── Quotes: each quote its own file under src/data/quotes/ ──
   - name: quotes

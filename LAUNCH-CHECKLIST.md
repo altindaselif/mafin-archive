@@ -347,7 +347,12 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 - [x] `Stats.jsx` — `key={stat.value}` yerine `key={stat.label.en}` (1.1 sırasında)
 - [x] `Home.jsx` — `q.text` yoksa patlama riski kalktı; havuz artık build script'inde `q.text?.es ?? ""` ile süzülüyor (1.1 sırasında)
 - [x] `vite.config.js` — `usePolling` kaldırıldı, işletim sisteminin kendi dosya bildirimleri kullanılıyor. Ağ sürücüsü/Docker'da çalışırken gerekirse geri eklemek için not bırakıldı
-- [ ] `public/admin/config.yml:20` — R2 `access_key_id` public repoda ve `/admin/config.yml` adresinden herkese açık. Secret key orada değil (doğru karar) ve access key ID tek başına yetkilendirme sağlamaz, ama bucket + account ID ile birlikte ifşa oluyor. Bu key'in **sadece** `mafin-photos` bucket'ına write yetkisi olduğundan emin ol
+- [x] **R2 anahtarı dar kapsama alındı (20 Ağu).** `config.yml`'daki anahtar `R2 Account Token`'a aitti ve **tüm bucket'lara yazma** yetkisi taşıyordu — secret sızsaydı video bucket'ı da gidiyordu. Yerine yalnızca `mafin-photos`'a yazabilen `mafin-cms-photos` token'ı üretildi, `config.yml` güncellendi ve deploy edildi
+- [x] Kullanılmayan `Cloudflare Agent Token` (tüm bucket'larda okuma) silindi
+- [ ] CMS'ten foto yükleyip yeni anahtarın çalıştığını doğrula
+- [ ] Doğrulandıktan **sonra** eski `R2 Account Token`'ı Cloudflare'den sil
+
+> Not: `access_key_id` herkese açık olmaya devam ediyor ve bu sorun değil — secret olmadan kullanılamaz, secret da editörün tarayıcısında duruyor. Yapılan şey katmanlı savunma: anahtar bir gün sızarsa hasar foto bucket'ıyla sınırlı kalsın.
 
 ---
 
