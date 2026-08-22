@@ -2,9 +2,9 @@ import { Fragment } from "react";
 import styles from "./Timeline.module.css";
 import Milestone from "../../components/Milestone/Milestone.jsx";
 import milestones from "../../data/timeline.js";
-import { seasonOf } from "../../data/seasonInfo.js";
+import { seasonOf, yearOfSeason } from "../../data/seasonInfo.js";
 import { Link } from "react-router-dom";
-import { useLang } from "../../i18n.js";
+import { COMMON, useLang } from "../../i18n.js";
 
 const L = {
   title: { es: "Su historia", en: "The Story" },
@@ -17,14 +17,6 @@ const L = {
     en: "Watch the scenes behind these moments →",
   },
 };
-
-// Season dividers that break up the single chronological flow.
-const SEASON_LABEL = {
-  1: { es: "Temporada 1", en: "Season 1" },
-  2: { es: "Temporada 2", en: "Season 2" },
-  3: { es: "Temporada 3", en: "Season 3" },
-};
-const SEASON_YEAR = { 1: "2024", 2: "2025", 3: "2026" };
 
 export default function Timeline() {
   const { t } = useLang();
@@ -46,11 +38,13 @@ export default function Timeline() {
             i === 0 || season !== seasonOf(milestones[i - 1].episode);
           return (
             <Fragment key={item.id}>
-              {newSeason && SEASON_LABEL[season] && (
+              {/* Sezon ayracı. Etiket COMMON.season'dan, yıl seasonInfo'dan
+                  türüyor — yeni bir sezon eklenince kendiliğinden çalışır. */}
+              {newSeason && (
                 <li className={styles.seasonHeader}>
                   <span>
-                    {t(SEASON_LABEL[season])}
-                    <em>· {SEASON_YEAR[season]}</em>
+                    {t(COMMON.season)} {season}
+                    <em>· {yearOfSeason(season)}</em>
                   </span>
                 </li>
               )}

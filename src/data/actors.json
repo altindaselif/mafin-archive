@@ -528,7 +528,8 @@
           "year": "2024",
           "title": "El Rei Peret",
           "role": "Rosita Pubill",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2022",
@@ -557,7 +558,8 @@
           "detail": {
             "es": "T1, capítulo 1 — en emisión",
             "en": "S1, episode 1 — on air"
-          }
+          },
+          "featured": true
         },
         {
           "year": "2022",
@@ -573,9 +575,10 @@
         },
         {
           "year": "2022",
-          "title": "Mopies",
+          "title": "Mópies",
           "role": "Judith",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2021",
@@ -593,7 +596,8 @@
           "year": "2020–21",
           "title": "Pep",
           "role": "Marta",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2019",
@@ -605,17 +609,28 @@
           "year": "2015–19",
           "title": "Acacias 38",
           "role": "Leonor Hidalgo",
-          "detail": ""
+          "detail": "",
+          "featured": true
         }
       ],
       "theatre": [
         {
           "year": "2026",
-          "title": "La Segona Línea",
+          "title": "La Segona Línia",
           "role": "Maria",
           "detail": {
             "es": "Lectura dramatizada",
             "en": "Staged reading"
+          },
+          "featured": true
+        },
+        {
+          "year": "2019",
+          "title": "Veus emergents",
+          "role": "",
+          "detail": {
+            "es": "Lectura dramatizada · Teatre Principal de Palma",
+            "en": "Staged reading · Teatre Principal de Palma"
           }
         },
         {
@@ -659,24 +674,33 @@
           "year": "2021",
           "title": "Andy y las demás",
           "role": "Andy",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2021",
           "title": "Contiguo",
           "role": "Bruna",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2021",
           "title": "Encore",
           "role": "Lola",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2016",
           "title": "La Melodía del Mal",
           "role": "Laura",
+          "detail": ""
+        },
+        {
+          "year": "2009",
+          "title": "Dificultades",
+          "role": "",
           "detail": ""
         },
         {
@@ -697,13 +721,15 @@
           "year": "2021",
           "title": "Gent de la Mar",
           "role": "",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2021",
           "title": "El club del tupper, Cuina de proximitat",
           "role": "",
-          "detail": ""
+          "detail": "",
+          "featured": true
         },
         {
           "year": "2020",

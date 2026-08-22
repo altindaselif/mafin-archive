@@ -3,6 +3,7 @@ import styles from "./Quotes.module.css";
 import SearchInput from "../../components/SearchInput/SearchInput.jsx";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import Pager from "../../components/Pager/Pager.jsx";
+import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
 import quotes from "../../data/quotes.js";
 import { SEASONS, seasonOf } from "../../data/seasonInfo.js";
 import { useLang } from "../../i18n.js";
@@ -119,16 +120,17 @@ export default function Quotes() {
         </label>
       </div>
 
-      <div className={styles.seasonSlot}>
+      <ListToolbar
+        count={`${filtered.length} ${
+          filtered.length === 1 ? t(L.quote) : t(L.quotes)
+        }`}
+      >
         <SeasonFilter
           seasons={SEASONS}
           activeSeason={activeSeason}
           onSeasonChange={setActiveSeason}
         />
-        <span className={styles.count} aria-live="polite">
-          {filtered.length} {filtered.length === 1 ? t(L.quote) : t(L.quotes)}
-        </span>
-      </div>
+      </ListToolbar>
 
       <ul className={styles.list}>
         {paged.map((quote) => (

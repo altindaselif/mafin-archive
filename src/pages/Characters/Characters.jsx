@@ -4,6 +4,9 @@ import { useLang } from "../../i18n.js";
 
 const L = {
   title: { es: "Personajes", en: "Characters" },
+  /* «Personaje» eril bir isim, o yüzden «fallecido» karakterin cinsiyetinden
+     bağımsız olarak doğru — ileride kadın bir karakter eklenirse de uyar. */
+  deceased: { es: "Personaje fallecido", en: "Deceased character" },
   subtitle: {
     es: "Todos los que se cruzaron en el camino de Marta y Fina.",
     en: "Everyone who crossed Marta and Fina's path, one by one.",
@@ -26,6 +29,15 @@ export default function Characters() {
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
 
+      {/* Listenin üst çizgisinin hemen üstünde, sağa hizalı — Actrices'te
+          «Imprescindibles» göstergesinin filmografi çizgisiyle kurduğu
+          ilişkinin aynısı. Hover'a bırakmıyoruz: dokunmatik cihazda hover
+          yok, keşfedilmesi de tesadüfe kalıyor. */}
+      <p className={styles.legend}>
+        <span className={styles.legendMark} aria-hidden="true">†</span>
+        {t(L.deceased)}
+      </p>
+
       <ul className={styles.list}>
         {characters.map((c) => (
           <li key={c.id} className={styles.character}>
@@ -33,7 +45,16 @@ export default function Characters() {
               {monogram(c.name)}
             </div>
             <div className={styles.body}>
-              <h3 className={styles.name}>{c.name}</h3>
+              <h3 className={styles.name}>
+                {c.name}
+                {c.deceased && (
+                  /* Hançer (†): basılı arşivlerin ve soyağaçlarının
+                     yüzyıllardır kullandığı "vefat etti" işareti. */
+                  <abbr className={styles.dagger} title={t(L.deceased)}>
+                    †<span className={styles.srOnly}>{t(L.deceased)}</span>
+                  </abbr>
+                )}
+              </h3>
               <div className={styles.role}>{t(c.role)}</div>
               <p className={styles.bio}>{t(c.bio)}</p>
             </div>

@@ -68,3 +68,17 @@ export function LanguageProvider({ children }) {
 export function useLang() {
   return useContext(LanguageContext);
 }
+
+/*
+ * Tarih biçimlendirme. Dört sayfa (Guía, Actrices, Prensa, Fandom) aynı
+ * yerel ayar tablosunu ve aynı toLocaleDateString çağrısını ayrı ayrı
+ * taşıyordu — biri güncellenince diğerleri geride kalıyordu.
+ */
+const DATE_LOCALE = { es: "es-ES", en: "en-GB" };
+const LONG_DATE = { day: "numeric", month: "long", year: "numeric" };
+
+export function formatDate(iso, lang = DEFAULT_LANG, opts = LONG_DATE) {
+  if (!iso) return "";
+  const locale = DATE_LOCALE[lang] ?? DATE_LOCALE[DEFAULT_LANG];
+  return new Date(iso).toLocaleDateString(locale, opts);
+}

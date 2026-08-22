@@ -6,8 +6,16 @@ import MoodFilter from "../../components/MoodFilter/MoodFilter.jsx";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import MoodTags from "../../components/MoodTags/MoodTags.jsx";
 import Pager from "../../components/Pager/Pager.jsx";
+import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
 import episodes from "../../data/episodes.js";
-import { useLang } from "../../i18n.js";
+import { formatDate, useLang } from "../../i18n.js";
+import { seasonsIn } from "../../data/seasonInfo.js";
+import {
+  EXCLUSIONS,
+  filterCollection,
+  orderMoods,
+  toggleMood as toggleMoodIn,
+} from "../../lib/collection.js";
 
 const L = {
   title: { es: "Guía de capítulos", en: "Episode Guide" },
@@ -29,30 +37,17 @@ const L = {
   },
 };
 
-const DATE_LOCALE = { es: "es-ES", en: "en-GB" };
+/* Tarih rozeti: büyük gün numarası, altında kısaltılmış ay + yıl.
+   UTC şart — yayın tarihleri gün hassasiyetinde, yerel saat dilimi
+   bazı kullanıcılarda günü bir geri kaydırıyordu. */
 const fmtDay = (iso) => new Date(iso).getUTCDate();
 const fmtMonthYear = (iso, lang) =>
-  new Date(iso).toLocaleDateString(DATE_LOCALE[lang] ?? "es-ES", {
-    month: "short",
-    year: "numeric",
-    timeZone: "UTC",
-  });
+  formatDate(iso, lang, { month: "short", year: "numeric", timeZone: "UTC" });
 
 const PAGE_SIZE = 30; // keeps each "page" of the guide a comfortable scroll
 
-// Baby and Cloe episodes are unwanted: their tags exclude instead of
-// include, so they sit last, apart from the regular moods.
-const EXCLUDED_MOODS = ["baby", "cloe"];
-const EXCLUSIONS = new Set(EXCLUDED_MOODS);
-const ALL_MOODS = [
-  ...[...new Set(episodes.flatMap((e) => e.moods))].filter(
-    (m) => !EXCLUSIONS.has(m),
-  ),
-  ...EXCLUDED_MOODS,
-];
-const SEASONS = [...new Set(episodes.map((e) => e.season))].sort(
-  (a, b) => a - b,
-);
+const ALL_MOODS = orderMoods(episodes.flatMap((e) => e.moods));
+const SEASONS = seasonsIn(episodes);
 
 export default function Episodes() {
   const { lang, t } = useLang();
@@ -95,31 +90,19 @@ export default function Episodes() {
     setSearchParams({}, { replace: true });
   }, [searchParams, setSearchParams]);
 
-  const toggleMood = (mood) =>
-    setActiveMoods((prev) => {
-      const next = new Set(prev);
-      next.has(mood) ? next.delete(mood) : next.add(mood);
-      return next;
-    });
+  const toggleMood = (mood) => setActiveMoods((prev) => toggleMoodIn(prev, mood));
 
-  const filtered = useMemo(() => {
-    const q = deferredQuery.trim().toLowerCase();
-    return episodes.filter((ep) => {
-      // Season narrows the volume first; search and moods act within it.
-      if (ep.season !== activeSeason) return false;
-      const haystack =
-        `${ep.number} ${t(ep.title)} ${t(ep.description)}`.toLowerCase();
-      const byText = !q || haystack.includes(q);
-      // Baby & Cloe work in reverse: active means "hide these episodes"
-      if ([...activeMoods].some((m) => EXCLUSIONS.has(m) && ep.moods.includes(m)))
-        return false;
-      const includeMoods = [...activeMoods].filter((m) => !EXCLUSIONS.has(m));
-      const byMood =
-        includeMoods.length === 0 ||
-        ep.moods.some((m) => includeMoods.includes(m));
-      return byText && byMood;
-    });
-  }, [deferredQuery, activeMoods, activeSeason, t]);
+  /* Guía açıklamalarda da arıyor — Vídeos'tan tek farkı bu. */
+  const filtered = useMemo(
+    () =>
+      filterCollection(episodes, {
+        query: deferredQuery,
+        moods: activeMoods,
+        season: activeSeason,
+        searchText: (ep) => `${ep.number} ${t(ep.title)} ${t(ep.description)}`,
+      }),
+    [deferredQuery, activeMoods, activeSeason, t],
+  );
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const currentPage = Math.min(page, totalPages);
@@ -166,17 +149,17 @@ export default function Episodes() {
         />
       </div>
 
-      <div className={styles.seasonSlot}>
+      <ListToolbar
+        count={`${filtered.length} ${
+          filtered.length === 1 ? t(L.episode) : t(L.episodes)
+        }`}
+      >
         <SeasonFilter
           seasons={SEASONS}
           activeSeason={activeSeason}
           onSeasonChange={setActiveSeason}
         />
-        <span className={styles.count} aria-live="polite">
-          {filtered.length}{" "}
-          {filtered.length === 1 ? t(L.episode) : t(L.episodes)}
-        </span>
-      </div>
+      </ListToolbar>
 
       <ul className={styles.list}>
         {paged.map((ep) => {

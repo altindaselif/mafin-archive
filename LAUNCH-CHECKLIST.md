@@ -42,7 +42,8 @@ npx vite build && du -sh dist
 - [x] `Stats.jsx` — 616 bölüm import'u yerine tarih listesinden sayım
 - [x] `Home.jsx` — `episodes.js` + `quotes.js` import'ları kaldırıldı
 - [x] Yan fayda: `DAILY_POOL` boş kalırsa ana sayfayı çökerten hata ve `Stats`'taki duplicate key uyarısı kapandı
-- [x] Tarayıcıda doğrulandı — "tüm sayfalardaki resimler şak diye açılıyor"
+- [x] Tarayıcıda doğrulandı
+- [x] **Sonradan çıkan hata (aynı gün düzeltildi):** hızlı scroll'da bazı videolar başlamıyordu. Yeniden yazarken eski koddaki açık `play()` çağrısı kaldırılıp yalnızca `autoPlay` özniteliğine güvenilmişti; tarayıcılar bunu garanti etmiyor — element oluşurken görüş alanından bir an çıkarsa oynatmayı atlıyor ve geri gelince kendiliğinden başlatmıyor. Mount sonrası açık `play()` + `readyState` kontrolü (önbellekten gelen videolarda `canplay` olayı dinleyici bağlanmadan tetikleniyordu) eklendi — "tüm sayfalardaki resimler şak diye açılıyor"
 
 **İndeks nasıl küçüldü (504 KB → 87 KB):**
 
@@ -106,6 +107,7 @@ npx vite build && du -sh dist
 - [x] `Milestone.module.css` — `.cardFrame` / `.cardMedia` / `.cardVideo` eklendi; video hazır olana kadar saydam durur, siyah kare parlamaz
 - [x] `prefers-reduced-motion` açıksa video hiç mount edilmiyor
 - [x] Tarayıcıda doğrulandı
+- [x] **Sonradan çıkan hata (aynı gün düzeltildi):** hızlı scroll'da bazı videolar başlamıyordu. Yeniden yazarken eski koddaki açık `play()` çağrısı kaldırılıp yalnızca `autoPlay` özniteliğine güvenilmişti; tarayıcılar bunu garanti etmiyor — element oluşurken görüş alanından bir an çıkarsa oynatmayı atlıyor ve geri gelince kendiliğinden başlatmıyor. Mount sonrası açık `play()` + `readyState` kontrolü (önbellekten gelen videolarda `canplay` olayı dinleyici bağlanmadan tetikleniyordu) eklendi
 
 **Ölçülen sonuç:**
 
@@ -219,7 +221,7 @@ Diğer sahnelerin bitrate'i 2.6–5.5 Mbps arasında değişiyordu — yani sabi
 
 ## 🟡 FAZ 3 — DRY temizliği (yayından sonra da olur)
 
-### 3.1 Filtreleme mantığı Episodes ↔ Videos kopyası ⭐ en büyük DRY ihlali
+### 3.1 Filtreleme mantığı Episodes ↔ Videos kopyası ✅ ÇÖZÜLDÜ (20 Ağu)
 > `Episodes.jsx:105-122` ile `Videos.jsx:188-205` neredeyse karakter karakter aynı — sezon kontrolü, haystack araması, ters-mood exclusion mantığı, **aynı yorum satırları bile**.
 
 Kopyalanan sabitler:
@@ -231,44 +233,46 @@ Kopyalanan sabitler:
 | `toggleMood` | `:98` | `:178` |
 | mood sıralaması (exclusion'lar sona) | `:47` | `:155` |
 
-- [ ] `src/lib/filter.js` veya `useFilteredCollection({ items, query, moods, season })` hook'una çıkar
-- [ ] Yeni bir exclusion mood'u eklerken tek dosya değişsin
+- [x] `src/lib/collection.js` — `filterCollection`, `orderMoods`, `toggleMood`, `EXCLUDED_MOODS`
+- [x] Yeni bir dışlayıcı tema eklerken tek dosya değişiyor
+- [x] **243 kombinasyon** (sezon × tema seti × arama) eski mantıkla karşılaştırıldı — **0 fark**, davranış birebir korundu
 
-### 3.2 Filtre içinde gereksiz array allocation
+### 3.2 Filtre içinde gereksiz array allocation ✅ ÇÖZÜLDÜ (20 Ağu)
 > `Episodes.jsx:114-116` — `[...activeMoods]` ve `.filter()` **filter callback'inin içinde**, yani 616 bölümün her biri için iki yeni dizi. Her tuş vuruşunda 1232 gereksiz array.
 
-- [ ] `src/pages/Episodes/Episodes.jsx:114` — `useMemo` içinde, callback'in **üstüne** taşı
-- [ ] `src/pages/Videos/Videos.jsx:197` — aynısı
+- [x] Dahil edici / dışlayıcı temalar döngü dışında bir kez ayrılıyor (`filterCollection` içinde)
+- [x] Arama metni yalnızca sorgu boş değilse kuruluyor — 616 bölümde her tuş vuruşunda gereksiz string üretimi de kalktı
 
-### 3.3 CSS tekrarı: `seasonSlot` / `count` / `loadMore` / `empty`
+### 3.3 CSS tekrarı: `seasonSlot` / `count` / `loadMore` ✅ ÇÖZÜLDÜ (20 Ağu)
 > Aynı 7 satırlık flex bloğu 4 dosyada birebir duruyor. 47 KB CSS'in ciddi kısmı bu.
 
-- [ ] `Episodes.module.css:159`, `Gallery.module.css:1`, `Quotes.module.css:158`, `Videos.module.css:103`
-- [ ] Ortak `ListToolbar` / `LoadMore` componentine ya da `global.css`'e paylaşımlı sınıf olarak taşı
+- [x] Dört CSS dosyasından ölü kurallar silindi (~1.9 KB kaynak)
+- [x] `components/ListToolbar/` — solda filtre, sağda sayaç, altta ayraç çizgisi. Guía, Vídeos, Galería, Citas kullanıyor
 
-### 3.4 "Load more" bloğu iki kez
-- [ ] `src/pages/Videos/Videos.jsx:289-299` ve `src/pages/Gallery/Gallery.jsx:178-188` — aynı buton, aynı `remaining` sayacı, aynı `setVisibleCount(c => c + PAGE_SIZE)`
+### 3.4 "Load more" bloğu iki kez ✅ ÇÖZÜLDÜ (20 Ağu)
+- [x] `components/LoadMore/` — düğme, sayaç ve iki çeviri (`Cargar más` / `restantes`) artık tek yerde. Gösterilecek bir şey kalmadıysa kendini çizmiyor, sayfaların ayrıca koşul yazmasına gerek yok
 
-### 3.5 `DATE_LOCALE` + tarih formatlama 4 yerde
-- [ ] `Episodes.jsx:32`, `Actors.jsx:23`, `Press.jsx:14`, `Fandom.jsx:19`
-- [ ] `src/i18n.js`'e `formatDate(iso, lang, opts)` olarak taşı
+### 3.5 `DATE_LOCALE` + tarih formatlama 4 yerde ✅ ÇÖZÜLDÜ (20 Ağu)
+- [x] `Episodes.jsx`, `Actors.jsx`, `Press.jsx` ortak `formatDate()` kullanıyor
+- [ ] `Fandom.jsx` — Fandom işiyle birlikte (1.7), o sayfa ertelendi
+- [x] `i18n.js`'e `formatDate(iso, lang, opts)` eklendi
 
-### 3.6 Sezon listesi türetme 3 yerde
-- [ ] `Episodes.jsx:53`, `Gallery.jsx:59`, `Videos.jsx:165`
-- [ ] `src/data/seasonInfo.js`'e `seasonsIn(items)` helper'ı olarak çıkar
+### 3.6 Sezon listesi türetme 3 yerde ✅ ÇÖZÜLDÜ (20 Ağu)
+- [x] `Episodes.jsx`, `Gallery.jsx`, `Videos.jsx` üçü de `seasonsIn()` kullanıyor
+- [x] `seasonInfo.js`'e `seasonsIn(items, of?)` eklendi
 
-### 3.7 Timeline sezon etiketleri `seasonInfo.js`'i bypass ediyor
+### 3.7 Timeline sezon etiketleri `seasonInfo.js`'i bypass ediyor ✅ ÇÖZÜLDÜ (20 Ağu)
 > `Timeline.jsx:22-27` — `SEASON_LABEL` ve `SEASON_YEAR` elle 1/2/3 yazılmış. 4. sezon geldiğinde `SEASON_LABEL[4]` undefined olacak ve `Timeline.jsx:49`'daki guard yüzünden **başlık sessizce kaybolacak**.
 
-- [ ] `seasonInfo.js`'e `year` alanı ekle, Timeline oradan türetsin
+- [x] `SEASON_RANGES`'e `year` eklendi + `yearOfSeason()`. Timeline etiketi `COMMON.season`'dan türüyor — 4. sezonda başlık artık kaybolmuyor
 
-### 3.8 `videos.json` için gereksiz runtime fetch
+### 3.8 `videos.json` için gereksiz runtime fetch ✅ ÇÖZÜLDÜ (20 Ağu)
 > **Düzeltme:** İlk incelemede "videos.json ile timeline aynı içeriği indeksliyor, silinebilir" demiştim — **yanlıştı.** İki farklı klip seti var: R2'deki `ep-*.mp4` tam sahneler (Videos modal'ı), `web-ep*.mp4` ise Timeline için ayrı kesilmiş kısa klipler. Bölüm numaraları şu an örtüşüyor ama içerik farklı ve ileride ayrışabilir. `videos.json` kalmalı.
 >
 > Kalan gerçek sorun: `Videos.jsx:58` yorumu *"with ~1000 records"* diyor ve dosyayı bundle'dan kaçırmak için runtime'da `fetch` ediyor. Gerçek sayı **54**, dosya **4 KB**. Bu kurulumun maliyeti (ekstra round-trip + loading state + error state + skeleton + AbortController = ~40 satır) kazancından büyük.
 
-- [ ] `Videos.jsx:58` — yanıltıcı "~1000 records" yorumunu düzelt
-- [ ] Katalog 4 KB kaldığı sürece `videos.json`'ı statik import'a çevirip fetch/skeleton/error kodunu sil. (Katalog gerçekten binlere çıkarsa geri al — o zaman doğru karar olur)
+- [x] Yanıltıcı "~1000 records" yorumu düzeltildi
+- [x] `public/data/videos.json` → `src/data/videos.json`, statik import. Fetch, AbortController, yükleniyor durumu, hata durumu ve iskelet kodu silindi — **Videos.jsx 344 → 268 satır**
 
 ---
 

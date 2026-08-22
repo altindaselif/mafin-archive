@@ -2,9 +2,12 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import styles from "./Gallery.module.css";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
+import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
+import LoadMore from "../../components/LoadMore/LoadMore.jsx";
 import galleries from "../../data/gallery.js";
 import episodeMeta from "../../data/generated/episodeMeta.json";
 import { PHOTO_BASE_URL, PHOTO_RESIZE } from "../../config.js";
+import { seasonsIn } from "../../data/seasonInfo.js";
 import { COMMON, useLang } from "../../i18n.js";
 
 const L = {
@@ -26,8 +29,6 @@ const L = {
   prev: { es: "Anterior", en: "Previous" },
   next: { es: "Siguiente", en: "Next" },
   open: { es: "Ampliar la fotografía", en: "Open the photograph" },
-  loadMore: { es: "Cargar más", en: "Load more" },
-  remaining: { es: "restantes", en: "remaining" },
 };
 
 /* Stored value may be a bare file name or an absolute URL; only bare names
@@ -57,10 +58,7 @@ export default function Gallery() {
   const { t } = useLang();
 
   // Volumes that actually contain photos, in order.
-  const seasons = useMemo(
-    () => [...new Set(galleries.map((g) => g.season))].sort((a, b) => a - b),
-    [],
-  );
+  const seasons = useMemo(() => seasonsIn(galleries), []);
   const [activeSeason, setActiveSeason] = useState(seasons[0] ?? null);
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
@@ -120,16 +118,13 @@ export default function Gallery() {
 
       {galleries.length > 0 && (
         <>
-          <div className={styles.seasonSlot}>
+          <ListToolbar className={styles.toolbar} count={count(totalPhotos)}>
             <SeasonFilter
               seasons={seasons}
               activeSeason={activeSeason}
               onSeasonChange={setActiveSeason}
             />
-            <span className={styles.count} aria-live="polite">
-              {count(totalPhotos)}
-            </span>
-          </div>
+          </ListToolbar>
 
           {inSeason.length === 0 && (
             <p className={styles.empty}>{t(L.emptyVolume)}</p>
@@ -176,17 +171,10 @@ export default function Gallery() {
             </section>
           ))}
 
-          {visibleCount < inSeason.length && (
-            <div className={styles.loadMoreWrap}>
-              <button
-                className={styles.loadMore}
-                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-              >
-                {t(L.loadMore)} ({inSeason.length - visibleCount}{" "}
-                {t(L.remaining)})
-              </button>
-            </div>
-          )}
+          <LoadMore
+            remaining={inSeason.length - visibleCount}
+            onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+          />
         </>
       )}
 

@@ -12,11 +12,20 @@ import MoodFilter from "../../components/MoodFilter/MoodFilter.jsx";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import VideoCard from "../../components/VideoCard/VideoCard.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
+import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
+import LoadMore from "../../components/LoadMore/LoadMore.jsx";
 import { COMMON, useLang } from "../../i18n.js";
 import { VIDEO_BASE_URL, SCENE_PATH } from "../../config.js";
 import episodeMeta from "../../data/generated/episodeMeta.json";
+import catalogue from "../../data/videos.json";
 import milestones from "../../data/timeline.js";
-import { seasonOf } from "../../data/seasonInfo.js";
+import { seasonOf, seasonsIn } from "../../data/seasonInfo.js";
+import {
+  EXCLUSIONS,
+  filterCollection,
+  orderMoods,
+  toggleMood as toggleMoodIn,
+} from "../../lib/collection.js";
 
 const L = {
   title: { es: "Vídeos", en: "Videos" },
@@ -37,60 +46,65 @@ const L = {
     en: "Discover these moments in the timeline →",
   },
   searchPlaceholder: { es: "Buscar vídeos…", en: "Search videos…" },
-  loadErrorMsg: {
-    es: "No se pudo cargar el catálogo de vídeos. Comprueba la conexión y recarga la página.",
-    en: "The video catalogue could not be loaded. Check your connection and reload the page.",
-  },
   video: { es: "vídeo", en: "video" },
   videos: { es: "vídeos", en: "videos" },
   empty: {
     es: "Ningún vídeo coincide en esta temporada. Prueba otra búsqueda, otras temáticas u otro volumen.",
     en: "No video matches in this season. Try another search, other moods, or another volume.",
   },
-  loadMore: { es: "Cargar más", en: "Load more" },
-  remaining: { es: "restantes", en: "remaining" },
   playing: { es: "Reproduciendo", en: "Now playing" },
   player: { es: "Reproductor", en: "Player" },
   untitled: { es: "Sin título", en: "Untitled" },
 };
 
-/*
- * The video catalogue is fetched at runtime instead of being bundled:
- * with ~1000 records the JSON would otherwise bloat the JS bundle, and
- * updating the catalogue would require a rebuild. The file lives in
- * /public/data/videos.json and is served as a static asset (CDN-cacheable).
- */
-const DATA_URL = `${import.meta.env.BASE_URL}data/videos.json`;
-
-/* Başlık ve mood bölüm rehberinden gelir — bir video sadece bölüm
- * numarasını ve dosya adını tutar, gerisini numaradan devralır.
- * Senkronda tutulacak ikinci bir veri yok.
- *
- * episodes.js'in tamamı (409 KB) yerine build'de üretilen meta indeksi
- * (62 KB) kullanılıyor: bu sayfa bölüm açıklamalarını hiç göstermiyor,
- * açıklamalar da verinin dörtte üçü. Sezon numaradan seasonOf() ile
- * türüyor, o yüzden indekste saklanmıyor. */
-/* These clips are the scenes of the timeline's milestones, so titles
- * come from there ("El primer beso"), not the raw episode names. */
+/* Bu klipler zaman çizelgesindeki anların sahneleri; başlıklar oradan
+ * gelir ("El primer beso"), ham bölüm adlarından değil. */
 const MILESTONE_BY_EPISODE = new Map(milestones.map((m) => [m.episode, m]));
 
-/* How many cards render initially / per "load more" click. Keeps the
- * first paint light even when the filtered result is huge. */
+/*
+ * Katalog doğrudan import ediliyor. Eskiden çalışma anında fetch ediliyordu
+ * ve yorumda "~1000 kayıt bundle'ı şişirir" yazıyordu — gerçek sayı 54,
+ * dosya 4 KB. Karşılığında ekstra bir gidiş-geliş, yükleniyor durumu, hata
+ * durumu, iskelet ve AbortController taşınıyordu. Bu sayfa zaten lazy bir
+ * chunk; 4 KB oraya girince hiçbir şeyi etkilemiyor.
+ * (Katalog gerçekten binlere çıkarsa fetch'e dönmek doğru olur.)
+ *
+ * Kayıtlar burada, modül seviyesinde bir kez normalize ediliyor: sayfanın
+ * geri kalanı veriye koşulsuz güveniyor, filtrelerde dağınık `?? []`
+ * kontrolleri olmuyor.
+ *
+ * Başlık ve temalar bölüm numarasından devralınıyor — video kaydında
+ * tekrarlanan veri yok. episodes.js'in tamamı (409 KB) yerine build'de
+ * üretilen meta indeksi (62 KB) kullanılıyor: bu sayfa bölüm açıklamalarını
+ * hiç göstermiyor, açıklamalar da verinin dörtte üçü. Sezon da numaradan
+ * seasonOf() ile türüyor, indekste saklanmıyor.
+ */
+const VIDEOS = catalogue.map((v) => {
+  const ep = episodeMeta[v.episode];
+  const ms = MILESTONE_BY_EPISODE.get(v.episode);
+  const file = typeof v.file === "string" && v.file ? v.file : null;
+  return {
+    id: v.id ?? `v${v.episode}`,
+    episode: v.episode,
+    file,
+    title: ms?.title ?? ep?.t ?? L.untitled,
+    moods: Array.isArray(ep?.m) ? ep.m : [],
+    season: seasonOf(v.episode),
+    poster: file
+      ? `${import.meta.env.BASE_URL}img/videos-posters/${file.replace(/\.mp4$/, ".jpg")}`
+      : null,
+  };
+});
+
+/* Başlangıçta / her "daha fazla" tıklamasında kaç kart çizilecek. */
 const PAGE_SIZE = 20;
 
 /* İlk ekrana sığan kart sayısı — bunların posterleri ertelenmeden,
    öncelikli indiriliyor. Gerisi görünür alana yaklaştıkça geliyor. */
 const EAGER_CARDS = 6;
 
-/* Baby videos are unwanted: the tag excludes instead of includes
- * (same convention as the episode guide). It renders last, in ink. */
-const EXCLUDED_MOODS = ["baby", "cloe"];
-const EXCLUSIONS = new Set(EXCLUDED_MOODS);
-
 export default function Videos() {
   const { t } = useLang();
-  const [videos, setVideos] = useState(null); // null = loading
-  const [loadError, setLoadError] = useState(false);
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query); // typing stays responsive on large lists
   const [activeMoods, setActiveMoods] = useState(new Set());
@@ -99,116 +113,46 @@ export default function Videos() {
   const [playing, setPlaying] = useState(null); // the video object shown in the modal
   const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    const controller = new AbortController();
-    fetch(DATA_URL, { signal: controller.signal })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then((data) => {
-        /*
-         * Normalize at the boundary: the rest of the page trusts the
-         * data unconditionally, so every record is made safe HERE, once —
-         * no scattered `?? []` guards in filters and derived lists.
-         * A non-array payload (broken JSON, wrong path) throws and lands
-         * in the catch below, showing the error state.
-         */
-        if (!Array.isArray(data)) throw new Error("Invalid catalogue format");
-        setVideos(
-          data.map((v) => {
-            const ep = episodeMeta[v.episode];
-            const ms = MILESTONE_BY_EPISODE.get(v.episode);
-            const file = typeof v.file === "string" && v.file ? v.file : null;
-            return {
-              id: v.id ?? `v${v.episode}`,
-              episode: v.episode,
-              file,
-              // scene title from the timeline; fall back to episode name
-              title: ms?.title ?? ep?.t ?? L.untitled,
-              moods: Array.isArray(ep?.m) ? ep.m : [],
-              season: seasonOf(v.episode),
-              poster: file
-                ? `${import.meta.env.BASE_URL}img/videos-posters/${file.replace(/\.mp4$/, ".jpg")}`
-                : null,
-            };
-          }),
-        );
-      })
-      .catch((err) => {
-        if (err.name !== "AbortError") setLoadError(true);
-      });
-    return () => controller.abort();
-  }, []);
-
   /*
    * Deep link from the timeline: /videos?ep=186 opens that scene straight
    * in the player. We also switch to its season so the list behind the
    * modal is the right one, then clear the param so closing won't reopen it.
    */
   useEffect(() => {
-    if (!videos) return;
     const ep = searchParams.get("ep");
     if (!ep) return;
-    const match = videos.find((v) => String(v.episode) === ep);
+    const match = VIDEOS.find((v) => String(v.episode) === ep);
     if (match) {
       setPlaying(match);
       setActiveSeason(match.season);
     }
     setSearchParams({}, { replace: true });
-  }, [videos, searchParams, setSearchParams]);
+  }, [searchParams, setSearchParams]);
 
-  const allMoods = useMemo(() => {
-    if (!videos) return [];
-    const moods = [...new Set(videos.flatMap((v) => v.moods))];
-    // Exclusion mood sits last, apart from the regular moods
-    return [
-      ...moods.filter((m) => !EXCLUSIONS.has(m)),
-      ...EXCLUDED_MOODS.filter((m) => moods.includes(m)),
-    ];
-  }, [videos]);
-
-  const seasons = useMemo(
-    () =>
-      videos
-        ? [...new Set(videos.map((v) => v.season))].sort((a, b) => a - b)
-        : [],
-    [videos],
-  );
+  const allMoods = useMemo(() => orderMoods(VIDEOS.flatMap((v) => v.moods)), []);
+  const seasons = useMemo(() => seasonsIn(VIDEOS), []);
 
   /*
-   * Stable reference. Note the functional updater (`prev => ...`):
-   * it reads the CURRENT set on every call, which is what makes the
-   * empty dependency array safe — no stale closure over activeMoods.
+   * Kararlı referans — VideoCard React.memo ile sarılı, prop değişmezse
+   * yeniden render olmuyor. Fonksiyonel updater sayesinde boş bağımlılık
+   * dizisi güvenli: her çağrıda GÜNCEL set okunuyor.
    */
   const toggleMood = useCallback(
-    (mood) =>
-      setActiveMoods((prev) => {
-        const next = new Set(prev);
-        next.has(mood) ? next.delete(mood) : next.add(mood);
-        return next;
-      }),
+    (mood) => setActiveMoods((prev) => toggleMoodIn(prev, mood)),
     [],
   );
 
-  const filtered = useMemo(() => {
-    if (!videos) return [];
-    const q = deferredQuery.trim().toLowerCase();
-    return videos.filter((video) => {
-      // Season narrows the volume first; search and moods act within it.
-      if (video.season !== activeSeason) return false;
-      const haystack = `${video.episode} ${t(video.title)}`.toLowerCase();
-      const byText = !q || haystack.includes(q);
-      // Baby works in reverse: active means "hide these videos"
-      if ([...activeMoods].some((m) => EXCLUSIONS.has(m) && video.moods.includes(m)))
-        return false;
-      const includeMoods = [...activeMoods].filter((m) => !EXCLUSIONS.has(m));
-      const byMood =
-        includeMoods.length === 0 ||
-        video.moods.some((m) => includeMoods.includes(m));
-      return byText && byMood;
-    });
-  }, [videos, deferredQuery, activeMoods, activeSeason, t]);
+  /* Vídeos yalnızca başlıkta arıyor — Guía'dan tek farkı bu. */
+  const filtered = useMemo(
+    () =>
+      filterCollection(VIDEOS, {
+        query: deferredQuery,
+        moods: activeMoods,
+        season: activeSeason,
+        searchText: (v) => `${v.episode} ${t(v.title)}`,
+      }),
+    [deferredQuery, activeMoods, activeSeason, t],
+  );
 
   // New search / filter → back to the first page of results.
   useEffect(() => {
@@ -249,74 +193,46 @@ export default function Videos() {
         />
       </div>
 
-      {loadError && (
-        <p className={styles.status} role="alert">
-          {t(L.loadErrorMsg)}
-        </p>
+      <ListToolbar
+        className={styles.toolbar}
+        count={`${filtered.length} ${
+          filtered.length === 1 ? t(L.video) : t(L.videos)
+        }`}
+      >
+        <SeasonFilter
+          seasons={seasons}
+          activeSeason={activeSeason}
+          onSeasonChange={setActiveSeason}
+        />
+      </ListToolbar>
+
+      <div className={styles.grid}>
+        {visible.map((video, i) => (
+          <VideoCard
+            key={video.id}
+            video={video}
+            tone={i % 6}
+            onPlay={handlePlay}
+            priority={i < EAGER_CARDS}
+          />
+        ))}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className={styles.status}>{t(L.empty)}</p>
       )}
 
-      {!videos && !loadError && (
-        <div className={styles.grid} aria-hidden="true">
-          {Array.from({ length: 8 }, (_, i) => (
-            <div key={i} className={styles.skeleton} />
-          ))}
-        </div>
-      )}
+      <LoadMore
+        remaining={filtered.length - visibleCount}
+        onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
+      />
 
-      {videos && (
-        <>
-          <div className={styles.seasonSlot}>
-            <SeasonFilter
-              seasons={seasons}
-              activeSeason={activeSeason}
-              onSeasonChange={setActiveSeason}
-            />
-            <span className={styles.count} aria-live="polite">
-              {filtered.length}{" "}
-              {filtered.length === 1 ? t(L.video) : t(L.videos)}
-            </span>
-          </div>
-
-          <div className={styles.grid}>
-            {visible.map((video, i) => (
-              <VideoCard
-                key={video.id}
-                video={video}
-                tone={i % 6}
-                onPlay={handlePlay}
-                priority={i < EAGER_CARDS}
-              />
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <p className={styles.status}>{t(L.empty)}</p>
-          )}
-
-          {visibleCount < filtered.length && (
-            <div className={styles.loadMoreWrap}>
-              <button
-                className={styles.loadMore}
-                onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
-              >
-                {t(L.loadMore)} ({filtered.length - visibleCount}{" "}
-                {t(L.remaining)})
-              </button>
-            </div>
-          )}
-
-          <p className={styles.credit}>
-            {t(L.credit)}{" "}
-            <a
-              href="https://x.com/starryskyEN"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              @starryskyEN
-            </a>
-          </p>
-        </>
-      )}
+      <p className={styles.credit}>
+        {t(L.credit)}{" "}
+        <a href="https://x.com/starryskyEN" target="_blank" rel="noopener noreferrer">
+          @starryskyEN
+        </a>
+      </p>
 
       <Modal
         open={playing !== null}

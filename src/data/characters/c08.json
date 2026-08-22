@@ -3,12 +3,13 @@
   "id": "c10",
   "name": "Jaime Berenguer",
   "role": {
-    "es": "Exmarido de Marta",
-    "en": "Marta's Ex-Husband"
+    "es": "primer marido de Marta, doctor",
+    "en": "Marta's first husband, doctor"
   },
   "bio": {
     "es": "Jaime es el difunto primer marido de Marta. Como médico de un barco, pasaba largas temporadas lejos de casa, por lo que apenas compartían tiempo juntos. Marta se casó con él porque era lo que se esperaba de ella, más por deber que por amor. Con el paso de los años, ambos fueron conscientes de que su matrimonio estaba en crisis. Cuando Jaime regresa definitivamente a Toledo y percibe que Marta está más distante que nunca, decide dejar su trabajo para intentar salvar su matrimonio. Sin embargo, al descubrir que Marta está enamorada de Fina y al enterarse de que él tiene un tumor cerebral, decide dejarla vivir la vida que realmente desea junto a la persona que ama.",
     "en": "Jaime is Marta's late first husband. As a ship's doctor, he spent long periods away from home, so they barely shared any time together. Marta married him because it was what was expected of her, more out of duty than love. As the years went by, they both became aware that their marriage was in crisis. When Jaime returns to Toledo for good and senses that Marta is more distant than ever, he decides to leave his job to try to save their marriage. However, upon discovering that Marta is in love with Fina and learning that he has a brain tumor, he decides to let her live the life she truly wants alongside the person she loves."
   },
-  "group": "thirds"
+  "group": "thirds",
+  "deceased": true
 }

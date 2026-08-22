@@ -1,6 +1,6 @@
 import styles from "./Press.module.css";
 import press from "../../data/press.js";
-import { useLang } from "../../i18n.js";
+import { formatDate, useLang } from "../../i18n.js";
 
 const L = {
   title: { es: "Prensa", en: "Press" },
@@ -10,15 +10,6 @@ const L = {
   },
   readOn: { es: "Leer en", en: "Read on" },
 };
-
-const DATE_LOCALE = { es: "es-ES", en: "en-GB" };
-
-const formatDate = (iso, lang) =>
-  new Date(iso).toLocaleDateString(DATE_LOCALE[lang] ?? "es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
 
 export default function Press() {
   const { lang, t } = useLang();

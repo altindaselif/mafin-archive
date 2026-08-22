@@ -26,6 +26,7 @@ const posterFor = (file) =>
 export default function Milestone({ item, index }) {
   const { t } = useLang();
   const ref = useRef(null);
+  const videoRef = useRef(null);
   const [visible, setVisible] = useState(false); // reveal-on-scroll
   const [onStage, setOnStage] = useState(false); // merkez şeritte mi
   const [playing, setPlaying] = useState(false); // video DOM'a girdi mi
@@ -74,6 +75,25 @@ export default function Milestone({ item, index }) {
     return () => clearTimeout(id);
   }, [onStage]);
 
+  /*
+   * `autoPlay` özniteliği yeterli DEĞİL: hızlı scroll'da video elementi
+   * oluşurken görüş alanından bir an çıkarsa tarayıcı oynatmayı atlıyor ve
+   * kart geri geldiğinde kendiliğinden başlatmıyor. Bir de video önbellekten
+   * geliyorsa `canplay` olayı React dinleyiciyi bağlamadan önce tetiklenip
+   * kaçabiliyor.
+   *
+   * Bu yüzden mount'tan sonra açıkça başlatıyoruz ve `readyState`'e bakıp
+   * kaçmış `canplay`'i de yakalıyoruz. play() reddedilirse sessiz geçiyoruz —
+   * poster zaten altta duruyor.
+   */
+  useEffect(() => {
+    if (!playing) return;
+    const node = videoRef.current;
+    if (!node) return;
+    if (node.readyState >= 2) setReady(true); // HAVE_CURRENT_DATA
+    node.play?.().catch(() => {});
+  }, [playing]);
+
   const side = index % 2 === 0 ? styles.left : styles.right;
   const epLabel = `${t(COMMON.episode)} ${item.episode}`;
 
@@ -96,6 +116,7 @@ export default function Milestone({ item, index }) {
             />
             {playing && (
               <video
+                ref={videoRef}
                 className={`${styles.cardMedia} ${styles.cardVideo} ${ready ? styles.cardVideoReady : ""}`}
                 src={`${VIDEO_BASE_URL}/${TIMELINE_PATH}/${item.video}`}
                 muted
@@ -105,7 +126,10 @@ export default function Milestone({ item, index }) {
                 preload="auto"
                 aria-hidden="true"
                 tabIndex={-1}
-                onCanPlay={() => setReady(true)}
+                onCanPlay={(e) => {
+                  setReady(true);
+                  e.currentTarget.play?.().catch(() => {});
+                }}
               />
             )}
           </div>

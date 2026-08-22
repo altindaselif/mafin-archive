@@ -3,12 +3,13 @@
   "id": "c11",
   "name": "Santiago Ojeda",
   "role": {
-    "es": "Dependiente",
-    "en": "Shop Clerk"
+    "es": "enemigo de Fina, comercial",
+    "en": "Fina's enemy, salesman"
   },
   "bio": {
     "es": "Santiago llegó a la fábrica como comercial. Desde el primer momento se sintió atraído por Fina e intentó ganarse su confianza hasta estrechar su relación con ella. Cuando le confesó sus sentimientos, Fina lo rechazó, y él transformó ese rechazo en una peligrosa obsesión. La seguía, la chantajeaba y llegó a denunciarla ante la policía cuando descubrió que estaba enamorada de una mujer. Su obsesión culminó cuando intentó agredirla sexualmente. Durante el forcejeo con Fina, murió al clavarse el cuchillo con el que ella trataba de defenderse.",
     "en": "Santiago arrived at the factory as a sales rep. From the very first moment he was attracted to Fina and tried to earn her trust in order to grow closer to her. When he confessed his feelings, Fina rejected him, and he turned that rejection into a dangerous obsession. He followed her, blackmailed her, and even reported her to the police when he discovered that she was in love with a woman. His obsession reached its peak when he tried to sexually assault her. During the struggle with Fina, he died when he was stabbed by the knife she was using to defend herself."
   },
-  "group": "thirds"
+  "group": "thirds",
+  "deceased": true
 }

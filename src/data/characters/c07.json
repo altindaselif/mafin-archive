@@ -3,12 +3,13 @@
   "id": "c8",
   "name": "Isidro Valero",
   "role": {
-    "es": "Chófer de la familia",
-    "en": "Family chauffeur"
+    "es": "padre de Fina, chófer",
+    "en": "Fina's father, chauffeur"
   },
   "bio": {
     "es": "Isidro es el difunto padre de Fina. Tras la muerte de su esposa, la crio solo trabajando como chófer para la familia De la Reina. Como padre de profundas convicciones tradicionales, siempre soñó con que Fina encontrara un buen hombre con quien casarse y formar una familia. Cuando descubre que Fina está enamorada de una mujer, le resulta muy difícil aceptarlo, ya que esa realidad choca con todo aquello en lo que siempre había creído. Sin embargo, con el paso del tiempo y gracias al profundo amor que siente por su hija, termina aceptando la relación entre Fina y Marta. Desde entonces, las apoya incondicionalmente y permanece a su lado hasta el final.",
     "en": "Isidro is Fina's late father. After his wife's death, he raised her alone while working as a chauffeur for the de la Reina family. As a father with deeply traditional convictions, he always dreamed that Fina would find a good man to marry and start a family with. When he discovers that Fina is in love with a woman, he finds it very hard to accept, since that reality clashes with everything he had always believed in. However, with the passing of time and thanks to the deep love he feels for his daughter, he ends up accepting the relationship between Fina and Marta. From then on, he supports them unconditionally and stays by their side until the end."
   },
-  "group": "shop"
+  "group": "shop",
+  "deceased": true
 }

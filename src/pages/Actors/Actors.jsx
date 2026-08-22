@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./Actors.module.css";
 import actors from "../../data/actors.json";
-import { useLang } from "../../i18n.js";
+import { formatDate, useLang } from "../../i18n.js";
 
 const L = {
   title: { es: "Las actrices", en: "The Actresses" },
@@ -24,16 +24,7 @@ const CATEGORIES = [
   { key: "tvShows", label: { es: "Programas de televisión", en: "TV programmes" } },
 ];
 
-const DATE_LOCALE = { es: "es-ES", en: "en-GB" };
-
-function birthLine(place, iso, lang) {
-  const date = new Date(iso).toLocaleDateString(DATE_LOCALE[lang] ?? "es-ES", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
-  return `${place} · ${date}`;
-}
+const birthLine = (place, iso, lang) => `${place} · ${formatDate(iso, lang)}`;
 
 export default function Actors() {
   const { lang, t } = useLang();
