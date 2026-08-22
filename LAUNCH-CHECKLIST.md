@@ -309,7 +309,7 @@ Kopyalanan sabitler:
 > Şu an fark edilmiyor çünkü galeri hâlâ `picsum.photos` sample datasıyla dolu.
 
 - [ ] 1.4 tamamlandıktan sonra `PHOTO_RESIZE = true` ile gerçek bir albümde test et
-- [ ] `src/data/gallery/*.json` — `_sample: true` işaretli sahte kayıtları temizle
+- [ ] `src/data/gallery/*.json` — `_sample: true` işaretli üç sahte kayıt (`g069`, `g093`, `g363`, fotoğrafları picsum.photos'tan). **Bilinçli olarak bırakıldı** — gerçek fotoğraflar eklenirken yerlerini alacaklar. Yayından önce mutlaka gitmeli, yoksa ziyaretçi rastgele stok resimleri bölüm fotoğrafı sanır
 
 ### 1.6 Fandom formu hiçbir yere veri göndermiyor ⏸ ERTELENDİ (en sona)
 > `src/pages/Fandom/Fandom.jsx:68` TODO. Kullanıcıya *"Recibido — Tu aportación espera la revisión del archivero"* diyor ama veri hiçbir yere gitmiyor. Yayına böyle çıkarsa insanlara yalan söylemiş oluyorsun.
@@ -353,7 +353,7 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 - [x] **R2 anahtarı dar kapsama alındı (20 Ağu).** `config.yml`'daki anahtar `R2 Account Token`'a aitti ve **tüm bucket'lara yazma** yetkisi taşıyordu — secret sızsaydı video bucket'ı da gidiyordu. Yerine yalnızca `mafin-photos`'a yazabilen `mafin-cms-photos` token'ı üretildi, `config.yml` güncellendi ve deploy edildi
 - [x] Kullanılmayan `Cloudflare Agent Token` (tüm bucket'larda okuma) silindi
 - [x] CMS'ten foto yüklendi, yeni dar kapsamlı anahtar çalışıyor (`g126` kaydı R2 adresiyle oluştu)
-- [ ] Doğrulandıktan **sonra** eski `R2 Account Token`'ı Cloudflare'den sil
+- [x] Eski `R2 Account Token` (tüm bucket'lara yazma) silindi. Geriye yalnızca dar kapsamlı ikisi kaldı: `mafin-cms-photos` → `mafin-photos`, `rclone-upload` → `mafin-videos`
 
 > Not: `access_key_id` herkese açık olmaya devam ediyor ve bu sorun değil — secret olmadan kullanılamaz, secret da editörün tarayıcısında duruyor. Yapılan şey katmanlı savunma: anahtar bir gün sızarsa hasar foto bucket'ıyla sınırlı kalsın.
 
