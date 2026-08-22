@@ -14,6 +14,19 @@ public_folder: /img
 # Secret Access Key BURAYA yazılmaz — editör CMS'te ilk kez bir foto
 # eklerken bir kez girer, tarayıcısında güvenle saklanır.
 media_libraries:
+  # Depo (git) deposunu seçenek olmaktan çıkar. Açık bırakılırsa yükleme
+  # penceresinde "Global Assets" görünüyor ve yanlışlıkla seçilince 4K
+  # fotoğraf git'e giriyor (iki kez oldu, 7.4 MB'lık PNG), üstelik kayda
+  # `/img/...` yolu yazılıyor — Gallery.jsx onu R2 adresi sanıp bozuk
+  # bağlantı üretiyor. Alan bazında `media_library: cloudflare_r2` yazmak
+  # yetmedi; kapatılması gereken şey varsayılanın kendisiymiş.
+  default: false
+
+  # Stok fotoğraf servisleri (Picsum, Pexels, Pixabay, Unsplash) bu arşivde
+  # işe yaramıyor — kapalı. Galerideki örnek veriler zaten Picsum'dan
+  # gelmişti, kazara tekrar olmasın.
+  stock_assets: false
+
   # Fotoğraflar ORİJİNAL haliyle (tam 4K, hiç küçültülmeden) R2'ye yüklenir.
   #
   # access_key_id herkese açık (bu dosya /admin/config.yml adresinden
@@ -90,12 +103,6 @@ collections:
         widget: image
         multiple: true
         required: false
-        # R2'yi ZORUNLU kıl. Bu satır olmadan yükleme penceresi hem depoyu
-        # hem R2'yi seçenek olarak sunuyor; depo seçilirse 4K foto git'e
-        # giriyor (bir kez oldu: 7.4 MB'lık PNG) ve kayıtta `/img/...` yolu
-        # kalıyor — Gallery.jsx onu R2 adresi sanıp bozuk bağlantı üretiyor.
-        media_library:
-          name: cloudflare_r2
 
   # ── Quotes: each quote its own file under src/data/quotes/ ──
   - name: quotes
