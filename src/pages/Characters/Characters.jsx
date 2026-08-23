@@ -48,9 +48,21 @@ export default function Characters() {
       <ul className={styles.list}>
         {characters.map((c) => (
           <li key={c.id} className={styles.character}>
-            <div className={styles.monogram} aria-hidden="true">
-              {monogram(c.name)}
-            </div>
+            {/* Fotoğrafı olan karakterde avatar, olmayanda baş harfler.
+                Yedek yol duruyor: yeni bir karakter fotoğrafsız eklenebilsin. */}
+            {c.photo ? (
+              <img
+                className={styles.avatar}
+                src={`${import.meta.env.BASE_URL}img/characters/${c.photo}`}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div className={styles.monogram} aria-hidden="true">
+                {monogram(c.name)}
+              </div>
+            )}
             <div className={styles.body}>
               <h3 className={styles.name}>
                 {c.name}

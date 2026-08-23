@@ -1,0 +1,20 @@
+/* inline-grid: yuva yalnızca en geniş metin kadar yer kaplar ve satır
+   içinde kalır. Düz `grid` blok seviyesi olurdu ve dar kaplarda tüm
+   genişliği yerdi. */
+.slot {
+  display: inline-grid;
+  justify-items: center;
+}
+
+.start {
+  justify-items: start;
+}
+
+.slot > * {
+  grid-area: 1 / 1;
+}
+
+.off {
+  visibility: hidden;
+  pointer-events: none;
+}

@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useLang } from "../../i18n.js";
+import StableLabel from "../StableLabel/StableLabel.jsx";
 
 const MORE_LINKS = [
   { to: "/gallery", label: { es: "Galería", en: "Gallery" } },
@@ -21,33 +22,6 @@ const L = {
   openMenu: { es: "Abrir menú", en: "Open menu" },
   language: { es: "Idioma", en: "Language" },
 };
-
-/**
- * Dil değişince menünün kaymasını önler.
- *
- * İki dilin metni de aynı ızgara hücresine konuyor: hücre her zaman
- * GENİŞ olana göre şekilleniyor, aktif olmayan `visibility: hidden` ile
- * gizleniyor. Böylece "hangisi daha uzun" diye elle hesaplamak gerekmiyor —
- * yeni bir dil eklense de kendiliğinden çalışır.
- *
- * `visibility: hidden` erişilebilirlik ağacından da çıkarıyor, yani ekran
- * okuyucu metni iki kez okumuyor.
- */
-function StableLabel({ field }) {
-  const { lang } = useLang();
-  return (
-    <span className={styles.slot}>
-      {["es", "en"].map((code) => (
-        <span
-          key={code}
-          className={code === lang ? styles.slotOn : styles.slotOff}
-        >
-          {field[code]}
-        </span>
-      ))}
-    </span>
-  );
-}
 
 export default function Header() {
   const { pathname } = useLocation();
@@ -172,7 +146,7 @@ export default function Header() {
                       : styles.dropLink
                   }
                 >
-                  <StableLabel field={l.label} />
+                  <StableLabel field={l.label} align="start" />
                 </NavLink>
               ))}
 

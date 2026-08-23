@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import styles from "./SeasonFilter.module.css";
 import { COMMON, useLang } from "../../i18n.js";
+import StableLabel from "../StableLabel/StableLabel.jsx";
 
 const L = {
   aria: { es: "Filtrar por temporada", en: "Filter by season" },
@@ -33,7 +34,9 @@ export default function SeasonFilter({ seasons = [], activeSeason, onSeasonChang
             aria-pressed={season === activeSeason}
             onClick={() => onSeasonChange(season)}
           >
-            {t(COMMON.season)} {toRoman(season)}
+            {/* Sezon kelimesi sabit genişlikte: dil değişince sekmeler
+                kaymasın. Rakam dilden bağımsız, dışarıda kalıyor. */}
+            <StableLabel field={COMMON.season} /> {toRoman(season)}
           </button>
         </Fragment>
       ))}

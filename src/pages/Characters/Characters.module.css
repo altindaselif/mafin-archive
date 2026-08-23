@@ -7,7 +7,7 @@
 
 .character {
   display: grid;
-  grid-template-columns: 84px 1fr;
+  grid-template-columns: 116px 1fr;
   gap: 24px;
   padding: 24px 0;
   border-bottom: 1px solid var(--color-border);
@@ -15,17 +15,37 @@
 }
 
 /* Monogram medallion — stands in until real portraits arrive */
+.avatar {
+  /* 96px: kaynak PNG'ler 192px, yani 2x ekranda birebir eşleşiyor. */
+  width: 96px;
+  height: 96px;
+  justify-self: center;
+  align-self: center;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border-strong, #c9b8ae);
+  /* Kesimlerin arkası saydam; disk 14 portrenin altında ortak bir zemin
+     kuruyor. Beyaz bırakılsa "çıkartma" gibi duruyordu, krem bırakılsa
+     sayfaya karışıp kayboluyordu. --color-accent-soft sitenin kendi
+     bordo tonunun %8'i. */
+  background: var(--color-accent-soft);
+  /* Actrices sayfasındaki portrelerle aynı ton — 14 farklı promo
+     fotoğrafının rengini arşivin diline yaklaştırıyor. */
+  filter: sepia(0.22) saturate(0.82) contrast(1.02);
+}
+
 .monogram {
   display: grid;
   place-items: center;
-  width: 66px;
-  height: 66px;
+  width: 96px;
+  height: 96px;
   justify-self: center;
   align-self: center;
   border-radius: 50%;
   border: 1px solid var(--color-border-strong, #c9b8ae);
+  background: var(--color-accent-soft);
   font-family: var(--font-family-display);
-  font-size: 1.25rem;
+  font-size: 1.6rem;
   letter-spacing: 0.03em;
   color: var(--color-accent);
 }
@@ -62,14 +82,18 @@
 
 @media (max-width: 560px) {
   .character {
-    grid-template-columns: 56px 1fr;
+    grid-template-columns: 76px 1fr;
     gap: 16px;
   }
 
+  .avatar,
   .monogram {
-    width: 50px;
-    height: 50px;
-    font-size: 1rem;
+    width: 68px;
+    height: 68px;
+  }
+
+  .monogram {
+    font-size: 1.1rem;
   }
 
   .name {

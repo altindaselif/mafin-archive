@@ -246,30 +246,3 @@
   color: var(--color-text-main);
   opacity: 0.4;
 }
-
-/* ── Dil değişince kaymayı önleyen yuva ──────────────────────────────
-   İki dilin metni de aynı ızgara hücresinde; hücre geniş olana göre
-   şekilleniyor, aktif olmayan gizleniyor. Menü genişliği dilden
-   bağımsız sabit kalıyor. */
-.slot {
-  /* inline-grid: yuva yalnızca en geniş metin kadar yer kaplar ve satır
-     içinde kalır. Düz `grid` blok seviyesi olurdu ve açılır menüde tüm
-     genişliği yerdi. */
-  display: inline-grid;
-  justify-items: center;
-}
-
-/* Açılır menüdeki bağlantılar sola hizalı — kısa metin ortalanınca
-   içeri kaçmış gibi durur. */
-.dropLink .slot {
-  justify-items: start;
-}
-
-.slot > * {
-  grid-area: 1 / 1;
-}
-
-.slotOff {
-  visibility: hidden;
-  pointer-events: none;
-}

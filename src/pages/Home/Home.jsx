@@ -6,8 +6,12 @@ import { COMMON, useLang } from "../../i18n.js";
 import { useHomeIndex } from "../../data/homeIndex.js";
 import Stats from "../../components/Stats/Stats.jsx";
 
-/* The foyer's doors: every section, one symmetric card each. Icons are
-   hand-drawn line-art in the site's language — no imported icon set. */
+/* The foyer's doors: one symmetric card each. Icons are hand-drawn line-art
+   in the site's language — no imported icon set.
+   TAM SEKİZ kart: ızgara 4×2 olarak tasarlandı, dokuzuncu kart tek başına
+   üçüncü satıra düşüyor. Yeni bir bölüm eklenirse ya biri çıkmalı ya da
+   Home.module.css'teki sütun sayısı yeniden düşünülmeli.
+   Fandom kasten burada değil — üst menüdeki "Más" listesinden erişiliyor. */
 const SECTIONS = [
   { to: "/timeline", icon: "history",
     title: { es: "Su historia", en: "The Story" },
@@ -33,9 +37,6 @@ const SECTIONS = [
   { to: "/press", icon: "press",
     title: { es: "Prensa", en: "Press" },
     desc: { es: "Mafin en los medios.", en: "Mafin in the press." } },
-  { to: "/fandom", icon: "fandom",
-    title: { es: "El Fandom", en: "The Fandom" },
-    desc: { es: "Canciones, fanfics y fan art.", en: "Songs, fanfics and fan art." } },
 ];
 
 const L = {

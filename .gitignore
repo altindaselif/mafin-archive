@@ -3,3 +3,8 @@ dist/
 .DS_Store
 public/data/home.json
 src/data/generated/
+
+# Avatar kaynakları: orijinal promo fotoğrafları ve arka planı silinmiş
+# kesimler. Sitenin parçası değil, kaynak malzeme — depoyu şişirmesin.
+# Diskte duruyor; ayrıca yedeklemek iyi olur.
+Photos/
