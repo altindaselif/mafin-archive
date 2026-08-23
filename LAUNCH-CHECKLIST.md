@@ -286,11 +286,38 @@ Kopyalanan sabitler:
 
 ---
 
+## ☁️ Cloudflare'e taşınma ✅ TAMAMLANDI (23 Ağu)
+
+> Listede yoktu; Netlify'ın build kredisi (ayda 300 dakika) CMS'ten yapılan her düzenleme bir deploy tetiklediği için hızla tükendiği ortaya çıkınca yapıldı.
+
+- [x] Site **Cloudflare Workers**'a taşındı → `archivo.universomafin.workers.dev`
+- [x] `wrangler.jsonc` — statik varlık yapılandırması, SPA yönlendirmesi `not_found_handling` ile
+- [x] `.nvmrc` + `package.json` `engines` — build platformu Node sürümünü buradan okuyor
+- [x] `public/_redirects` kaldırıldı → Cloudflare `/* /index.html 200` kuralını sonsuz döngü sayıp deploy'u reddediyordu. Netlify için `netlify.toml`'a taşındı
+- [x] `_headers` olduğu gibi çalışıyor — önbellek kuralları korundu
+- [x] **CMS girişi onarıldı:** Sveltia varsayılan olarak Netlify'ın OAuth servisini kullanıyor, taşınınca kırıldı. Kendi hesabımızda `sveltia-cms-auth` Worker'ı kuruldu, GitHub OAuth uygulaması tanımlandı, `config.yml`'a `base_url` eklendi
+
+**Ölçülen sonuç:**
+
+| | Netlify | Cloudflare |
+|---|---|---|
+| HTML ilk byte | 0.17–0.90 sn (dalgalı) | **~0.20 sn** (tutarlı) |
+| Ana bundle toplam | 0.76 sn | **0.22 sn** |
+| Build limiti | 300 dk/ay | 500 build/ay |
+| Bant genişliği | 100 GB/ay | sınırsız |
+
+> **Tuzak, ileride lazım olur:** Cloudflare panelinde Worker değişkeni eklemek yeni bir *sürüm* oluşturuyor ama onu yayına almıyor. Çalışan Worker eski sürümde kaldığı için değişkenler görünmüyor. Çözüm: `npx wrangler versions deploy <sürüm-id> --name <worker>`.
+
+- [ ] Netlify tamamen kapatılınca `netlify.toml` silinebilir
+
 ## ⏸ BEKLEMEDE — dış karara bağlı (yayın öncesi yapılacak)
 
 > Bu maddeler koda değil, senin kararlarına bağlı: alan adı bütçesi, Fandom formunun akıbeti, sitenin kesin adresi. Yayına ~1 ay olduğu için sona bırakıldı. **Yayından önce hepsi kapanmalı.**
 
-### 1.4 R2 custom domain ⏸ ERTELENDİ (bütçe — yayına ~1 ay var, en sona)
+### 1.4 R2 erişimi — plan değişti (23 Ağu)
+> **Artık alan adı gerektirmiyor.** Site Cloudflare'e taşındığı için R2 bucket'ları doğrudan Worker'a **binding** ile bağlanabilir; fotoğraf ve videolar `archivo.universomafin.workers.dev` üzerinden gelir, `pub-*.r2.dev` hiç devreye girmez. Kararsızlık da, hız sınırı da kalkar. Ücretsiz.
+>
+> Alan adı yine alınmalı ama artık **SEO ve isim için** (madde 1.8), medya erişimi için değil.
 > Site bu madde olmadan da yayına çıkabilir; bedeli `pub-*.r2.dev` adresinin rate-limit'li olması ve bazı TR operatörlerinde ara ara engellenmesi. Videolar bu yüzden zaman zaman açılmıyor.
 >
 > **Ücretsiz alternatif:** site Cloudflare Pages'te barındırılıyorsa, R2 bucket'ı bir **binding** ile bağlanıp kendi `*.pages.dev` adresinden servis edilebilir (`site.pages.dev/media/...`). Alan adı satın almadan hem engel hem rate-limit çözülür. Kurulum işi var, para yok.
