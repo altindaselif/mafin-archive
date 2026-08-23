@@ -287,3 +287,10 @@
     gap: 12px;
   }
 }
+
+/* Turnstile kutusu. Widget kendi boyutunu getiriyor; biz sadece
+   diğer alanlarla aynı ritimde boşluk veriyoruz. */
+.captcha {
+  margin: 4px 0 2px;
+  min-height: 65px;
+}

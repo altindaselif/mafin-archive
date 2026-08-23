@@ -1,9 +1,10 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import styles from "./Fandom.module.css";
 import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import entries from "../../data/fandom.js";
 import { useLang } from "../../i18n.js";
+import { TURNSTILE_ACTION, TURNSTILE_SITE_KEY } from "../../config.js";
 
 const L = {
   title: { es: "El Fandom", en: "The Fandom" },
@@ -18,6 +19,37 @@ const VERB = { Canción: "Escuchar", Fanfic: "Leer", Arte: "Ver" };
 
 const formatDate = (iso) =>
   new Date(iso).toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+
+/*
+ * Turnstile betiğini yalnızca form açıldığında yüklüyoruz. Sayfa
+ * açılışında yüklemek diğer sayfalara da maliyet bindirirdi; bu form
+ * ise ziyaretçilerin çoğunun hiç açmadığı bir yer.
+ *
+ * `render=explicit`: widget'ı biz elle çiziyoruz, çünkü kimliğini
+ * saklayıp gönderimden sonra sıfırlamamız gerekiyor (jetonlar tek
+ * kullanımlık; modal açık kaldığı için ikinci deneme aynı jetonla
+ * gelirse sunucu reddeder).
+ */
+const TURNSTILE_SRC =
+  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+
+let turnstileLoader = null;
+function loadTurnstile() {
+  if (window.turnstile) return Promise.resolve();
+  turnstileLoader ??= new Promise((resolve, reject) => {
+    const el = document.createElement("script");
+    el.src = TURNSTILE_SRC;
+    el.async = true;
+    el.defer = true;
+    el.onload = resolve;
+    el.onerror = () => {
+      turnstileLoader = null; // sonraki açılışta yeniden denensin
+      reject(new Error("turnstile"));
+    };
+    document.head.appendChild(el);
+  });
+  return turnstileLoader;
+}
 
 const EMPTY_FORM = {
   type: "Canción",
@@ -36,6 +68,9 @@ export default function Fandom() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [error, setError] = useState("");
   const [sending, setSending] = useState(false);
+  const captchaRef = useRef(null);   // widget'ın çizileceği kutu
+  const widgetId = useRef(null);     // sıfırlamak için kimliği
+  const [captchaReady, setCaptchaReady] = useState(false);
 
   // Only curator-approved donations reach the shelves.
   const visible = useMemo(
@@ -45,6 +80,35 @@ export default function Fandom() {
       ),
     [activeType],
   );
+
+  /* Form açılınca widget'ı çiz, kapanınca temizle. Modal kapanıp tekrar
+     açıldığında eskisi ortada kalmasın. */
+  useEffect(() => {
+    if (!formOpen || submitted) return;
+    let cancelled = false;
+
+    loadTurnstile()
+      .then(() => {
+        if (cancelled || !captchaRef.current || widgetId.current !== null) return;
+        widgetId.current = window.turnstile.render(captchaRef.current, {
+          sitekey: TURNSTILE_SITE_KEY,
+          action: TURNSTILE_ACTION,
+        });
+        setCaptchaReady(true);
+      })
+      .catch(() => {
+        if (!cancelled) setError("No se ha podido cargar la verificación.");
+      });
+
+    return () => {
+      cancelled = true;
+      if (widgetId.current !== null) {
+        window.turnstile?.remove?.(widgetId.current);
+        widgetId.current = null;
+      }
+      setCaptchaReady(false);
+    };
+  }, [formOpen, submitted]);
 
   const setField = (key) => (e) => setForm({ ...form, [key]: e.target.value });
 
@@ -70,21 +134,35 @@ export default function Fandom() {
       return;
     }
 
+    const token =
+      widgetId.current !== null
+        ? window.turnstile?.getResponse(widgetId.current)
+        : null;
+    if (!token) {
+      setError("Completa la verificación antes de enviar.");
+      return;
+    }
+
     setError("");
     setSending(true);
     try {
       const res = await fetch("/api/fandom", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, "cf-turnstile-response": token }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) throw new Error(data.error ?? "error");
       setSubmitted(true);
-    } catch {
+    } catch (err) {
       setError(
-        "No se ha podido enviar. Comprueba la conexión e inténtalo de nuevo.",
+        err.message === "verification"
+          ? "La verificación no se ha superado. Inténtalo de nuevo."
+          : "No se ha podido enviar. Comprueba la conexión e inténtalo de nuevo.",
       );
+      /* Jetonlar tek kullanımlık: başarısız denemeden sonra widget'ı
+         sıfırlamazsak ikinci deneme aynı jetonla gider ve reddedilir. */
+      if (widgetId.current !== null) window.turnstile?.reset(widgetId.current);
     } finally {
       setSending(false);
     }
@@ -273,6 +351,10 @@ export default function Fandom() {
               />
             </label>
 
+            {/* Bot koruması. Kutu formun bir parçası; doldurulmadan
+                gönderim sunucuda reddediliyor. */}
+            <div className={styles.captcha} ref={captchaRef} />
+
             {error && (
               <p className={styles.error} role="alert">
                 {error}
@@ -282,7 +364,7 @@ export default function Fandom() {
             <button
               className={styles.submit}
               onClick={submit}
-              disabled={sending}
+              disabled={sending || !captchaReady}
             >
               {sending ? "Enviando…" : "Enviar a revisión"}
             </button>

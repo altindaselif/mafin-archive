@@ -31,3 +31,14 @@ export const TIMELINE_PATH = "timeline";
  * universomafin.com bağlanınca açılabilir.
  */
 export const PHOTO_RESIZE = false;
+
+/*
+ * Turnstile site anahtarı — Fandom bağış formundaki bot koruması.
+ * Bu değer herkese açık, sayfaya gömülüyor; gizli olan Secret Key
+ * Worker'da `TURNSTILE_SECRET` olarak duruyor.
+ */
+export const TURNSTILE_SITE_KEY = "0x4AAAAAAEZfib3I8bRgBxiu";
+
+/* Widget'a verilen eylem adı. Sunucu jetonun BU formdan geldiğini
+   buradan doğruluyor — worker/fandom.js içindeki değerle aynı olmalı. */
+export const TURNSTILE_ACTION = "fandom-donation";

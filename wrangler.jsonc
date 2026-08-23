@@ -28,6 +28,14 @@
     "not_found_handling": "single-page-application"
   },
 
+  // Turnstile'ın "bu jeton hangi sayfadan geldi" cevabını buna karşı
+  // doğruluyoruz. Gizli değil, o yüzden secret değil vars.
+  // ÖNEMLİ: canlıda localhost YAZILMAZ — yazılırsa saldırgan kendi
+  // makinesinden alınmış jetonla buraya istek atabilir.
+  "vars": {
+    "TURNSTILE_HOSTNAMES": "archivo.universomafin.workers.dev"
+  },
+
   // R2 kovaları doğrudan bağlanıyor: medya artık pub-*.r2.dev üzerinden
   // değil, sitenin kendi adresinden geliyor. O adres hız sınırlıydı,
   // önbeleksizdi ve Türkiye'den kararsız çalışıyordu.

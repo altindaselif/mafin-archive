@@ -19,6 +19,67 @@ const REPO = {
 
 const TYPES = new Set(["Canción", "Fanfic", "Arte"]);
 
+/* Formdaki Turnstile widget'ına verdiğimiz eylem adı. Sunucu, gelen
+   jetonun gerçekten BU formdan geldiğini buradan doğruluyor — başka bir
+   sayfadan alınmış geçerli bir jeton burada kabul edilmiyor. */
+const TURNSTILE_ACTION = "fandom-donation";
+
+/*
+ * Turnstile doğrulaması.
+ *
+ * Jeton tarayıcıdan geliyor ama ona güvenmiyoruz: Cloudflare'e sorup
+ * gerçekten geçerli mi, hangi eylem için üretilmiş ve hangi sayfadan
+ * gelmiş diye bakıyoruz. Üçü de tutmazsa istek reddediliyor.
+ *
+ * Ağ hatasında da reddediyoruz (fail closed): doğrulayamadığımız bir
+ * isteği geçirmek, korumayı hiç koymamakla aynı şey olurdu.
+ */
+async function verifyTurnstile(token, clientIp, env) {
+  const allowed = new Set(
+    String(env.TURNSTILE_HOSTNAMES ?? "")
+      .split(",")
+      .map((h) => h.trim())
+      .filter(Boolean),
+  );
+
+  if (
+    typeof token !== "string" ||
+    token.length === 0 ||
+    token.length > 2048 ||
+    allowed.size === 0 ||
+    !env.TURNSTILE_SECRET
+  ) {
+    return false;
+  }
+
+  let result;
+  try {
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        signal: AbortSignal.timeout(10_000),
+        body: new URLSearchParams({
+          secret: env.TURNSTILE_SECRET,
+          response: token,
+          remoteip: clientIp ?? "",
+        }),
+      },
+    );
+    if (!res.ok) throw new Error(`siteverify ${res.status}`);
+    result = await res.json();
+  } catch {
+    return false;
+  }
+
+  return (
+    result.success === true &&
+    result.action === TURNSTILE_ACTION &&
+    allowed.has(result.hostname)
+  );
+}
+
 /* Alan sınırları: hem veriyi hem CMS arayüzünü makul tutuyor. */
 const LIMITS = { title: 120, author: 80, url: 500, note: 140 };
 
@@ -99,6 +160,15 @@ export async function handleFandom(request, env) {
   /* Honeypot: insanlar bu alanı görmüyor. Doluysa bot demektir —
      başarılı gibi cevap verip sessizce atıyoruz ki bot fark etmesin. */
   if (clean(data.website, 50)) return json({ ok: true });
+
+  /* Turnstile: asıl bot koruması. Honeypot basit botları eler, bu ise
+     jetonu Cloudflare'e doğrulatır. Geçmezse hiçbir şey yazılmaz. */
+  const ok = await verifyTurnstile(
+    data["cf-turnstile-response"],
+    request.headers.get("cf-connecting-ip"),
+    env,
+  );
+  if (!ok) return json({ ok: false, error: "verification" }, 403);
 
   const record = {
     type: TYPES.has(data.type) ? data.type : "Arte",
