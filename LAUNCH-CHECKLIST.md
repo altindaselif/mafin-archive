@@ -254,7 +254,7 @@ Kopyalanan sabitler:
 
 ### 3.5 `DATE_LOCALE` + tarih formatlama 4 yerde ✅ ÇÖZÜLDÜ (20 Ağu, Fandom 24 Ağu'da eklendi)
 - [x] `Episodes.jsx`, `Actors.jsx`, `Press.jsx` ortak `formatDate()` kullanıyor
-- [ ] `Fandom.jsx` — Fandom işiyle birlikte (1.7), o sayfa ertelendi
+- [x] `Fandom.jsx` — ortak `formatDate(iso, lang, MONTH_YEAR)`'a geçti (24 Ağu)
 - [x] `i18n.js`'e `formatDate(iso, lang, opts)` eklendi
 
 ### 3.6 Sezon listesi türetme 3 yerde ✅ ÇÖZÜLDÜ (20 Ağu)
@@ -277,6 +277,23 @@ Kopyalanan sabitler:
 ---
 
 ## 🔵 FAZ 4 — Sonraki adım (yayından sonra)
+
+### 4.0 Veri büyümesi — ölçüldü (24 Ağu), şimdilik iş yok
+> Veri yapay olarak çoğaltılıp gerçekten derlendi. Büyüme doğrusal: bölüm başına ~0,26 KB gzip.
+
+| bölüm | Episodes paketi (gzip) |
+|---|---|
+| 616 (bugün) | 161 KB |
+| 1232 | 319 KB |
+| 2464 | 634 KB |
+
+- Fotoğraf/video pakete girmiyor (R2'den geliyor) — galeri büyümesi JS'i etkilemiyor
+- Ana sayfa etkilenmiyor: bölüm verisi ayrı parçada, sadece rehbere girilince iniyor
+- `home.json` kendini sınırlıyor (takvimde günde bir bölüm): 4x veride 88 KB → 116 KB
+- **Eşik: ~1200 bölüm / ~300 KB gzip.** Rehber sayfası yavaşlarsa yapılacak:
+  `description` alanı ağırlığın %82'si, ama sadece detayda lazım. Künyeyi (numara, başlık, tarih, mood — toplam %18) pakette bırakıp açıklamaları ayrı dosyaya al. Rehber ~30 KB'ye iner ve bölüm sayısından bağımsızlaşır
+- Şimdi yapmanın anlamı yok: çalışan şeyi karmaşıklaştırır, kazanç bugünkü boyutta hissedilmez
+
 
 ### 4.1 Prerendering / SSG
 > Sitenin tamamı statik veri, hiçbir sayfa runtime'a bağımlı değil. Build sırasında HTML üretmek mümkün ve doğru hamle — SEO ve ilk yükleme için 1.1 + 1.8'in üzerine ciddi kazanç.
@@ -336,7 +353,7 @@ Kopyalanan sabitler:
 > `PHOTO_RESIZE = false` iken `Gallery.jsx:167`'deki `photoUrl(p, 640)` width'i **yok sayıyor**, tam boy orijinali veriyor. Grid hücresi 210px. CMS fotoğrafları "tam 4K, hiç küçültülmeden" yüklüyor. 12 albüm × 3-4 foto × ~4 MB = **~150 MB**.
 > Şu an fark edilmiyor çünkü galeri hâlâ `picsum.photos` sample datasıyla dolu.
 
-- [ ] 1.4 tamamlandıktan sonra `PHOTO_RESIZE = true` ile gerçek bir albümde test et
+- [ ] Alan adı bağlanınca `PHOTO_RESIZE = true` — `/cdn-cgi/image` yalnızca kendi bölgende var, `workers.dev`'de yok. Ölçüm: galerideki tek gerçek fotoğraf 7,7 MB ve ızgarada küçük kare olarak gösteriliyor
 - [ ] `src/data/gallery/*.json` — `_sample: true` işaretli üç sahte kayıt (`g069`, `g093`, `g363`, fotoğrafları picsum.photos'tan). **Bilinçli olarak bırakıldı** — gerçek fotoğraflar eklenirken yerlerini alacaklar. Yayından önce mutlaka gitmeli, yoksa ziyaretçi rastgele stok resimleri bölüm fotoğrafı sanır
 
 ### 1.6 Fandom formu hiçbir yere veri göndermiyor ✅ ÇÖZÜLDÜ (24 Ağu)
