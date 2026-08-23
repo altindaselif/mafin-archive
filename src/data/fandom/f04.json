@@ -1,12 +1,12 @@
 {
-  "number": 4,
   "id": "f4",
+  "number": 4,
   "type": "Canción",
   "title": "Siete en punto",
   "author": "@acordesdefina",
   "url": "https://example.com/cancion-siete",
   "note": "Guitarra y voz, grabada en una sola toma.",
   "date": "2026-05-08",
-  "approved": true,
+  "approved": false,
   "_sample": true
 }
