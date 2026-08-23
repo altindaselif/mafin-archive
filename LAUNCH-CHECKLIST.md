@@ -402,12 +402,13 @@ Kopyalanan sabitler:
 
 ## 🛠 Depodaki script'ler
 
-Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
+| script | ne yapar | ne zaman |
+|---|---|---|
+| `scripts/build-indexes.mjs` | `public/data/home.json` + `src/data/generated/episodeMeta.json` üretir | Her derlemede **otomatik** (`prebuild`/`predev`) |
+| `scripts/make-posters.sh` | Kliplerden poster karesi çıkarır | Yeni klip eklendiğinde, elle |
+| `scripts/r2-upload-timeline.sh` | Timeline kliplerini R2'de `timeline/` altına yükler | Yeni klip eklendiğinde, elle |
 
-| script | ne yapar |
-|---|---|
-| `scripts/make-posters.sh` | Kliplerden poster üretir (yeni klip eklendiğinde tekrar çalıştır) |
-| `scripts/r2-upload-timeline.sh` | Timeline kliplerini `timeline/` altına yükler (yeni klip eklendiğinde tekrar) |
+Elle çalıştırılan ikisi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 
 > Hepsi hedef listeyi `videos.json` / timeline JSON'larından okur — elle liste tutulmaz, kod neye bakıyorsa bucket ona dönüşür.
 
