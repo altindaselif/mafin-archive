@@ -9,7 +9,7 @@
   // o dosyaya dokunmuyoruz. Workers tarafında aynı işi aşağıdaki
   // "not_found_handling" görüyor.
 
-  "name": "mafin-archive",
+  "name": "universomafin",
   "compatibility_date": "2025-08-01",
 
   "assets": {
