@@ -1,5 +1,11 @@
 /*
- * Medya sunucusu.
+ * Sitenin sunucu tarafı.
+ *
+ * İki iş yapıyor: R2'deki medyayı servis etmek ve Fandom formunun
+ * gönderimlerini almak. Statik dosyalar (HTML, JS, CSS, yerel resimler)
+ * buraya hiç uğramıyor — Cloudflare onları doğrudan servis ediyor.
+ *
+ * ── Medya sunucusu ──
  *
  * Fotoğraf ve videolar Cloudflare R2'de duruyor. Eskiden tarayıcı onları
  * doğrudan `pub-*.r2.dev` adresinden çekiyordu — Cloudflare'in geliştirme
@@ -15,6 +21,8 @@
  * Cloudflare onları doğrudan servis ediyor. Buraya yalnızca eşleşmeyen
  * yollar düşüyor: /media/* ve React Router'ın çözdüğü sayfa adresleri.
  */
+
+import { handleFandom } from "./fandom.js";
 
 const BUCKETS = {
   videos: "VIDEOS",
@@ -80,6 +88,12 @@ export default {
 
     if (url.pathname.startsWith("/media/")) {
       return serveMedia(request, env, url);
+    }
+
+    /* Fandom bağış formu. Gelen her aportación depoya "onay bekliyor"
+       olarak düşüyor; hiçbiri doğrudan yayına çıkmıyor. */
+    if (url.pathname === "/api/fandom") {
+      return handleFandom(request, env);
     }
 
     /* Geri kalanı statik varlık katmanına: dosya varsa onu, yoksa

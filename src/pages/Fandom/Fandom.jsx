@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import styles from "./Fandom.module.css";
 import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
-import entries from "../../data/fandom.json";
+import entries from "../../data/fandom.js";
 import { useLang } from "../../i18n.js";
 
 const L = {
@@ -35,6 +35,7 @@ export default function Fandom() {
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState(EMPTY_FORM);
   const [error, setError] = useState("");
+  const [sending, setSending] = useState(false);
 
   // Only curator-approved donations reach the shelves.
   const visible = useMemo(
@@ -47,13 +48,17 @@ export default function Fandom() {
 
   const setField = (key) => (e) => setForm({ ...form, [key]: e.target.value });
 
-  const submit = () => {
-    // Honeypot: humans never see this field; if it's filled, a bot did it.
-    // Pretend success and quietly discard.
-    if (form.website) {
-      setSubmitted(true);
-      return;
-    }
+  /*
+   * Aportación /api/fandom uç noktasına gidiyor (worker/fandom.js).
+   * Orada doğrulanıp depoya `approved: false` olarak yazılıyor; CMS'te
+   * "onay bekliyor" görünüyor. Arşivci onaylayana kadar sitede çıkmıyor.
+   *
+   * Buradaki kontroller sadece kullanıcıya hızlı geri bildirim için —
+   * asıl doğrulama sunucuda, tarayıcıdan gelene güvenilmiyor.
+   */
+  const submit = async () => {
+    if (sending) return;
+
     if (
       !form.title.trim() ||
       !form.author.trim() ||
@@ -64,17 +69,32 @@ export default function Fandom() {
       );
       return;
     }
+
     setError("");
-    // TODO (fase 2 — Supabase): insertar en la tabla `donations` con
-    // approved=false; el archivero aprueba desde su panel. De momento la
-    // aportación solo se simula.
-    setSubmitted(true);
+    setSending(true);
+    try {
+      const res = await fetch("/api/fandom", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error ?? "error");
+      setSubmitted(true);
+    } catch {
+      setError(
+        "No se ha podido enviar. Comprueba la conexión e inténtalo de nuevo.",
+      );
+    } finally {
+      setSending(false);
+    }
   };
 
   const closeForm = () => {
     setFormOpen(false);
     setSubmitted(false);
     setError("");
+    setSending(false);
     setForm(EMPTY_FORM);
   };
 
@@ -259,8 +279,12 @@ export default function Fandom() {
               </p>
             )}
 
-            <button className={styles.submit} onClick={submit}>
-              Enviar a revisión
+            <button
+              className={styles.submit}
+              onClick={submit}
+              disabled={sending}
+            >
+              {sending ? "Enviando…" : "Enviar a revisión"}
             </button>
           </div>
         )}

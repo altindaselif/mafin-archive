@@ -116,6 +116,41 @@ collections:
         multiple: true
         required: false
 
+  # ── Fandom: hayranların gönderdiği eserler ──
+  #
+  # Formdan gelen her aportación buraya `approved: false` olarak düşer.
+  # Sen okur, uygunsa "Yayında" kutusunu işaretlersin — site kendiliğinden
+  # güncellenir. İşaretlemediğin sürece kimse göremez.
+  #
+  # Sıralamayı "Onay bekleyenler" filtresiyle görmek için: üstteki
+  # sortable_fields'tan `approved`i seç.
+  - name: fandom
+    label: Fandom
+    label_singular: Aportación
+    folder: src/data/fandom
+    extension: json
+    format: json
+    identifier_field: title
+    summary: "{{fields.title}} — {{fields.author}}{{#if fields.approved}} ✓{{/if}}"
+    sortable_fields: [approved, date, number]
+    create: true
+    slug: "f{{fields.number}}"
+    fields:
+      - { label: ID, name: id, widget: compute, value: "f{{fields.number}}" }
+      - { label: Sıra, name: number, widget: number, value_type: int, min: 1 }
+      - label: Tür
+        name: type
+        widget: select
+        options: ["Canción", "Fanfic", "Arte"]
+      - { label: Eserin adı, name: title, widget: string }
+      - { label: Yapan kişi, name: author, widget: string }
+      - { label: Bağlantı, name: url, widget: string, pattern: ['^https?://', "https:// ile başlamalı"] }
+      - { label: Not, name: note, widget: text, required: false }
+      - { label: Tarih, name: date, widget: date, format: "YYYY-MM-DD" }
+      # Bu kutu işaretlenmeden eser sitede GÖRÜNMEZ. Formdan gelenler
+      # her zaman işaretsiz gelir.
+      - { label: Yayında, name: approved, widget: boolean, default: false }
+
   # ── Quotes: each quote its own file under src/data/quotes/ ──
   - name: quotes
     label: Quotes
