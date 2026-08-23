@@ -2,13 +2,14 @@
   "id": "e410",
   "number": 410,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Marta",
+    "en": "No Marta"
   },
   "moods": [],
   "description": {
-    "es": "No Marta",
-    "en": "No Marta"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2025-10-08"
+  "airDate": "2025-10-08",
+  "noMafin": true
 }

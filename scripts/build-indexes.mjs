@@ -29,9 +29,15 @@ const quotes = readAll("src/data/quotes");
  * Yılda 366 gün var, yani her gün için cevap önceden hesaplanabilir.
  * Aynı ay-güne düşen bölümlerden EN ESKİSİ kazanır (en büyük yıldönümü).
  * Tarayıcı artık 616 kayıt taramıyor, tek anahtarla tabloya bakıyor. */
+/* `noMafin` işaretli bölümler bu tabloya GİRMEZ. Ana sayfadaki
+   "tal día como hoy" o günün Mafin anını kutluyor; Mafin'in geçmediği
+   bir bölümü oraya koymak amacına ters.
+   Rehberde duruyorlar — oradan silmek 96'dan 98'e atlamak olurdu. */
+const hasMafin = (e) => e.noMafin !== true;
+
 const days = {};
 for (const e of episodes) {
-  if (!e.airDate) continue;
+  if (!e.airDate || !hasMafin(e)) continue;
   const mmdd = e.airDate.slice(5);
   const prev = days[mmdd];
   if (!prev || e.airDate < prev.d) {

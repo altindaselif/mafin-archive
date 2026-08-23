@@ -2,13 +2,14 @@
   "id": "e327",
   "number": 327,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Mafin",
+    "en": "No Mafin"
   },
   "moods": [],
   "description": {
-    "es": "No Mafin",
-    "en": "No Mafin"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2025-06-12"
+  "airDate": "2025-06-12",
+  "noMafin": true
 }

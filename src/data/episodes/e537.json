@@ -2,13 +2,14 @@
   "id": "e537",
   "number": 537,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Marta",
+    "en": "No Marta"
   },
   "moods": [],
   "description": {
-    "es": "No Marta",
-    "en": "No Marta"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2026-04-10"
+  "airDate": "2026-04-10",
+  "noMafin": true
 }

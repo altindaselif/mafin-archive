@@ -77,6 +77,10 @@ collections:
         fields:
           - { label: Spanish, name: es, widget: text, required: false }
           - { label: English, name: en, widget: text, required: false }
+      # İşaretlenirse ana sayfadaki "tal día como hoy" bu bölümü atlar.
+      # Marta ve Fina'nın geçmediği bölümler için: başlığa "Sin Mafin"
+      # ya da "Sin Marta" yaz, açıklamayı boş bırak, bunu işaretle.
+      - { label: "Mafin yok", name: noMafin, widget: boolean, required: false, default: false }
       - label: Air date
         name: airDate
         widget: datetime

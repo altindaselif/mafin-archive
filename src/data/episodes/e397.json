@@ -2,13 +2,14 @@
   "id": "e397",
   "number": 397,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Mafin",
+    "en": "No Mafin"
   },
   "moods": [],
   "description": {
-    "es": "No Mafin",
-    "en": "No Mafin"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2025-09-19"
+  "airDate": "2025-09-19",
+  "noMafin": true
 }

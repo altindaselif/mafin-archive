@@ -2,13 +2,14 @@
   "id": "e530",
   "number": 530,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Marta",
+    "en": "No Marta"
   },
   "moods": [],
   "description": {
-    "es": "No Marta",
-    "en": "No Marta"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2026-03-31"
+  "airDate": "2026-03-31",
+  "noMafin": true
 }

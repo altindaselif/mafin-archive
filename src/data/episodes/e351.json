@@ -2,13 +2,14 @@
   "id": "e351",
   "number": 351,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Mafin",
+    "en": "No Mafin"
   },
   "moods": [],
   "description": {
-    "es": "No Mafin",
-    "en": "No Mafin"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2025-07-16"
+  "airDate": "2025-07-16",
+  "noMafin": true
 }

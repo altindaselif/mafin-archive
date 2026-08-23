@@ -34,9 +34,15 @@ export default function SeasonFilter({ seasons = [], activeSeason, onSeasonChang
             aria-pressed={season === activeSeason}
             onClick={() => onSeasonChange(season)}
           >
-            {/* Sezon kelimesi sabit genişlikte: dil değişince sekmeler
-                kaymasın. Rakam dilden bağımsız, dışarıda kalıyor. */}
-            <StableLabel field={COMMON.season} /> {toRoman(season)}
+            {/* Rakam da yuvanın İÇİNDE: sadece kelimeyi sabitleyince
+                "Season" kısa kalıp rakamla arasında boşluk açılıyordu.
+                Tam etiket üst üste binince genişlik sabit, boşluk yok. */}
+            <StableLabel
+              field={{
+                es: `${COMMON.season.es} ${toRoman(season)}`,
+                en: `${COMMON.season.en} ${toRoman(season)}`,
+              }}
+            />
           </button>
         </Fragment>
       ))}

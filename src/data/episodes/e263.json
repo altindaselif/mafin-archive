@@ -2,13 +2,14 @@
   "id": "e263",
   "number": 263,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Mafin",
+    "en": "No Mafin"
   },
   "moods": [],
   "description": {
-    "es": "No Mafin",
-    "en": "No Mafin"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2025-03-11"
+  "airDate": "2025-03-11",
+  "noMafin": true
 }

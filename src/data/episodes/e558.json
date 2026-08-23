@@ -2,13 +2,14 @@
   "id": "e558",
   "number": 558,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Mafin",
+    "en": "No Mafin"
   },
   "moods": [],
   "description": {
-    "es": "No Mafin",
-    "en": "No Mafin"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2026-05-12"
+  "airDate": "2026-05-12",
+  "noMafin": true
 }

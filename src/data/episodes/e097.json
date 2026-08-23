@@ -2,13 +2,14 @@
   "id": "e97",
   "number": 97,
   "title": {
-    "es": "",
-    "en": ""
+    "es": "Sin Mafin",
+    "en": "No Mafin"
   },
   "moods": [],
   "description": {
-    "es": "No Mafin",
-    "en": "No Mafin"
+    "es": "",
+    "en": ""
   },
-  "airDate": "2024-07-10"
+  "airDate": "2024-07-10",
+  "noMafin": true
 }
