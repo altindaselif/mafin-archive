@@ -314,19 +314,20 @@ Kopyalanan sabitler:
 
 > Bu maddeler koda değil, senin kararlarına bağlı: alan adı bütçesi, Fandom formunun akıbeti, sitenin kesin adresi. Yayına ~1 ay olduğu için sona bırakıldı. **Yayından önce hepsi kapanmalı.**
 
-### 1.4 R2 erişimi — plan değişti (23 Ağu)
-> **Artık alan adı gerektirmiyor.** Site Cloudflare'e taşındığı için R2 bucket'ları doğrudan Worker'a **binding** ile bağlanabilir; fotoğraf ve videolar `archivo.universomafin.workers.dev` üzerinden gelir, `pub-*.r2.dev` hiç devreye girmez. Kararsızlık da, hız sınırı da kalkar. Ücretsiz.
+### 1.4 R2 erişimi ✅ ÇÖZÜLDÜ (23 Ağu)
+> Eskiden tarayıcı medyayı doğrudan `pub-*.r2.dev` adresinden çekiyordu — Cloudflare'in geliştirme adresi: hız sınırlı, önbeleksiz, Türkiye'den kararsız. Aynı fotoğraf bazen açılıyor bazen açılmıyordu.
 >
-> Alan adı yine alınmalı ama artık **SEO ve isim için** (madde 1.8), medya erişimi için değil.
-> Site bu madde olmadan da yayına çıkabilir; bedeli `pub-*.r2.dev` adresinin rate-limit'li olması ve bazı TR operatörlerinde ara ara engellenmesi. Videolar bu yüzden zaman zaman açılmıyor.
->
-> **Ücretsiz alternatif:** site Cloudflare Pages'te barındırılıyorsa, R2 bucket'ı bir **binding** ile bağlanıp kendi `*.pages.dev` adresinden servis edilebilir (`site.pages.dev/media/...`). Alan adı satın almadan hem engel hem rate-limit çözülür. Kurulum işi var, para yok.
-> `src/config.js:11` ve `:20` — kendi yorumunda da yazıyor: `pub-*.r2.dev` URL'i Cloudflare tarafından rate-limit'li ve bazı TR ISP'lerinde bloklu.
+> **Alan adı gerekmedi.** Site Cloudflare'e taşınınca R2 kovaları doğrudan Worker'a bağlandı.
 
-- [ ] `videos.mafinarchive.com` (veya benzeri) custom domain'i bucket'a bağla
-- [ ] `src/config.js:11` → `VIDEO_BASE_URL` güncelle
-- [ ] `src/config.js:20` → `PHOTO_BASE_URL` güncelle
-- [ ] `src/config.js:29` → `PHOTO_RESIZE = true` yap
+- [x] `wrangler.jsonc` — `mafin-videos` ve `mafin-photos` binding olarak bağlandı
+- [x] `worker/index.js` — `/media/videos/*` ve `/media/photos/*` isteklerini R2'den karşılıyor
+- [x] Parça istekleri (`Range`) destekleniyor — video ileri sarma bunsuz çalışmaz
+- [x] Koşullu istekler (`If-None-Match`) → 304, tekrar indirme yok
+- [x] Bir haftalık önbellek + Cloudflare CDN devrede
+- [x] `config.js` göreli yola geçti (`/media/videos`, `/media/photos`) — alan adı gelince değiştirmeye gerek yok
+- [x] `Gallery.jsx` — CMS kayda tam R2 adresi yazıyor, dosya adı alınıp kendi yolumuza çevriliyor; örnek verilerdeki dış adresler bozulmuyor
+
+**Canlıda doğrulandı:** video 206 + `content-range`, fotoğraf 206 `image/png`, tekrar istekte 304 (0 byte).
 
 ### 1.5 Galeri thumbnail'leri ⏸ ERTELENDİ (1.4'e bağlı)
 > **CMS akışı doğrulandı (20 Ağu):** `media_libraries.default: false` ve `stock_assets: false` ile depo ve stok servisleri seçenek olmaktan çıkarıldı; yükleme artık yalnızca R2'ye gidiyor ve kayda tam R2 adresi yazılıyor. Alan bazında `media_library: cloudflare_r2` yazmak işe yaramamıştı — kapatılması gereken varsayılanın kendisiymiş.
