@@ -3,7 +3,7 @@ import styles from "./Fandom.module.css";
 import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import entries from "../../data/fandom.js";
-import { useLang } from "../../i18n.js";
+import { formatDate, useLang } from "../../i18n.js";
 import { TURNSTILE_ACTION, TURNSTILE_SITE_KEY } from "../../config.js";
 
 const L = {
@@ -12,13 +12,83 @@ const L = {
     es: "Canciones, fanfics y arte inspirados en Marta y Fina, creados por los fans que mantienen viva su historia. Cada aportación se revisa antes de aparecer aquí.",
     en: "Songs, fanfics and art inspired by Marta and Fina, made by the fans who keep their story alive. Every submission is reviewed before it appears here.",
   },
+
+  allWorks: { es: "Todas las obras", en: "All works" },
+  filterBy: { es: "Filtrar por sección", en: "Filter by section" },
+  work: { es: "obra", en: "work" },
+  works: { es: "obras", en: "works" },
+  by: { es: "por", en: "by" },
+  empty: {
+    es: "Todavía no hay aportaciones de este tipo. Quizá la primera sea la tuya.",
+    en: "No submissions of this kind yet. Perhaps the first one is yours.",
+  },
+
+  inviteLine: {
+    es: "¿Has creado algo inspirado en su historia?",
+    en: "Have you made something inspired by their story?",
+  },
+  donate: { es: "Donar al archivo", en: "Donate to the archive" },
+  formIntro: {
+    es: "El archivo acepta enlaces a obras publicadas: canciones, fanfics, arte. Nada se publica sin revisión.",
+    en: "The archive accepts links to published works: songs, fanfics, art. Nothing appears without review.",
+  },
+  received: { es: "Recibido", en: "Received" },
+  thanks: {
+    es: "Tu aportación espera la revisión del archivero. Si pasa a la colección, aparecerá en esta página con tu nombre.",
+    en: "Your submission is waiting for the archivist's review. If it joins the collection, it will appear on this page under your name.",
+  },
+
+  fieldType: { es: "Tipo", en: "Type" },
+  fieldTitle: { es: "Título de la obra", en: "Title of the work" },
+  fieldAuthor: { es: "Tu nombre o alias", en: "Your name or alias" },
+  fieldUrl: { es: "Enlace", en: "Link" },
+  fieldNote: { es: "Una línea sobre la obra", en: "One line about the work" },
+  optional: { es: "(opcional)", en: "(optional)" },
+  sending: { es: "Enviando…", en: "Sending…" },
+  send: { es: "Enviar a revisión", en: "Submit for review" },
+
+  errRequired: {
+    es: "Título, autor/a y un enlace válido (que empiece por https://) son necesarios.",
+    en: "Title, author and a valid link (starting with https://) are required.",
+  },
+  errCaptchaPending: {
+    es: "Completa la verificación antes de enviar.",
+    en: "Complete the verification before sending.",
+  },
+  errCaptchaLoad: {
+    es: "No se ha podido cargar la verificación.",
+    en: "The verification could not be loaded.",
+  },
+  errVerification: {
+    es: "La verificación no se ha superado. Inténtalo de nuevo.",
+    en: "The verification did not pass. Please try again.",
+  },
+  errSend: {
+    es: "No se ha podido enviar. Comprueba la conexión e inténtalo de nuevo.",
+    en: "It could not be sent. Check your connection and try again.",
+  },
 };
 
+/*
+ * Tür DEĞERLERİ İspanyolca kalıyor: veri dosyalarında böyle saklanıyor,
+ * worker gelen gönderimi bu kümeye karşı doğruluyor ve CMS'te de böyle
+ * görünüyorlar. Çevrilen yalnızca ekranda görünen etiket — yoksa dil
+ * değiştiren biri, kayıtlarla eşleşmeyen bir değer göndermiş olurdu.
+ */
 const TYPES = ["Canción", "Fanfic", "Arte"];
-const VERB = { Canción: "Escuchar", Fanfic: "Leer", Arte: "Ver" };
+const TYPE_LABEL = {
+  Canción: { es: "Canción", en: "Song" },
+  Fanfic: { es: "Fanfic", en: "Fanfic" },
+  Arte: { es: "Arte", en: "Art" },
+};
+const VERB = {
+  Canción: { es: "Escuchar", en: "Listen" },
+  Fanfic: { es: "Leer", en: "Read" },
+  Arte: { es: "Ver", en: "View" },
+};
 
-const formatDate = (iso) =>
-  new Date(iso).toLocaleDateString("es-ES", { month: "long", year: "numeric" });
+/* Bu sayfada tarih gün göstermiyor — "agosto de 2026" yeterli. */
+const MONTH_YEAR = { month: "long", year: "numeric" };
 
 /*
  * Turnstile betiğini yalnızca form açıldığında yüklüyoruz. Sayfa
@@ -66,12 +136,14 @@ const EMPTY_FORM = {
 };
 
 export default function Fandom() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [activeType, setActiveType] = useState(null); // null = todas las obras
   const [formOpen, setFormOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState(EMPTY_FORM);
-  const [error, setError] = useState("");
+  /* Metni değil sözlük girdisini tutuyoruz: kullanıcı hata ekrandayken
+     dili değiştirirse mesaj da onunla birlikte çevrilsin. */
+  const [error, setError] = useState(null);
   const [sending, setSending] = useState(false);
   const captchaRef = useRef(null);   // widget'ın çizileceği kutu
   const widgetId = useRef(null);     // sıfırlamak için kimliği
@@ -102,7 +174,7 @@ export default function Fandom() {
         setCaptchaReady(true);
       })
       .catch(() => {
-        if (!cancelled) setError("No se ha podido cargar la verificación.");
+        if (!cancelled) setError(L.errCaptchaLoad);
       });
 
     return () => {
@@ -133,9 +205,7 @@ export default function Fandom() {
       !form.author.trim() ||
       !/^https?:\/\//i.test(form.url.trim())
     ) {
-      setError(
-        "Título, autor/a y un enlace válido (que empiece por https://) son necesarios.",
-      );
+      setError(L.errRequired);
       return;
     }
 
@@ -144,11 +214,11 @@ export default function Fandom() {
         ? window.turnstile?.getResponse(widgetId.current)
         : null;
     if (!token) {
-      setError("Completa la verificación antes de enviar.");
+      setError(L.errCaptchaPending);
       return;
     }
 
-    setError("");
+    setError(null);
     setSending(true);
     try {
       const res = await fetch("/api/fandom", {
@@ -160,11 +230,7 @@ export default function Fandom() {
       if (!res.ok || !data.ok) throw new Error(data.error ?? "error");
       setSubmitted(true);
     } catch (err) {
-      setError(
-        err.message === "verification"
-          ? "La verificación no se ha superado. Inténtalo de nuevo."
-          : "No se ha podido enviar. Comprueba la conexión e inténtalo de nuevo.",
-      );
+      setError(err.message === "verification" ? L.errVerification : L.errSend);
       /* Jetonlar tek kullanımlık: başarısız denemeden sonra widget'ı
          sıfırlamazsak ikinci deneme aynı jetonla gider ve reddedilir. */
       if (widgetId.current !== null) window.turnstile?.reset(widgetId.current);
@@ -176,7 +242,7 @@ export default function Fandom() {
   const closeForm = () => {
     setFormOpen(false);
     setSubmitted(false);
-    setError("");
+    setError(null);
     setSending(false);
     setForm(EMPTY_FORM);
   };
@@ -191,13 +257,14 @@ export default function Fandom() {
 
       <div className={styles.sectionHeader}>
         <SectionTabs
-          allLabel="Todas las obras"
-          sections={TYPES}
+          allLabel={t(L.allWorks)}
+          ariaLabel={t(L.filterBy)}
+          sections={TYPES.map((v) => ({ value: v, label: t(TYPE_LABEL[v]) }))}
           active={activeType}
           onChange={setActiveType}
         />
         <span className={styles.count} aria-live="polite">
-          {visible.length} {visible.length === 1 ? "obra" : "obras"}
+          {visible.length} {t(visible.length === 1 ? L.work : L.works)}
         </span>
       </div>
 
@@ -211,20 +278,24 @@ export default function Fandom() {
               rel="noopener noreferrer"
             >
               <div className={styles.rowMeta}>
-                <span className={styles.type}>{entry.type}</span>
+                <span className={styles.type}>
+                  {t(TYPE_LABEL[entry.type] ?? { es: entry.type, en: entry.type })}
+                </span>
                 <time className={styles.date} dateTime={entry.date}>
-                  {formatDate(entry.date)}
+                  {formatDate(entry.date, lang, MONTH_YEAR)}
                 </time>
               </div>
               <div className={styles.rowBody}>
                 <h2 className={styles.workTitle}>{entry.title}</h2>
                 <p className={styles.byline}>
-                  <em>por {entry.author}</em>
+                  <em>
+                    {t(L.by)} {entry.author}
+                  </em>
                   {entry.note && <> — &laquo;{entry.note}&raquo;</>}
                 </p>
               </div>
               <span className={styles.verb}>
-                {VERB[entry.type] ?? "Ver"}
+                {t(VERB[entry.type] ?? VERB.Arte)}
                 <svg
                   width="12"
                   height="12"
@@ -247,61 +318,50 @@ export default function Fandom() {
       </ul>
 
       {visible.length === 0 && (
-        <p className={styles.empty}>
-          Todavía no hay aportaciones de este tipo. Quizá la primera sea la
-          tuya.
-        </p>
+        <p className={styles.empty}>{t(L.empty)}</p>
       )}
 
       {/* ── Invitation ── */}
       <section className={styles.invite}>
-        <p className={styles.inviteLine}>
-          ¿Has creado algo inspirado en su historia?
-        </p>
+        <p className={styles.inviteLine}>{t(L.inviteLine)}</p>
         <button
           className={styles.inviteButton}
           onClick={() => setFormOpen(true)}
         >
-          Donar al archivo
+          {t(L.donate)}
         </button>
       </section>
 
       {/* ── Donation form ── */}
-      <Modal open={formOpen} onClose={closeForm} label="Donar al archivo">
+      <Modal open={formOpen} onClose={closeForm} label={t(L.donate)}>
         {submitted ? (
           <div className={styles.thanks}>
             <span className={styles.thanksLozenge} aria-hidden="true" />
-            <h2 className={styles.formTitle}>Recibido</h2>
-            <p className={styles.thanksText}>
-              Tu aportación espera la revisión del archivero. Si pasa a la
-              colección, aparecerá en esta página con tu nombre.
-            </p>
+            <h2 className={styles.formTitle}>{t(L.received)}</h2>
+            <p className={styles.thanksText}>{t(L.thanks)}</p>
           </div>
         ) : (
           <div className={styles.form}>
-            <h2 className={styles.formTitle}>Donar al archivo</h2>
-            <p className={styles.formIntro}>
-              El archivo acepta enlaces a obras publicadas: canciones, fanfics,
-              arte. Nada se publica sin revisión.
-            </p>
+            <h2 className={styles.formTitle}>{t(L.donate)}</h2>
+            <p className={styles.formIntro}>{t(L.formIntro)}</p>
 
             <label className={styles.field}>
-              <span className={styles.label}>Tipo</span>
+              <span className={styles.label}>{t(L.fieldType)}</span>
               <select
                 className={styles.select}
                 value={form.type}
                 onChange={setField("type")}
               >
-                {TYPES.map((t) => (
-                  <option key={t} value={t}>
-                    {t}
+                {TYPES.map((value) => (
+                  <option key={value} value={value}>
+                    {t(TYPE_LABEL[value])}
                   </option>
                 ))}
               </select>
             </label>
 
             <label className={styles.field}>
-              <span className={styles.label}>Título de la obra</span>
+              <span className={styles.label}>{t(L.fieldTitle)}</span>
               <input
                 className={styles.input}
                 type="text"
@@ -311,7 +371,7 @@ export default function Fandom() {
             </label>
 
             <label className={styles.field}>
-              <span className={styles.label}>Tu nombre o alias</span>
+              <span className={styles.label}>{t(L.fieldAuthor)}</span>
               <input
                 className={styles.input}
                 type="text"
@@ -321,7 +381,7 @@ export default function Fandom() {
             </label>
 
             <label className={styles.field}>
-              <span className={styles.label}>Enlace</span>
+              <span className={styles.label}>{t(L.fieldUrl)}</span>
               <input
                 className={styles.input}
                 type="url"
@@ -333,7 +393,7 @@ export default function Fandom() {
 
             <label className={styles.field}>
               <span className={styles.label}>
-                Una línea sobre la obra <em>(opcional)</em>
+                {t(L.fieldNote)} <em>{t(L.optional)}</em>
               </span>
               <textarea
                 className={styles.textarea}
@@ -362,7 +422,7 @@ export default function Fandom() {
 
             {error && (
               <p className={styles.error} role="alert">
-                {error}
+                {t(error)}
               </p>
             )}
 
@@ -371,7 +431,7 @@ export default function Fandom() {
               onClick={submit}
               disabled={sending || !captchaReady}
             >
-              {sending ? "Enviando…" : "Enviar a revisión"}
+              {sending ? t(L.sending) : t(L.send)}
             </button>
           </div>
         )}

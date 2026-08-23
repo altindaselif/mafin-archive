@@ -252,7 +252,7 @@ Kopyalanan sabitler:
 ### 3.4 "Load more" bloğu iki kez ✅ ÇÖZÜLDÜ (20 Ağu)
 - [x] `components/LoadMore/` — düğme, sayaç ve iki çeviri (`Cargar más` / `restantes`) artık tek yerde. Gösterilecek bir şey kalmadıysa kendini çizmiyor, sayfaların ayrıca koşul yazmasına gerek yok
 
-### 3.5 `DATE_LOCALE` + tarih formatlama 4 yerde ✅ ÇÖZÜLDÜ (20 Ağu)
+### 3.5 `DATE_LOCALE` + tarih formatlama 4 yerde ✅ ÇÖZÜLDÜ (20 Ağu, Fandom 24 Ağu'da eklendi)
 - [x] `Episodes.jsx`, `Actors.jsx`, `Press.jsx` ortak `formatDate()` kullanıyor
 - [ ] `Fandom.jsx` — Fandom işiyle birlikte (1.7), o sayfa ertelendi
 - [x] `i18n.js`'e `formatDate(iso, lang, opts)` eklendi
@@ -364,11 +364,15 @@ Kopyalanan sabitler:
 - [x] Tarayıcıda doğrulandı: eski kodda 5 alanın hepsinde odak `BUTTON[Cerrar]`'a atlıyor, yenisinde alanda kalıyor
 - [x] Escape, kaydırma kilidi, açılışta odağın modala girmesi — üçü de bozulmadı
 
-### 1.7 Fandom sayfası tamamen İspanyolca hardcoded ⏸ ERTELENDİ (1.6 ile birlikte — form kalkarsa metinleri de değişir)
-> `L` sözlüğü sadece başlık/altbaşlık için var. "Todas las obras", "obra/obras", "Donar al archivo", tüm form etiketleri, hata mesajı (`:63`), teşekkür metni — hepsi düz string. İngilizce'ye geçen kullanıcı bu sayfada tamamen İspanyolca içerik görüyor.
+### 1.7 Fandom sayfası tamamen İspanyolca hardcoded ✅ ÇÖZÜLDÜ (24 Ağu)
+> `L` sözlüğü sadece başlık/altbaşlık için vardı. Artık sayfadaki her arayüz metni çevrili.
 
-- [ ] `src/pages/Fandom/Fandom.jsx` — tüm stringleri `L` sözlüğüne taşı
-- [ ] `Fandom.jsx:19` `formatDate` — `lang` parametresi almıyor, hep `es-ES`
+- [x] Tüm stringler `L` sözlüğünde: sekmeler, sayaç (tekil/çoğul), "por/by", eylem kelimeleri, boş liste, davet, formun tamamı, teşekkür ekranı, 5 hata mesajı
+- [x] Tür etiketleri çevrili ama **değerler İspanyolca sabit** — veri, CMS ve worker'ın doğruladığı küme bunlar. Seçim kutusu "Song" gösterip `Canción` gönderiyor
+- [x] `SectionTabs` artık `{value, label}` alabiliyor (eskiden etiket = değer sayılıyordu); `aria-label` de çevrilebilir
+- [x] Hata durumu metni değil sözlük girdisini tutuyor — hata ekrandayken dil değişirse mesaj da çevriliyor
+- [x] `TYPES.map((t) => …)` çeviri fonksiyonu `t`'yi gölgeliyordu; `value` olarak yeniden adlandırıldı
+- [x] Tarayıcıda doğrulandı: iki dilde metinler, filtre değerleri, tekil/çoğul, seçim kutusu değerleri, canlı dil değişimi
 
 ### 1.8 SEO / paylaşım meta etiketleri ⏸ ERTELENDİ (alan adı belli değil)
 > `og:url`, `og:image` ve `sitemap.xml` sitenin kesin adresini gerektiriyor. Sayfa başlıkları ve `robots.txt` adres olmadan da yapılabilir ama bölmeye değmez — alan adı netleşince hepsi birden.

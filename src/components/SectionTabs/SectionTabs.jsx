@@ -9,13 +9,27 @@ import styles from "./SectionTabs.module.css";
  * If a third tab-like use case appears, unify the two into one
  * generic component; until then two small files beat one clever one.
  */
-export default function SectionTabs({ allLabel = "Todo", sections = [], active, onChange }) {
-  const items = [{ value: null, label: allLabel }, ...sections.map((s) => ({ value: s, label: s }))];
+export default function SectionTabs({
+  allLabel = "Todo",
+  ariaLabel = "Filtrar por sección",
+  sections = [],
+  active,
+  onChange,
+}) {
+  /*
+   * `sections` ya düz string dizisi ya da {value, label} nesneleri.
+   * İkisi ayrı olmalı: Fandom'da tür DEĞERİ veride İspanyolca sabit
+   * ("Canción"), görünen etiket ise dile göre değişiyor ("Song").
+   */
+  const items = [
+    { value: null, label: allLabel },
+    ...sections.map((s) => (typeof s === "string" ? { value: s, label: s } : s)),
+  ];
 
   return (
-    <nav className={styles.tabs} aria-label="Filtrar por sección">
+    <nav className={styles.tabs} aria-label={ariaLabel}>
       {items.map((item, i) => (
-        <Fragment key={item.label}>
+        <Fragment key={String(item.value)}>
           {i > 0 && (
             <span className={styles.dot} aria-hidden="true">·</span>
           )}
