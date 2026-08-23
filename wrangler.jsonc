@@ -2,27 +2,37 @@
   // Cloudflare Workers yapılandırması.
   //
   // Cloudflare yeni projeleri Pages yerine Workers üzerinden açıyor; Workers
-  // artık statik dosya da servis ediyor. Bu dosya olmadan panel neyi nereden
-  // yayınlayacağını bilemez.
-  //
-  // Netlify hâlâ paralel çalışıyor ve public/_redirects dosyasını okuyor —
-  // o dosyaya dokunmuyoruz. Workers tarafında aynı işi aşağıdaki
-  // "not_found_handling" görüyor.
+  // hem statik dosya servis ediyor hem kod çalıştırıyor. Bu dosya olmadan
+  // panel neyi nereden yayınlayacağını bilemez.
 
   "name": "archivo",
   "compatibility_date": "2025-08-01",
+
+  // Medya isteklerini karşılayan kod. Statik dosyalar buraya uğramıyor —
+  // yalnızca eşleşmeyen yollar (/media/* ve sayfa adresleri) geliyor.
+  "main": "worker/index.js",
 
   "assets": {
     // vite build çıktısı
     "directory": "./dist",
 
+    // Worker'ın statik dosyalara erişimi: env.ASSETS.fetch(request)
+    "binding": "ASSETS",
+
     // Tek sayfa uygulaması: /guide, /videos gibi adresler diskte dosya
     // olarak yok, hepsini React Router çözüyor. Bu ayar bilinmeyen yolları
-    // index.html'e yönlendiriyor — Netlify'daki "/* /index.html 200"
-    // kuralının Workers karşılığı.
+    // index.html'e yönlendiriyor.
     //
     // Not: 404 sayfamız React tarafında (<Route path="*">), yani gerçekten
     // olmayan bir adres yine bizim künyemizi gösteriyor.
     "not_found_handling": "single-page-application"
-  }
+  },
+
+  // R2 kovaları doğrudan bağlanıyor: medya artık pub-*.r2.dev üzerinden
+  // değil, sitenin kendi adresinden geliyor. O adres hız sınırlıydı,
+  // önbeleksizdi ve Türkiye'den kararsız çalışıyordu.
+  "r2_buckets": [
+    { "binding": "VIDEOS", "bucket_name": "mafin-videos" },
+    { "binding": "PHOTOS", "bucket_name": "mafin-photos" }
+  ]
 }

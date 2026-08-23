@@ -31,12 +31,18 @@ const L = {
   open: { es: "Ampliar la fotografía", en: "Open the photograph" },
 };
 
-/* Stored value may be a bare file name or an absolute URL; only bare names
-   get the R2 base prepended. */
-const absUrl = (p) =>
-  /^https?:\/\//i.test(p)
-    ? p
-    : `${PHOTO_BASE_URL}/${String(p).replace(/^\/+/, "")}`;
+/* CMS fotoğrafı yüklerken kayda TAM R2 adresini yazıyor
+   (https://pub-*.r2.dev/foto.png). O adres artık kullanılmıyor — dosya adını
+   alıp kendi /media/photos yolumuza çeviriyoruz.
+   Başka bir sunucudaki adresler (örnek veriler) olduğu gibi kalıyor. */
+const absUrl = (p) => {
+  const s = String(p);
+  if (/^https?:\/\//i.test(s)) {
+    const own = s.match(/^https?:\/\/[^/]*r2\.dev\/(.+)$/i);
+    return own ? `${PHOTO_BASE_URL}/${own[1]}` : s;
+  }
+  return `${PHOTO_BASE_URL}/${s.replace(/^\/+/, "")}`;
+};
 
 /* Full original by default. Pass a width to get a resized thumbnail — only
    applied when PHOTO_RESIZE is on; otherwise the original is served as-is,
