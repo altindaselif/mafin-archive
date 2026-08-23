@@ -407,8 +407,6 @@ Hepsi `--go` verilmeden **kuru çalışır**, hiçbir şeyi değiştirmez.
 | script | ne yapar |
 |---|---|
 | `scripts/make-posters.sh` | Kliplerden poster üretir (yeni klip eklendiğinde tekrar çalıştır) |
-| `scripts/r2-rename-scenes.sh` | R2'de `ep-5.mp4` → `scene-ep5.mp4` (bir kez çalıştırıldı, arşiv) |
-| `scripts/r2-move-scenes.sh` | R2'de sahneleri `scenes/` altına taşır (bir kez çalıştırıldı, arşiv) |
 | `scripts/r2-upload-timeline.sh` | Timeline kliplerini `timeline/` altına yükler (yeni klip eklendiğinde tekrar) |
 
 > Hepsi hedef listeyi `videos.json` / timeline JSON'larından okur — elle liste tutulmaz, kod neye bakıyorsa bucket ona dönüşür.
