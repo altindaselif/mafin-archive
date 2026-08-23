@@ -308,7 +308,7 @@ Kopyalanan sabitler:
 
 > **Tuzak, ileride lazım olur:** Cloudflare panelinde Worker değişkeni eklemek yeni bir *sürüm* oluşturuyor ama onu yayına almıyor. Çalışan Worker eski sürümde kaldığı için değişkenler görünmüyor. Çözüm: `npx wrangler versions deploy <sürüm-id> --name <worker>`.
 
-- [ ] Netlify tamamen kapatılınca `netlify.toml` silinebilir
+- [x] Netlify projesi silindi, `netlify.toml` da kaldırıldı — site tek yerden yayınlanıyor
 
 ## ⏸ BEKLEMEDE — dış karara bağlı (yayın öncesi yapılacak)
 
