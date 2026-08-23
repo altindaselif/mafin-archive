@@ -30,18 +30,23 @@ const formatDate = (iso) =>
  * kullanımlık; modal açık kaldığı için ikinci deneme aynı jetonla
  * gelirse sunucu reddeder).
  */
+/* Turnstile API'sinin hazır olduğunu haber verecek genel fonksiyonun adı.
+   Betiğin kendi `onload`'u YETMİYOR: `api.js?render=explicit` bir
+   yükleyici, kendi onload'u tetiklendiğinde `window.turnstile` henüz
+   atanmamış oluyor. Cloudflare bunun için `onload=` parametresini
+   tanımlıyor — asıl API hazır olunca burayı çağırıyor. */
+const TURNSTILE_READY = "__mafinTurnstileReady";
 const TURNSTILE_SRC =
-  "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+  `https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=${TURNSTILE_READY}`;
 
 let turnstileLoader = null;
 function loadTurnstile() {
   if (window.turnstile) return Promise.resolve();
   turnstileLoader ??= new Promise((resolve, reject) => {
+    window[TURNSTILE_READY] = resolve;
     const el = document.createElement("script");
     el.src = TURNSTILE_SRC;
     el.async = true;
-    el.defer = true;
-    el.onload = resolve;
     el.onerror = () => {
       turnstileLoader = null; // sonraki açılışta yeniden denensin
       reject(new Error("turnstile"));

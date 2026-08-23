@@ -349,6 +349,10 @@ Kopyalanan sabitler:
 - [x] `TURNSTILE_HOSTNAMES` canlıda `localhost` içermiyor — yoksa yerelden alınan jeton canlıda geçerdi
 - [x] Sunucu tarafı sınırlar: başlık/yazar zorunlu, uzunluk sınırları, sadece `http(s)` bağlantı (`javascript:` reddediliyor)
 - [x] Secret'lar Worker'da (`GITHUB_TOKEN`, `TURNSTILE_SECRET`) — istemci paketinde izi yok, `dist/` tarandı
+- [x] Betik yüklemesi Cloudflare'in `onload=` geri çağırmasını kullanıyor — betiğin kendi `onload`'u API'nin hazır olduğunu garanti etmiyor
+- [x] Canlıda doğrulandı: GET→405, jetonsuz→403, sahte jeton→403, honeypot→sessiz; hiçbirinde depoya yazılmadı
+- [x] Canlıda doğrulandı: `localhost`'ta üretilmiş **geçerli** jeton canlı sunucuda 403 — alan adı sabitlemesi çalışıyor
+- [ ] Kalan tek adım: canlı sitede gerçek bir gönderim yapıp CMS'te "onay bekliyor" olarak görmek (widget'ı çözmek gerektiği için elle)
 
 ### 1.6b Modal'da her tuş vuruşunda odak kapatma düğmesine kaçıyordu ✅ ÇÖZÜLDÜ (24 Ağu)
 > `Modal`'ın odak efekti `onClose`'a bağlıydı. `Fandom` ve `Vídeos` bu prop'u her render'da yeniden oluşturuyordu, yani her harfte efekt yeniden çalışıp odağı ilk elemana — kapatma düğmesine — atıyordu. Form pratikte doldurulamıyordu.
