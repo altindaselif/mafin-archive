@@ -339,10 +339,23 @@ Kopyalanan sabitler:
 - [ ] 1.4 tamamlandıktan sonra `PHOTO_RESIZE = true` ile gerçek bir albümde test et
 - [ ] `src/data/gallery/*.json` — `_sample: true` işaretli üç sahte kayıt (`g069`, `g093`, `g363`, fotoğrafları picsum.photos'tan). **Bilinçli olarak bırakıldı** — gerçek fotoğraflar eklenirken yerlerini alacaklar. Yayından önce mutlaka gitmeli, yoksa ziyaretçi rastgele stok resimleri bölüm fotoğrafı sanır
 
-### 1.6 Fandom formu hiçbir yere veri göndermiyor ⏸ ERTELENDİ (en sona)
-> `src/pages/Fandom/Fandom.jsx:68` TODO. Kullanıcıya *"Recibido — Tu aportación espera la revisión del archivero"* diyor ama veri hiçbir yere gitmiyor. Yayına böyle çıkarsa insanlara yalan söylemiş oluyorsun.
+### 1.6 Fandom formu hiçbir yere veri göndermiyor ✅ ÇÖZÜLDÜ (24 Ağu)
+> Artık gerçekten çalışıyor: form → `/api/fandom` (Worker) → doğrulama → depoya `approved: false` olarak JSON yazılıyor → CMS'te onay bekliyor görünüyor. Onaylanana kadar sitede çıkmıyor.
 
-- [ ] Ya Supabase'i bağla, ya butonu "yakında" yap, ya da bir e-posta/form servisine (Formspree vb.) yönlendir
+- [x] `worker/fandom.js` — arka uç: doğrulama, GitHub Contents API ile yazma, numara çakışmasında yeniden deneme
+- [x] Honeypot (`website` alanı) — dolduran bot sessizce yutuluyor
+- [x] Turnstile — jeton Cloudflare'e doğrulatılıyor: geçerli mi, `fandom-donation` eylemi mi, izinli sayfadan mı
+- [x] Ağ hatasında reddet (fail closed) — doğrulanamayan istek geçmiyor
+- [x] `TURNSTILE_HOSTNAMES` canlıda `localhost` içermiyor — yoksa yerelden alınan jeton canlıda geçerdi
+- [x] Sunucu tarafı sınırlar: başlık/yazar zorunlu, uzunluk sınırları, sadece `http(s)` bağlantı (`javascript:` reddediliyor)
+- [x] Secret'lar Worker'da (`GITHUB_TOKEN`, `TURNSTILE_SECRET`) — istemci paketinde izi yok, `dist/` tarandı
+
+### 1.6b Modal'da her tuş vuruşunda odak kapatma düğmesine kaçıyordu ✅ ÇÖZÜLDÜ (24 Ağu)
+> `Modal`'ın odak efekti `onClose`'a bağlıydı. `Fandom` ve `Vídeos` bu prop'u her render'da yeniden oluşturuyordu, yani her harfte efekt yeniden çalışıp odağı ilk elemana — kapatma düğmesine — atıyordu. Form pratikte doldurulamıyordu.
+
+- [x] `Modal.jsx` — `onClose` ref'te tutuluyor, efekt yalnızca `open`e bağlı
+- [x] Tarayıcıda doğrulandı: eski kodda 5 alanın hepsinde odak `BUTTON[Cerrar]`'a atlıyor, yenisinde alanda kalıyor
+- [x] Escape, kaydırma kilidi, açılışta odağın modala girmesi — üçü de bozulmadı
 
 ### 1.7 Fandom sayfası tamamen İspanyolca hardcoded ⏸ ERTELENDİ (1.6 ile birlikte — form kalkarsa metinleri de değişir)
 > `L` sözlüğü sadece başlık/altbaşlık için var. "Todas las obras", "obra/obras", "Donar al archivo", tüm form etiketleri, hata mesajı (`:63`), teşekkür metni — hepsi düz string. İngilizce'ye geçen kullanıcı bu sayfada tamamen İspanyolca içerik görüyor.

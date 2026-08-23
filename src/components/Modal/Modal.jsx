@@ -24,6 +24,21 @@ export default function Modal({ open, onClose, wide = false, label, children }) 
   const panelRef = useRef(null);
   const openerRef = useRef(null);
 
+  /*
+   * `onClose` çoğu çağrı yerinde satır içi tanımlanıyor, yani her
+   * render'da YENİ bir fonksiyon. Aşağıdaki efekt ona bağlı olsaydı her
+   * render'da yeniden çalışır ve odağı ilk elemana — kapatma düğmesine —
+   * geri atardı. Formda her harfe basışta odak kaçıyordu.
+   *
+   * Referansı ref'te tutup efekti yalnızca `open`e bağlıyoruz: dinleyici
+   * hep güncel fonksiyonu çağırıyor ama efekt sadece açılış/kapanışta
+   * çalışıyor.
+   */
+  const closeRef = useRef(onClose);
+  useEffect(() => {
+    closeRef.current = onClose;
+  });
+
   useEffect(() => {
     if (!open) return;
 
@@ -38,7 +53,7 @@ export default function Modal({ open, onClose, wide = false, label, children }) 
 
     const onKey = (e) => {
       if (e.key === "Escape") {
-        onClose();
+        closeRef.current();
         return;
       }
       if (e.key !== "Tab") return;
@@ -70,7 +85,7 @@ export default function Modal({ open, onClose, wide = false, label, children }) 
       // Odağı açan elemana iade et (hâlâ sayfadaysa)
       openerRef.current?.focus?.();
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
