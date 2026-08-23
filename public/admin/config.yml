@@ -5,6 +5,14 @@ backend:
   name: github
   repo: altindaselif/mafin-archive
   branch: main
+  # GitHub girişi için kendi kimlik doğrulama aracımız.
+  #
+  # Sveltia varsayılan olarak Netlify'ın OAuth servisini kullanıyor; site
+  # Netlify'dan Cloudflare Workers'a taşınınca o servis siteyi tanımayıp
+  # "Not Found" vermeye başladı. Bu adres kendi hesabımızdaki
+  # sveltia-cms-auth Worker'ı — GitHub OAuth uygulamasının kimlik
+  # bilgileri orada şifreli duruyor, burada değil.
+  base_url: https://sveltia-cms-auth.universomafin.workers.dev
 
 # Where images live (galleries, posters, actress photos)
 media_folder: public/img
