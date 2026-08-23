@@ -138,6 +138,23 @@ async function writeEntry(token, number, record) {
   return gh(`/contents/${REPO.dir}/${name}`, token, { method: "PUT", body });
 }
 
+/*
+ * Arşivin tarihi Madrid saatine göre. Gönderim dünyanın neresinden
+ * gelirse gelsin aynı saate göre damgalanıyor — yoksa aynı dakikada
+ * gelen iki eser farklı günlere düşerdi.
+ *
+ * Sabit bir +1/+2 yerine `Intl`: İspanya yazın UTC+2, kışın UTC+1 ve
+ * bu geçişi Intl kendisi biliyor. "en-CA" biçimi YYYY-MM-DD veriyor.
+ */
+function archiveDate() {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Europe/Madrid",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(new Date());
+}
+
 function json(payload, status = 200) {
   return new Response(JSON.stringify(payload), {
     status,
@@ -205,7 +222,7 @@ export async function handleFandom(request, env) {
       number,
       id: `f${number}`,
       ...record,
-      date: new Date().toISOString().slice(0, 10),
+      date: archiveDate(),
       approved: false, // arşivci onaylayana kadar sitede görünmez
     };
     const res = await writeEntry(token, number, full);

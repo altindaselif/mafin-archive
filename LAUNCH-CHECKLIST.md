@@ -352,7 +352,10 @@ Kopyalanan sabitler:
 - [x] Betik yüklemesi Cloudflare'in `onload=` geri çağırmasını kullanıyor — betiğin kendi `onload`'u API'nin hazır olduğunu garanti etmiyor
 - [x] Canlıda doğrulandı: GET→405, jetonsuz→403, sahte jeton→403, honeypot→sessiz; hiçbirinde depoya yazılmadı
 - [x] Canlıda doğrulandı: `localhost`'ta üretilmiş **geçerli** jeton canlı sunucuda 403 — alan adı sabitlemesi çalışıyor
-- [ ] Kalan tek adım: canlı sitede gerçek bir gönderim yapıp CMS'te "onay bekliyor" olarak görmek (widget'ı çözmek gerektiği için elle)
+- [x] Uçtan uca doğrulandı (24 Ağu): gerçek gönderim → Worker `approved: false` yazdı → CMS'te göründü → onaylandı → sitede çıktı
+- [x] Otomatik deploy çalışıyor — Cloudflare Workers Builds depoya bağlı (ayar panelde, depoda değil). Onay verince site kendini güncelliyor
+- [ ] **Yayın öncesi sil:** `f06` (test kaydı, `elif.com`) + `_sample` işaretli f01–f05 + galeri g069/g093/g363
+- [x] Worker tarihi Madrid saatine göre yazıyor (`Intl`, yaz/kış geçişi dahil) — gönderim nereden gelirse gelsin aynı saate göre damgalanıyor
 
 ### 1.6b Modal'da her tuş vuruşunda odak kapatma düğmesine kaçıyordu ✅ ÇÖZÜLDÜ (24 Ağu)
 > `Modal`'ın odak efekti `onClose`'a bağlıydı. `Fandom` ve `Vídeos` bu prop'u her render'da yeniden oluşturuyordu, yani her harfte efekt yeniden çalışıp odağı ilk elemana — kapatma düğmesine — atıyordu. Form pratikte doldurulamıyordu.
