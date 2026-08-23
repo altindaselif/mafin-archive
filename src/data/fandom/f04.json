@@ -7,6 +7,6 @@
   "url": "https://example.com/cancion-siete",
   "note": "Guitarra y voz, grabada en una sola toma.",
   "date": "2026-05-08",
-  "approved": false,
+  "approved": true,
   "_sample": true
 }
