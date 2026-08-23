@@ -1,0 +1,28 @@
+{
+  // Cloudflare Workers yapılandırması.
+  //
+  // Cloudflare yeni projeleri Pages yerine Workers üzerinden açıyor; Workers
+  // artık statik dosya da servis ediyor. Bu dosya olmadan panel neyi nereden
+  // yayınlayacağını bilemez.
+  //
+  // Netlify hâlâ paralel çalışıyor ve public/_redirects dosyasını okuyor —
+  // o dosyaya dokunmuyoruz. Workers tarafında aynı işi aşağıdaki
+  // "not_found_handling" görüyor.
+
+  "name": "mafin-archive",
+  "compatibility_date": "2025-08-01",
+
+  "assets": {
+    // vite build çıktısı
+    "directory": "./dist",
+
+    // Tek sayfa uygulaması: /guide, /videos gibi adresler diskte dosya
+    // olarak yok, hepsini React Router çözüyor. Bu ayar bilinmeyen yolları
+    // index.html'e yönlendiriyor — Netlify'daki "/* /index.html 200"
+    // kuralının Workers karşılığı.
+    //
+    // Not: 404 sayfamız React tarafında (<Route path="*">), yani gerçekten
+    // olmayan bir adres yine bizim künyemizi gösteriyor.
+    "not_found_handling": "single-page-application"
+  }
+}
