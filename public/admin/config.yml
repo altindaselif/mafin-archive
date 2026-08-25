@@ -92,7 +92,8 @@ collections:
       - label: Air date
         name: airDate
         widget: datetime
-        date_format: YYYY-MM-DD
+        format: YYYY-MM-DD
+        date_format: DD/MM/YYYY
         time_format: false
         required: false
 
@@ -131,7 +132,7 @@ collections:
     extension: json
     format: json
     identifier_field: title
-    summary: "{{fields.title}} — {{fields.author}}{{#if fields.approved}} ✓{{/if}}"
+    summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.title}} — {{fields.author}}{{#if fields.approved}} ✓{{/if}}"
     sortable_fields: [approved, date, number]
     create: true
     slug: "f{{fields.number}}"
@@ -147,7 +148,7 @@ collections:
       - { label: Bağlantı, name: url, widget: string, pattern: ['^https?://', "https:// ile başlamalı"] }
       - { label: Not, name: note, widget: text, required: false }
       # `widget: date` Sveltia'da kaldırıldı; Prensa koleksiyonuyla aynı kalıp.
-      - { label: Tarih, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Tarih, name: date, widget: datetime, format: YYYY-MM-DD, date_format: DD/MM/YYYY, time_format: false }
       # Bu kutu işaretlenmeden eser sitede GÖRÜNMEZ. Formdan gelenler
       # her zaman işaretsiz gelir.
       - { label: Yayında, name: approved, widget: boolean, default: false }
@@ -250,14 +251,14 @@ collections:
     extension: json
     format: json
     identifier_field: outlet
-    summary: "{{fields.date}} — {{fields.outlet}}"
+    summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.outlet}}"
     sortable_fields: [date]
     create: true
     # Dosya adını CMS üretiyor. Sıralama tarihe göre, elle numara yok.
-    slug: "p{{fields.date}}-{{uuid_shorter}}"
+    slug: "p{{fields.date | date('DD-MM-YYYY')}}-{{uuid_shorter}}"
     fields:
       - { label: Outlet, name: outlet, widget: string }
-      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+      - { label: Date, name: date, widget: datetime, format: YYYY-MM-DD, date_format: DD/MM/YYYY, time_format: false }
       - label: Title
         name: title
         widget: object
