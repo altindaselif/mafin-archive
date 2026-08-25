@@ -1,12 +1,9 @@
 {
-  "number": 2,
-  "id": "f2",
   "type": "Fanfic",
   "title": "Los trenes que no tomamos",
   "author": "Luna V.",
   "url": "https://example.com/fanfic-trenes",
   "note": "Un final alternativo del capítulo 24, en tres capítulos.",
   "date": "2026-04-02",
-  "approved": true,
-  "_sample": true
+  "approved": true
 }

@@ -116,20 +116,18 @@ function gh(path, token, init = {}) {
   });
 }
 
-/* Sıradaki numara: klasördeki en büyük f<N>.json'un bir fazlası. */
-async function nextNumber(token) {
-  const res = await gh(`/contents/${REPO.dir}?ref=${REPO.branch}`, token);
-  if (!res.ok) return null;
-  const files = await res.json();
-  const numbers = files
-    .map((f) => /^f(\d+)\.json$/.exec(f.name)?.[1])
-    .filter(Boolean)
-    .map(Number);
-  return numbers.length ? Math.max(...numbers) + 1 : 1;
+/*
+ * Dosya adı: gün-ay-yıl + 8 karakterlik rastgele kimlik.
+ * Elle numara sayılmıyor — eskiden klasörü listeleyip en büyük numarayı
+ * bulmak gerekiyordu, hem fazladan bir GitHub isteği hem de aynı anda iki
+ * gönderim gelince çakışma riskiydi. Rastgele kimlikte ikisi de yok.
+ */
+function entryName(date) {
+  const [y, m, d] = date.split("-");
+  return `f${d}-${m}-${y}-${crypto.randomUUID().split("-")[0]}.json`;
 }
 
-async function writeEntry(token, number, record) {
-  const name = `f${String(number).padStart(2, "0")}.json`;
+async function writeEntry(token, name, record) {
   const body = JSON.stringify({
     message: `Fandom: nueva aportación pendiente — ${record.title}`,
     content: toBase64(JSON.stringify(record, null, 2) + "\n"),
@@ -212,23 +210,14 @@ export async function handleFandom(request, env) {
   const token = env.GITHUB_TOKEN;
   if (!token) return json({ ok: false, error: "server" }, 500);
 
-  const base = await nextNumber(token);
-  if (base == null) return json({ ok: false, error: "server" }, 502);
+  const date = archiveDate();
+  const full = {
+    ...record,
+    date,
+    approved: false, // arşivci onaylayana kadar sitede görünmez
+  };
 
-  /* Numara çakışırsa (aynı anda iki gönderim) bir sonrakini dene. */
-  for (let attempt = 0; attempt < 3; attempt++) {
-    const number = base + attempt;
-    const full = {
-      number,
-      id: `f${number}`,
-      ...record,
-      date: archiveDate(),
-      approved: false, // arşivci onaylayana kadar sitede görünmez
-    };
-    const res = await writeEntry(token, number, full);
-    if (res.ok) return json({ ok: true });
-    if (res.status !== 422) return json({ ok: false, error: "server" }, 502);
-  }
-
-  return json({ ok: false, error: "conflict" }, 409);
+  const res = await writeEntry(token, entryName(date), full);
+  if (!res.ok) return json({ ok: false, error: "server" }, 502);
+  return json({ ok: true });
 }

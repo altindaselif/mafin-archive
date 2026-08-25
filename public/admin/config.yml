@@ -66,7 +66,7 @@ collections:
     fields:
       # id auto: "e" + episode number (editors never touch it)
       - { label: ID, name: id, widget: compute, value: "e{{fields.number}}" }
-      - { label: Number, name: number, widget: number, value_type: int, min: 1 }
+      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "Only the number — 559, not 'Episode 559'" }
       - label: Title
         name: title
         widget: object
@@ -88,7 +88,7 @@ collections:
       # İşaretlenirse ana sayfadaki "tal día como hoy" bu bölümü atlar.
       # Marta ve Fina'nın geçmediği bölümler için: başlığa "Sin Mafin"
       # ya da "Sin Marta" yaz, açıklamayı boş bırak, bunu işaretle.
-      - { label: "Mafin yok", name: noMafin, widget: boolean, required: false, default: false }
+      - { label: "Mafin yok", name: noMafin, widget: boolean, required: false, default: false, hint: "Marta ile Fina'nın hiç görünmediği bölüm. İşaretlersen ana sayfadaki 'bugün ne oldu' bölümüne girmez" }
       - label: Air date
         name: airDate
         widget: datetime
@@ -110,7 +110,7 @@ collections:
     create: true
     slug: "g{{fields.episode}}"
     fields:
-      - { label: Episode number, name: episode, widget: number, value_type: int, min: 1 }
+      - { label: Episode number, name: episode, widget: number, value_type: int, min: 1, hint: "Only the number — 559, not 'Episode 559'" }
       - label: Photos
         name: photos
         widget: image
@@ -133,25 +133,26 @@ collections:
     format: json
     identifier_field: title
     summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.title}} — {{fields.author}}{{#if fields.approved}} ✓{{/if}}"
-    sortable_fields: [approved, date, number]
+    sortable_fields: [approved, date]
     create: true
-    slug: "f{{fields.number}}"
+    # Dosya adını CMS üretiyor; formdan gelenleri worker aynı kalıpta yazıyor.
+    # Sıralama tarihe göre, elle numara yok.
+    slug: "f{{fields.date | date('DD-MM-YYYY')}}-{{uuid_shorter}}"
     fields:
-      - { label: ID, name: id, widget: compute, value: "f{{fields.number}}" }
-      - { label: Sıra, name: number, widget: number, value_type: int, min: 1 }
-      - label: Tür
+      - label: Type
         name: type
         widget: select
         options: ["Canción", "Fanfic", "Arte"]
-      - { label: Eserin adı, name: title, widget: string }
-      - { label: Yapan kişi, name: author, widget: string }
-      - { label: Bağlantı, name: url, widget: string, pattern: ['^https?://', "https:// ile başlamalı"] }
-      - { label: Not, name: note, widget: text, required: false }
+        hint: "The kind of work. These values are shown translated on the site"
+      - { label: Title, name: title, widget: string, hint: "The name of the work itself — 'Perfume de lavanda'" }
+      - { label: Author, name: author, widget: string, hint: "Name or handle — '@martafina_edits'" }
+      - { label: Link, name: url, widget: string, pattern: ['^https?://', "Must start with https://"], hint: "Full link to where the work is published" }
+      - { label: Note, name: note, widget: text, required: false, hint: "One line about the work, shown in quotes next to the author" }
       # `widget: date` Sveltia'da kaldırıldı; Prensa koleksiyonuyla aynı kalıp.
-      - { label: Tarih, name: date, widget: datetime, format: YYYY-MM-DD, date_format: DD/MM/YYYY, time_format: false }
+      - { label: Date, name: date, widget: datetime, format: YYYY-MM-DD, date_format: DD/MM/YYYY, time_format: false, hint: "When it reached the archive. Filled in automatically for form submissions" }
       # Bu kutu işaretlenmeden eser sitede GÖRÜNMEZ. Formdan gelenler
       # her zaman işaretsiz gelir.
-      - { label: Yayında, name: approved, widget: boolean, default: false }
+      - { label: Published, name: approved, widget: boolean, default: false, hint: "Nothing appears on the site until you tick this" }
 
   # ── Quotes: each quote its own file under src/data/quotes/ ──
   - name: quotes
@@ -171,11 +172,12 @@ collections:
     # sıralanıyor; aynı bölümdekilerin kendi arasındaki sırası önemsiz.
     slug: "q{{fields.episode}}-{{uuid_shorter}}"
     fields:
-      - { label: Episode, name: episode, widget: number, value_type: int, min: 1 }
+      - { label: Episode, name: episode, widget: number, value_type: int, min: 1, hint: "Only the number — 559, not 'Episode 559'" }
       - label: Speaker
         name: speaker
         widget: select
         options: ["Marta", "Fina", "Mafin"]
+        hint: "Who says it. Pick 'Mafin' when it is a back-and-forth between the two — then write the text as 'Marta: … Fina: … Marta: …'"
       - label: Text
         name: text
         widget: object
@@ -198,8 +200,8 @@ collections:
     # sonradan eklenen bir taş kendi kronolojik yerine oturuyor.
     slug: "m{{fields.episode}}-{{uuid_shorter}}"
     fields:
-      - { label: Episode, name: episode, widget: number, value_type: int, min: 1 }
-      - { label: Video file, name: video, widget: compute, value: "timeline-ep{{fields.episode}}.mp4" }
+      - { label: Episode, name: episode, widget: number, value_type: int, min: 1, hint: "Only the number — 559, not 'Episode 559'. The milestones are ordered by this" }
+      - { label: Video file, name: video, widget: compute, value: "timeline-ep{{fields.episode}}.mp4", hint: "Filled in automatically. The clip must already be uploaded to R2 under timeline/ with this exact name" }
       - label: Title
         name: title
         widget: object
@@ -226,7 +228,7 @@ collections:
     create: true
     slug: "c{{fields.number}}"
     fields:
-      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "display order (family, then shop, then thirds)" }
+      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "Display order on the page — family first, then shop, then the rest. A new character normally goes at the end: last number + 1" }
       - { label: ID, name: id, widget: compute, value: "c{{fields.number}}" }
       - { label: Name, name: name, widget: string }
       - label: Role
@@ -257,7 +259,7 @@ collections:
     # Dosya adını CMS üretiyor. Sıralama tarihe göre, elle numara yok.
     slug: "p{{fields.date | date('DD-MM-YYYY')}}-{{uuid_shorter}}"
     fields:
-      - { label: Outlet, name: outlet, widget: string }
+      - { label: Outlet, name: outlet, widget: string, hint: "Name of the publication — Fotogramas, El País…" }
       - { label: Date, name: date, widget: datetime, format: YYYY-MM-DD, date_format: DD/MM/YYYY, time_format: false }
       - label: Title
         name: title
@@ -265,4 +267,4 @@ collections:
         fields:
           - { label: Spanish, name: es, widget: string }
           - { label: English, name: en, widget: string }
-      - { label: URL, name: url, widget: string }
+      - { label: URL, name: url, widget: string, hint: "Full link to the article, starting with https://" }

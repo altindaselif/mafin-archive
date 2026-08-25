@@ -1,12 +1,9 @@
 {
-  "number": 3,
-  "id": "f3",
   "type": "Arte",
   "title": "Retrato: el baile de la verbena",
   "author": "dibuja_sueños",
   "url": "https://example.com/arte-verbena",
   "note": "Acuarela sobre papel, farolillos incluidos.",
   "date": "2026-04-20",
-  "approved": true,
-  "_sample": true
+  "approved": true
 }

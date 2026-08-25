@@ -1,12 +1,9 @@
 {
-  "number": 1,
-  "id": "f1",
   "type": "Canción",
   "title": "Perfume de lavanda",
   "author": "@martafina_edits",
   "url": "https://example.com/cancion-lavanda",
   "note": "Balada inspirada en la escena de la carta.",
   "date": "2026-03-14",
-  "approved": true,
-  "_sample": true
+  "approved": true
 }

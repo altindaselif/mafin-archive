@@ -1,12 +1,9 @@
 {
-  "number": 5,
-  "id": "f5",
   "type": "Fanfic",
   "title": "La trastienda a medianoche",
   "author": "M. Robles",
   "url": "https://example.com/fanfic-trastienda",
   "note": "Ejemplo de aportación pendiente: no se muestra hasta que el archivero la apruebe.",
   "date": "2026-06-30",
-  "approved": false,
-  "_sample": true
+  "approved": false
 }
