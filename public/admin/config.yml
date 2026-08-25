@@ -48,7 +48,11 @@ media_libraries:
     access_key_id: 95647f01a95e417b62ad8e45cedce548
     bucket: mafin-photos
     account_id: 21d9a10b9e439b63b16c4f24890356d3
-    public_url: https://pub-17a4e1676af940bea88a2f26ef361d81.r2.dev
+    # CMS'in önizleme resimlerini çektiği adres. r2.dev'e YÖNLENDİRMİYORUZ:
+    # o adres Cloudflare'in hız sınırlı geliştirme adresi ve buradan hiç
+    # açılmıyor (bağlantı bile kurulmuyor), önizlemeler bu yüzden boş
+    # geliyordu. Kendi Worker'ımız aynı dosyaları R2 bağlantısıyla sunuyor.
+    public_url: https://archivo.universomafin.workers.dev/media/photos
 
 collections:
   # ── Episodes: each one its own file under src/data/episodes/ ──

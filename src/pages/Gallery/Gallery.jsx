@@ -31,15 +31,26 @@ const L = {
   open: { es: "Ampliar la fotografía", en: "Open the photograph" },
 };
 
-/* CMS fotoğrafı yüklerken kayda TAM R2 adresini yazıyor
-   (https://pub-*.r2.dev/foto.png). O adres artık kullanılmıyor — dosya adını
-   alıp kendi /media/photos yolumuza çeviriyoruz.
-   Başka bir sunucudaki adresler (örnek veriler) olduğu gibi kalıyor. */
+/* CMS fotoğrafı seçince kayda TAM adresi yazıyor. Hangi tam adres olduğu
+   zamanla değişti (önce pub-*.r2.dev, şimdi kendi /media/photos yolumuz) ve
+   alan adı bağlanınca bir kez daha değişecek. Bu yüzden gelen adresi olduğu
+   gibi kullanmıyoruz: dosya adını çıkarıp her zaman kendi yolumuzdan
+   sunuyoruz. Böylece veride hangi adres yazılı olursa olsun site kendi
+   kaynağından servis ediyor.
+   Tanımadığımız bir sunucudaki adresler (örnek veriler) olduğu gibi kalıyor. */
+const OWN_PHOTO = [
+  /^https?:\/\/[^/]*r2\.dev\/(.+)$/i, // eski R2 genel adresi
+  /^https?:\/\/[^/]+\/media\/photos\/(.+)$/i, // kendi origin'imiz (alan adı ne olursa olsun)
+];
+
 const absUrl = (p) => {
   const s = String(p);
   if (/^https?:\/\//i.test(s)) {
-    const own = s.match(/^https?:\/\/[^/]*r2\.dev\/(.+)$/i);
-    return own ? `${PHOTO_BASE_URL}/${own[1]}` : s;
+    for (const re of OWN_PHOTO) {
+      const m = s.match(re);
+      if (m) return `${PHOTO_BASE_URL}/${m[1]}`;
+    }
+    return s;
   }
   return `${PHOTO_BASE_URL}/${s.replace(/^\/+/, "")}`;
 };

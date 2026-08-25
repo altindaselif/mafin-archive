@@ -68,8 +68,12 @@ async function serveMedia(request, env, url) {
     return new Response(null, { status: 304, headers });
   }
 
-  // Parça istendiyse hangi aralığı verdiğimizi söylemek zorundayız.
-  const range = object.range;
+  /* Parça istendiyse hangi aralığı verdiğimizi söylemek zorundayız.
+   *
+   * `object.range`e bakmak YETMİYOR: R2 aralık istenmese de bu alanı dosyanın
+   * tamamıyla dolduruyor, o yüzden düz bir istek de 206 alıyordu. 206 yalnızca
+   * gerçek bir Range isteğine verilmeli — istemcinin ne sorduğuna bakıyoruz. */
+  const range = request.headers.has("range") ? object.range : null;
   if (range) {
     const start = "offset" in range ? (range.offset ?? 0) : object.size - (range.suffix ?? 0);
     const length = "length" in range && range.length != null
