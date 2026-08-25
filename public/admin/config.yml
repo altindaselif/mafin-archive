@@ -66,7 +66,7 @@ collections:
     fields:
       # id auto: "e" + episode number (editors never touch it)
       - { label: ID, name: id, widget: compute, value: "e{{fields.number}}" }
-      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "Only the number — 559, not 'Episode 559'" }
+      - { label: Episode number, name: number, widget: number, value_type: int, min: 1, hint: "Only the number — 559, not 'Episode 559'" }
       - label: Title
         name: title
         widget: object
@@ -88,7 +88,7 @@ collections:
       # İşaretlenirse ana sayfadaki "tal día como hoy" bu bölümü atlar.
       # Marta ve Fina'nın geçmediği bölümler için: başlığa "Sin Mafin"
       # ya da "Sin Marta" yaz, açıklamayı boş bırak, bunu işaretle.
-      - { label: "Mafin yok", name: noMafin, widget: boolean, required: false, default: false, hint: "Marta ile Fina'nın hiç görünmediği bölüm. İşaretlersen ana sayfadaki 'bugün ne oldu' bölümüne girmez" }
+      - { label: "No Mafin", name: noMafin, widget: boolean, required: false, default: false, hint: "Tick this when Marta and Fina do not appear at all. Those episodes are skipped by the 'on this day' box on the home page" }
       - label: Air date
         name: airDate
         widget: datetime
@@ -127,7 +127,7 @@ collections:
   # sortable_fields'tan `approved`i seç.
   - name: fandom
     label: Fandom
-    label_singular: Aportación
+    label_singular: Submission
     folder: src/data/fandom
     extension: json
     format: json
@@ -228,7 +228,7 @@ collections:
     create: true
     slug: "c{{fields.number}}"
     fields:
-      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "Display order on the page — family first, then shop, then the rest. A new character normally goes at the end: last number + 1" }
+      - { label: Display order, name: number, widget: number, value_type: int, min: 1, hint: "Where the character sits on the page — family first, then shop, then the rest. A new one normally goes at the end: last number + 1" }
       - { label: ID, name: id, widget: compute, value: "c{{fields.number}}" }
       - { label: Name, name: name, widget: string }
       - label: Role
