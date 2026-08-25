@@ -45,7 +45,7 @@ media_libraries:
   # mafin-photos bucket'ına yazabiliyor. Eskiden burada tüm bucket'lara
   # yetkili bir token vardı; secret sızsaydı video bucket'ı da gidiyordu.
   cloudflare_r2:
-    access_key_id: aea29340f3032515168ee82b130ae9ec
+    access_key_id: 95647f01a95e417b62ad8e45cedce548
     bucket: mafin-photos
     account_id: 21d9a10b9e439b63b16c4f24890356d3
     public_url: https://pub-17a4e1676af940bea88a2f26ef361d81.r2.dev
