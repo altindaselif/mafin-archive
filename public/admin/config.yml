@@ -59,7 +59,7 @@ collections:
     extension: json
     format: json
     identifier_field: number
-    summary: "#{{fields.number}} — {{fields.title.en}}"
+    summary: "Episode {{fields.number}} — {{fields.title.en}}"
     sortable_fields: [number, airDate]
     create: true
     slug: "e{{fields.number}}"
@@ -189,14 +189,14 @@ collections:
     folder: src/data/timeline
     extension: json
     format: json
-    identifier_field: number
-    summary: "#{{fields.number}} — Episode {{fields.episode}} — {{fields.title.en}}"
-    sortable_fields: [number, episode]
+    identifier_field: episode
+    summary: "Episode {{fields.episode}} — {{fields.title.en}}"
+    sortable_fields: [episode]
     create: true
-    slug: "m{{fields.number}}"
+    # Dosya adını CMS üretiyor. Sıralama bölüme göre, elle numara yok:
+    # sonradan eklenen bir taş kendi kronolojik yerine oturuyor.
+    slug: "m{{fields.episode}}-{{uuid_shorter}}"
     fields:
-      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "For a new entry, continue from the last number in the list" }
-      - { label: ID, name: id, widget: compute, value: "m{{fields.number}}" }
       - { label: Episode, name: episode, widget: number, value_type: int, min: 1 }
       - { label: Video file, name: video, widget: compute, value: "timeline-ep{{fields.episode}}.mp4" }
       - label: Title
@@ -249,14 +249,13 @@ collections:
     folder: src/data/press
     extension: json
     format: json
-    identifier_field: number
-    summary: "#{{fields.number}} — {{fields.outlet}}"
-    sortable_fields: [number, date]
+    identifier_field: outlet
+    summary: "{{fields.date}} — {{fields.outlet}}"
+    sortable_fields: [date]
     create: true
-    slug: "p{{fields.number}}"
+    # Dosya adını CMS üretiyor. Sıralama tarihe göre, elle numara yok.
+    slug: "p{{fields.date}}-{{uuid_shorter}}"
     fields:
-      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "For a new entry, continue from the last number in the list" }
-      - { label: ID, name: id, widget: compute, value: "p{{fields.number}}" }
       - { label: Outlet, name: outlet, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
       - label: Title

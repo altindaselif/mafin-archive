@@ -1,12 +1,23 @@
 /*
- * Each milestone lives in its own file under ./timeline/. Globbed at build
- * time and exposed as a single array sorted by episode number, so the rest
- * of the app keeps importing the timeline exactly as before.
+ * Her kilometre taşı ./timeline/ altında kendi dosyasında. Build sırasında
+ * toplanıp BÖLÜME göre sıralı tek dizi olarak veriliyor.
+ *
+ * Neden bölüme göre: timeline tanımı gereği kronolojik. Eskiden elle yazılan
+ * bir `number` alanı sıralıyordu, ama o alan bölüm sırasının ikinci bir
+ * kopyasıydı — ve sonradan araya bir taş eklendiğinde (mesela 200. bölüm)
+ * sıradaki numara verildiği için listenin en sonuna düşüyordu. Bölüme göre
+ * sıralayınca yeni taş kendiliğinden doğru yere oturuyor.
+ *
+ * Kimlik dosya adından türüyor, veride tutulmuyor.
  */
 const modules = import.meta.glob("./timeline/*.json", { eager: true });
 
-const milestones = Object.values(modules)
-  .map((m) => m.default)
-  .sort((a, b) => a.number - b.number);
+const milestones = Object.entries(modules)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, m]) => ({
+    ...m.default,
+    id: path.slice(path.lastIndexOf("/") + 1, -".json".length),
+  }))
+  .sort((a, b) => a.episode - b.episode);
 
 export default milestones;
