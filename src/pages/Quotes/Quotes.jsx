@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { Fragment, useDeferredValue, useEffect, useMemo, useState } from "react";
 import styles from "./Quotes.module.css";
 import SearchInput from "../../components/SearchInput/SearchInput.jsx";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
@@ -146,10 +146,14 @@ export default function Quotes() {
                   <p className={styles.text}>&ldquo;{t(quote.text)}&rdquo;</p>
                 );
               return (
+                /* Playscript: NAME — replik. Ad ve replik ayrı ızgara
+                   sütunlarında duruyor; böylece hem farklı uzunluktaki
+                   adların çizgileri birbirini tutuyor, hem de alt satıra
+                   taşan metin adın altına düşmeyip kendi sütununda
+                   hizalı kalıyor. */
                 <div className={styles.dialogue}>
                   {turns.map((turn, i) => (
-                    <p key={i} className={styles.dialogueLine}>
-                      {/* Playscript convention: NAME — line */}
+                    <Fragment key={i}>
                       <span
                         className={`${styles.dialogueName} ${
                           turn.name === "Marta"
@@ -157,10 +161,10 @@ export default function Quotes() {
                             : styles.nameFina
                         }`}
                       >
-                        {turn.name} —
+                        {turn.name} &mdash;
                       </span>
-                      {turn.line}
-                    </p>
+                      <p className={styles.dialogueLine}>{turn.line}</p>
+                    </Fragment>
                   ))}
                 </div>
               );

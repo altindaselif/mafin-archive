@@ -77,10 +77,16 @@
 
 /* ── Shared quotes read like the shooting script: one turn per line,
    names in small caps, each voice in its own colour ── */
+/* İki sütun: konuşan adı + replik. Izgara KAPSAYICIDA olmalı, her satırda
+   ayrı ayrı değil — sütun genişliği ancak o zaman satırlar arasında
+   paylaşılır ve "Fina —" ile "Marta —" aynı hizada başlar.
+   `max-content` en uzun adı ölçüp herkesi ona hizalıyor. */
 .dialogue {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  column-gap: 10px;
+  row-gap: 7px;
+  align-items: baseline;
 }
 
 .dialogueLine {
@@ -94,7 +100,29 @@
   font-variant: small-caps;
   letter-spacing: 0.08em;
   font-weight: 700;
-  margin-right: 8px;
+  font-family: var(--font-family-display);
+  font-size: 1.15rem;
+  line-height: 1.45;
+  white-space: nowrap;
+  /* Sütunun SAĞINA yaslı: sütun en uzun ada göre ölçüldüğü için sola
+     yaslasaydık kısa adın çizgisi içeride kalırdı. Sağa yaslayınca
+     çizgiler alt alta geliyor — kitaplardaki diyalog dizgisi böyle. */
+  text-align: right;
+}
+
+/* Dar ekranda ad sütunu metne fazla yer bırakmıyor; alt alta geçiyorlar
+   ama replik yine kendi içinde hizalı kalıyor. */
+@media (max-width: 420px) {
+  .dialogue {
+    grid-template-columns: 1fr;
+    row-gap: 2px;
+  }
+  .dialogueName {
+    text-align: left; /* alt alta dizilince sağa yaslamanın anlamı yok */
+  }
+  .dialogueLine {
+    margin-bottom: 5px;
+  }
 }
 
 .nameMarta {
