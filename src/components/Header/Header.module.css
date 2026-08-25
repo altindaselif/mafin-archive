@@ -168,6 +168,48 @@
   color: var(--color-text-main);
 }
 
+/* Dil seçicinin mobil kopyası. Temel durum: gizli — masaüstünde yerini
+   "Más" açılırındaki .dropLang alıyor. Bu kural medya sorgusundan ÖNCE
+   durmalı; sonra yazılsaydı eşit özgüllükte olduğu için mobil kuralı
+   ezer ve seçici hiçbir yerde görünmezdi. */
+.navLang {
+  display: none;
+}
+
+/* Dil seçici kuralları medya sorgusundan ÖNCE: eşit özgüllükte
+   olduklarından sonra yazılsalardı mobil kuralı ezerlerdi. */
+.dropLang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+}
+.dropLangOption {
+  background: none;
+  border: none;
+  padding: 2px 2px;
+  font: 500 0.8rem/1 var(--font-family-main);
+  letter-spacing: 0.04em;
+  color: var(--color-text-main);
+  opacity: 0.5;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+.dropLangOption:hover {
+  opacity: 1;
+}
+.dropLangActive {
+  opacity: 1;
+  color: var(--color-accent);
+}
+.dropLangSep {
+  color: var(--color-text-main);
+  opacity: 0.4;
+}
+
 @media (max-width: 720px) {
   .burger {
     display: flex;
@@ -201,6 +243,14 @@
     padding: 12px 0;
   }
 
+  /* StableLabel yuvası iki dilin genişini kaplar ve içeriği ortalar.
+     Yatay menüde bu dengeli durur, ama alt alta dizilmiş mobil menüde
+     kısa etiketler ("Guía", "Más") içeri kaçmış gibi görünüyordu.
+     Sola yaslayınca hepsi aynı hizadan başlıyor. */
+  .nav .link > span {
+    justify-items: start;
+  }
+
   .dropdown {
     position: static;
     box-shadow: none;
@@ -208,41 +258,27 @@
     background: transparent;
     padding: 0 0 0 16px;
   }
+
+  /* Dil seçimi "Más" açılırının içine gömülü kalmasın: menüde tek başına
+     bir seçenek, en altta duruyor. */
+  .dropLang {
+    display: none;
+  }
+
+  .navLang {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .navLang .dropLangOption {
+    font-size: 0.95rem;
+    padding: 6px 0;
+  }
 }
 
 /* Language toggle lives inside the "More" dropdown, set off by a rule */
-.dropLang {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 6px;
-  padding-top: 10px;
-  border-top: 1px solid var(--color-border);
-}
-
-.dropLangOption {
-  background: none;
-  border: none;
-  padding: 2px 2px;
-  font: 500 0.8rem/1 var(--font-family-main);
-  letter-spacing: 0.04em;
-  color: var(--color-text-main);
-  opacity: 0.5;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-}
-
-.dropLangOption:hover {
-  opacity: 1;
-}
-
-.dropLangActive {
-  opacity: 1;
-  color: var(--color-accent);
-}
-
-.dropLangSep {
-  color: var(--color-text-main);
-  opacity: 0.4;
-}

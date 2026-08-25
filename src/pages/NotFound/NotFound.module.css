@@ -56,7 +56,7 @@
 
 /* Masaüstünde tek satır garanti. Dar ekranda serbest bırakılıyor —
    orada iki satır zaten doğal. */
-@media (min-width: 640px) {
+@media (min-width: 721px) {
   .title {
     white-space: nowrap;
   }

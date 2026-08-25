@@ -70,6 +70,14 @@
   gap: 14px;
 }
 
+/* Izgara öğeleri varsayılan olarak `min-width: auto` taşır: içindeki
+   resmin kendi genişliğinin altına inemezler. Resim `width: 100%` olsa
+   bile sütun, resmin gerçek genişliğinde takılı kalıyor ve ızgara dar
+   ekranda kapsayıcısını taşırıyordu. `min-width: 0` bu kilidi açıyor. */
+.grid > li {
+  min-width: 0;
+}
+
 .thumbButton {
   display: block;
   width: 100%;

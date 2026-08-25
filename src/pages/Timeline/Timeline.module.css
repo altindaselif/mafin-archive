@@ -4,6 +4,11 @@
   margin: 32px auto 0;
   padding: 0;
   max-width: 860px;
+  /* Kartlar ekrana girerken sağdan/soldan 28px kayarak geliyor. Sağdaki
+     sütun bu sırada kabın dışına taşıyor ve sayfayı yana kaydırıyordu.
+     `clip` taşan kısmı kesiyor — `hidden`den farkı, kaydırma kabı
+     oluşturmaması: sayfanın kendi dikey kaydırması etkilenmiyor. */
+  overflow-x: clip;
 }
 
 /* Central accent line */

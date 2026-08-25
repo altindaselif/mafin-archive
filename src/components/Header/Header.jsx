@@ -23,6 +23,34 @@ const L = {
   language: { es: "Idioma", en: "Language" },
 };
 
+/*
+ * Dil seçici iki yerde görünüyor ama işaretlemesi tek yerde: masaüstünde
+ * "Más" açılırının içinde, mobilde menünün en altında. Her genişlikte
+ * yalnızca biri `display: flex`; diğeri `display: none` olduğu için ne
+ * ekranda ne de sekme sırasında var — ikisi aynı anda hiç bulunmuyor.
+ */
+function LangSwitch({ className, lang, setLang, label }) {
+  return (
+    <div className={className} role="group" aria-label={label}>
+      <button
+        className={`${styles.dropLangOption} ${lang === "es" ? styles.dropLangActive : ""}`}
+        aria-pressed={lang === "es"}
+        onClick={() => setLang("es")}
+      >
+        Español
+      </button>
+      <span className={styles.dropLangSep} aria-hidden="true">·</span>
+      <button
+        className={`${styles.dropLangOption} ${lang === "en" ? styles.dropLangActive : ""}`}
+        aria-pressed={lang === "en"}
+        onClick={() => setLang("en")}
+      >
+        English
+      </button>
+    </div>
+  );
+}
+
 export default function Header() {
   const { pathname } = useLocation();
   const { t, lang, setLang } = useLang();
@@ -150,29 +178,22 @@ export default function Header() {
                 </NavLink>
               ))}
 
-              <div
+              <LangSwitch
                 className={styles.dropLang}
-                role="group"
-                aria-label={t(L.language)}
-              >
-                <button
-                  className={`${styles.dropLangOption} ${lang === "es" ? styles.dropLangActive : ""}`}
-                  aria-pressed={lang === "es"}
-                  onClick={() => setLang("es")}
-                >
-                  Español
-                </button>
-                <span className={styles.dropLangSep} aria-hidden="true">·</span>
-                <button
-                  className={`${styles.dropLangOption} ${lang === "en" ? styles.dropLangActive : ""}`}
-                  aria-pressed={lang === "en"}
-                  onClick={() => setLang("en")}
-                >
-                  English
-                </button>
-              </div>
+                lang={lang}
+                setLang={setLang}
+                label={t(L.language)}
+              />
             </div>
           </div>
+
+          {/* Mobilde menünün en altında; masaüstünde gizli */}
+          <LangSwitch
+            className={styles.navLang}
+            lang={lang}
+            setLang={setLang}
+            label={t(L.language)}
+          />
         </nav>
       </div>
     </header>

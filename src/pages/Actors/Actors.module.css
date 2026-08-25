@@ -234,7 +234,7 @@
   opacity: 0.96;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 720px) {
   .record {
     grid-template-columns: 1fr;
     gap: 28px;

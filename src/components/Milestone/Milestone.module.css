@@ -139,6 +139,21 @@
     padding: 0 0 48px 36px;
   }
 
+  /* Masaüstünde kartlar sağdan/soldan kayarak giriyor. Mobilde tek sütun
+     olduğu için o kaymanın anlamı yok — üstelik henüz görünmemiş kartlar
+     28px sağa itili durduğu için sayfa yana kayıyordu. Aşağıdan yukarı
+     küçük bir kayma hem yerinde duruyor hem taşma yapmıyor.
+     `.visible` burada tekrar yazılmalı: eşit özgüllükte olduğu için
+     sadece medya sorgusu içinde ve bu kuraldan SONRA gelirse kazanır. */
+  .left,
+  .right {
+    transform: translateY(12px);
+  }
+
+  .visible {
+    transform: none;
+  }
+
   .left .dot,
   .right .dot {
     left: 2.5px;
