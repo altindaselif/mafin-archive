@@ -159,16 +159,17 @@ collections:
     folder: src/data/quotes
     extension: json
     format: json
-    identifier_field: number
-    summary: "#{{fields.number}} — Episode {{fields.episode}}"
+    identifier_field: episode
+    summary: "Episode {{fields.episode}} — {{fields.speaker}}"
     sortable_fields:
-      fields: [episode, number]
+      fields: [episode]
       default: { field: episode, direction: ascending }
     create: true
-    slug: "q{{fields.number}}"
+    # Dosya adını CMS üretiyor: bölüm + 8 karakterlik rastgele kimlik.
+    # Elle numara yazılmıyor. Alıntılar sitede yalnızca bölüme göre
+    # sıralanıyor; aynı bölümdekilerin kendi arasındaki sırası önemsiz.
+    slug: "q{{fields.episode}}-{{uuid_shorter}}"
     fields:
-      - { label: Number, name: number, widget: number, value_type: int, min: 1, hint: "For a new entry, continue from the last number in the list" }
-      - { label: ID, name: id, widget: compute, value: "q{{fields.number}}" }
       - { label: Episode, name: episode, widget: number, value_type: int, min: 1 }
       - label: Speaker
         name: speaker

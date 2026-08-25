@@ -17,9 +17,12 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+/* Dosya adına göre sırala: readdirSync'in sırası işletim sistemine bağlı,
+   sıralamazsak indeks her makinede aynı çıkmayabilir. */
 const readAll = (dir) =>
   readdirSync(join(root, dir))
     .filter((f) => f.endsWith(".json"))
+    .sort()
     .map((f) => JSON.parse(readFileSync(join(root, dir, f), "utf8")));
 
 const episodes = readAll("src/data/episodes");
@@ -64,7 +67,7 @@ const noDateCount = episodes.length - airDates.length;
 const DAILY_MAX_LENGTH = 160;
 const quotePool = quotes
   .filter((q) => q.speaker !== "Mafin" && (q.text?.es ?? "").length <= DAILY_MAX_LENGTH)
-  .sort((a, b) => a.episode - b.episode || a.number - b.number)
+  .sort((a, b) => a.episode - b.episode)
   .map((q) => ({ speaker: q.speaker, episode: q.episode, text: q.text }));
 
 /* ── Bölüm meta indeksi (Vídeos + Galería) ───────────────────────────
