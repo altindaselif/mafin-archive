@@ -276,6 +276,20 @@ Kopyalanan sabitler:
 
 ---
 
+## 📱 Mobil geçişi ✅ TAMAMLANDI (25 Ağu)
+
+> 10 sayfa 320–1280px arasında tarandı. İki gerçek taşma vardı, ikisi de düzeltildi.
+
+- [x] **Galeri telefonda sayfayı yana kaydırıyordu** — 375px ekranda sayfa 438px'ti. Izgara öğeleri varsayılan `min-width: auto` taşır, yani içindeki resmin genişliğinin altına inemez; sütun 200px'te kilitleniyordu. `.grid > li { min-width: 0 }` ile çözüldü
+- [x] **Timeline'da 4px taşma** — kartlar girerken 28px yana kayıyor. Mobilde tek sütun olduğu için kayma dikeye çevrildi; masaüstünde `overflow-x: clip` ile kabın içinde tutuldu (kesilenin boş dolgu olduğu, görünen içeriğin kalmadığı ölçülerek doğrulandı)
+- [x] **Kırılımlar 7 → 5**: `420, 560, 720, 900, 1080`. `520→560` ve `640→720` yukarı birleştirildi. Bu, 520-560 ve 640-720 bantlarında görünümü değiştirir (mobil düzene 30-80px erken geçilir); iki bant da ayrıca ölçüldü, taşma yok
+- [x] **Dil seçimi mobilde "Más"ın içinden çıkarıldı**, menünün en altına alındı. İşaretleme tek yerde; her genişlikte yalnızca bir kopya görünür
+- [x] Mobil menüde etiketler sola hizalandı — sabit yuvada ortalandıkları için "Guía" ve "Más" içeri kaçmış görünüyordu
+- [x] Diyaloglarda çizgiler ve replikler hizalandı (kitap dizgisi); alt satıra taşan metin artık adın altına değil kendi sütununa oturuyor
+- [x] Worker düz isteklere `206` dönüyordu (R2 aralık istenmese de `range` alanını dolduruyor). Artık istemci gerçekten `Range` gönderdiyse 206; video sarmanın bozulmadığı ayrıca doğrulandı
+
+> **Doğrulanamayan:** timeline kartlarının giriş animasyonu. Tarayıcı paneli arka planda çalıştığı için (`document.hidden`) onu tetikleyen gözlemci hiç çalışmıyor. Gerçek telefonda bir bakılmalı.
+
 ## 🔵 FAZ 4 — Sonraki adım (yayından sonra)
 
 ### 4.0 Veri büyümesi — ölçüldü (24 Ağu), şimdilik iş yok
@@ -326,6 +340,34 @@ Kopyalanan sabitler:
 > **Tuzak, ileride lazım olur:** Cloudflare panelinde Worker değişkeni eklemek yeni bir *sürüm* oluşturuyor ama onu yayına almıyor. Çalışan Worker eski sürümde kaldığı için değişkenler görünmüyor. Çözüm: `npx wrangler versions deploy <sürüm-id> --name <worker>`.
 
 - [x] Netlify projesi silindi, `netlify.toml` da kaldırıldı — site tek yerden yayınlanıyor
+
+## 🌐 ALAN ADI GÜNÜ — sırayla yap
+
+> `universomafin.com` bağlandığı gün yapılacaklar. İlk üçü **ayar**: yapılmazsa çalışan şeyler sessizce bozulur, hata mesajı da yanıltıcı olur. Sonrakiler ekleme.
+
+**Önce bunlar — yoksa bozulur:**
+
+- [ ] **R2 CORS**: `mafin-photos` → Settings → CORS Policy → `AllowedOrigins`'e `https://universomafin.com` ekle.
+      Yapılmazsa: CMS resim seçici *"error while searching assets"* verir. Dikkat — bu mesaj yanıltıcı; R2 yetki/CORS hatalarında başlık eklemediği için tarayıcı gerçek sebebi göstermez
+- [ ] **Turnstile**: widget'ın alan adı listesine **ve** Worker'daki `TURNSTILE_HOSTNAMES` değişkenine `universomafin.com` ekle (ikisi ayrı yer).
+      Yapılmazsa: Fandom formu sessizce ölür — ziyaretçi kutuyu çözer, sunucu "tanımadığım adres" deyip reddeder
+- [ ] **Sveltia CMS auth**: GitHub OAuth uygulamasının callback adresi ve `base_url` yeni alan adına göre kontrol edilsin
+
+**Sonra bunlar — yeni kazanımlar:**
+
+- [ ] `src/config.js` → `PHOTO_RESIZE = true`. `/cdn-cgi/image` yalnızca kendi bölgende çalışır, `workers.dev`'de yok. Ölçüm: galeri ızgarasındaki kareler şu an orijinali indiriyor (tek gerçek fotoğraf 7,7 MB)
+- [ ] `index.html` — `<meta name="description">`
+- [ ] `index.html` — Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) + Twitter card
+- [ ] Sayfa başına `<title>` — şu an her route'ta "Archivo Mafin"
+- [ ] `public/robots.txt` ve `public/sitemap.xml`
+
+**Taşındıktan sonra doğrula:**
+
+- [ ] Fandom formundan gerçek bir gönderim yap, CMS'te "onay bekliyor" olarak gör
+- [ ] CMS'te bir galeri kaydı açıp resim seçiciyi aç, önizlemeler geliyor mu
+- [ ] Bir alıntı ve bir bölüm sayfası aç, resim/video akıyor mu
+
+> Not: veri içindeki fotoğraf adresleri alan adından **bağımsız** — kod hangi adres yazılı olursa olsun kendi yolundan sunuyor, dört biçim de test edildi. Yani veri düzeltmesi gerekmiyor.
 
 ## ⏸ BEKLEMEDE — dış karara bağlı (yayın öncesi yapılacak)
 
@@ -390,6 +432,26 @@ Kopyalanan sabitler:
 - [x] `Modal.jsx` — `onClose` ref'te tutuluyor, efekt yalnızca `open`e bağlı
 - [x] Tarayıcıda doğrulandı: eski kodda 5 alanın hepsinde odak `BUTTON[Cerrar]`'a atlıyor, yenisinde alanda kalıyor
 - [x] Escape, kaydırma kilidi, açılışta odağın modala girmesi — üçü de bozulmadı
+
+### 1.9 CMS'te elle numara yazma kaldırıldı ✅ ÇÖZÜLDÜ (25 Ağu)
+> `number` alanı iki çelişen iş yapıyordu: dosya adını benzersiz kılmak (→ "en sondan devam et") ve sıralamayı belirlemek (→ "araya girebilmek"). Bu yüzden bir bölüme sonradan eklenen alıntı listenin en sonuna düşüyordu. İkisi ayrıldı.
+
+| koleksiyon | sıralama | dosya adı |
+|---|---|---|
+| quotes | `episode` | `q559-a1b2c3d4.json` (CMS üretiyor) |
+| timeline | `episode` | `m131-582d7dd4.json` |
+| press | `date`, en yeni üstte | `p03-11-2025-df902417.json` |
+| fandom | `date`, en yeni üstte | `f08-02-2026-…` (worker üretiyor) |
+| **episodes** | `number` **kaldı** | dizinin gerçek bölüm numarası, veri |
+| **characters** | `number` **kaldı** | editoryal sıra; başka hiçbir alan veremez |
+
+- [x] 298 alıntı + 54 timeline + 4 press + 5 fandom yeni biçime geçti; içerik ve sıra birebir korundu (karşılaştırarak doğrulandı)
+- [x] Kimlik artık dosya adından türüyor, veride tutulmuyor — tek kaynak
+- [x] Worker numara saymayı bıraktı: GitHub'a fazladan istek ve çakışma denemesi ortadan kalktı
+- [x] Timeline'da araya bölüm eklemek test edildi: 140. bölüm 132 ile 147 arasına kendiliğinden oturuyor
+- [x] CMS arayüzü tamamen İngilizce; 13 alana örnekli ipucu eklendi (en çok işe yarayanı: "Only the number — 559, not 'Episode 559'")
+- [x] Diyalog kuralı yazıya döküldü: konuşan "Mafin" ise metin `Marta: … Fina: …` biçiminde (50/50 kayıt böyleydi ama hiçbir yerde yazmıyordu)
+- [x] İnsanın gördüğü her tarih gün/ay/yıl. Depolanan değer ISO kalıyor — sıralama metin karşılaştırmasıyla yapıldığı için yıl-ay-gün şart (`format` ile `date_format` ayrıldı)
 
 ### 1.7 Fandom sayfası tamamen İspanyolca hardcoded ✅ ÇÖZÜLDÜ (24 Ağu)
 > `L` sözlüğü sadece başlık/altbaşlık için vardı. Artık sayfadaki her arayüz metni çevrili.
