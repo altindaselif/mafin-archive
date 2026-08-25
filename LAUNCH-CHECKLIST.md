@@ -354,6 +354,16 @@ Kopyalanan sabitler:
 > Şu an fark edilmiyor çünkü galeri hâlâ `picsum.photos` sample datasıyla dolu.
 
 - [ ] Alan adı bağlanınca `PHOTO_RESIZE = true` — `/cdn-cgi/image` yalnızca kendi bölgende var, `workers.dev`'de yok. Ölçüm: galerideki tek gerçek fotoğraf 7,7 MB ve ızgarada küçük kare olarak gösteriliyor
+
+### 1.5b CMS'in R2 resim seçicisi ✅ ÇÖZÜLDÜ (25 Ağu)
+> Resim seçme ekranı *"There was an error while searching assets"* veriyordu. Tarayıcı "CORS" diyordu ama sebep o değildi: `mafin-cms-photos` token'ı silinmişti, `config.yml`'deki Access Key ID ona aitti. R2 yetki hatalarında CORS başlığı eklemiyor, tarayıcı da gerçek hatayı göremeyince CORS diye raporluyor.
+
+- [x] Yeni **Account API token** (`Object Read & Write`, yalnızca `mafin-photos`), yeni Access Key ID `config.yml`'de
+- [x] R2 kovasında CORS ayarlandı: `GET, PUT, POST, HEAD, DELETE` + origin `archivo.universomafin.workers.dev`
+- [x] Eski secret tarayıcıda takılı kalıyordu — Sveltia kayıtlı anahtar varsa giriş kutusunu göstermiyor. `localStorage`'daki `sveltia-cms.prefs → apiKeys.cloudflare_r2` silinerek çözüldü
+
+> **Alan adı taşınırken bunu unutma:** R2 CORS'una `https://universomafin.com` eklenmeli, yoksa resim seçici yine aynı hatayı verir. Turnstile'la aynı durum.
+
 - [ ] `src/data/gallery/*.json` — `_sample: true` işaretli üç sahte kayıt (`g069`, `g093`, `g363`, fotoğrafları picsum.photos'tan). **Bilinçli olarak bırakıldı** — gerçek fotoğraflar eklenirken yerlerini alacaklar. Yayından önce mutlaka gitmeli, yoksa ziyaretçi rastgele stok resimleri bölüm fotoğrafı sanır
 
 ### 1.6 Fandom formu hiçbir yere veri göndermiyor ✅ ÇÖZÜLDÜ (24 Ağu)
