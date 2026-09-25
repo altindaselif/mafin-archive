@@ -406,6 +406,11 @@ Kopyalanan sabitler:
 
 > **Alan adı taşınırken bunu unutma:** R2 CORS'una `https://universomafin.com` eklenmeli, yoksa resim seçici yine aynı hatayı verir. Turnstile'la aynı durum.
 
+- [x] Önizleme adresi (`public_url`) `r2.dev`'den kendi Worker'ımıza çevrildi — o adres hiç açılmıyor (bağlantı bile kurulmuyor), küçük resimler bu yüzden boştu
+- [x] Worker düz isteklere `206` dönüyordu; artık yalnızca gerçek `Range` isteğine (video sarma bozulmadı, ayrıca doğrulandı)
+
+> **Galeri verisindeki fotoğraf adreslerini KISALTMA.** Tam adres olarak durmalı. Site düz dosya adını da çözer ama CMS çözemez — onu depoda arar, bulamaz, önizlemede boş kutu gösterir. Bir kez "veriyi temizleyelim" diye kısaltıldı ve önizlemeler bozuldu. Kod hangi adresi görürse görsün kendi yolundan sunuyor, yani tam adres bırakmanın sitede bir bedeli yok.
+
 - [ ] `src/data/gallery/*.json` — `_sample: true` işaretli üç sahte kayıt (`g069`, `g093`, `g363`, fotoğrafları picsum.photos'tan). **Bilinçli olarak bırakıldı** — gerçek fotoğraflar eklenirken yerlerini alacaklar. Yayından önce mutlaka gitmeli, yoksa ziyaretçi rastgele stok resimleri bölüm fotoğrafı sanır
 
 ### 1.6 Fandom formu hiçbir yere veri göndermiyor ✅ ÇÖZÜLDÜ (24 Ağu)
@@ -494,6 +499,7 @@ Elle çalıştırılan ikisi `--go` verilmeden **kuru çalışır**, hiçbir şe
 - [x] Kullanılmayan `Cloudflare Agent Token` (tüm bucket'larda okuma) silindi
 - [x] CMS'ten foto yüklendi, yeni dar kapsamlı anahtar çalışıyor (`g126` kaydı R2 adresiyle oluştu)
 - [x] Eski `R2 Account Token` (tüm bucket'lara yazma) silindi. Geriye yalnızca dar kapsamlı ikisi kaldı: `mafin-cms-photos` → `mafin-photos`, `rclone-upload` → `mafin-videos`
+- [x] **CMS Fandom:** (26 Eyl) `summary` alanındaki desteklenmeyen `{{#if fields.approved}}` mantığı kaldırılarak "summary option refers to #if..." hatası çözüldü
 
 > Not: `access_key_id` herkese açık olmaya devam ediyor ve bu sorun değil — secret olmadan kullanılamaz, secret da editörün tarayıcısında duruyor. Yapılan şey katmanlı savunma: anahtar bir gün sızarsa hasar foto bucket'ıyla sınırlı kalsın.
 
