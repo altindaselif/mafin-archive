@@ -136,7 +136,7 @@ collections:
     extension: json
     format: json
     identifier_field: title
-    summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.title}} — {{fields.author}}{{#if fields.approved}} ✓{{/if}}"
+    summary: "{{fields.date | date('DD/MM/YYYY')}} — {{fields.title}} — {{fields.author}}"
     sortable_fields: [approved, date]
     create: true
     # Dosya adını CMS üretiyor; formdan gelenleri worker aynı kalıpta yazıyor.
