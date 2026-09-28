@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina y Petra deciden presentarse a los puestos de dependienta que han quedado vacantes en la tienda. Fina le confiesa a Petra que Marta la intimida.",
+    "es": "Fina y Petra deciden presentarse como candidatas a los puestos de dependienta que han quedado vacantes en la tienda. Fina le confiesa a Petra que Marta la intimida.",
     "en": "Fina and Petra decide to apply for the shop assistant positions that have become available at the store. Fina admits to Petra that Marta intimidates her."
   },
+  "noMafin": false,
   "airDate": "2024-02-28"
 }
