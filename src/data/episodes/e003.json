@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Damián empieza a recuperarse. Los trabajadores declaran que no volverán al trabajo hasta que comiencen las reparaciones de la zona derrumbada, y Andrés promete iniciarlas. Mientras tanto, Petra intenta averiguar con disimulo qué siente Fina por los hombres.",
+    "es": "Damián empieza a recuperarse. Los trabajadores declaran que no volverán al trabajo hasta que comiencen las reparaciones de la zona derrumbada y Andrés promete iniciarlas. Mientras tanto, Petra intenta averiguar con disimulo qué siente Fina por los hombres.",
     "en": "Damián begins to recover. The workers declare that they will not go back to work until repairs on the collapsed section begin, and Andrés promises to begin the repairs. Meanwhile, Petra subtly tries to find out how Fina feels about men."
   },
+  "noMafin": false,
   "airDate": "2024-02-27"
 }
