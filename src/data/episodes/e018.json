@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras Marta escribe una carta a Jaime, que está en Nápoles, entra Damián. Le dice que vaya a visitar a Jaime, y Marta accede.",
+    "es": "Marta está escribiendo una carta a Jaime, que está en Nápoles, cuando entra Damián. Éste le dice que vaya a visitar a Jaime y Marta accede.",
     "en": "While Marta is writing a letter to Jaime in Naples, Damián comes in. He tells her to go visit Jaime, and Marta agrees."
   },
+  "noMafin": false,
   "airDate": "2024-03-19"
 }
