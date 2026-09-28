@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras Fina se prueba el conjunto que llevará a la ópera, Marta entra en la habitación. Como tiene que esperar la llamada de Jaime, cancela lo de la ópera. Más tarde, cuando va a la tienda y recuerda los momentos vividos con Fina, vuelve a invitarla a la ópera. Ester llama a Fina.",
-    "en": "While Fina is trying on the outfit she will wear to the opera, Marta comes into the room. Because she has to wait for Jaime's phone call, she cancels the opera. Later, when she goes to the store and recalls her memories with Fina, she invites Fina to the opera once again. Ester calls Fina."
+    "es": "Mientras Fina se prueba el conjunto que llevará a la ópera, Marta entra en la habitación. Como tiene que esperar la llamada de Jaime, cancela lo de la ópera. Más tarde, cuando va a la tienda y recuerda los momentos vividos con Fina, vuelve a invitarla. Esther llama a Fina.",
+    "en": "While Fina is trying on the outfit she will wear to the opera, Marta comes into the room. Because she has to wait for Jaime's phone call, she cancels the opera. Later, when she goes to the store and recalls her memories with Fina, she invites Fina to the opera once again. Esther calls Fina."
   },
+  "noMafin": false,
   "airDate": "2024-03-27"
 }
