@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Conocemos a la familia De la Reina y a los trabajadores de la fábrica. Fina deja caer una caja al suelo junto a Marta, y Marta la regaña.",
+    "es": "Conocemos a la familia De la Reina y a los trabajadores de la fábrica. A Fina se le cae una caja al suelo junto a Marta, y Marta la regaña.",
     "en": "We are introduced to the De la Reina family and the factory workers. Fina drops a box on the floor beside Marta, and Marta scolds her."
   },
+  "noMafin": false,
   "airDate": "2024-02-25"
 }
