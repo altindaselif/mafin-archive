@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Isidro sale del coma. En su alegría, Fina y Marta se miran con tanta ternura que Jaime y Luz se dan cuenta. Jaime le dice a Marta que ha visto cómo se miran ella y Fina, que a él nunca lo ha mirado así ni lo hará, y que por eso su matrimonio debería continuar, pero que las dos deberían vivir la vida que quieren.",
+    "es": "Isidro sale del coma. En su alegría, Fina y Marta se miran con tanta ternura que Jaime y Luz se dan cuenta. Jaime le dice a Marta que ha visto cómo se miran ella y Fina, que a él nunca lo ha mirado así ni lo hará y que por eso, aunque su matrimonio deba continuar, los dos deberían vivir la vida que quieren.",
     "en": "Isidro comes out of his coma. In their joy, Fina and Marta look at each other so tenderly that Jaime and Luz notice. Jaime tells Marta that he saw the way she and Fina look at each other, that she has never looked at him that way and never will, and that their marriage should therefore continue, but that they should both live the life they want."
   },
+  "noMafin": false,
   "airDate": "2024-07-04"
 }
