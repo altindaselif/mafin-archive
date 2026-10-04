@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Marta se pone al frente de la empresa para el lanzamiento. Va a la tienda e informa de ello a las chicas. Les pide ideas para la campaña de lanzamiento del nuevo producto, y Carmen y Fina proponen cada una una idea distinta.",
+    "es": "Marta se pone al frente de la empresa para el lanzamiento. Va a la tienda e informa de ello a las chicas. Les pide ideas para la campaña de lanzamiento del nuevo producto y Carmen y Fina proponen cada una una idea distinta.",
     "en": "Marta takes charge of the company for the launch. She goes to the store and informs the girls about this. She asks the girls for ideas for the new product's launch campaign, and Carmen and Fina each come up with a separate idea."
   },
+  "noMafin": false,
   "airDate": "2024-06-12"
 }
