@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta visita a Fina. Le lleva unas toledanas y un ejemplar de la novela Madame Bovary. Le dice a Fina que Jaime se va a quedar.",
+    "es": "Marta visita a Fina, le lleva unas toledanas y un ejemplar de la novela Madame Bovary. Le dice a Fina que Jaime se va a quedar.",
     "en": "Marta visits Fina. She brings her toledanas and a copy of the novel Madame Bovary. She tells Fina that Jaime is going to stay."
   },
+  "noMafin": false,
   "airDate": "2024-05-17"
 }
