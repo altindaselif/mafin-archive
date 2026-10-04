@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Jaime va a la tienda y le cuenta a Fina el acuerdo que hizo con Marta. Le dice que Marta ha estado manteniendo las distancias porque tiene miedo de hacerle daño, cuando en realidad la quiere muchísimo.",
+    "es": "Jaime va a la tienda y le cuenta a Fina el acuerdo al que llegó con Marta. Le dice que Marta ha estado manteniendo las distancias porque tiene miedo de hacerle daño, cuando en realidad la quiere muchísimo.",
     "en": "Jaime comes to the store and tells Fina about the arrangement he made with Marta. He says that Marta has been keeping her distance because she is afraid of hurting her, when in fact she loves her very much."
   },
+  "noMafin": false,
   "airDate": "2024-07-11"
 }
