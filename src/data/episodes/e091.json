@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras Marta escribe en su diario, entra Jaime, y hablan sobre su diario. Marta le dice entonces que ella y Fina lo han terminado todo y que quiere salvar su matrimonio con él. Jaime le dice a Fina que el estado de Isidro es muy grave, que podría morir antes de que llegue el tratamiento, y que por eso deberían aprovechar al máximo sus últimos días.",
+    "es": "Marta está escribiendo en su diario cuando entra Jaime y hablan sobre el diario. Marta le dice entonces que ella y Fina lo han terminado todo y que quiere salvar su matrimonio con él. Jaime le dice a Fina que el estado de Isidro es muy grave, que podría morir antes de que llegue el tratamiento y que por eso deberían aprovechar al máximo sus últimos días.",
     "en": "As Marta is writing in her diary, Jaime comes in, and they talk about her diary. Marta then says that she and Fina have ended everything and that she wants to save her marriage with him. Jaime tells Fina that Isidro's condition is very serious, that he could die before the treatment arrives, and that they should therefore make the most of his final days."
   },
+  "noMafin": false,
   "airDate": "2024-07-02"
 }
