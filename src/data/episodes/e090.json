@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta le pregunta a Jaime si saboteó el tratamiento de Isidro para vengarse de Fina. Jaime dice cómo puede pensar que es semejante monstruo, y discuten.",
+    "es": "Marta le pregunta a Jaime si saboteó el tratamiento de Isidro para vengarse de Fina. Jaime le pregunta cómo puede pensar que es semejante monstruo y discuten.",
     "en": "Marta asks Jaime whether he sabotaged Isidro's treatment in order to take revenge on Fina. Jaime says how could she think he is such a monster, and they argue."
   },
+  "noMafin": false,
   "airDate": "2024-07-01"
 }
