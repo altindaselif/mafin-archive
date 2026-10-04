@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Fina va al despacho de Marta, le explica la situación con Gaspar y hablan. Fina sigue con la farsa de ser la novia de Gaspar. En la casa grande, Marta ve a Fina y a Gaspar abrazándose y se pone celosa.",
+    "es": "Fina va al despacho de Marta, le explica la situación con Gaspar y hablan. Fina sigue con la farsa de ser la novia de Gaspar. En la casa grande, Marta ve a Fina y a Gaspar abrazándose y le entran celos de nuevo.",
     "en": "Fina comes to Marta's office, explains the situation with Gaspar, and they talk. Fina keeps up the pretense of being Gaspar's girlfriend. At home, Marta sees Fina and Gaspar hugging and grows jealous."
   },
+  "noMafin": false,
   "airDate": "2024-04-12"
 }
