@@ -10,8 +10,9 @@
     "miento"
   ],
   "description": {
-    "es": "Isidro le da a Fina el anillo de su madre. Fina habla con Luz y Jaime sobre el estado de Isidro. Cuando Luz y Jaime le dicen que se prepare para lo peor, queda destrozada. Mientras llora en el almacén, Marta la ve y, mientras la consuela, en un momento de debilidad se besan, y Jaime las ve besándose.",
+    "es": "Isidro le da a Fina el anillo de su madre. Fina habla con Luz y Jaime sobre el estado de Isidro. Cuando Luz y Jaime le dicen que se prepare para lo peor, queda destrozada. Mientras llora en el almacén, Marta la ve y, mientras la consuela, en un momento de debilidad se besan. Jaime las ve besándose.",
     "en": "Isidro gives Fina her mother's ring. Fina discusses Isidro's condition with Luz and Jaime. When Luz and Jaime tell her to be prepared for the worst, she is devastated. As she cries in the storeroom, Marta sees her, and while comforting her, in a moment of weakness they kiss and Jaime sees them kissing."
   },
+  "noMafin": false,
   "airDate": "2024-06-24"
 }
