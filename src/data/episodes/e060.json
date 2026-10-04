@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras la doctora Luz le cambia el vendaje a Fina, hablan sobre Madame Bovary. Luz le dice a Fina que Jaime va a empezar a trabajar como médico de la fábrica. En ese mismo momento, Marta se entera de ello por Damián y Jaime.",
+    "es": "Mientras la doctora Luz le cambia el vendaje a Fina, hablan sobre Madame Bovary. Luz le dice a Fina que Jaime va a empezar a trabajar como médico en la fábrica. En ese mismo momento, Marta se entera de ello por Damián y Jaime.",
     "en": "While Doctor Luz changes Fina's dressing, they talk about Madame Bovary. Luz tells Fina that Jaime will be starting work as the factory doctor. At that same moment, Marta learns of this from Damián and Jaime."
   },
+  "noMafin": false,
   "airDate": "2024-05-20"
 }
