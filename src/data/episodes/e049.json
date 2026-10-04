@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta habla con Isidro y elogia a Fina. Isidro le dice a Fina que Marta habló muy bien de ella. Marta va a sus habitaciones para darle a Carmen un regalo de boda. Carmen, Fina y Claudia invitan a Marta a celebrarlo con ellas, pero Marta no se queda.",
+    "es": "Marta habla con Isidro y elogia a Fina. Isidro le dice a Fina que Marta habló muy bien de ella. Marta va a la habitación de la colonia para darle a Carmen un regalo de boda. Carmen, Fina y Claudia invitan a Marta a celebrarlo con ellas, pero Marta no se queda.",
     "en": "Marta talks with Isidro and praises Fina. Isidro tells Fina that Marta spoke highly of her. Marta goes to their quarters to give Carmen a wedding gift. Carmen, Fina, and Claudia invite Marta to celebrate with them, but Marta does not stay."
   },
+  "noMafin": false,
   "airDate": "2024-05-03"
 }
