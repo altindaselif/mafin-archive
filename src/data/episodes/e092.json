@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le dice a Marta que su padre le dijo que fuera valiente y viviera con libertad, y que quiere que Marta sea su mujer y vivir con ella. Marta rechaza a Fina, diciendo que hay demasiados obstáculos entre ellas. Por eso, Fina le dice a Jaime que se irá en cuanto muera su padre y le pide que cuide bien de Marta. En el último momento, la medicina llega a tiempo.",
+    "es": "Fina le dice a Marta que su padre le dijo que fuera valiente y viviera con libertad. Le dice también que quiere que Marta sea su mujer y vivir con ella. Marta rechaza a Fina, diciendo que hay demasiados obstáculos entre ellas. Por eso, Fina le dice a Jaime que se irá en cuanto muera su padre y le pide que cuide bien de Marta. En el último momento, el medicamento llega a tiempo.",
     "en": "Fina tells Marta that her father told her to be brave and live freely, and that she wants Marta to be her wife and to live with her. Marta rejects Fina, saying that there are too many obstacles between them. Because of this, Fina tells Jaime that she will leave once her father dies and asks him to take good care of Marta. At the last moment, the medicine arrives in time."
   },
+  "noMafin": false,
   "airDate": "2024-07-03"
 }
