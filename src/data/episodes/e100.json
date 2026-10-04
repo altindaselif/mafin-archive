@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le dice a Carmen que ella y Marta vuelven a ser pareja. Le explica el acuerdo entre Jaime y Marta.",
+    "es": "Fina le dice a Carmen que ella y Marta vuelven a ser pareja y le explica el acuerdo entre Jaime y Marta.",
     "en": "Fina tells Carmen that she and Marta are a couple again. She explains the arrangement between Jaime and Marta."
   },
+  "noMafin": false,
   "airDate": "2024-07-15"
 }
