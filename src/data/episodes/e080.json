@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Marta está muy contenta por el éxito de la empresa, y ella y su primo hablan tanto del éxito de la empresa como de ellos mismos.",
+    "es": "Marta está muy contenta por el éxito de la empresa y ella y su primo hablan tanto del éxito de la empresa como de ellos mismos.",
     "en": "Marta is very happy about the company's success, and she and her cousin talk both about the company's success and about each other."
   },
+  "noMafin": false,
   "airDate": "2024-06-17"
 }
