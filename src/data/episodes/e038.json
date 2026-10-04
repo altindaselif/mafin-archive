@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta y Fina hablan en la tienda sobre la noche anterior. Carmen les hace bromas a las dos sobre lo de Madrid, y Marta le contesta con brusquedad. Fina va al despacho de Marta, y hablan sobre su relación y sobre la boda de Andrés.",
+    "es": "Marta y Fina hablan en la tienda sobre la noche anterior. Carmen les hace bromas a las dos sobre lo de Madrid y Marta le contesta con brusquedad. Fina va al despacho de Marta y hablan sobre su relación y sobre la boda de Andrés.",
     "en": "Marta and Fina talk in the store about the previous night. Carmen teases the two of them about Madrid, and Marta snaps at her. Fina goes to Marta's office, and they talk about their relationship and about Andrés's wedding."
   },
+  "noMafin": false,
   "airDate": "2024-04-17"
 }
