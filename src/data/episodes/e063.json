@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina vuelve al trabajo. Mientras habla con Claudia y Marta, llega Jaime. Marta le dice a Fina que, en estas circunstancias, es muy difícil mantener su relación, que la quiere y que por eso no quiere ser egoísta, que Fina podría encontrar a alguien que la haga feliz, y que pueden romper si ella quiere: está esperando su respuesta. Es la primera vez que Marta le dice \"te amo\" a Fina.",
+    "es": "Fina vuelve al trabajo. Mientras habla con Claudia y Marta, llega Jaime. Marta le dice a Fina que, en estas circunstancias, es muy difícil mantener su relación, que la quiere y que por eso no quiere ser egoísta, que Fina podría encontrar a alguien que la haga feliz y que pueden romper si ella quiere: está esperando su respuesta. Es la primera vez que Marta le dice \"te amo\" a Fina.",
     "en": "Fina returns to work. While she is talking with Claudia and Marta, Jaime arrives. Marta tells Fina that under these circumstances it is very hard to keep their relationship going, that she loves her and therefore does not want to be selfish, that Fina could find someone who will make her happy, and that they could break up if she wants. She is waiting for her answer. It is the first time Marta says \"te amo\" to Fina."
   },
+  "noMafin": false,
   "airDate": "2024-05-23"
 }
