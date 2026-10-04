@@ -10,8 +10,9 @@
     "argue"
   ],
   "description": {
-    "es": "Fina le dice a Marta que le ha revelado su relación a Carmen, y discuten. Fina le dice luego a Carmen que se lo ha contado todo a Marta. Sin saber cómo comportarse delante de Marta, Carmen actúa de forma extraña, lo que enfada mucho a Marta.",
+    "es": "Fina le dice a Marta que le ha revelado a Carmen su relación y discuten. Fina le dice luego a Carmen que se lo ha contado todo a Marta. Sin saber cómo comportarse delante de Marta, Carmen actúa de forma extraña, lo que enfada mucho a Marta.",
     "en": "Fina tells Marta that she has revealed their relationship to Carmen, and they argue. Fina then tells Carmen that she has told Marta everything. Unsure of how to behave around Marta, Carmen acts strangely, which makes Marta very angry."
   },
+  "noMafin": false,
   "airDate": "2024-04-23"
 }
