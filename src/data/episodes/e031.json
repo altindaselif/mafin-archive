@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Damián le pregunta a Marta si está engañando a Jaime con el fotógrafo, y Marta lo niega.",
+    "es": "Damián le pregunta a Marta si está engañando a Jaime con el fotógrafo y Marta lo niega.",
     "en": "Damián asks Marta whether she is cheating on Jaime with the photographer, and Marta denies it."
   },
+  "noMafin": false,
   "airDate": "2024-04-08"
 }
