@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Jaime y Marta van a la tienda. Fina se descoloca al ver a Jaime. Esa noche, Jaime y Marta recuerdan los viejos tiempos. Jaime le propone a Marta que se embarque con él en el barco, pero Marta reacciona con brusquedad y se niega. Marta dice que va a trabajar durante la noche, y Jaime duerme solo.",
+    "es": "Jaime y Marta van a la tienda. Fina se queda descolocada al ver a Jaime. Esa noche, Jaime y Marta recuerdan los viejos tiempos. Jaime le propone a Marta que se embarque con él en el barco, pero Marta reacciona con brusquedad y se niega. Marta dice que va a trabajar durante la noche y Jaime duerme solo.",
     "en": "Jaime and Marta come to the store. Fina is thrown off when she sees Jaime. That evening, Jaime and Marta reminisce about old times. Jaime proposes that Marta come aboard the ship with him, but Marta reacts sharply and refuses. Marta says she will be working during the night, and Jaime sleeps alone."
   },
+  "noMafin": false,
   "airDate": "2024-05-07"
 }
