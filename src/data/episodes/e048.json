@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Isidro le ha dicho al párroco de la colonia que hay homosexuales en la colonia. Mientras el párroco habla del asunto con Gaspar, Marta los oye. Le dice al párroco que tiene que dejar el tema. Después, Marta le cuenta a Fina lo del párroco y le dice que necesitan mantener las distancias.",
+    "es": "Isidro le ha dicho al párroco que hay homosexuales en la colonia. Mientras el cura habla del asunto con Gaspar, Marta los oye y le dice que tiene que dejar el tema. Después, Marta se lo cuenta a Fina y le dice que necesitan mantener las distancias.",
     "en": "Isidro has told the parish priest of the colony that there are homosexuals in the colony. As the priest discusses this with Gaspar, Marta overhears them. She tells the priest that he must let the matter drop. Marta then tells Fina about the incident with the priest and says that they need to keep their distance from each other."
   },
+  "noMafin": false,
   "airDate": "2024-05-02"
 }
