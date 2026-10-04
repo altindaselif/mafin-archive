@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta visita a Fina. Hablan sobre que Jaime va a empezar a trabajar en la fábrica. Marta pronuncia su famosa frase, \"mi sol, mi cielo\". Se prometen la una a la otra que superarán juntas todos sus problemas.",
+    "es": "Marta visita a Fina y hablan sobre que Jaime va a empezar a trabajar en la fábrica. Marta pronuncia su famosa frase, \"mi sol, mi cielo\". Se prometen la una a la otra que superarán juntas todos sus problemas.",
     "en": "Marta visits Fina. They talk about Jaime starting work at the factory. Marta delivers her famous line, \"my sun, my sky.\" They promise each other that they will get through all their problems together."
   },
+  "noMafin": false,
   "airDate": "2024-05-21"
 }
