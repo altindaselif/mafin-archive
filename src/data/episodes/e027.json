@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Ester y Marta se conocen en la tienda. Ester le dice a Marta que Fina se va a ir a París con ella, pero Fina interrumpe a Ester y dice que aún no lo ha decidido. Ester va al despacho de Marta y le pide que convenza a Fina de irse a París.",
-    "en": "Ester and Marta meet at the store. Ester tells Marta that Fina is going to Paris with her, but Fina cuts Ester off and says she has not decided yet. Ester goes to Marta's office and asks her to persuade Fina to go to Paris."
+    "es": "Esther y Marta se encuentran en la tienda. Esther le dice a Marta que Fina se va a ir a París con ella, pero Fina interrumpe a Esther y dice que aún no lo ha decidido. Esther va al despacho de Marta y le pide que convenza a Fina de irse a París.",
+    "en": "Esther and Marta meet at the store. Esther tells Marta that Fina is going to Paris with her, but Fina cuts Esther off and says she has not decided yet. Esther goes to Marta's office and asks her to persuade Fina to go to Paris."
   },
+  "noMafin": false,
   "airDate": "2024-04-02"
 }
