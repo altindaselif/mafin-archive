@@ -10,8 +10,9 @@
     "argue"
   ],
   "description": {
-    "es": "Marta va a la tienda y habla del lanzamiento. Cuando le preguntan qué idea ha elegido, Marta dice que ha elegido la de Carmen. Fina le dice a Marta que lleva días sin mirarla a la cara y sin escucharla, y que cree que Marta no eligió su idea porque han roto. Marta le responde que tomó una decisión profesional y que la idea de Carmen era mejor, y discuten. Carmen habla con Fina sobre ello.",
+    "es": "Marta va a la tienda y habla del lanzamiento. Cuando le preguntan qué idea ha elegido, Marta dice que ha elegido la de Carmen. Fina le dice a Marta que lleva días sin mirarla a la cara y sin escucharla, y que cree que Marta no eligió su idea porque han roto. Marta le responde que tomó una decisión profesional y que la idea de Carmen era mejor y discuten. Carmen habla con Fina sobre ello.",
     "en": "Marta comes to the store and talks about the launch. When asked which idea she chose, Marta says she chose Carmen's. Fina tells Marta that she has not looked her in the face for days and has not been listening to her, and that she thinks Marta did not choose her idea because they broke up. Marta replies that she made a professional decision and that Carmen's idea was better, and they argue. Carmen talks with Fina about it."
   },
+  "noMafin": false,
   "airDate": "2024-06-14"
 }
