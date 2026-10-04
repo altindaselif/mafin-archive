@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Marta escribe una entrada sobre Fina en su diario. Le cuenta a Jaime que lleva un diario. Fina le dice a Carmen que Marta y Jaime están intentando tener un hijo y se desahoga con ella al respecto.",
+    "es": "Marta escribe sobre Fina en su diario. También le cuenta a Jaime que tiene un diario. Fina le dice a Carmen que Marta y Jaime están intentando tener un hijo y se desahoga con ella al respecto.",
     "en": "Marta writes an entry about Fina in her diary. She tells Jaime that she keeps a diary. Fina tells Carmen that Marta and Jaime are trying to have a child and confides in her about it."
   },
+  "noMafin": false,
   "airDate": "2024-06-19"
 }
