@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Fina va al despacho de Marta. Le pregunta por qué, a pesar del acuerdo con Jaime, no le dijo nada, y si es que no la quiere. Marta le dedica un precioso discurso sobre lo mucho que quiere a Fina, y se reconcilian. Marta le da las gracias a Jaime por haber hablado con Fina y le dice que ella y Fina se han reconciliado.",
+    "es": "Fina va al despacho de Marta para preguntarle por qué, a pesar del acuerdo con Jaime, no le dijo nada, y si es que no la quiere. Marta le dedica un precioso discurso sobre lo mucho que sí la quiere  y se reconcilian. Marta le da las gracias a Jaime por haber hablado con Fina y le dice que ella y Fina se han reconciliado.",
     "en": "Fina comes to Marta's office. She asks why, despite the arrangement with Jaime, Marta did not say anything to her, and whether she does not love her. Marta delivers a beautiful speech about how much she loves Fina, and they make up. Marta thanks Jaime for talking to Fina and tells him that she and Fina have reconciled."
   },
+  "noMafin": false,
   "airDate": "2024-07-12"
 }
