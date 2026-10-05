@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta discute con Jesús sobre la nueva secretaria que se va a contratar en la fábrica y, aunque Jesús no quiere, Isabel acaba siendo la nueva secretaria.",
+    "es": "Marta discute con Jesús sobre la nueva secretaria que se va a contratar en la fábrica y, aunque Jesús no quiere, Isabel acaba obteniendo el puesto.",
     "en": "Marta argues with Jesús about the new secretary to be hired at the factory, and although Jesús is against it, Isabel becomes the new secretary."
   },
+  "noMafin": false,
   "airDate": "2024-07-18"
 }
