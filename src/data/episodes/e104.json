@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Isidro le dice a Fina que últimamente está muy feliz. Fina dice que se ha reconciliado con su pareja. Damián le dice a Isidro que Fina está cada día más guapa y que seguro que tiene una fila de pretendientes en la puerta.",
+    "es": "Isidro le dice a Fina que últimamente está muy feliz y Fina le cuenta que se ha reconciliado con su pareja. Damián le dice a Isidro que Fina está cada día más guapa y que seguro que tiene una fila de pretendientes en la puerta.",
     "en": "Isidro tells Fina that she has been very happy lately. Fina says that she has made up with her partner. Damián tells Isidro that Fina is growing more beautiful by the day and that there must be a whole line of suitors at her door."
   },
+  "noMafin": false,
   "airDate": "2024-07-19"
 }
