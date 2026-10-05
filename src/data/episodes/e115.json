@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Después de que Marta y Fina salen del concierto, hablan sobre él. Justo entonces, se encuentran con Isabel. Fina dice que Marta le regaló la entrada porque ayudó con el tratamiento de la enfermedad de Isidro. Cuando Isabel se va, temen que se haya dado cuenta de que hay una relación entre ellas.",
-    "en": "After Marta and Fina leave the concert, they talk about it. Just then, they run into Isabel. Fina says that Marta gave her the ticket as a gift because she helped with the treatment of Isidro's illness. After Isabel leaves, they worry that she may have realized there is a relationship between them."
+    "es": "Después de salir del concierto, Marta y Fina hablan sobre él. Justo entonces, se encuentran con Isabel. Fina dice que le regaló la entrada a Marta por ayudar con el tratamiento de la enfermedad de Isidro. Cuando Isabel se va, temen que se haya dado cuenta de que hay una relación entre ellas.",
+    "en": "After Marta and Fina leave the concert, they talk about it. Just then, they run into Isabel. Fina says that she gave Marta the ticket as a gift because she helped with the treatment of Isidro's illness. After Isabel leaves, they worry that she may have realized there is a relationship between them."
   },
+  "noMafin": false,
   "airDate": "2024-08-05"
 }
