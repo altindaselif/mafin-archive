@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta le dice a Luis que está pensando en exportar los productos de la Reina a Francia.",
-    "en": "Marta tells Luis that she is thinking of exporting de la Reina products to France."
+    "es": "Marta le dice a Luis que está pensando en exportar los productos De la Reina a Francia.",
+    "en": "Marta tells Luis that she is thinking of exporting De la Reina products to France."
   },
+  "noMafin": false,
   "airDate": "2024-07-23"
 }
