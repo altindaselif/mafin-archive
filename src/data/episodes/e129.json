@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta le dice a Jesús que no va a despedir a Claudia, y discuten al respecto. Marta va a la tienda y, con Fina presente, dice que no ha despedido a Claudia. Fina y Marta hablan sobre estos asuntos. Jaime le advierte a Marta que tengan un poco más de cuidado para que su relación no se note.",
+    "es": "Marta le dice a Jesús que no va a despedir a Claudia y discuten al respecto. Marta va a la tienda y, con Fina presente, dice que no ha despedido a Claudia. Fina y Marta hablan sobre estos asuntos. Jaime le advierte a Marta que tengan un poco más de cuidado para que su relación no se note.",
     "en": "Marta tells Jesús that she will not fire Claudia, and they argue about it. Marta comes to the store and, with Fina present, says that she has not fired Claudia. Fina and Marta talk about these matters. Jaime warns Marta to be a little more careful so that their relationship does not become obvious."
   },
+  "noMafin": false,
   "airDate": "2024-08-26"
 }
