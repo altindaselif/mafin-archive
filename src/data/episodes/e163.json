@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Fina hablan por teléfono sobre el problema del turno. Cuando los hombres del almacén se burlan de Jacinto, Fina lo defiende. Jacinto se pone muy contento por ello y cambia los días de turno con Fina. Fina está preciosa con el vestido de la ópera. Pero, como a Marta le ha surgido trabajo, cancela la ópera. Fina habla con Isidro en la cocina, e Isidro le dice a Fina que no siga atada a Marta y que viva con libertad.",
+    "es": "Marta y Fina hablan por teléfono sobre el problema del turno. Cuando los hombres del almacén se burlan de Jacinto, Fina lo defiende. Jacinto se alegra mucho y cambia los días de turno con Fina. Fina está preciosa con el vestido de la ópera, pero, como a Marta le ha surgido trabajo, cancela la cita. Fina habla con Isidro en la cocina y él le dice que no siga atada a Marta y que viva con libertad.",
     "en": "Marta and Fina talk on the phone about the shift problem. When the men in the storeroom make fun of Jacinto, Fina defends him. Jacinto is very pleased by this and swaps shift days with Fina. Fina looks beautiful in the opera dress. But because something has come up with Marta's work, she cancels the opera. Fina talks with Isidro in the kitchen, and Isidro tells Fina not to remain tied to Marta and to live freely."
   },
+  "noMafin": false,
   "airDate": "2024-10-11"
 }
