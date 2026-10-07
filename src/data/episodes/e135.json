@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Para alejar a Fina de Marta, Damián quiere trasladarla a Barcelona. Fina le cuenta a Marta lo del traslado, y Marta dice que no lo permitirá. Damián dice que fue Jesús quien mandó tomar las fotos, y que Fina tiene que irse para que Marta y Fina no acaben en la cárcel.",
+    "es": "Para alejar a Fina de Marta, Damián quiere trasladarla a Barcelona. Fina le cuenta a Marta lo del traslado y Marta dice que no lo permitirá. Damián dice que fue Jesús quien mandó tomar las fotos, y que Fina tiene que irse para que ninguna de las dos acabe en la cárcel.",
     "en": "To keep Fina away from Marta, Damián wants to transfer her to Barcelona. Fina tells Marta about the transfer, and Marta says she will not allow it. Damián says that it was Jesús who had the photos taken, and that Fina needs to leave so that Marta and Fina do not go to prison."
   },
+  "noMafin": false,
   "airDate": "2024-09-03"
 }
