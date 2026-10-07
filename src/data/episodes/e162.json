@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le pregunta a Marta si pueden cambiar el día, ya que tiene turno el día de la ópera. Marta dice que no pueden cambiar el día y le dice que cambie el turno con Jacinto. Cuando Fina le explica la situación con Jacinto, Marta le toma el pelo diciéndole que a veces es como una niña de parvulario.",
+    "es": "Fina le pregunta a Marta si pueden cambiar el día, ya que tiene turno el día de la ópera. Marta dice que no pueden y que cambie el turno con Jacinto. Cuando Fina le explica la situación con Jacinto, Marta le toma el pelo diciéndole que a veces es como una niña de parvulario.",
     "en": "Fina asks Marta whether they can change the day, since she has a shift on the day of the opera. Marta says they cannot change the day and tells her to swap shifts with Jacinto. When Fina explains the situation with Jacinto, Marta teases her, saying she is sometimes like a kindergarten child."
   },
+  "noMafin": false,
   "airDate": "2024-10-10"
 }
