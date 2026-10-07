@@ -361,11 +361,30 @@ Kopyalanan sabitler:
 - [ ] Sayfa başına `<title>` — şu an her route'ta "Archivo Mafin"
 - [ ] `public/robots.txt` ve `public/sitemap.xml`
 
+**Gizlenen görseller — yayın günü GERİ AÇ:**
+
+> Site duyurulana kadar ana sayfanın kapak fotoğrafı kapalı: siteye giren
+> biri ilk ekranda diziden kare görmesin. Tek satır, kod silinmedi.
+> **Bu madde kapatılmazsa site kapak fotoğrafsız yayına çıkar.**
+
+- [ ] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır (ana sayfa kapak fotoğrafı)
+
+> Köşe çizimleri (silüetler) geri açıldı — soyut, bordo tonlu kesitler
+> oldukları için ilk bakışta bir şey ele vermiyorlar. Sıraları gezinme
+> sırasıyla birlikte artıyor: 29 · 34 · 61 · 145 · 159 · 269 · (Actrices
+> köşeyi kendi kullanıyor) · 363 · 561. Yeni bir sayfa eklenirse silüeti de
+> bu artan sıraya oturmalı. Yedekte duran iki kesit: ep566, ep574.
+
+> Not: iç sayfalardaki karakter/oyuncu fotoğrafları ve zaman çizelgesi
+> posterleri **kapatılmadı** — kapsam "ilk ekran"dı. Daha geniş bir gizleme
+> istenirse ayrı iş.
+
 **Taşındıktan sonra doğrula:**
 
 - [ ] Fandom formundan gerçek bir gönderim yap, CMS'te "onay bekliyor" olarak gör
 - [ ] CMS'te bir galeri kaydı açıp resim seçiciyi aç, önizlemeler geliyor mu
 - [ ] Bir alıntı ve bir bölüm sayfası aç, resim/video akıyor mu
+- [ ] Ana sayfanın kapak fotoğrafı geri geldi mi
 
 > Not: veri içindeki fotoğraf adresleri alan adından **bağımsız** — kod hangi adres yazılı olursa olsun kendi yolundan sunuyor, dört biçim de test edildi. Yani veri düzeltmesi gerekmiyor.
 
