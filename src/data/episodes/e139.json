@@ -9,8 +9,9 @@
     "argue"
   ],
   "description": {
-    "es": "Fina le propone a Marta que se vayan juntas a Barcelona. Marta le cuenta a Jaime la propuesta de Fina. Aunque Jaime la anima a ir, Marta dice que no lo hará, porque no quiere dejar a Jaime. Marta le dice a Fina que Jaime tiene una enfermedad muy grave y que por eso no puede dejarlo, pero Fina no la cree, y discuten. Jaime intenta envenenar a Jesús echando arsénico en su bebida, pero luego se echa atrás.",
+    "es": "Fina le propone a Marta que se vayan juntas a Barcelona. Marta le cuenta a Jaime la propuesta de Fina. Aunque él la anima a ir, Marta dice que no lo hará, porque no quiere abandonarlo. Marta le dice a Fina que Jaime tiene una enfermedad muy grave y que por eso no puede dejarlo, pero Fina no la cree y discuten. Jaime intenta envenenar a Jesús echando arsénico en su bebida, pero luego se echa atrás.",
     "en": "Fina proposes to Marta that they go to Barcelona together. Marta tells Jaime about Fina's proposal. Although Jaime encourages her to go, Marta says she will not, because she does not want to leave Jaime. Marta tells Fina that Jaime has a very serious illness and that she therefore cannot leave him, but Fina does not believe her, and they argue. Jaime tries to poison Jesús by putting arsenic in his drink but then gives up on it."
   },
+  "noMafin": false,
   "airDate": "2024-09-09"
 }
