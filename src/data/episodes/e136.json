@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le cuenta a Isidro lo de Barcelona. Marta le dice a Fina que fue Jesús quien mandó tomar las fotos. Marta discute con Jesús por lo de Fina y le da una bofetada. Con Marta en la habitación, Fina le dice a Damián que no quiere ir a Barcelona.",
+    "es": "Fina le cuenta a Isidro lo de Barcelona. Marta le dice a Fina que fue Jesús quien mandó tomar las fotos. Marta discute con Jesús por lo de Fina y le da una bofetada. Con Marta presente, Fina le dice a Damián que no quiere ir a Barcelona.",
     "en": "Fina tells Isidro about the Barcelona situation. Marta tells Fina that it was Jesús who had the photos taken. Marta argues with Jesús over Fina and slaps him. With Marta in the room, Fina tells Damián that she does not want to go to Barcelona."
   },
+  "noMafin": false,
   "airDate": "2024-09-04"
 }
