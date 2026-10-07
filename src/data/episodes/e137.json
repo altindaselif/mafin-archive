@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Con Marta en la habitación, Fina le planta cara a Damián y dimite, y Marta se siente enormemente orgullosa. Después de que Fina se va, Marta la defiende frente a Damián. Marta le cuenta a Jaime todo lo que ha pasado y que fue Jesús quien mandó tomar las fotos. Jaime y Jesús se amenazan mutuamente.",
+    "es": "Con Marta en el despacho, Fina le planta cara a Damián y dimite, y Marta se siente enormemente orgullosa. Una vez que Fina se ha ido, Marta la defiende frente a Damián. También le cuenta a Jaime todo lo que ha pasado y que fue Jesús quien mandó tomar las fotos. Jaime y Jesús se amenazan mutuamente.",
     "en": "With Marta in the room, Fina stands up to Damián and resigns, and Marta is intensely proud. After Fina leaves, Marta defends her against Damián. Marta tells Jaime everything that has happened and that it was Jesús who had the photos taken. Jaime and Jesús threaten each other."
   },
+  "noMafin": false,
   "airDate": "2024-09-05"
 }
