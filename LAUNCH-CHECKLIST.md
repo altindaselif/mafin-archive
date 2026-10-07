@@ -363,21 +363,18 @@ Kopyalanan sabitler:
 
 **Gizlenen görseller — yayın günü GERİ AÇ:**
 
-> Site duyurulana kadar ana sayfanın kapak fotoğrafı kapalı: siteye giren
-> biri ilk ekranda diziden kare görmesin. Tek satır, kod silinmedi.
-> **Bu madde kapatılmazsa site kapak fotoğrafsız yayına çıkar.**
+> Site duyurulana kadar diziden kare gösteren iki görsel kapalı: siteye
+> giren biri konuyu ilk bakışta anlamasın. İkisi de tek satır, kod
+> silinmedi. **Bu iki madde kapatılmazsa site kapaksız ve köşe çizimsiz
+> yayına çıkar.**
 
 - [ ] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır (ana sayfa kapak fotoğrafı)
 
 - [ ] `src/styles/global.css` → `.page::after` içindeki `display: none;` satırını sil (köşe çizimleri)
 
-> **Köşe çizimleri şu an GEÇİCİ olarak açık** — yalnızca nasıl durduklarına
-> bakmak için. Gözden geçirme biter bitmez tekrar kapatılacak:
-> `.page::after` kuralının başına `display: none;` ekle.
->
-> Bunlar soyut değil: duotone filtresi kesiti bordoya boyuyor ama pozu
-> gizlemiyor — bakan biri ne olduğunu anlıyor. Yani kapak fotoğrafıyla aynı
-> ölçüde ele veriyorlar, "ilk ekran" eşiğini geçmeseler de.
+> Köşe çizimleri neden kapalı: duotone filtresi kesiti bordoya boyuyor ama
+> pozu gizlemiyor — bakan biri ne olduğunu anlıyor. Yani kapak fotoğrafıyla
+> aynı ölçüde ele veriyorlar, "ilk ekran" eşiğini geçmeseler de.
 >
 > Sıraları gezinme sırasıyla birlikte artıyor:
 > 34 · 61 · 99 · 145 · 159 · 269 · (Actrices köşeyi kendi kullanıyor) ·
