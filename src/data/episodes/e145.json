@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta ha hecho traer arena de la playa para Jaime y se la da. A Jaime le viene a la memoria una historia que Marta escribió para él tiempo atrás. Mientras Marta intenta volver a escribir esa historia, Fina va a su habitación, y hablan sobre Jaime.",
+    "es": "Marta ha hecho traer arena de la playa para Jaime y se la da. A Jaime le viene a la memoria una historia que Marta escribió para él tiempo atrás. Mientras Marta intenta volver a escribir esa historia, Fina va a su habitación y hablan sobre Jaime.",
     "en": "Marta has had sand brought from the beach for Jaime and gives it to him. Jaime recalls a story that Marta once wrote for him. As Marta tries to write that story again, Fina comes to her room, and they talk about Jaime."
   },
+  "noMafin": false,
   "airDate": "2024-09-17"
 }
