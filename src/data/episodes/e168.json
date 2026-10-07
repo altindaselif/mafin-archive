@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Todos se enteran de que Jesús mató a Valentín y a Clotilde y de que Damián lo encubrió. Marta se lo cuenta a Fina, y Fina la apoya.",
+    "es": "Todos se enteran de que Jesús mató a Valentín y a Clotilde y de que Damián lo encubrió. Marta se lo cuenta a Fina y recibe su apoyo.",
     "en": "Everyone learns that Jesús killed Valentín and Clotilde and that Damián covered it up. Marta tells Fina about this, and Fina supports her."
   },
+  "noMafin": false,
   "airDate": "2024-10-18"
 }
