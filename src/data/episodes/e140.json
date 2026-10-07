@@ -9,8 +9,9 @@
     "hug"
   ],
   "description": {
-    "es": "Isidro le dice a Fina que Jaime está en su lecho de muerte. Marta va a la tienda, y Fina la abraza con fuerza. Hablan sobre Jaime. Marta y Fina le dicen a Jaime que se vayan todos juntos a Barcelona.",
+    "es": "Isidro le dice a Fina que Jaime está en su lecho de muerte. Marta va a la tienda y Fina la abraza con fuerza. Hablan sobre él. Marta y Fina le dicen a Jaime que se vayan todos juntos a Barcelona.",
     "en": "Isidro tells Fina that Jaime is on his deathbed. Marta comes to the store, and Fina hugs her tightly. They talk about Jaime. Marta and Fina tell Jaime that they should all go to Barcelona together."
   },
+  "noMafin": false,
   "airDate": "2024-09-10"
 }
