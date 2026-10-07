@@ -1,6 +1,6 @@
 {
-  "id": "e271",
-  "number": 271,
+  "id": "e270",
+  "number": 270,
   "title": {
     "es": "Aquel en el que Fina pone a Pelayo en su sitio",
     "en": "The One Where Fina Puts Pelayo in His Place"
@@ -10,5 +10,6 @@
     "es": "Marta y Fina hablan en la cocina sobre la muerte de Jesús. Pelayo le dice a Fina que está siendo descuidada, y Fina lo pone en su sitio. Esta vez Pelayo presiona a Marta sobre ello.",
     "en": "Marta and Fina talk in the kitchen about Jesús's death. Pelayo tells Fina that she is being careless, and Fina puts him in his place. This time Pelayo presses Marta about it."
   },
+  "noMafin": false,
   "airDate": "2025-03-21"
 }
