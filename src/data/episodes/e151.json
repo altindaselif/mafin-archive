@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Damián le dice a Marta que acepta su relación con Fina, que va a despedir a Jesús, y que quiere que Marta sea directora en lugar de Jesús. Marta quiere pensarse la oferta. Jesús y Marta hablan sobre el puesto de directora. Marta se da cuenta de que Jesús ya no tiene las fotos. Le dice a Jesús que aceptará el puesto de directora.",
+    "es": "Damián le dice a Marta que acepta su relación con Fina, que va a despedir a Jesús, y que quiere que Marta sea directora en su lugar. Marta quiere pensarse la oferta. Jesús y Marta hablan sobre el puesto de directora. Marta se da cuenta de que Jesús ya no tiene las fotos y le dice que aceptará el puesto.",
     "en": "Damián tells Marta that he accepts her relationship with Fina, that he will fire Jesús, and that he wants Marta to become director in Jesús's place. Marta wants to think the offer over. Jesús and Marta talk about the director position. Marta realizes that Jesús no longer has the photos. She tells Jesús that she will accept the director position."
   },
+  "noMafin": false,
   "airDate": "2024-09-25"
 }
