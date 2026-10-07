@@ -93,7 +93,7 @@ export default function Home() {
    * "En este día": bugünün ay-gününe düşen bölümün yıldönümü.
    * Kazanan bölüm (aynı güne düşenlerin en eskisi) build sırasında
    * hesaplanıp gün tablosuna yazıldı — burada tek anahtarla okunuyor,
-   * 616 kayıt taranmıyor.
+   * katalog baştan sona taranmıyor.
    */
   const todayLine = useMemo(() => {
     if (!index) return null;

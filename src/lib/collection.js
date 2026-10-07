@@ -40,7 +40,7 @@ export function toggleMood(active, mood) {
  * Vídeos yalnızca başlıkta. Onun dışında mantık aynı.
  *
  * Dahil edici ve dışlayıcı temalar döngünün DIŞINDA bir kez ayrılıyor.
- * Eskiden her kayıt için iki yeni dizi üretiliyordu — 616 bölümde her
+ * Eskiden her kayıt için iki yeni dizi üretiliyordu — tüm bölüm kataloğunda her
  * tuş vuruşunda 1232 gereksiz dizi demekti.
  */
 export function filterCollection(items, { query = "", moods, season, searchText }) {

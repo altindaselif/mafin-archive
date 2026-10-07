@@ -11,7 +11,7 @@ const CHAPTERS_WITHOUT_FINA = 182;
 const CHAPTERS_OF_CALM = 58;
 
 /*
- * Yayınlanmış bölüm sayısı. Eskiden 616 bölümün TAMAMI (408 KB) sadece bu
+ * Yayınlanmış bölüm sayısı. Eskiden bölüm kataloğunun TAMAMI sadece bu
  * sayı için import ediliyordu; artık home.json'daki tarih listesinden
  * sayılıyor. Bugüne bağlı olduğu için build'de dondurulamaz — o yüzden
  * sayma işi burada, tarayıcıda yapılıyor.

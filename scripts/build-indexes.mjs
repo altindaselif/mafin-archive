@@ -31,7 +31,7 @@ const quotes = readAll("src/data/quotes");
 /* ── "Tal día como hoy" ──────────────────────────────────────────────
  * Yılda 366 gün var, yani her gün için cevap önceden hesaplanabilir.
  * Aynı ay-güne düşen bölümlerden EN ESKİSİ kazanır (en büyük yıldönümü).
- * Tarayıcı artık 616 kayıt taramıyor, tek anahtarla tabloya bakıyor. */
+ * Tarayıcı artık kataloğu taramıyor, tek anahtarla tabloya bakıyor. */
 /* `noMafin` işaretli bölümler bu tabloya GİRMEZ. Ana sayfadaki
    "tal día como hoy" o günün Mafin anını kutluyor; Mafin'in geçmediği
    bir bölümü oraya koymak amacına ters.
