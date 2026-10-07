@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Jaime enferma gravemente y pierde la vista.",
+    "es": "Jaime empeora gravemente y pierde la vista.",
     "en": "Jaime becomes very ill and loses his sight."
   },
+  "noMafin": false,
   "airDate": "2024-09-13"
 }
