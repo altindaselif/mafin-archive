@@ -12,8 +12,13 @@
      doubles as the fallback while the image loads (or is absent). */
   position: absolute;
   inset: 0;
+  /* YAYIN ÖNCESİ GİZLİ — bkz. LAUNCH-CHECKLIST.md
+     Site duyurulana kadar kapak fotoğrafı devre dışı: siteye giren biri
+     ilk ekranda diziden bir kare görmesin. Altındaki gradyanlar zaten
+     bu katmanın yedeğiydi, o yüzden hero boş değil — kasıtlı duruyor.
+     Geri açmak: aşağıdaki url(...) satırının yorumunu kaldır. */
   background:
-    url("/hero.webp") center / cover no-repeat,
+    /* url("/hero.webp") center / cover no-repeat, */
     radial-gradient(ellipse at 68% 30%, rgba(114, 47, 55, 0.45), transparent 55%),
     linear-gradient(160deg, #3a3330 0%, #241f1d 55%, #16130f 100%);
   /* The still carries baked-in letterbox bars (120px of 2160). Scaling
