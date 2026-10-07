@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Jesús es despedido de la empresa. Fina y Marta hablan sobre la cancelación de la boda de Damián. Marta no le explica la verdadera historia que hay detrás. Como Fina no lo sabe, le hace divertidas propuestas de cita a Marta, pero Marta las rechaza. Fina se lo toma como algo personal y se queda dolida.",
+    "es": "Jesús es despedido de la empresa. Fina y Marta hablan sobre la cancelación de la boda de Damián. Marta no le explica la verdadera historia que hay detrás. Como Fina no lo sabe, le hace propuestas de cita para pasarlo bien a Marta, pero Marta las rechaza. Fina se lo toma como algo personal y se queda dolida.",
     "en": "Jesús is fired from the company. Fina and Marta talk about the cancellation of Damián's wedding. Marta does not explain the real story behind it. Since Fina does not know about it, she makes fun date proposals to Marta, but Marta declines. Fina takes this personally and is hurt."
   },
+  "noMafin": false,
   "airDate": "2024-10-01"
 }
