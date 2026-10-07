@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Damián les dice a Marta y a Andrés que va a denunciar a Jesús. Después de todo lo que ha pasado, Isidro teme que Marta pueda hacerle daño a Fina y la advierte al respecto. Fina defiende a Marta, y discuten.",
+    "es": "Damián les dice a Marta y a Andrés que va a denunciar a Jesús. Después de todo lo que ha pasado, Isidro teme que Marta pueda hacerle daño a Fina y la advierte al respecto. Fina defiende a Marta y discute con él.",
     "en": "Damián tells Marta and Andrés that he will report Jesús. After everything that has happened, Isidro worries that Marta may hurt Fina and warns Fina about it. Fina defends Marta, and they argue."
   },
+  "noMafin": false,
   "airDate": "2024-10-21"
 }
