@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta invita a Fina a la ópera y le regala un vestido para que se lo ponga allí.",
+    "es": "Marta invita a Fina a la ópera y le regala un vestido para que se lo ponga en la cita.",
     "en": "Marta invites Fina to the opera and gives her a dress as a gift to wear there."
   },
+  "noMafin": false,
   "airDate": "2024-10-08"
 }
