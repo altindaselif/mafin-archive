@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "A Fina no le gusta nada el nuevo dependiente, Jacinto. Marta habla con Andrés sobre el asunto de Luis. Marta y Fina iban a ir a bailar, pero Marta lo cancela porque tiene una reunión, y Fina se enfada por ello. Marta y Digna hablan sobre el asunto de Luis.",
+    "es": "A Fina no le gusta nada el nuevo dependiente, Jacinto. Marta habla con Andrés sobre el asunto de Luis. Marta y Fina iban a ir a bailar, pero Marta lo cancela porque tiene una reunión y Fina se enfada. Marta y Digna hablan sobre el asunto de Luis.",
     "en": "Fina does not like the new shop assistant, Jacinto, at all. Marta talks with Andrés about the Luis matter. Marta and Fina were going to go dancing, but Marta cancels because she has a meeting, and Fina is annoyed by this. Marta and Digna talk about the Luis matter."
   },
+  "noMafin": false,
   "airDate": "2024-10-04"
 }
