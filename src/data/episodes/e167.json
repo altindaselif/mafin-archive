@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Cuando despidieron a Isabel, se llevó algunos de los documentos de gastos de la fábrica, y esto causa problemas. Marta ayuda a Begoña.",
+    "es": "Cuando Isabel fue despedida, se llevó algunos de los documentos de gastos de la fábrica, lo que causa problemas. Marta ayuda a Begoña.",
     "en": "When Isabel was fired, she took some of the factory's expense documents with her, and this causes trouble. Marta helps Begoña."
   },
+  "noMafin": false,
   "airDate": "2024-10-17"
 }
