@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Carmen está muy preocupada por Tasio, y Fina y Claudia la consuelan.",
+    "es": "Carmen está muy preocupada por Tasio, Fina y Claudia la consuelan.",
     "en": "Carmen is very worried about Tasio, and Fina and Claudia comfort her."
   },
+  "noMafin": false,
   "airDate": "2024-08-12"
 }
