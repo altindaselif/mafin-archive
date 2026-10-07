@@ -124,7 +124,7 @@ export default function Gallery() {
   return (
     <div
       className="page"
-      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep159.webp)" }}
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep145.webp)" }}
     >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>

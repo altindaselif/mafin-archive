@@ -16,7 +16,7 @@ export default function Press() {
   return (
     <div
       className="page"
-      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep561.webp)" }}
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep363.webp)" }}
     >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
