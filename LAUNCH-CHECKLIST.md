@@ -369,11 +369,20 @@ Kopyalanan sabitler:
 
 - [ ] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır (ana sayfa kapak fotoğrafı)
 
-> Köşe çizimleri (silüetler) geri açıldı — soyut, bordo tonlu kesitler
-> oldukları için ilk bakışta bir şey ele vermiyorlar. Sıraları gezinme
-> sırasıyla birlikte artıyor: 29 · 34 · 61 · 145 · 159 · 269 · (Actrices
-> köşeyi kendi kullanıyor) · 363 · 561. Yeni bir sayfa eklenirse silüeti de
-> bu artan sıraya oturmalı. Yedekte duran iki kesit: ep566, ep574.
+- [ ] `src/styles/global.css` → `.page::after` içindeki `display: none;` satırını sil (köşe çizimleri)
+
+> **Köşe çizimleri şu an GEÇİCİ olarak açık** — yalnızca nasıl durduklarına
+> bakmak için. Gözden geçirme biter bitmez tekrar kapatılacak:
+> `.page::after` kuralının başına `display: none;` ekle.
+>
+> Bunlar soyut değil: duotone filtresi kesiti bordoya boyuyor ama pozu
+> gizlemiyor — bakan biri ne olduğunu anlıyor. Yani kapak fotoğrafıyla aynı
+> ölçüde ele veriyorlar, "ilk ekran" eşiğini geçmeseler de.
+>
+> Sıraları gezinme sırasıyla birlikte artıyor:
+> 34 · 61 · 99 · 145 · 159 · 269 · (Actrices köşeyi kendi kullanıyor) ·
+> 363 · 561. Yeni bir sayfa eklenirse silüeti de bu artan sıraya oturmalı.
+> Yedekte duran iki kesit: ep566, ep574.
 
 > Not: iç sayfalardaki karakter/oyuncu fotoğrafları ve zaman çizelgesi
 > posterleri **kapatılmadı** — kapsam "ilk ekran"dı. Daha geniş bir gizleme
@@ -384,7 +393,7 @@ Kopyalanan sabitler:
 - [ ] Fandom formundan gerçek bir gönderim yap, CMS'te "onay bekliyor" olarak gör
 - [ ] CMS'te bir galeri kaydı açıp resim seçiciyi aç, önizlemeler geliyor mu
 - [ ] Bir alıntı ve bir bölüm sayfası aç, resim/video akıyor mu
-- [ ] Ana sayfanın kapak fotoğrafı geri geldi mi
+- [ ] Ana sayfanın kapak fotoğrafı ve köşe çizimleri geri geldi mi
 
 > Not: veri içindeki fotoğraf adresleri alan adından **bağımsız** — kod hangi adres yazılı olursa olsun kendi yolundan sunuyor, dört biçim de test edildi. Yani veri düzeltmesi gerekmiyor.
 
