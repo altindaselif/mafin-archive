@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Los perfumes de la Reina ganan el premio al producto del año. Se decide que sea Marta quien recoja el premio, y Jesús siente celos.",
+    "es": "Los perfumes de la Reina ganan el premio al producto del año. Se decide que sea Marta quien recoja el premio y Jesús siente celos.",
     "en": "De la Reina perfumes win the product of the year award. It is decided that Marta will accept the award, and Jesús is jealous."
   },
+  "noMafin": false,
   "airDate": "2024-08-27"
 }
