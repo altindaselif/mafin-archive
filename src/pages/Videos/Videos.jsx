@@ -170,7 +170,7 @@ export default function Videos() {
   return (
     <div
       className="page"
-      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep61.webp)" }}
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep99.webp)" }}
     >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
