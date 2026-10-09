@@ -2,7 +2,7 @@
   "id": "e610",
   "number": 610,
   "title": {
-    "es": "El de otra llamada de Bianca",
+    "es": "El de otra llamada de Biancaaaa",
     "en": "The One With Another Call From Bianca"
   },
   "moods": [],
@@ -10,5 +10,6 @@
     "es": "Marta pone a prueba a Claudia mostrándole los perfumes reformulados. Aunque no está de acuerdo con la propuesta, acepta venderlos en la tienda al saber que ya cuentan con la aprobación de Hugo Brossard, Gabriel y Tasio. Mientras tanto, en la casa grande, Digna recibe una llamada de Bianca preguntando por Fina.",
     "en": "Marta tests Claudia by showing her the reformulated perfumes. Although she doesn't agree with the proposal, she agrees to sell them at the store upon learning that they already have the approval of Hugo Brossard, Gabriel and Tasio. Meanwhile, at the big house, Digna receives a call from Bianca asking about Fina."
   },
+  "noMafin": false,
   "airDate": "2026-07-23"
 }
