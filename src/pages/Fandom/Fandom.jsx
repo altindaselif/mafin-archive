@@ -9,8 +9,8 @@ import { TURNSTILE_ACTION, TURNSTILE_SITE_KEY } from "../../config.js";
 const L = {
   title: { es: "El Fandom", en: "The Fandom" },
   subtitle: {
-    es: "Canciones, fanfics y arte inspirados en Marta y Fina, creados por los fans que mantienen viva su historia. Cada aportación se revisa antes de aparecer aquí.",
-    en: "Songs, fanfics and art inspired by Marta and Fina, made by the fans who keep their story alive. Every submission is reviewed before it appears here.",
+    es: "Canciones, fanfics, arte y las tendencias que el fandom ha levantado en Twitter, todo hecho por quienes mantienen viva su historia. Cada aportación se revisa antes de aparecer aquí.",
+    en: "Songs, fanfics, art and the trends the fandom has pushed on Twitter, all of it made by the people who keep their story alive. Every submission is reviewed before it appears here.",
   },
 
   allWorks: { es: "Todas las obras", en: "All works" },
@@ -29,8 +29,8 @@ const L = {
   },
   donate: { es: "Donar al archivo", en: "Donate to the archive" },
   formIntro: {
-    es: "El archivo acepta enlaces a obras publicadas: canciones, fanfics, arte. Nada se publica sin revisión.",
-    en: "The archive accepts links to published works: songs, fanfics, art. Nothing appears without review.",
+    es: "El archivo acepta enlaces a obras publicadas: canciones, fanfics, arte, tendencias. Nada se publica sin revisión.",
+    en: "The archive accepts links to published works: songs, fanfics, art, trends. Nothing appears without review.",
   },
   received: { es: "Recibido", en: "Received" },
   thanks: {
@@ -74,17 +74,27 @@ const L = {
  * worker gelen gönderimi bu kümeye karşı doğruluyor ve CMS'te de böyle
  * görünüyorlar. Çevrilen yalnızca ekranda görünen etiket — yoksa dil
  * değiştiren biri, kayıtlarla eşleşmeyen bir değer göndermiş olurdu.
+ *
+ * YENİ TÜR EKLERKEN ÜÇ YER birden güncellenmeli, yoksa sessizce bozulur:
+ *   1. buradaki TYPES / TYPE_LABEL / VERB  → sekme ve etiketler
+ *   2. worker/fandom.js içindeki TYPES     → form gönderimi doğrulaması;
+ *      eksikse gelen kayıt sessizce "Arte" olarak yazılır
+ *   3. public/admin/config.yml options     → CMS'te seçilebilir olması
+ * Ayrıca aşağıdaki `subtitle` ve `formIntro` türleri sayıyor; yeni tür
+ * oralarda da anılmalı.
  */
-const TYPES = ["Canción", "Fanfic", "Arte"];
+const TYPES = ["Canción", "Fanfic", "Arte", "Tendencia"];
 const TYPE_LABEL = {
   Canción: { es: "Canción", en: "Song" },
   Fanfic: { es: "Fanfic", en: "Fanfic" },
   Arte: { es: "Arte", en: "Art" },
+  Tendencia: { es: "Tendencia", en: "Trend" },
 };
 const VERB = {
   Canción: { es: "Escuchar", en: "Listen" },
   Fanfic: { es: "Leer", en: "Read" },
   Arte: { es: "Ver", en: "View" },
+  Tendencia: { es: "Ver", en: "View" },
 };
 
 /* Bu sayfada tarih gün göstermiyor — "agosto de 2026" yeterli. */

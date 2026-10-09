@@ -150,7 +150,7 @@ collections:
       - label: Type
         name: type
         widget: select
-        options: ["Canción", "Fanfic", "Arte"]
+        options: ["Canción", "Fanfic", "Arte", "Tendencia"]
         hint: "The kind of work. These values are shown translated on the site"
       - { label: Title, name: title, widget: string, hint: "The name of the work itself — 'Perfume de lavanda'" }
       - { label: Author, name: author, widget: string, hint: "Name or handle — '@martafina_edits'" }

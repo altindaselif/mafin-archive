@@ -17,7 +17,7 @@ const REPO = {
   dir: "src/data/fandom",
 };
 
-const TYPES = new Set(["Canción", "Fanfic", "Arte"]);
+const TYPES = new Set(["Canción", "Fanfic", "Arte", "Tendencia"]);
 
 /* Formdaki Turnstile widget'ına verdiğimiz eylem adı. Sunucu, gelen
    jetonun gerçekten BU formdan geldiğini buradan doğruluyor — başka bir
