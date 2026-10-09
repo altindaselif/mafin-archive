@@ -122,8 +122,8 @@ const L = {
      "Nada de esto existiría sin ellas" bağlantısından gelindiği için
      cümle onu tekrar etmiyor, devam ediyor. */
   subtitle: {
-    es: "Lo escribieron, lo tradujeron, lo fotografiaron y lo corrigieron. Todo lo que hay aquí existe gracias a ellas.",
-    en: "They wrote it, translated it, photographed it and corrected it. Everything here exists thanks to them.",
+    es: "Lo escribieron, lo tradujeron, lo fotografiaron y lo corrigieron. Todo lo que hay aquí se lo debe a ellas.",
+    en: "They wrote it, translated it, photographed it and corrected it. Everything here owes itself to them.",
   },
   closing: {
     es: "Y a quienes comparten, corrigen y recuerdan: gracias.",
