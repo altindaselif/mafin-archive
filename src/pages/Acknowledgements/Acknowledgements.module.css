@@ -22,7 +22,7 @@
 .person {
   margin: 0;
   font-family: var(--font-family-display);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--color-text-main);
 }
 
@@ -39,13 +39,20 @@
 }
 
 /* Yapılan iş: italik ve soluk — adın yanında ikinci sesle konuşuyor,
-   onunla yarışmıyor. Actrices'teki .workRole ile aynı aile. */
+   onunla yarışmıyor.
+
+   BOYUT: önce 0.95rem'di, yani Actrices'teki .workRole ile aynı. O ölçek
+   orada doğru çünkü oradaki metin tek kelime ("Elisa"); burada tam bir
+   cümle ve italik + soluk ile birleşince okunmuyordu. Sitenin okuma
+   metni ölçeği 1.08–1.15rem (Actrices biyografi paragrafı 1.15rem),
+   iş satırı da artık oraya ait. Ad onun üstünde kalsın diye 1.2rem'e
+   çıktı — iş adından büyük görünmemeli. */
 .work {
   margin: 0;
   font-family: var(--font-family-display);
   font-style: italic;
-  font-size: 0.95rem;
-  line-height: 1.45;
+  font-size: 1.08rem;
+  line-height: 1.5;
   color: var(--color-text-muted);
 }
 
