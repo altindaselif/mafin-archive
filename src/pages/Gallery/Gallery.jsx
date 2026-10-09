@@ -6,7 +6,7 @@ import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
 import LoadMore from "../../components/LoadMore/LoadMore.jsx";
 import galleries from "../../data/gallery.js";
 import episodeMeta from "../../data/generated/episodeMeta.json";
-import { PHOTO_BASE_URL, PHOTO_RESIZE } from "../../config.js";
+import { photoUrl } from "../../lib/photos.js";
 import { seasonsIn } from "../../data/seasonInfo.js";
 import { COMMON, useLang } from "../../i18n.js";
 
@@ -29,39 +29,6 @@ const L = {
   prev: { es: "Anterior", en: "Previous" },
   next: { es: "Siguiente", en: "Next" },
   open: { es: "Ampliar la fotografía", en: "Open the photograph" },
-};
-
-/* CMS fotoğrafı seçince kayda TAM adresi yazıyor. Hangi tam adres olduğu
-   zamanla değişti (önce pub-*.r2.dev, şimdi kendi /media/photos yolumuz) ve
-   alan adı bağlanınca bir kez daha değişecek. Bu yüzden gelen adresi olduğu
-   gibi kullanmıyoruz: dosya adını çıkarıp her zaman kendi yolumuzdan
-   sunuyoruz. Böylece veride hangi adres yazılı olursa olsun site kendi
-   kaynağından servis ediyor.
-   Tanımadığımız bir sunucudaki adresler (örnek veriler) olduğu gibi kalıyor. */
-const OWN_PHOTO = [
-  /^https?:\/\/[^/]*r2\.dev\/(.+)$/i, // eski R2 genel adresi
-  /^https?:\/\/[^/]+\/media\/photos\/(.+)$/i, // kendi origin'imiz (alan adı ne olursa olsun)
-];
-
-const absUrl = (p) => {
-  const s = String(p);
-  if (/^https?:\/\//i.test(s)) {
-    for (const re of OWN_PHOTO) {
-      const m = s.match(re);
-      if (m) return `${PHOTO_BASE_URL}/${m[1]}`;
-    }
-    return s;
-  }
-  return `${PHOTO_BASE_URL}/${s.replace(/^\/+/, "")}`;
-};
-
-/* Full original by default. Pass a width to get a resized thumbnail — only
-   applied when PHOTO_RESIZE is on; otherwise the original is served as-is,
-   so the lightbox (no width) always shows the full 4K. */
-const photoUrl = (p, width) => {
-  const src = absUrl(p);
-  if (!width || !PHOTO_RESIZE) return src;
-  return `${PHOTO_BASE_URL}/cdn-cgi/image/width=${width},fit=cover,format=auto/${src}`;
 };
 
 const PAGE_SIZE = 12; // episode plates revealed per "load more"

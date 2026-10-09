@@ -458,7 +458,7 @@ Kopyalanan sabitler:
 - [x] Canlıda doğrulandı: `localhost`'ta üretilmiş **geçerli** jeton canlı sunucuda 403 — alan adı sabitlemesi çalışıyor
 - [x] Uçtan uca doğrulandı (24 Ağu): gerçek gönderim → Worker `approved: false` yazdı → CMS'te göründü → onaylandı → sitede çıktı
 - [x] Otomatik deploy çalışıyor — Cloudflare Workers Builds depoya bağlı (ayar panelde, depoda değil). Onay verince site kendini güncelliyor
-- [ ] **Yayın öncesi sil:** `f06` (test kaydı, `elif.com`) + `_sample` işaretli f01–f05 + galeri g069/g093/g363
+- [ ] **Yayın öncesi sil:** `f06` (test kaydı, `elif.com`) + `_sample` işaretli f01–f05 + galeri g069/g093/g363 + `src/data/outfits/*.json` içindeki `_sample` kayıtları (48 yer tutucu; gerçek görseller gelince `node scripts/import-outfits.mjs <klasör>` onları kendisi siliyor)
 - [x] Worker tarihi Madrid saatine göre yazıyor (`Intl`, yaz/kış geçişi dahil) — gönderim nereden gelirse gelsin aynı saate göre damgalanıyor
 
 ### 1.6b Modal'da her tuş vuruşunda odak kapatma düğmesine kaçıyordu ✅ ÇÖZÜLDÜ (24 Ağu)

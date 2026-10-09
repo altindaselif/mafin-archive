@@ -1,8 +1,191 @@
-/* Galería'daki boş albüm mesajıyla aynı — iki sayfa da "içerik henüz
-   gelmedi" durumunu aynı sesle anlatıyor. */
 .empty {
   color: var(--color-text-muted);
   font-family: var(--font-family-display);
   font-size: 1.15rem;
   margin: 32px 0;
+}
+
+/* ── Karakter ayrımı ──────────────────────────────────────────────────
+   SeasonFilter'la aynı dil: kutu yok, saf tipografi, aralarında nokta.
+   Farkı yalnızca ölçek — sayfanın ana bölünme çizgisi bu. */
+.switcher {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 2px;
+  margin: 34px 0 6px;
+}
+
+.sep {
+  margin: 0 14px;
+  color: var(--color-border);
+}
+
+.name {
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-family-display);
+  font-size: 1.45rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.name:hover {
+  color: var(--color-accent);
+}
+
+.nameActive {
+  color: var(--color-text-main);
+  border-bottom-color: var(--color-accent);
+}
+
+.toolbar {
+  margin: 0 0 28px;
+}
+
+/* ── Levha ızgarası ───────────────────────────────────────────────────
+   Dört sütun: 36 levha dokuz satır ediyor, bir lookbook için doğru
+   yoğunluk. Sayfalama YOK — kaydırmak bu sayfanın amacı, resimler
+   `loading="lazy"` ile geliyor. */
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px 20px;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 0; /* ızgara hücrelerinin varsayılan min-width: auto'su sütunu taşırıyor */
+}
+
+/* Çerçeve Actrices'teki portrenin aynısı: 3:4, ince kenar, surface zemin.
+   Oran sabit olduğu için arkadaşın kırpmaları birbirinden biraz farklı
+   çıksa bile ızgara bozulmuyor — `cover` fazlasını kırpıyor. */
+.plate {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  transition: var(--transition-smooth);
+}
+
+.plate:hover {
+  border-color: var(--color-accent);
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition-smooth);
+}
+
+.plate:hover .photo {
+  opacity: 0.88;
+}
+
+/* Levha numarası: künyenin tamamı bu. Bordo küçük kapital, sitenin her
+   yerindeki etiket dili (Acknowledgements'taki .role, Galería'daki
+   .plateCap ile aynı aile). */
+.number {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--color-accent);
+}
+
+/* ── Lightbox ─────────────────────────────────────────────────────────
+   Galería'nın görüntüleyicisiyle aynı: ortalanmış tam boy, iki yanda
+   yuvarlak gezinme düğmeleri, altında künye. */
+.viewer {
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.viewerImg {
+  max-width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  border-radius: 2px;
+}
+
+.caption {
+  font-family: var(--font-family-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+}
+
+.nav {
+  position: absolute;
+  top: calc(50% - 14px);
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-surface);
+  color: var(--color-text-main);
+  transition: var(--transition-smooth);
+}
+
+.nav:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.navPrev {
+  left: 10px;
+}
+
+.navNext {
+  right: 10px;
+}
+
+/* ── Daraltma ─────────────────────────────────────────────────────────
+   Bu bloklar temel kuralların ALTINDA durmak zorunda: eşit özgüllükte
+   kaynak sırası kazanıyor, yukarıya alınırsa hiçbir etkisi olmuyor. */
+@media (max-width: 1080px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px 14px;
+  }
+
+  .switcher {
+    margin-top: 26px;
+  }
+
+  .name {
+    font-size: 1.25rem;
+  }
+
+  .sep {
+    margin: 0 10px;
+  }
 }
