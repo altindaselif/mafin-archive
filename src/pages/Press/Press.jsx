@@ -6,7 +6,7 @@ import press from "../../data/press.js";
 import { formatDate, useLang } from "../../i18n.js";
 
 /*
- * Prensa — Alba ve Marta'nın röportajları.
+ * Prensa — Marta ve Alba'nın röportajları.
  *
  * ÜÇ EKSEN, İKİ KONTROL: kim (ana ayrım, üstte), biçim (ikinci kademe
  * süzgeç) ve yıl (aradaki ayraçlar). Vestuario'daki iskeletin aynısı,
@@ -30,8 +30,8 @@ import { formatDate, useLang } from "../../i18n.js";
 const L = {
   title: { es: "Prensa", en: "Press" },
   subtitle: {
-    es: "Entrevistas a Alba Brunet y Marta Belmonte, en texto y en vídeo.",
-    en: "Interviews with Alba Brunet and Marta Belmonte, written and filmed.",
+    es: "Entrevistas a Marta Belmonte y Alba Brunet, en texto y en vídeo.",
+    en: "Interviews with Marta Belmonte and Alba Brunet, written and filmed.",
   },
   who: { es: "Elegir a quién entrevistan", en: "Choose who is interviewed" },
   byFormat: { es: "Filtrar por formato", en: "Filter by format" },
@@ -40,7 +40,7 @@ const L = {
   interviews: { es: "entrevistas", en: "interviews" },
   read: { es: "Leer", en: "Read" },
   watch: { es: "Ver", en: "Watch" },
-  together: { es: "Alba y Marta", en: "Alba and Marta" },
+  together: { es: "Marta Belmonte y Alba Brunet", en: "Marta Belmonte and Alba Brunet" },
   empty: {
     es: "No hay entrevistas que coincidan. Prueba con otro formato.",
     en: "No interviews match. Try another format.",
@@ -48,8 +48,16 @@ const L = {
 };
 
 /* Ana ayrım. "Mafin" bir kişi değil, ikisinin birlikte olduğu kayıtlar —
-   veride böyle bir değer yok, `people.length === 2` demek. */
-const WHO = ["Alba", "Marta", "Mafin"];
+   veride böyle bir değer yok, `people.length === 2` demek.
+   MARTA HER ZAMAN ÖNCE: sitenin her yerinde bu sıra geçerli (Actrices
+   verisi de böyle sıralı). */
+const WHO = ["Marta", "Alba", "Mafin"];
+
+/* Sekmede kısa ad, satırda tam ad. Sekmeler sayfanın büyük tipografik
+   ayrımı, orada soyadı kalabalık yapıyor; satırdaki künye ise kimin
+   konuştuğunu kesin söylemeli. Veride saklanan değer yine kısa olan —
+   Fandom'daki tür/etiket ayrımıyla aynı gerekçe. */
+const FULL_NAME = { Marta: "Marta Belmonte", Alba: "Alba Brunet" };
 
 /* Biçim DEĞERLERİ İspanyolca sabit (veride ve CMS'te böyle duruyorlar),
    çevrilen yalnızca etiket — Fandom'daki türlerle aynı gerekçe. */
@@ -192,7 +200,7 @@ export default function Press() {
                       <span className={styles.people}>
                         {item.people.length === 2
                           ? t(L.together)
-                          : item.people[0]}
+                          : FULL_NAME[item.people[0]] ?? item.people[0]}
                       </span>
                       <h3 className={styles.title}>{t(item.title)}</h3>
                     </span>
