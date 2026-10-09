@@ -11,7 +11,8 @@
     "predev": "node scripts/build-indexes.mjs",
     "dev": "vite --open",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:dates": "node scripts/sync-airdates.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

@@ -93,6 +93,9 @@ collections:
       # Marta ve Fina'nın geçmediği bölümler için: başlığa "Sin Mafin"
       # ya da "Sin Marta" yaz, açıklamayı boş bırak, bunu işaretle.
       - { label: "No Mafin", name: noMafin, widget: boolean, required: false, default: false, hint: "Tick this when Marta and Fina do not appear at all. Those episodes are skipped by the 'on this day' box on the home page" }
+      # Boş bırakılabilir: `npm run sync:dates` tarihleri TVMaze'den
+      # çekip dolduruyor. Elle girmek de serbest, script dolu alanların
+      # üzerine yazmıyor — ama çelişirse uyarıyor.
       - label: Air date
         name: airDate
         widget: datetime
@@ -100,6 +103,7 @@ collections:
         date_format: DD/MM/YYYY
         time_format: false
         required: false
+        hint: "Leave this blank — the air date is filled in automatically from TVMaze"
 
   # ── Galleries: her kayıt bir bölümün foto albümü, fotolar R2'ye gider ──
   - name: gallery

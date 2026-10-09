@@ -1,8 +1,11 @@
 /*
  * Season ranges for Sueños de libertad, in the archive's continuous
- * episode numbering. Derived from the TVMaze episode list (show 74973);
- * update `lastEpisode` of the newest season (or add a new entry) as
- * the show airs. Last synced: 2026-07-21, 612 episodes.
+ * episode numbering. Derived from the TVMaze episode list (show 74973).
+ *
+ * Bu tablo ELLE DÜZENLENMEZ: `npm run sync:dates` onu TVMaze'den yeniden
+ * üretiyor. Eskiden elle güncelleniyordu ve bayatlıyordu — 3. sezon
+ * "612'de biter" yazarken sezon hâlâ devam ediyordu, yani o tarihten
+ * sonraki her bölüm yanlış sezona düşüyordu. Last synced: 2026-10-09, 666 episodes.
  *
  * Shared by every page that needs to map an episode number to a season
  * (quotes, videos, …) so the boundaries live in exactly one place.
@@ -10,7 +13,7 @@
 export const SEASON_RANGES = [
   { season: 1, firstEpisode: 1, lastEpisode: 269, year: "2024" },
   { season: 2, firstEpisode: 270, lastEpisode: 477, year: "2025" },
-  { season: 3, firstEpisode: 478, lastEpisode: 612, year: "2026" },
+  { season: 3, firstEpisode: 478, lastEpisode: 666, year: "2026" },
 ];
 
 /* Bir sezonun başladığı yıl. Timeline'daki ayraçlar bunu kullanıyor;
