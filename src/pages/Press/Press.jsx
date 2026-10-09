@@ -5,8 +5,8 @@ import { formatDate, useLang } from "../../i18n.js";
 const L = {
   title: { es: "Prensa", en: "Press" },
   subtitle: {
-    es: "Entrevistas a Alba Brunet y Marta Belmonte, en texto y en vídeo, guardadas aquí antes de que los enlaces se pierdan.",
-    en: "Interviews with Alba Brunet and Marta Belmonte, written and filmed, kept here before the links go dead.",
+    es: "Entrevistas a Alba Brunet y Marta Belmonte, en texto y en vídeo.",
+    en: "Interviews with Alba Brunet and Marta Belmonte, written and filmed.",
   },
   readOn: { es: "Leer en", en: "Read on" },
 };
