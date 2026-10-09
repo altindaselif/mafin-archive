@@ -115,9 +115,15 @@ const PEOPLE = [
 
 const L = {
   title: { es: "Agradecimientos", en: "Acknowledgements" },
+  /* Tek cümle, bilerek. Önce iki cümleydi ve ikincisi ("Estos son sus
+     nombres") altındaki listeyi ilan etmekten başka bir iş yapmıyordu —
+     isimler zaten orada. Yerine listenin NE TÜR işler içerdiğini söyleyen
+     bir cümle kondu: okuyucu listeye hazırlıklı giriyor. Künyedeki
+     "Nada de esto existiría sin ellas" bağlantısından gelindiği için
+     cümle onu tekrar etmiyor, devam ediyor. */
   subtitle: {
-    es: "Este archivo existe porque mucha gente le dedicó su tiempo. Estos son sus nombres.",
-    en: "This archive exists because many people gave it their time. These are their names.",
+    es: "Todo lo que hay aquí lo han escrito, traducido, fotografiado y corregido estas personas.",
+    en: "Everything here was written, translated, photographed and corrected by these people.",
   },
   closing: {
     es: "Y a quienes comparten, corrigen y recuerdan: gracias.",
