@@ -38,8 +38,8 @@ const L = {
   allFormats: { es: "Todas", en: "All" },
   interview: { es: "entrevista", en: "interview" },
   interviews: { es: "entrevistas", en: "interviews" },
-  read: { es: "Leer en", en: "Read on" },
-  watch: { es: "Ver en", en: "Watch on" },
+  read: { es: "Leer", en: "Read" },
+  watch: { es: "Ver", en: "Watch" },
   together: { es: "Alba y Marta", en: "Alba and Marta" },
   empty: {
     es: "No hay entrevistas que coincidan. Prueba con otro formato.",
@@ -155,11 +155,16 @@ export default function Press() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className={styles.outlet}>{item.outlet}</span>
-
-                    <time className={styles.date} dateTime={item.date}>
-                      {formatDate(item.date, lang)}
-                    </time>
+                    {/* Künye tek sütunda alt alta — Fandom'daki satırın
+                        aynısı. Tarih ayrı bir sütundayken, farklı
+                        uzunluktaki tarihler ("3 noviembre" / "20 enero")
+                        yan yana tırtıklı duruyordu. */}
+                    <span className={styles.meta}>
+                      <span className={styles.outlet}>{item.outlet}</span>
+                      <time className={styles.date} dateTime={item.date}>
+                        {formatDate(item.date, lang)}
+                      </time>
+                    </span>
 
                     <span className={styles.middle}>
                       {/* Oynat işareti "Todas" görünümünde de duruyor:
@@ -184,7 +189,7 @@ export default function Press() {
                     </span>
 
                     <span className={styles.cta}>
-                      {t(isVideo ? L.watch : L.read)} {item.outlet}
+                      {t(isVideo ? L.watch : L.read)}
                       <svg
                         width="12"
                         height="12"

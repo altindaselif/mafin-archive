@@ -104,8 +104,8 @@
 
 .row {
   display: grid;
-  grid-template-columns: 130px 92px 1fr auto;
-  gap: 18px;
+  grid-template-columns: 130px 1fr auto;
+  gap: 24px;
   align-items: baseline;
   padding: 15px 0;
   border-top: 1px solid var(--color-border);
@@ -120,6 +120,15 @@
 
 .row:hover {
   background: var(--color-surface);
+}
+
+/* Künye: yayın organı ve tarih alt alta, tek sütunda. Tarih ayrı bir
+   sütundayken farklı uzunluktaki tarihler yan yana tırtıklı duruyordu
+   ve satır dört sütunla kalabalıklaşıyordu. */
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .outlet {
@@ -192,6 +201,14 @@
     grid-template-columns: 1fr;
     gap: 4px;
     padding: 16px 0;
+  }
+
+  /* Künye dar ekranda YAN YANA: alt alta kalsaydı her satır iki satır
+     daha uzardı. Fandom'un mobil kuralıyla aynı. */
+  .meta {
+    flex-direction: row;
+    align-items: baseline;
+    gap: 12px;
   }
 
   .date {
