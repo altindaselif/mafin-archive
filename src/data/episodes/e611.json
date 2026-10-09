@@ -2,7 +2,7 @@
   "id": "e611",
   "number": 611,
   "title": {
-    "es": "El de cuando Bianca llega a Toledo",
+    "es": "El de cuando Bianca llega a Toledoo",
     "en": "The One Where Bianca Arrives in Toledo"
   },
   "moods": [],
@@ -10,5 +10,6 @@
     "es": "Por la mañana Digna alerta a Marta sobre la llamada de Bianca. En la fábrica, Fina recibe su inesperada visita y ambas se reencuentran. Bianca le explica que está en Toledo por un encargo en Madrid. Fina y Bianca se ponen al día con cosas de trabajo, y además tocan el tema de su ruptura.",
     "en": "In the morning, Digna warns Marta about Bianca's call. At the factory, Fina receives an unexpected visit from her, and the two reunite. Bianca explains that she is in Toledo for an assignment in Madrid. Fina and Bianca catch up on work matters, and they also touch on the subject of their breakup."
   },
+  "noMafin": false,
   "airDate": "2026-07-24"
 }
