@@ -1,49 +1,52 @@
-/* Stats'taki "Los terceros" bloğuyla aynı aile: küçük kapital bordo
-   etiket, altında isimler. Arşivin kolofon dili. */
+/* Künye satırları: Actrices'teki filmografi düzeninin aynısı — solda ad,
+   sağda italik açıklama, aralarında saç teli çizgi. Arşivin kolofon dili. */
 .list {
   margin: 40px 0 0;
   padding: 0;
-  max-width: 640px;
+  max-width: 720px;
 }
 
-.group {
-  padding: 22px 0;
+.entry {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 24px;
+  align-items: baseline;
+  padding: 14px 0;
   border-top: 1px solid var(--color-border);
 }
 
-.group:last-of-type {
+.entry:last-of-type {
   border-bottom: 1px solid var(--color-border);
 }
 
-.role {
-  margin: 0 0 10px;
-  font-size: 0.72rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--color-accent);
-}
-
-/* İsimler yan yana akıyor, sığmayınca alt satıra geçiyor. Araya ayraç
-   koymuyoruz: boşluk yeterli ve virgüller listeyi kalabalıklaştırıyor. */
-.people {
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 22px;
-}
-
 .person {
+  margin: 0;
   font-family: var(--font-family-display);
   font-size: 1.05rem;
   color: var(--color-text-main);
+}
+
+.link {
+  color: inherit;
   text-decoration: none;
   border-bottom: 1px solid transparent;
   transition: var(--transition-smooth);
 }
 
-a.person:hover {
+.link:hover {
   color: var(--color-accent);
   border-bottom-color: var(--color-accent);
+}
+
+/* Yapılan iş: italik ve soluk — adın yanında ikinci sesle konuşuyor,
+   onunla yarışmıyor. Actrices'teki .workRole ile aynı aile. */
+.work {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--color-text-muted);
 }
 
 .closing {
@@ -53,4 +56,14 @@ a.person:hover {
   font-style: italic;
   font-size: 1.05rem;
   color: var(--color-text-muted);
+}
+
+/* Bu blok temel kuralların ALTINDA durmak zorunda: eşit özgüllükte
+   kaynak sırası kazanıyor, yukarı alınırsa hiçbir etkisi olmuyor. */
+@media (max-width: 720px) {
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 16px 0;
+  }
 }

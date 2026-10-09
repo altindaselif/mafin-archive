@@ -9,37 +9,108 @@ import { useLang } from "../../i18n.js";
  * listesinden ve künyeden geçiliyor. Kitabın sonundaki teşekkür sayfası
  * gibi — arayan bulur, arayan olmayanı rahatsız etmez.
  *
- * YENİ KİŞİ EKLEMEK: aşağıdaki CREDITS dizisine ekle, başka hiçbir yere
- * dokunma. Aynı kişi birden fazla grupta geçebilir.
+ * NEDEN İŞE GÖRE DEĞİL KİŞİYE GÖRE: önce işe göre gruplanmıştı
+ * ("Contenido: @a, @b, @c"). Liste tamamlanınca görüldü ki aynı kişi
+ * birden fazla iş yapıyor — biri üç grupta birden geçiyordu. Teşekkür
+ * sayfasında aynı ismi üç kez görmek listeyi insanların değil işlerin
+ * listesine çeviriyor. Şimdi herkes bir kez, yaptığı işler yanında.
  *
- * `handle` zorunlu, `url` isteğe bağlı: bağlantısı olmayan biri düz
- * metin olarak çizilir (herkesin sosyal hesabı olmak zorunda değil).
+ * YENİ KİŞİ EKLEMEK: aşağıdaki PEOPLE dizisine bir satır ekle, başka
+ * hiçbir yere dokunma. Sıra listedeki sıra — alfabetik değil, bilerek.
+ *
+ * `url` isteğe bağlı: bağlantısı olmayan biri düz metin olarak çizilir
+ * (herkesin sosyal hesabı olmak zorunda değil).
  */
 
-const CREDITS = [
+const PEOPLE = [
   {
-    role: { es: "Contenido", en: "Content" },
-    people: [
-      { handle: "@gini__us", url: "https://x.com/gini__us" },
-      { handle: "@luimeliaaeps", url: "https://x.com/luimeliaaeps" },
-      { handle: "@hudriemd", url: "https://x.com/hudriemd" },
-      { handle: "@annadewitt125", url: "https://x.com/annadewitt125" },
-    ],
+    handle: "@gini__us",
+    url: "https://x.com/gini__us",
+    work: {
+      es: "Compañera en la idea de abrir este archivo · fotografías de rodaje",
+      en: "Partner in the idea of opening this archive · behind-the-scenes photographs",
+    },
   },
   {
-    role: { es: "Cortes y subtítulos", en: "Cuts and subtitles" },
-    people: [{ handle: "@starryskyEN", url: "https://x.com/starryskyEN" }],
+    handle: "@hudriemd",
+    url: "https://x.com/hudriemd",
+    work: {
+      es: "Sinopsis y citas · revisión del español",
+      en: "Synopses and quotes · Spanish proofreading",
+    },
   },
-  /* Örnek — doldurulacak:
   {
-    role: { es: "Fotografías", en: "Photographs" },
-    people: [{ handle: "@kullanici" }],
+    handle: "@luimeliaaeps",
+    url: "https://x.com/luimeliaaeps",
+    work: {
+      es: "Citas y personajes · revisión del español",
+      en: "Quotes and characters · Spanish proofreading",
+    },
   },
   {
-    role: { es: "En cifras", en: "The numbers" },
-    people: [{ handle: "@kullanici", url: "https://x.com/kullanici" }],
+    handle: "@starryskyEN",
+    url: "https://x.com/starryskyEN",
+    work: {
+      es: "Cortes de vídeo y subtítulos",
+      en: "Video edits and subtitles",
+    },
   },
-  */
+  {
+    handle: "@iamsway88",
+    url: "https://x.com/iamsway88",
+    work: {
+      es: "Fotografías del vestuario",
+      en: "Outfit photographs",
+    },
+  },
+  {
+    handle: "@ay_ayno",
+    url: "https://x.com/ay_ayno",
+    work: {
+      es: "Sinopsis · revisión del español",
+      en: "Synopses · Spanish proofreading",
+    },
+  },
+  {
+    handle: "@yvsunflower",
+    url: "https://x.com/yvsunflower",
+    work: {
+      es: "Biografía y filmografía de Marta Belmonte",
+      en: "Marta Belmonte's biography and filmography",
+    },
+  },
+  {
+    handle: "@PerfectlyEspos",
+    url: "https://x.com/PerfectlyEspos",
+    work: {
+      es: "Biografía y filmografía de Alba Brunet",
+      en: "Alba Brunet's biography and filmography",
+    },
+  },
+  {
+    handle: "@reyizag",
+    url: "https://x.com/reyizag",
+    work: {
+      es: "Revisión del español",
+      en: "Spanish proofreading",
+    },
+  },
+  {
+    handle: "@SeRechista",
+    url: "https://x.com/SeRechista",
+    work: {
+      es: "Mafin en cifras",
+      en: "Mafin in numbers",
+    },
+  },
+  {
+    handle: "@mrscoulterr",
+    url: "https://x.com/mrscoulterr",
+    work: {
+      es: "Pruebas y apoyo",
+      en: "Testing and support",
+    },
+  },
 ];
 
 const L = {
@@ -63,28 +134,23 @@ export default function Acknowledgements() {
       <p className="page-subtitle">{t(L.subtitle)}</p>
 
       <dl className={styles.list}>
-        {CREDITS.map((group) => (
-          <div key={group.role.en} className={styles.group}>
-            <dt className={styles.role}>{t(group.role)}</dt>
-            <dd className={styles.people}>
-              {group.people.map((p) =>
-                p.url ? (
-                  <a
-                    key={p.handle}
-                    className={styles.person}
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {p.handle}
-                  </a>
-                ) : (
-                  <span key={p.handle} className={styles.person}>
-                    {p.handle}
-                  </span>
-                ),
+        {PEOPLE.map((p) => (
+          <div key={p.handle} className={styles.entry}>
+            <dt className={styles.person}>
+              {p.url ? (
+                <a
+                  className={styles.link}
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {p.handle}
+                </a>
+              ) : (
+                p.handle
               )}
-            </dd>
+            </dt>
+            <dd className={styles.work}>{t(p.work)}</dd>
           </div>
         ))}
       </dl>
