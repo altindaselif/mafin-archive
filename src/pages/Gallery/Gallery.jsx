@@ -13,8 +13,8 @@ import { COMMON, useLang } from "../../i18n.js";
 const L = {
   title: { es: "Galería", en: "Gallery" },
   subtitle: {
-    es: "Imágenes de rodaje, capítulo a capítulo, con una nitidez que la emisión nunca dio. Marta y Fina entre toma y toma.",
-    en: "Behind-the-scenes photographs, chapter by chapter, with a sharpness the broadcast never gave. Marta and Fina between takes.",
+    es: "Imágenes de rodaje, capítulo a capítulo, con una nitidez que la emisión nunca dio. Marta y Fina, sin cortes.",
+    en: "Behind-the-scenes photographs, chapter by chapter, with a sharpness the broadcast never gave. Marta and Fina, uncut.",
   },
   photo: { es: "foto", en: "photo" },
   photos: { es: "fotos", en: "photos" },
