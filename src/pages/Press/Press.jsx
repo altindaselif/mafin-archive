@@ -35,7 +35,9 @@ const L = {
   },
   who: { es: "Elegir a quién entrevistan", en: "Choose who is interviewed" },
   byFormat: { es: "Filtrar por formato", en: "Filter by format" },
-  allFormats: { es: "Todas", en: "All" },
+  /* Fandom'daki "Todas las obras" ile aynı kalıp: isim, listelenen şeye
+     göre değişiyor. Orada eser, burada röportaj. */
+  allFormats: { es: "Todas las entrevistas", en: "All interviews" },
   interview: { es: "entrevista", en: "interview" },
   interviews: { es: "entrevistas", en: "interviews" },
   read: { es: "Leer", en: "Read" },
