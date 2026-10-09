@@ -50,16 +50,21 @@ jobs:
 
           # Yalnızca script'in dokunduğu yollar. `git add -A` deseydik
           # beklenmedik bir çıktı da commit'e sızabilirdi.
-          PATHS="src/data/episodes src/data/seasonInfo.js"
-
-          if git diff --quiet -- $PATHS; then
+          #
+          # Yollar bir değişkende TUTULMUYOR: tırnaksız `$PATHS` yazmak
+          # kabuğun kelime bölmesine güvenmek demek. Bash böler, zsh
+          # bölmez — ve bölünmediğinde `git diff --quiet` tek bir var
+          # olmayan yola bakıp "değişiklik yok" diyor, yani görev hiç
+          # commit atmadan sessizce başarılı görünüyor. Shell'e bağlı
+          # olmasın diye yollar doğrudan yazıldı.
+          if git diff --quiet -- src/data/episodes src/data/seasonInfo.js; then
             echo "Değişiklik yok, commit atlanıyor."
             exit 0
           fi
 
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- $PATHS
+          git add -- src/data/episodes src/data/seasonInfo.js
           git commit -m "chore: sync episode air dates from TVMaze"
 
           # Bu arada birinin CMS'ten yazmış olma ihtimaline karşı: rebase
