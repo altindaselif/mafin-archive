@@ -139,7 +139,6 @@ export default function Press() {
       {byYear.map(([year, items]) => (
         <section key={year} className={styles.year}>
           <header className={styles.yearHead}>
-            <span className={styles.lozenge} aria-hidden="true" />
             <h2 className={styles.yearTitle}>{year}</h2>
             <span className={styles.yearCount}>{count(items.length)}</span>
           </header>
@@ -172,12 +171,22 @@ export default function Press() {
                       {isVideo && (
                         <svg
                           className={styles.play}
-                          width="11"
-                          height="11"
-                          viewBox="0 0 11 11"
+                          width="14"
+                          height="14"
+                          viewBox="0 0 14 14"
                           aria-hidden="true"
                         >
-                          <path d="M2 1.2v8.6L9.4 5.5z" fill="currentColor" />
+                          {/* Çıplak üçgen oynat düğmesi olarak okunmuyordu.
+                              Daire onu tanıdık bir simgeye çeviriyor. */}
+                          <circle
+                            cx="7"
+                            cy="7"
+                            r="6.2"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.1"
+                          />
+                          <path d="M5.6 4.4v5.2L9.6 7z" fill="currentColor" />
                         </svg>
                       )}
                       <span className={styles.people}>

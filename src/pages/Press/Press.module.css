@@ -51,28 +51,22 @@
 /* ── Yıl ayraçları ───────────────────────────────────────────────────
    Galería'daki bölüm levhası başlığının aynısı: baklava mührü, bordo
    küçük kapital, sağda sayı. Orada bölüm, burada yıl. */
+/* Baklava mührü BURADA YOK, bilerek: SectionTabs seçili sekmenin altına
+   zaten bir baklava koyuyor ve ikisi üst üste gelince aynı işaret iki
+   farklı anlam taşıyormuş gibi duruyordu. Yılı tipografi taşıyor. */
 .year {
-  margin: 26px 0 0;
+  margin: 40px 0 0;
 }
 
 .year:first-of-type {
-  margin-top: 18px;
+  margin-top: 30px;
 }
 
 .yearHead {
   display: flex;
   align-items: baseline;
   gap: 12px;
-  padding-bottom: 6px;
-}
-
-.lozenge {
-  flex: none;
-  width: 7px;
-  height: 7px;
-  transform: rotate(45deg);
-  background: var(--color-accent);
-  align-self: center;
+  padding-bottom: 14px;
 }
 
 .yearTitle {
@@ -104,8 +98,12 @@
 
 .row {
   display: grid;
-  grid-template-columns: 130px 1fr auto;
-  gap: 24px;
+  /* Künye sütunu en uzun tarihe göre (ölçüldü: 85px). 130px'ti ve her
+     satırda 50px'e yakın ölü boşluk bırakıyordu. Sabit genişlik şart:
+     her satır kendi ızgarası olduğu için `max-content` sütunları
+     satırlar arasında hizalamaz. */
+  grid-template-columns: 95px 1fr auto;
+  gap: 18px;
   align-items: baseline;
   padding: 15px 0;
   border-top: 1px solid var(--color-border);
@@ -142,7 +140,9 @@
 .date {
   font-family: var(--font-family-display);
   font-style: italic;
-  font-size: 0.85rem;
+  /* 0.85rem'di (13.6px) ve tam tarih o boyutta okunmuyordu. Actrices'te
+     o ölçek dört haneli bir yıl taşıyor, burada "20 de enero de 2026". */
+  font-size: 0.95rem;
   color: var(--color-text-muted);
 }
 
@@ -153,9 +153,9 @@
 /* Oynat işareti başlığın değil, kim satırının başında: başlık kendi
    hizasını korusun, işaret de künye bilgisiyle birlikte okunsun. */
 .play {
-  margin-right: 6px;
+  margin-right: 7px;
   color: var(--color-accent);
-  vertical-align: baseline;
+  vertical-align: -2px;
 }
 
 .people {
