@@ -103,7 +103,9 @@
      her satır kendi ızgarası olduğu için `max-content` sütunları
      satırlar arasında hizalamaz. */
   grid-template-columns: 95px 1fr auto;
-  gap: 18px;
+  /* Oluk 18px'ti ve künye ile başlık dip dibeydi. Sağda zaten fazlasıyla
+     yer var, boşluğu oraya değil buraya vermek daha iyi. */
+  gap: 32px;
   align-items: baseline;
   padding: 15px 0;
   border-top: 1px solid var(--color-border);
@@ -126,11 +128,13 @@
 .meta {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  /* Sıkı: yayın organı ve tarih tek bir künye olarak okunmalı, iki ayrı
+     satır olarak değil. */
+  gap: 3px;
 }
 
 .outlet {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
