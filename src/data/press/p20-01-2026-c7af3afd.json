@@ -1,9 +1,14 @@
 {
+  "_sample": true,
   "outlet": "El País",
   "date": "2026-01-20",
+  "people": [
+    "Alba"
+  ],
+  "format": "vídeo",
   "title": {
-    "es": "Una historia de época que habla del presente",
-    "en": "A period story that speaks to the present"
+    "es": "Vídeo-entrevista con Alba Brunet",
+    "en": "Video interview with Alba Brunet"
   },
-  "url": "https://example.com/elpais-reportaje"
+  "url": "https://example.com/elpais-videoentrevista"
 }

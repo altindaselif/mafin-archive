@@ -1,9 +1,15 @@
 {
+  "_sample": true,
   "outlet": "Vertele",
   "date": "2025-11-03",
+  "people": [
+    "Alba",
+    "Marta"
+  ],
+  "format": "texto",
   "title": {
-    "es": "Entrevista: las protagonistas repasan la temporada",
-    "en": "Interview: the leads look back on the season"
+    "es": "Entrevista con las protagonistas",
+    "en": "Interview with the leads"
   },
   "url": "https://example.com/vertele-entrevista"
 }

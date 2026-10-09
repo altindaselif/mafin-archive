@@ -275,4 +275,23 @@ collections:
         fields:
           - { label: Spanish, name: es, widget: string }
           - { label: English, name: en, widget: string }
+      # Kim konuşuyor. ÇOKLU seçim: ikisi birlikteyse iki kutu da işaretlenir.
+      # Sitedeki ayrım bundan türüyor — tek isim seçiliyse o kişinin sekmesine,
+      # ikisi birden seçiliyse "Mafin" sekmesine düşüyor. Ayrı bir "ikisi"
+      # değeri YOK; olsaydı aynı bilgi iki yerde durur ve çelişebilirdi.
+      - label: People
+        name: people
+        widget: select
+        multiple: true
+        options: ["Alba", "Marta"]
+        hint: "Tick both when the interview is with the two of them together"
+      # Yazılı mı video mu. Sitede hem süzgeç hem de satırdaki oynat işareti
+      # bu alandan geliyor. Değerler İspanyolca, Fandom'daki türlerle aynı
+      # gerekçeyle: veride saklanan değer sabit, çevrilen yalnızca etiket.
+      - label: Format
+        name: format
+        widget: select
+        options: ["texto", "vídeo"]
+        default: "texto"
+        hint: "A written piece or a filmed one"
       - { label: URL, name: url, widget: string, hint: "Full link to the article, starting with https://" }

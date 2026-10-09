@@ -1,9 +1,14 @@
 {
+  "_sample": true,
   "outlet": "Fotogramas",
   "date": "2025-12-12",
+  "people": [
+    "Marta"
+  ],
+  "format": "texto",
   "title": {
-    "es": "Cómo se rodó la escena del andén",
-    "en": "How the platform scene was shot"
+    "es": "Entrevista con Marta Belmonte",
+    "en": "Interview with Marta Belmonte"
   },
-  "url": "https://example.com/fotogramas-anden"
+  "url": "https://example.com/fotogramas-entrevista"
 }

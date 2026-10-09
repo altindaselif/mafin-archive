@@ -1,9 +1,15 @@
 {
+  "_sample": true,
   "outlet": "SensaCine",
   "date": "2026-02-08",
+  "people": [
+    "Alba",
+    "Marta"
+  ],
+  "format": "vídeo",
   "title": {
-    "es": "Vídeo-entrevista con el equipo de guion",
-    "en": "Video interview with the writers' room"
+    "es": "Vídeo-entrevista con las protagonistas",
+    "en": "Video interview with the leads"
   },
-  "url": "https://example.com/sensacine-guion"
+  "url": "https://example.com/sensacine-videoentrevista"
 }
