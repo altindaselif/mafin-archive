@@ -125,9 +125,12 @@ const L = {
     es: "Lo escribieron, lo tradujeron, lo fotografiaron y lo corrigieron. Todo lo que hay aquí se lo debe a ellas.",
     en: "They wrote it, translated it, photographed it and corrected it. Everything here owes itself to them.",
   },
+  /* Kapanışın işi listenin yapamadığını yapmak: üstte on bir kişi adıyla
+     sayılı, burada adı yazılmamış ya da yazılamayacak kadar küçük bir
+     katkı yapmış olanlar ve okuyanlar içeri alınıyor. */
   closing: {
-    es: "Y a quienes comparten, corrigen y recuerdan: gracias.",
-    en: "And to everyone who shares, corrects and remembers: thank you.",
+    es: "Y a quienes ayudaron sin aparecer en esta lista, y a quienes lo leen: gracias.",
+    en: "And to everyone who helped without appearing on this list, and to everyone who reads it: thank you.",
   },
 };
 
