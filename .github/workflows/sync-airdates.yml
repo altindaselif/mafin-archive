@@ -1,0 +1,76 @@
+# Yayın tarihlerini TVMaze'den çekip eksikleri dolduran görev.
+#
+# `npm run sync:dates` ile aynı işi yapıyor, sadece kimse çalıştırmadan.
+# Bir şey değiştiyse commit atıyor; commit main'e düştüğü için Cloudflare
+# Workers Builds kendiliğinden yeni sürümü yayına alıyor.
+#
+# NEDEN HAFTADA BİR: iki şey güncelleniyor, ikisi de acele değil.
+# (1) Eksik tarihler — ancak biri CMS'ten tarihsiz bir bölüm özeti
+#     eklediyse oluşur. (2) Sezon tablosu — sezon sınırı yılda bir kez
+#     değişiyor. Günlük koşsaydı çoğu gün sadece `lastEpisode` bir artardı
+#     ve site boşuna yeniden yayınlanırdı. Acelesi olduğunda Actions
+#     sekmesinden "Run workflow" ile elle tetiklenebilir.
+#
+# Script numaralama kaymasını fark ederse hiçbir şey yazmadan hata veriyor,
+# yani bu görev kırmızı yanarak haber veriyor — sessizce yanlış veri
+# yazmaktan iyi.
+
+name: Sync air dates
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # her pazartesi 06:00 UTC
+  workflow_dispatch: # Actions sekmesinden elle
+
+# Üst üste binen koşular birbirinin üzerine commit atmasın.
+concurrency:
+  group: sync-airdates
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Script'in bağımlılığı yok (düz node + fetch), npm install'a gerek yok.
+      - name: Sync
+        run: node scripts/sync-airdates.mjs
+
+      - name: Commit
+        run: |
+          set -euo pipefail
+
+          # Yalnızca script'in dokunduğu yollar. `git add -A` deseydik
+          # beklenmedik bir çıktı da commit'e sızabilirdi.
+          PATHS="src/data/episodes src/data/seasonInfo.js"
+
+          if git diff --quiet -- $PATHS; then
+            echo "Değişiklik yok, commit atlanıyor."
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- $PATHS
+          git commit -m "chore: sync episode air dates from TVMaze"
+
+          # Bu arada birinin CMS'ten yazmış olma ihtimaline karşı: rebase
+          # edip tekrar dene. Son yazan kazanmasın, ikisi de kalsın.
+          for attempt in 1 2 3; do
+            if git pull --rebase --autostash origin main && git push origin HEAD:main; then
+              echo "İtildi (deneme $attempt)."
+              exit 0
+            fi
+            echo "Çakışma, yeniden deneniyor…"
+            sleep 5
+          done
+          echo "Üç denemede itilemedi."
+          exit 1
