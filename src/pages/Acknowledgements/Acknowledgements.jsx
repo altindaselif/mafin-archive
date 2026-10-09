@@ -28,7 +28,7 @@ const PEOPLE = [
     url: "https://x.com/gini__us",
     work: {
       es: "Compañera en la idea de este archivo · fotografías de rodaje",
-      en: "Partner in the idea behind this archive · on-set photographs",
+      en: "Partner in the idea for this archive · behind-the-scenes photographs",
     },
   },
   {
