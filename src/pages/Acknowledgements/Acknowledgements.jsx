@@ -27,8 +27,8 @@ const PEOPLE = [
     handle: "@gini__us",
     url: "https://x.com/gini__us",
     work: {
-      es: "Compañera en la idea de abrir este archivo · fotografías de rodaje",
-      en: "Partner in the idea of opening this archive · behind-the-scenes photographs",
+      es: "Compañera en la idea de este archivo · fotografías de rodaje",
+      en: "Partner in the idea behind this archive · on-set photographs",
     },
   },
   {
