@@ -31,8 +31,8 @@ import { useLang } from "../../i18n.js";
 const L = {
   title: { es: "Vestuario", en: "The Outfits" },
   subtitle: {
-    es: "Cada conjunto que llevaron Marta y Fina, recogido prenda a prenda, porque la ropa también recuerda.",
-    en: "Every outfit Marta and Fina wore, gathered garment by garment — because clothes remember too.",
+    es: "Todos los conjuntos de Marta y Fina, los que nos enamoraron uno a uno.",
+    en: "Every outfit Marta and Fina wore — the ones we all fell for, one by one.",
   },
   outfit: { es: "conjunto", en: "outfit" },
   outfits: { es: "conjuntos", en: "outfits" },
