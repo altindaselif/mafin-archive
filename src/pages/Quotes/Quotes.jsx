@@ -93,7 +93,7 @@ export default function Quotes() {
   return (
     <div
       className="page"
-      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep159.webp)" }}
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep269.webp)" }}
     >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>

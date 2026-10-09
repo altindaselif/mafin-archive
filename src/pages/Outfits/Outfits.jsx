@@ -13,9 +13,12 @@ import { useLang } from "../../i18n.js";
  * sezon süzgeci + ızgara + lightbox. Fotoğraflar R2'ye, veri
  * src/data/outfits/ altına bölüm bölüm.
  *
- * Köşe çizimi YOK (page-no-art): silüetlerin sırası gezinme sırasıyla
- * birlikte artıyor ve bu sayfa Galería (145) ile Citas (159) arasına
- * giriyor — o aralıktan bir kesit gerekiyor, elde yok.
+ * Köşe çizimi ep159. Silüetlerin sırası gezinme sırasıyla birlikte
+ * artıyor; bu sayfa Galería (145) ile Citas arasına girdiği için 159'u
+ * Citas'tan devraldı ve ondan sonraki her sayfa bir kaydı. Sıralamayı
+ * bozmadan araya bir sayfa eklemenin yolu bu — tam o aralıktan yeni bir
+ * kesit bulmak gerekmiyor. Actrices zincirin dışında: köşeyi kendi
+ * oyuncu seçicisi kullanıyor. Tablonun tamamı LAUNCH-CHECKLIST.md'de.
  */
 
 const L = {
@@ -34,7 +37,10 @@ export default function Outfits() {
   const { t } = useLang();
 
   return (
-    <div className="page page-no-art">
+    <div
+      className="page"
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep159.webp)" }}
+    >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
       <p className={styles.empty}>{t(L.empty)}</p>

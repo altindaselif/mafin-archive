@@ -377,9 +377,14 @@ Kopyalanan sabitler:
 > aynı ölçüde ele veriyorlar, "ilk ekran" eşiğini geçmeseler de.
 >
 > Sıraları gezinme sırasıyla birlikte artıyor:
-> 34 · 61 · 99 · 145 · 159 · 269 · (Actrices köşeyi kendi kullanıyor) ·
-> 363 · 561. Yeni bir sayfa eklenirse silüeti de bu artan sıraya oturmalı.
-> Yedekte duran iki kesit: ep566, ep574.
+> 34 · 61 · 99 · 145 · 159 · 269 · 363 · (Actrices köşeyi kendi kullanıyor) ·
+> 561 · 566. Yeni bir sayfa eklenirse silüeti de bu artan sıraya oturmalı.
+> Yedekte duran kesit: ep574.
+>
+> Vestuario araya girdiğinde (Galería 145 ile Citas arasına) o aralıktan
+> yeni bir kesit aranmadı: 159 Citas'tan devralındı ve ondan sonraki her
+> sayfa bir kaydı. Araya sayfa eklemenin doğru yolu bu — yeni sayfa için
+> tam aralığa denk gelen bir kare bulmak gerekmiyor, zincir kaydırılıyor.
 
 > Not: iç sayfalardaki karakter/oyuncu fotoğrafları ve zaman çizelgesi
 > posterleri **kapatılmadı** — kapsam "ilk ekran"dı. Daha geniş bir gizleme
