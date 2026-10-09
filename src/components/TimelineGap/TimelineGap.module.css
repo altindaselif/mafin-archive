@@ -1,0 +1,89 @@
+/* Kasıtlı boşluk. Sezon ayracıyla (seasonHeader) aynı aileden: tam
+   genişlikte, merkez çizgiyi kesen, zemine oturan bir künye. */
+.gap {
+  position: relative;
+  /* Sezon ayracı gibi çizginin ÜSTÜNDE dursun ki zemini onu kessin */
+  z-index: 1;
+  margin: 4px 0 52px;
+  /* Dolgu kesikli çizginin boyunu belirliyor: künyenin altında ve
+     üstünde yeterince uzun bir kesikli parça olmazsa "çizgi burada
+     kesildi" okunmuyor, iki üç nokta gibi duruyor. */
+  padding: 64px 0;
+  text-align: center;
+}
+
+/* Merkez çizgi bu aralıkta kesik kesik akıyor.
+   Timeline'ın kendi düz çizgisi altta kalıyor; aşağıdaki `.inner`
+   sayfa zeminiyle onu kesiyor, geriye kesikli olan görünüyor. */
+.gap::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1.5px;
+  transform: translateX(-50%);
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-accent) 0 5px,
+    transparent 5px 13px
+  );
+  opacity: 0.5;
+}
+
+/* Künye: zemin rengiyle hem düz hem kesikli çizgiyi deler */
+.inner {
+  position: relative;
+  display: inline-block;
+  max-width: 440px;
+  padding: 16px 30px;
+  background: var(--color-bg);
+}
+
+/* Eksiltme işareti — arşivde atlanmış malzemenin geleneksel işareti */
+.mark {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+}
+
+.label {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.text {
+  margin: 10px 0 0;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Mobilde merkez çizgi sola kayıyor (Timeline.module.css: left 8px),
+   kesikli çizgi de onunla birlikte gitmeli. Künye de sola hizalanıyor
+   ki 8px'lik çizgiyi gereksiz yere delmesin. */
+@media (max-width: 720px) {
+  .gap {
+    text-align: left;
+    padding-left: 30px;
+  }
+
+  .gap::before {
+    left: 8px;
+    transform: none;
+  }
+
+  .inner {
+    padding: 14px 18px;
+  }
+}

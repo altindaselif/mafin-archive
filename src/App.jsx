@@ -23,11 +23,15 @@ const Timeline = lazy(() => import("./pages/Timeline/Timeline.jsx"));
 const Episodes = lazy(() => import("./pages/Episodes/Episodes.jsx"));
 const Videos = lazy(() => import("./pages/Videos/Videos.jsx"));
 const Gallery = lazy(() => import("./pages/Gallery/Gallery.jsx"));
+const Outfits = lazy(() => import("./pages/Outfits/Outfits.jsx"));
 const Quotes = lazy(() => import("./pages/Quotes/Quotes.jsx"));
 const Characters = lazy(() => import("./pages/Characters/Characters.jsx"));
 const Press = lazy(() => import("./pages/Press/Press.jsx"));
 const Actors = lazy(() => import("./pages/Actors/Actors.jsx"));
 const Fandom = lazy(() => import("./pages/Fandom/Fandom.jsx"));
+const Acknowledgements = lazy(() =>
+  import("./pages/Acknowledgements/Acknowledgements.jsx"),
+);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -63,11 +67,16 @@ export default function App() {
               <Route path="/guide" element={<Episodes />} />
               <Route path="/videos" element={<Videos />} />
               <Route path="/gallery" element={<Gallery />} />
+              <Route path="/outfits" element={<Outfits />} />
               <Route path="/quotes" element={<Quotes />} />
               <Route path="/characters" element={<Characters />} />
               <Route path="/press" element={<Press />} />
               <Route path="/actors" element={<Actors />} />
               <Route path="/fandom" element={<Fandom />} />
+              <Route
+                path="/acknowledgements"
+                element={<Acknowledgements />}
+              />
               {/* Bilinmeyen adres: header + footer arasında boş alan yerine künye */}
               <Route path="*" element={<NotFound />} />
             </Routes>

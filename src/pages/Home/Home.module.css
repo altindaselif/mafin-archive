@@ -198,9 +198,15 @@
 
 .grid {
   display: grid;
-  /* Fixed 4 columns: eight tiles form a clean 4×2 with no orphan gaps.
+  /* Fixed 5 columns: ten tiles form a clean 5×2 with no orphan gaps.
+     Eskiden 4 sütun / 8 karttı; Vestuario ve El Fandom eklenince 10 oldu
+     ve 4 sütunda son sıra iki boş hücreyle kalıyordu.
      Responsive steps below keep it balanced at every width. */
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+  /* Her iki sıra da en yüksek karta göre eşitlensin. Olmazsa satırlar
+     içeriğe göre ayrı ayrı yükseliyor (ölçüldü: 247 ve 225) ve ızgara
+     kaymış gibi duruyor. */
+  grid-auto-rows: 1fr;
   gap: 1px; /* the hairline gaps read as an engraved index grid */
   background: var(--color-border);
   border: 1px solid var(--color-border);
@@ -225,11 +231,52 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  padding: 48px 28px;
+  /* Dolgunun iki değeri birbirine BAĞLI, tek tek değiştirilmemeli:
+     yatayı kısmak açıklamanın satır sayısını düşürür, bu da kartı
+     kısaltır — kare bozulur. Ölçümle bulunan denge (kart 205px geniş):
+
+       28px 28px -> açıklama 149px, bir kart 3 satır, kart 205x207
+       28px 18px -> açıklama 169px, hepsi 2 satır, kart 205x185 (basık)
+       38px 18px -> açıklama 169px, hepsi 2 satır, kart 205x205  ✓
+
+     Yani yatayı 10 kısaltıp dikeyi 10 artırmak gerekti. Kart genişliği
+     ya da açıklama metinleri değişirse bu denge yeniden ölçülmeli.
+     Mobilde tek sütunda ezilmesin diye aşağıda geri açılıyor. */
+  padding: 38px 18px;
+  /* Kareyi NİYETE çevirir. Bu olmadan yükseklik yalnızca içerikten
+     türüyordu: tek bir açıklama 4 satıra çıkınca on kart birden
+     205x248'e uzuyordu (ölçüldü). aspect-ratio kartı genişliğine
+     kilitliyor; metin gerçekten sığmazsa ızgara öğesinin otomatik
+     asgari boyutu devreye girip kart taşmak yerine BÜYÜYOR. */
+  aspect-ratio: 1;
+  /* ŞART: ızgara öğesinin varsayılan `min-width: auto` değeri
+     aspect-ratio ile birleşince sütunu genişletiyordu — uzun bir
+     açıklamada sütunlar 205'ten 247.6'ya çıkıp ızgaranın içeriği
+     1242px oluyordu (kap 1032px, `overflow: hidden`), yani beşinci
+     sütun kırpılıyordu. Bu satır genişliği sütuna sabitliyor;
+     metin sığmazsa kart yalnızca DİKEY büyüyor. */
+  min-width: 0;
+  justify-content: center;
   text-align: center;
   background: var(--color-bg);
   color: var(--color-text-main);
   transition: var(--transition-smooth);
+}
+
+/* İki ve tek sütunda kart zaten geniş; kare kaygısı burada geçersiz.
+   Dikey dolgu geri açılmazsa kartlar basık bir şerit gibi duruyor.
+   DİKKAT: bu blok `.tile`den SONRA durmak ZORUNDA. Özgüllük eşit, yani
+   kazanan sırayla belirleniyor — yukarıdaki 1080px bloğuna koyduğumda
+   `.tile` onu eziyordu ve mobilde hiçbir etkisi olmuyordu (ölçüldü). */
+@media (max-width: 1080px) {
+  .tile {
+    padding: 40px 28px;
+    /* Kare YALNIZCA 5 sütunlu masaüstü ızgarasında anlamlı. İki ve tek
+       sütunda kart 325px'e kadar genişliyor ve aspect-ratio onu 325px
+       yüksekliğe zorluyordu: avuç içi kadar metin için kocaman boş
+       kareler, on kart = 3250px kaydırma (ölçüldü). */
+    aspect-ratio: auto;
+  }
 }
 
 .tile:hover {

@@ -1,0 +1,56 @@
+/* Stats'taki "Los terceros" bloğuyla aynı aile: küçük kapital bordo
+   etiket, altında isimler. Arşivin kolofon dili. */
+.list {
+  margin: 40px 0 0;
+  padding: 0;
+  max-width: 640px;
+}
+
+.group {
+  padding: 22px 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.group:last-of-type {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.role {
+  margin: 0 0 10px;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* İsimler yan yana akıyor, sığmayınca alt satıra geçiyor. Araya ayraç
+   koymuyoruz: boşluk yeterli ve virgüller listeyi kalabalıklaştırıyor. */
+.people {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.person {
+  font-family: var(--font-family-display);
+  font-size: 1.05rem;
+  color: var(--color-text-main);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+a.person:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.closing {
+  margin: 36px 0 0;
+  max-width: 640px;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+}

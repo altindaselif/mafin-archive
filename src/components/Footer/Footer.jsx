@@ -3,17 +3,22 @@ import styles from "./Footer.module.css";
 import { useLang } from "../../i18n.js";
 
 const L = {
-  creditBy: {
-    es: "El contenido principal de este sitio ha sido elaborado por",
-    en: "The main content of this site was created by",
+  /* Künyedeki bağlantı bir etiket değil, bir cümle — sayfanın kendi
+     başlığı "Agradecimientos" olarak kalıyor.
+     İspanyolcası dişil çoğul ("ellas"): emeği geçenler kadın. */
+  thanks: {
+    es: "Nada de esto existiría sin ellas",
+    en: "None of this would exist without them",
   },
-  and: { es: "y", en: "and" },
+  /* İki dil BİLEREK aynı uzunlukta değil. İspanyolca aynı şeyi söylemek
+     için doğası gereği daha çok yer kaplıyor; kısaltılmamış hali künyede
+     fazla yayvan duruyordu. İngilizcesi ise kısaltılınca kuru kalıyor,
+     o yüzden tam hali korundu. Birini diğerine uydurmaya çalışma. */
   legal: {
     es: (
       <>
-        Este sitio es un archivo de fans independiente y sin ánimo de lucro.
-        Todos los derechos de la serie <em>Sueños de Libertad</em> y de sus
-        medios pertenecen a Atresmedia.
+        Archivo de fans independiente y sin ánimo de lucro. Todos los derechos
+        de <em>Sueños de Libertad</em> y de sus medios pertenecen a Atresmedia.
       </>
     ),
     en: (
@@ -53,41 +58,10 @@ export default function Footer() {
 
       <p className={styles.legal}>{t(L.legal)}</p>
 
+      {/* Katkıda bulunanların adları buradaydı. Dört isim sığıyordu ama
+          liste büyüdükçe künyeyi boğacaktı; hepsi kendi sayfasında. */}
       <p className={styles.credit}>
-        {t(L.creditBy)}
-        <br />
-        <a
-          href="https://x.com/gini__us"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @gini__us
-        </a>
-        ,{" "}
-        <a
-          href="https://x.com/luimeliaaeps"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @luimeliaaeps
-        </a>
-        ,{" "}
-        <a
-          href="https://x.com/hudriemd"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @hudriemd
-        </a>{" "}
-        {t(L.and)}{" "}
-        <a
-          href="https://x.com/annadewitt125"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          @annadewitt125
-        </a>
-        .
+        <Link to="/acknowledgements">{t(L.thanks)}</Link>
       </p>
     </footer>
   );

@@ -1,0 +1,8 @@
+/* Galería'daki boş albüm mesajıyla aynı — iki sayfa da "içerik henüz
+   gelmedi" durumunu aynı sesle anlatıyor. */
+.empty {
+  color: var(--color-text-muted);
+  font-family: var(--font-family-display);
+  font-size: 1.15rem;
+  margin: 32px 0;
+}

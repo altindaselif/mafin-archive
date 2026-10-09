@@ -62,6 +62,19 @@ const paths = {
       strokeLinejoin="round"
     />
   ),
+  /* Percha — el vestuario.
+     İki şeyi denedim, ikisi de tutmadı: maniken `history`nin kum saatiyle
+     karışıyordu (ikisi de belden daralan siluet), askıya asılı elbise ise
+     askının kollarıyla elbisenin omuzları aynı noktada bittiği için tek
+     bir çan şekline kaynaşıyordu. 28 pikselde detay çamura dönüyor.
+     Çıplak askı setin geri kalanıyla aynı dili konuşuyor: tek kanca,
+     tek üçgen, başka hiçbir sembole benzemiyor. */
+  outfits: (
+    <>
+      <path d="M14 11.6V9.6c0-1 .8-1.9 1.9-1.9s1.9.8 1.9 1.9" />
+      <path d="M14 11.6 4.6 20.4h18.8z" strokeLinejoin="round" />
+    </>
+  ),
   // Hourglass — la historia
   history: (
     <>

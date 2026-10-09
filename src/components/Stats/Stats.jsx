@@ -27,7 +27,9 @@ const THIRD_PARTIES = [
   { name: "Jaime", chapters: 98 },
   { name: "Pelayo", chapters: 326 },
   { name: "Cloe", chapters: 180 },
-  { name: "Bianca", chapters: null }, // still on screen
+  /* Bianca'nın hikâyesi arşivde bitti: geldiği bölümden sonrası siteye
+     alınmıyor, o yüzden "en curso" değil kapalı bir sayı. */
+  { name: "Bianca", chapters: 60 },
 ];
 
 const L = {

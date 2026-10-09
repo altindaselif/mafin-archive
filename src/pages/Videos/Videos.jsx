@@ -59,7 +59,12 @@ const L = {
 
 /* Bu klipler zaman çizelgesindeki anların sahneleri; başlıklar oradan
  * gelir ("El primer beso"), ham bölüm adlarından değil. */
-const MILESTONE_BY_EPISODE = new Map(milestones.map((m) => [m.episode, m]));
+/* `kind: "gap"` kayıtları an değil, zaman çizelgesindeki kasıtlı boşluk.
+   Başlık kaynağı olarak kullanılmamalılar — bu sayfa yalnızca gerçek
+   anların başlıklarını devralıyor. */
+const MILESTONE_BY_EPISODE = new Map(
+  milestones.filter((m) => m.kind !== "gap").map((m) => [m.episode, m]),
+);
 
 /*
  * Katalog doğrudan import ediliyor. Eskiden çalışma anında fetch ediliyordu

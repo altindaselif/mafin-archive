@@ -8,10 +8,9 @@ import Stats from "../../components/Stats/Stats.jsx";
 
 /* The foyer's doors: one symmetric card each. Icons are hand-drawn line-art
    in the site's language — no imported icon set.
-   TAM SEKİZ kart: ızgara 4×2 olarak tasarlandı, dokuzuncu kart tek başına
-   üçüncü satıra düşüyor. Yeni bir bölüm eklenirse ya biri çıkmalı ya da
-   Home.module.css'teki sütun sayısı yeniden düşünülmeli.
-   Fandom kasten burada değil — üst menüdeki "Más" listesinden erişiliyor. */
+   TAM ON kart: ızgara 5×2 olarak tasarlandı, on birinci kart son sırada
+   boşluk bırakır. Yeni bir bölüm eklenirse ya biri çıkmalı ya da
+   Home.module.css'teki sütun sayısı yeniden düşünülmeli. */
 const SECTIONS = [
   { to: "/timeline", icon: "history",
     title: { es: "Su historia", en: "The Story" },
@@ -25,6 +24,9 @@ const SECTIONS = [
   { to: "/gallery", icon: "gallery",
     title: { es: "Galería", en: "Gallery" },
     desc: { es: "Fotografías de cada capítulo.", en: "Photographs from every chapter." } },
+  { to: "/outfits", icon: "outfits",
+    title: { es: "Vestuario", en: "The Outfits" },
+    desc: { es: "Los trajes que llevan, capítulo a capítulo.", en: "The outfits they wear, chapter by chapter." } },
   { to: "/quotes", icon: "quotes",
     title: { es: "Citas", en: "Quotes" },
     desc: { es: "Las frases que lo definieron todo.", en: "The lines that defined everything." } },
@@ -37,6 +39,9 @@ const SECTIONS = [
   { to: "/press", icon: "press",
     title: { es: "Prensa", en: "Press" },
     desc: { es: "Mafin en los medios.", en: "Mafin in the press." } },
+  { to: "/fandom", icon: "fandom",
+    title: { es: "El Fandom", en: "The Fandom" },
+    desc: { es: "Lo que la afición ha creado.", en: "What the fandom has made." } },
 ];
 
 const L = {

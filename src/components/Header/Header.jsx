@@ -6,11 +6,16 @@ import StableLabel from "../StableLabel/StableLabel.jsx";
 
 const MORE_LINKS = [
   { to: "/gallery", label: { es: "Galería", en: "Gallery" } },
+  { to: "/outfits", label: { es: "Vestuario", en: "The Outfits" } },
   { to: "/quotes", label: { es: "Citas", en: "Quotes" } },
   { to: "/characters", label: { es: "Personajes", en: "Characters" } },
   { to: "/actors", label: { es: "Actrices", en: "Actresses" } },
   { to: "/press", label: { es: "Prensa", en: "Press" } },
   { to: "/fandom", label: { es: "El Fandom", en: "The Fandom" } },
+  {
+    to: "/acknowledgements",
+    label: { es: "Agradecimientos", en: "Acknowledgements" },
+  },
 ];
 
 const L = {

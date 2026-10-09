@@ -65,7 +65,9 @@
 }
 
 .credit a {
-  white-space: nowrap;
+  /* `white-space: nowrap` KALDIRILDI: buradaki bağlantı eskiden kısa
+     @kullanıcı adlarıydı, şimdi bir cümle. Nowrap kalsaydı dar
+     ekranda satır bölünemeyip künyeden taşardı. */
   color: var(--color-accent);
   text-decoration: none;
   border-bottom: 1px solid transparent;
@@ -78,7 +80,19 @@
 
 .legal {
   margin: 7px 0 0;
-  max-width: 70ch;
+  /* Ölçülerek bulundu. Hedef: her iki dilde de iki satır, blok mümkün
+     olduğunca dar. Sayfada, gerçek yazı tipiyle ölçülen eşikler:
+
+       dil   56ch(396px)  57ch(403px)  58ch(410px)
+       es       3 satır      2 satır      2 satır
+       en       2 satır      2 satır      2 satır
+
+     Kısıt yalnızca İspanyolca: eşik tam 57ch. 58 seçildi çünkü eşiğin
+     üstünde bir karakterlik pay gerekiyor — başka bir cihazda yazı tipi
+     bir tık geniş render edilirse 57'de üç satıra düşerdi.
+     Referans: eski hali 70ch (495px) idi ve künye yayvan duruyordu.
+     Metinler değişirse bu tablo yeniden ölçülmeli. */
+  max-width: 58ch;
   font-size: 0.7rem;
   letter-spacing: 0.02em;
   line-height: 1.7;

@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import styles from "./Timeline.module.css";
 import Milestone from "../../components/Milestone/Milestone.jsx";
+import TimelineGap from "../../components/TimelineGap/TimelineGap.jsx";
 import milestones from "../../data/timeline.js";
 import { seasonOf, yearOfSeason } from "../../data/seasonInfo.js";
 import { Link } from "react-router-dom";
@@ -48,7 +49,14 @@ export default function Timeline() {
                   </span>
                 </li>
               )}
-              <Milestone item={item} index={i} />
+              {/* `kind: "gap"` kayıtları an değil, kasıtlı boşluk.
+                  Sıralama yine episode'a göre, yani araya kendiliğinden
+                  doğru yere oturuyorlar. */}
+              {item.kind === "gap" ? (
+                <TimelineGap item={item} />
+              ) : (
+                <Milestone item={item} index={i} />
+              )}
             </Fragment>
           );
         })}
