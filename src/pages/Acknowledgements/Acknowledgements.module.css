@@ -6,9 +6,20 @@
   max-width: 720px;
 }
 
+/* Izgara SATIRIN kendisinde ve çizgi de öyle — tek bir kenarlık, baştan
+   sona kesintisiz. Bir ara ızgara listeye taşınıp `display: contents`
+   denendi ki isim sütunu içeriğe göre daralsın; o zaman kenarlık iki ayrı
+   hücreye bölündü ve yazı boyutları farklı olduğu için (1.2 / 1.08rem)
+   taban hizasında kutuların üstü 3px kayıp çizgi basamak yaptı. Çizginin
+   tekliği bu sayfada daralmadan daha önemli.
+
+   Sütun 150px: en uzun hesap adı ölçüldü (@PerfectlyEspos, 122px), üstüne
+   nefes payı. Önce 220px'ti ve her satırda 98–154px ölü boşluk bırakıyordu;
+   sayfa kolofon değil tablo gibi duruyordu. Bundan uzun bir ad eklenirse
+   o satırda ad alta kıvrılır — o zaman bu sayı büyütülmeli. */
 .entry {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 150px 1fr;
   gap: 24px;
   align-items: baseline;
   padding: 14px 0;
