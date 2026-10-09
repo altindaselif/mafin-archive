@@ -32,7 +32,7 @@ const L = {
   title: { es: "Vestuario", en: "The Outfits" },
   subtitle: {
     es: "Todos los conjuntos de Marta y Fina, los que nos enamoraron uno a uno.",
-    en: "Every outfit Marta and Fina wore — the ones we all fell for, one by one.",
+    en: "Every outfit Marta and Fina wore, the ones we all fell for, one by one.",
   },
   outfit: { es: "conjunto", en: "outfit" },
   outfits: { es: "conjuntos", en: "outfits" },
