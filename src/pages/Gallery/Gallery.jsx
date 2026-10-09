@@ -13,8 +13,8 @@ import { COMMON, useLang } from "../../i18n.js";
 const L = {
   title: { es: "Galería", en: "Gallery" },
   subtitle: {
-    es: "Fotografías de cada capítulo, reunidas volumen a volumen. Elige una lámina para verla en grande.",
-    en: "Photographs from each chapter, gathered volume by volume. Pick a plate to see it larger.",
+    es: "Fotografías de cada capítulo, reunidas volumen a volumen. Lo que duró un segundo en pantalla, detenido en una imagen.",
+    en: "Photographs from every chapter, gathered volume by volume. What lasted a second on screen, held still in an image.",
   },
   photo: { es: "foto", en: "photo" },
   photos: { es: "fotos", en: "photos" },

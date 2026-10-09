@@ -8,8 +8,8 @@ const L = {
      bağımsız olarak doğru — ileride kadın bir karakter eklenirse de uyar. */
   deceased: { es: "Personaje fallecido", en: "Deceased character" },
   subtitle: {
-    es: "Todos los que se cruzaron en el camino de Marta y Fina.",
-    en: "Everyone who crossed Marta and Fina's path, one by one.",
+    es: "Todos los que se cruzaron en el camino de Marta y Fina: quienes las ayudaron, quienes se interpusieron y quienes solo miraban.",
+    en: "Everyone who crossed Marta and Fina's path: the ones who helped them, the ones who stood in their way, and the ones who only watched.",
   },
 };
 

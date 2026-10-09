@@ -159,6 +159,13 @@ body.no-scroll {
   font-size: 0.95rem;
   margin: 0 0 48px;
   max-width: 60ch;
+  /* Kutu zaten her sayfada aynı (60ch), ama satırlar dengesiz bölünüyordu:
+     birinci satır neredeyse dolu, ikincisi 50-160px'lik bir kuyruk. Sayfalar
+     arasında gezerken alt başlığın genişliği oynuyormuş gibi görünüyordu.
+     `balance` iki satırı birbirine yaklaştırıyor — Galería'da ölçüldü:
+     546/287 (fark 259px) yerine 444/389 (fark 55px).
+     Desteklemeyen tarayıcıda yok sayılır, düzen bozulmaz. */
+  text-wrap: balance;
 }
 
 @media (prefers-reduced-motion: reduce) {
