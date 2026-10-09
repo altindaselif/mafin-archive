@@ -107,8 +107,8 @@ const PEOPLE = [
     handle: "@mrscoulterr",
     url: "https://x.com/mrscoulterr",
     work: {
-      es: "Pruebas y apoyo",
-      en: "Testing and support",
+      es: "Pruebas del sitio y fe en él desde el principio",
+      en: "Site testing, and faith in it from the start",
     },
   },
 ];
