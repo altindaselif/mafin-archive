@@ -35,13 +35,18 @@
   margin: 0;
   font-family: var(--font-family-display);
   font-weight: 500;
-  font-size: 1.5rem;
+  /* 1,5rem'di; bölüm başlığı dört fotoğrafı toplayan bir ara levha,
+     sayfa başlığıyla yarışmamalı. Künye etiketi (.plateCap) da aynı
+     oranda küçülüyor — ikisi tek bir başlık satırı. */
+  font-size: 1.35rem;
   line-height: 1.15;
 }
 
 .plateCap {
   color: var(--color-accent);
-  font-size: 0.92rem;
+  /* .plateTitle ile oran korunuyor (0,615): başlık küçülünce etiket
+     tek başına yüksek sesle kalmasın. */
+  font-size: 0.83rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -169,7 +174,11 @@
   }
 
   .plateTitle {
-    font-size: 1.3rem;
+    font-size: 1.18rem;
+  }
+
+  .plateCap {
+    font-size: 0.76rem;
   }
 }
 
