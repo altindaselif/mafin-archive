@@ -21,9 +21,9 @@ import { formatDate, useLang } from "../../i18n.js";
  * Vestuario'da Marta/Fina nasıl zorunlu bir seçimse burada da öyle.
  *
  * SEKMELER AYRIK: "Alba" yalnızca Alba'nın tek başına konuştuklarını
- * getiriyor, ikisinin birlikte olduğu röportajlar "Mafin"de. Kapsayıcı
+ * getiriyor, ikisinin birlikte olduğu röportajlar "Alma"da. Kapsayıcı
  * olsaydı ortak röportajlar üç sekmede birden çıkar ve sekme sayıları
- * toplamı listeyi aşardı. Ayrı bir "ikisi" değeri veride YOK; Mafin,
+ * toplamı listeyi aşardı. Ayrı bir "ikisi" değeri veride YOK; Alma,
  * `people` iki isim birden içeriyor demek.
  */
 
@@ -49,11 +49,11 @@ const L = {
   },
 };
 
-/* Ana ayrım. "Mafin" bir kişi değil, ikisinin birlikte olduğu kayıtlar —
+/* Ana ayrım. "Alma" bir kişi değil, ikisinin birlikte olduğu kayıtlar —
    veride böyle bir değer yok, `people.length === 2` demek.
    MARTA HER ZAMAN ÖNCE: sitenin her yerinde bu sıra geçerli (Actrices
    verisi de böyle sıralı). */
-const WHO = ["Marta", "Alba", "Mafin"];
+const WHO = ["Marta", "Alba", "Alma"];
 
 /* Sekmede kısa ad, satırda tam ad. Sekmeler sayfanın büyük tipografik
    ayrımı, orada soyadı kalabalık yapıyor; satırdaki künye ise kimin
@@ -70,7 +70,7 @@ const FORMAT_LABEL = {
 };
 
 const matchesWho = (item, who) =>
-  who === "Mafin"
+  who === "Alma"
     ? item.people.length === 2
     : item.people.length === 1 && item.people[0] === who;
 
