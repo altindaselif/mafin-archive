@@ -50,7 +50,7 @@
 .empty {
   color: var(--color-text-muted);
   font-family: var(--font-family-display);
-  font-size: 1.08rem;
+  font-size: 1.15rem;
   margin: 32px 0;
 }
 
@@ -181,8 +181,9 @@
   margin: 2px 0 0;
   font-family: var(--font-family-display);
   font-weight: 500;
-  /* Okuma ölçeğinin (1,08rem) BİR ÜSTÜNDE, bilerek: bu bir cümle değil
-     başlık — satırın okunan asıl parçası ve künyenin üstünde durmalı. */
+  /* Okuma ölçeği 1,15rem: display serifiyle dizilen HER cümle orada
+     (Galería, Prensa ve Vestuario'nun boş liste iletileri zaten öyle).
+     Bu yüz küçük puntoda inceliyor, ondan aşağısı okunmuyor. */
   font-size: 1.15rem;
   line-height: 1.3;
   color: var(--color-text-main);
