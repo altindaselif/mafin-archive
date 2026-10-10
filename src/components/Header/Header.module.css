@@ -243,6 +243,14 @@
     padding: 12px 0;
   }
 
+  /* Alt alta menüde dolgu 12px, yani temel kuraldaki pay burada
+     tutmuyor: çizgi harflerin 10,5px altına düşüyor ve kelimeye ait
+     görünmüyordu. 6,5px'e çekildi — masaüstündeki 8,5px'ten yakın ama
+     yapışık değil. Bir ara 2,5px denendi, dar geldi. */
+  .nav .link::after {
+    bottom: 6px;
+  }
+
   /* StableLabel yuvası iki dilin genişini kaplar ve içeriği ortalar.
      Yatay menüde bu dengeli durur, ama alt alta dizilmiş mobil menüde
      kısa etiketler ("Guía", "Más") içeri kaçmış gibi görünüyordu.
