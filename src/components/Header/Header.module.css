@@ -240,7 +240,9 @@
 
   .nav .link {
     color: var(--color-text-main);
-    padding: 12px 0;
+    /* 12px'ti; altı satırla menü gereğinden uzundu. 10px her satırdan
+       4px alıyor ve dokunma hedefi 33,6px'te kalıyor. */
+    padding: 10px 0;
   }
 
   /* Alt alta menüde dolgu 12px, yani temel kuraldaki pay burada
@@ -259,12 +261,25 @@
     justify-items: start;
   }
 
+  /* KAPALIYKEN AKIŞTAN ÇIKIYOR. Masaüstünde açılır menü
+     `position: absolute` ve kapalıyken `visibility: hidden` yetiyor —
+     zaten yer kaplamıyor. Mobilde `static` olduğu için kapalı menü
+     görünmez ama 334px yüksekliğinde boş bir blok olarak duruyordu:
+     menünün 605px'inin yarıdan fazlası hiçbir şeydi ve dil seçimi o
+     boşluğun altına düşüyordu (ölçüldü).
+     `display` ile açılıp kapanıyor, `visibility` ile değil; geçiş
+     efekti kayboluyor ama menünün kendi açılışı zaten yumuşak. */
   .dropdown {
     position: static;
+    display: none;
     box-shadow: none;
     border: none;
     background: transparent;
     padding: 0 0 0 16px;
+  }
+
+  .dropdownOpen {
+    display: block;
   }
 
   /* Dil seçimi "Más" açılırının içine gömülü kalmasın: menüde tek başına
@@ -283,9 +298,19 @@
     border-top: 1px solid var(--color-border);
   }
 
+  /* Dil seçimi menünün en altında tek başına duruyor ve kaçırılıyordu:
+     0,8rem'lik soluk iki kelime, üstelik kapalı açılırın bıraktığı
+     boşluğun altında. Boşluk kalktı, yazı da büyüdü ve seçili olan
+     kalınlaştı — hangi dilde olduğun bir bakışta görünüyor. */
   .navLang .dropLangOption {
-    font-size: 0.95rem;
+    font-size: 1rem;
     padding: 6px 0;
+    opacity: 0.6;
+  }
+
+  .navLang .dropLangActive {
+    opacity: 1;
+    font-weight: 600;
   }
 }
 
