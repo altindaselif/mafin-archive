@@ -115,7 +115,12 @@
 .quoteText {
   margin: 18px 0 14px;
   font-family: var(--font-family-display);
-  font-size: clamp(1.35rem, 3vw, 1.7rem);
+  /* clamp(1,35 / 3vw / 1,7)'ydi. Kök ölçek %110'a çıkınca tavan
+     28,2'den 29,9px'e taşındı ve alıntı kartı yutuyordu — kart zaten
+     perdeli ve gölgeli, yazının ayrıca bağırmasına gerek yok.
+     Üç değer de bir tık geri: 375px'te 23,8→21,1, 1024'te 29,9→27,2,
+     1440 ve üstünde 29,9→26,4px. */
+  font-size: clamp(1.2rem, 2.7vw, 1.5rem);
   font-weight: 500;
   line-height: 1.35;
   color: var(--color-text-main);
