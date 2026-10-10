@@ -67,13 +67,31 @@
      yoksa o rozet sütununu taşırır. */
   .group {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+    /* Sütunlar EŞİT DEĞİL, her biri kendi sütunundaki en geniş rozet
+       kadar. Eşit sütun (`minmax(5.5rem, 1fr)`) denendi: sütun 103,6px
+       olurken rozetler 64–82px kalıyordu, yani her hücrede 20–40px ölü
+       boşluk vardı ve satıra üç rozet sığdığı için Cloe tek başına
+       üçüncü satıra düşüyordu.
+       `max-content` ile sütunlar 82+70+80+66 = 298px (+24px oluk) ve
+       yedi rozet iki satıra sığıyor. */
+    grid-template-columns: repeat(4, max-content);
+    /* Rozetler sütuna GERİLMESİN: her biri kendi kelimesi kadar kalsın,
+       yalnızca başlangıçları hizalansın. */
     justify-items: start;
     /* ŞART: `.group` esnek bir kabın içinde (`.controls`) ve `flex: 0 1
        auto` ile genişliği içeriğinden türüyor. Izgaraya çevirince o
        içerik "bir sütun" oluyordu, yani kutu 88px'e çöküp bütün
-       rozetler alt alta diziliyordu (ölçüldü). Genişlik bağlanınca
-       `auto-fill` gerçek yeri görüyor. */
+       rozetler alt alta diziliyordu (ölçüldü). */
     width: 100%;
+  }
+}
+
+/* En dar telefonlar (SE gibi, 320px). Dört `max-content` sütun 322px
+   istiyor ama orada 272px var ve ızgara sütunları sarmadığı için sayfa
+   yatay kayıyordu (ölçüldü: scrollWidth 346 > clientWidth 320).
+   Üç sütun 248px, rahat sığıyor. */
+@media (max-width: 359px) {
+  .group {
+    grid-template-columns: repeat(3, max-content);
   }
 }
