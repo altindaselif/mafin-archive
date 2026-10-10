@@ -5,7 +5,12 @@
 }
 
 .toggle {
-  padding: 7px 16px;
+  /* SearchInput'taki `.input` ile aynı 36px: ikisi Guía ve Vídeos'ta
+     aynı satırda duruyor ve farklı boyda olunca satır tırtıklı
+     okunuyordu (etiket 33, arama 39,5px). Yükseklik açıkça veriliyor,
+     dolguyla değil — gerekçesi SearchInput.module.css'te. */
+  height: 36px;
+  padding: 0 16px;
   text-transform: capitalize;
   border-radius: var(--radius-pill);
   border: 1px solid var(--color-border);

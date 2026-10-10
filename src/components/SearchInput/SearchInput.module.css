@@ -15,10 +15,14 @@
 
 .input {
   width: 100%;
-  /* Dikey dolgu 11px'ti; kök ölçek %110'a çıkınca kutu 43,5px'e
-     vardı ve yanındaki etiketlerin yanında şişkin duruyordu. 9px
-     onu 39,5px'e indiriyor — dokunma hedefi hâlâ rahat. */
-  padding: 9px 16px 9px 42px;
+  /* YÜKSEKLİK AÇIKÇA VERİLİYOR, dolguyla değil: Guía ve Vídeos'ta bu
+     kutu tema etiketlerinin yanında duruyor ve ikisi aynı boyda
+     olmalı. Dolguyla ayarlansaydı yükseklik iki ayrı punto ve iki ayrı
+     satır yüksekliğinden türerdi, yani birini değiştiren öteki
+     tutturmaya çalışırdı. MoodFilter'daki `.toggle` de 36px.
+     Önce 43,5px'ti (11px dolgu) ve etiketlerin yanında şişkindi. */
+  height: 36px;
+  padding: 0 16px 0 42px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-surface);
