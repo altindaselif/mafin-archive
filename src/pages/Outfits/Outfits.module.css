@@ -30,9 +30,12 @@
   background: none;
   cursor: pointer;
   font-family: var(--font-family-display);
-  /* 1,45rem'di ve altındaki sezon sekmeleriyle neredeyse aynı ağırlıkta
-     duruyordu. Ana ayrım daha yüksek sesle konuşmalı. */
-  font-size: 1.7rem;
+  /* Ana ayrım, altındaki sezon sekmelerinden yüksek sesle konuşmalı —
+     ama bir zamanlar 1,7rem'di ve kök ölçek %110'a çıkınca 29,9px'e
+     vardı; dört adlı Citas'ta şerit sayfanın yarısını kaplıyordu.
+     Üç sayfada da aynı: Prensa ve Citas'taki seçiciler bunun kopyası,
+     biri değişirse öteki ikisi de değişmeli. */
+  font-size: 1.5rem;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
@@ -187,7 +190,7 @@
   }
 
   .name {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 
   .sep {

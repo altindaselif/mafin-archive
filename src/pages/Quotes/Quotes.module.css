@@ -44,7 +44,9 @@
   background: none;
   cursor: pointer;
   font-family: var(--font-family-display);
-  font-size: 1.7rem;
+  /* Vestuario ve Prensa'daki seçicilerle aynı ölçek — üçü birden
+     değişir. */
+  font-size: 1.5rem;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
@@ -206,7 +208,7 @@
   }
 
   .name {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 
   .sep {
@@ -216,19 +218,10 @@
 
 /* Dört ad TEK SATIRDA kalmalı: sarmalanınca "·Mafin" alt satıra geçiyor
    ve ayraç satırın BAŞINDA, öncesinde hiçbir şey olmadan kalıyor.
-   Vestuario'da iki, Prensa'da üç ad var ve ikisi de rahat sığıyor;
-   dörtle telefonda sığmıyor, o yüzden ad burada bir kademe küçük.
-   KÜÇÜLME DEĞİL: kök ölçek %110 olduğu için 1,3rem = 22,9px, eski
-   1,45rem'in 23,2px'inin pratikte aynısı. */
-@media (max-width: 560px) {
-  .name {
-    font-size: 1.3rem;
-  }
-
-  .sep {
-    margin: 0 6px;
-  }
-}
+   Vestuario'da iki, Prensa'da üç ad var; dört ad 375px'e ancak
+   sığıyor, o yüzden aşağıdaki kademe YALNIZCA bu sayfada var.
+   Bir ara 560px'te de ayrı bir kademe vardı; ortak ölçek 1,3rem'e
+   inince gereksizleşti. */
 
 /* En dar telefonlar (SE gibi, 320px): orada 272px var, bir kademe daha
    gerekiyor. */

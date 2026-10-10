@@ -25,9 +25,9 @@
   cursor: pointer;
   font-family: var(--font-family-display);
   /* Vestuario'daki karakter seçicisiyle aynı ölçek: ana ayrım altındaki
-     sekmelerden daha yüksek sesle konuşmalı. İki sayfa aynı işi yapıyor,
-     biri değişirse öteki de değişmeli. */
-  font-size: 1.7rem;
+     sekmelerden daha yüksek sesle konuşmalı. Üç sayfa aynı işi yapıyor,
+     biri değişirse ötekiler de değişmeli. */
+  font-size: 1.5rem;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
@@ -243,7 +243,7 @@
   }
 
   .name {
-    font-size: 1.45rem;
+    font-size: 1.3rem;
   }
 
   .sep {
