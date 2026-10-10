@@ -15,7 +15,9 @@ const L = {
     en: "A collection of unforgettable lines, the words that captured our hearts. Search or filter by character to find the words you feel like reliving.",
   },
   searchPlaceholder: { es: "Buscar una cita…", en: "Search a quote…" },
-  voice: { es: "Personaje", en: "Character" },
+  /* Artık yalnızca erişilebilirlik etiketi: seçici kutusu değil, adların
+     kendisi görünüyor. Vestuario'daki `who` ile aynı kalıp. */
+  voice: { es: "Elegir personaje", en: "Choose character" },
   all: { es: "Todos", en: "All" },
   quote: { es: "cita", en: "quote" },
   quotes: { es: "citas", en: "quotes" },
@@ -27,6 +29,10 @@ const L = {
   },
 };
 
+/* "All" veride bir konuşan DEĞİL, süzgecin kapalı hâli — `filtered`
+   onu ayrı ele alıyor. Vestuario ve Prensa'daki seçicilerde böyle bir
+   seçenek yok çünkü orada bir taraf seçmek zorunlu; burada 132 alıntıyı
+   birden görebilmek gerekiyor. */
 const SPEAKERS = ["All", "Marta", "Fina", "Mafin"];
 
 const BADGE_CLASS = {
@@ -104,21 +110,31 @@ export default function Quotes() {
           onChange={setQuery}
           placeholder={t(L.searchPlaceholder)}
         />
-        <label className={styles.selectWrap}>
-          <span className={styles.selectLabel}>{t(L.voice)}</span>
-          <select
-            className={styles.select}
-            value={speaker}
-            onChange={(e) => setSpeaker(e.target.value)}
-          >
-            {SPEAKERS.map((s) => (
-              <option key={s} value={s}>
-                {s === "All" ? t(L.all) : s}
-              </option>
-            ))}
-          </select>
-        </label>
       </div>
+
+      {/* Konuşan seçimi: Vestuario'daki karakter ve Prensa'daki kişi
+          seçicisiyle birebir aynı dil — kutu yok, saf tipografi,
+          aralarında nokta. Üç sayfa aynı işi yapıyor, aynı görünüyor.
+          ÜÇÜNCÜ KEZ TEKRARLANDI: bir dördüncüsü gelirse ortak bir
+          bileşene çıkarmanın zamanı gelmiş demektir. */}
+      <nav className={styles.switcher} aria-label={t(L.voice)}>
+        {SPEAKERS.map((name, i) => (
+          <span key={name}>
+            {i > 0 && (
+              <span className={styles.sep} aria-hidden="true">
+                ·
+              </span>
+            )}
+            <button
+              className={`${styles.name} ${name === speaker ? styles.nameActive : ""}`}
+              aria-pressed={name === speaker}
+              onClick={() => setSpeaker(name)}
+            >
+              {name === "All" ? t(L.all) : name}
+            </button>
+          </span>
+        ))}
+      </nav>
 
       <ListToolbar
         count={`${filtered.length} ${
