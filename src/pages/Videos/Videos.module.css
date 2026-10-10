@@ -117,13 +117,14 @@
    — 375px'lik ekranda taşıyordu. Burada yükseklik SABİTLENİYOR, genişlik
    `auto` ile oranından türetiliyor; video ekrana sığan en büyük haline
    geliyor ve ortalanıyor.
-   159px = perde (2x12) + kenarlık (2) + panel dolgusu (50+18) + oluk
-   (16) + künye (49, iki satır — sayı değişirse burası da değişmeli).
+   149px = perde (2x12) + kenarlık (2) + panel dolgusu (44+14) + oluk
+   (16) + künye (49, iki satır). Dolgular Modal.module.css'teki alçak
+   ekran bloğundan geliyor — orası değişirse burası da değişmeli.
    `align-self` ŞART: `.player` esnek bir sütun, öğeleri varsayılan
    olarak geriyor ve `width: auto` tek başına işe yaramıyor. */
 @media (max-height: 560px) {
   .playerFrame {
-    height: calc(100dvh - 159px);
+    height: calc(100dvh - 149px);
     width: auto;
     max-width: 100%;
     align-self: center;

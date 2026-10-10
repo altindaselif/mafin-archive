@@ -94,3 +94,34 @@
     height: 32px;
   }
 }
+
+/* Alçak ekran (yatay tutulan telefon): oynatıcının yüksekliği ekrana
+   göre sabitlenip genişliği 16/9'dan türetiliyor (Videos.module.css),
+   yani video panelden çok daha dar kalıyor — 812x375'te 384px'lik
+   video 773px'lik panelin içinde yüzüyordu. Panel içeriğine göre
+   daralıyor, dikeydeki gibi çerçeve videonun çevresinde bitiyor.
+
+   `:has(video)` İLE: yalnızca oynatıcı. Vestuario'nun büyüteci de
+   `wide` ama oradaki görsel `max-width: 100%` ile boyutlanıyor; panel
+   içeriğe göre daralsaydı ikisi birbirini kovalardı. Form paneli de
+   aynı sebeple dışarıda — alanları %100 genişlikte.
+   `:has()` desteklenmeyen bir tarayıcıda kural hiç uygulanmıyor ve
+   panel bugünkü hâliyle, doğru ama geniş kalıyor. */
+@media (max-height: 560px) {
+  .panel:has(video) {
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  /* Panel daralınca üstteki 50px'lik şerit yanlardaki 14px'in yanında
+     fazla kalıyordu. Düğme biraz yukarı alınıp şerit 44px'e iniyor:
+     düğmenin altı 40px, video 45px'te başlıyor. */
+  .panel {
+    padding: 44px 14px 14px;
+  }
+
+  .close {
+    top: 8px;
+    right: 8px;
+  }
+}
