@@ -13,3 +13,17 @@
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
+
+/* Bu blok temel kuralların ALTINDA durmak zorunda: eşit özgüllükte
+   kaynak sırası kazanıyor. */
+@media (max-width: 720px) {
+  /* Masaüstünde sayı filtrenin KARŞISINDA duruyor — `space-between`
+     onu kendiliğinden sağa atıyor. Mobilde çubuk sarmalanıyor ve sayı
+     kendi satırına düşüyor; tek öğeli bir satırda `space-between`
+     hizalama yapmıyor, öğe sola yapışıyordu. `margin-left: auto`
+     kalan boşluğun tamamını solda toplayarak sayıyı sağ kenara,
+     masaüstündeki yerine geri götürüyor. */
+  .count {
+    margin-left: auto;
+  }
+}
