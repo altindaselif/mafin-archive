@@ -274,7 +274,9 @@
 .thanksText {
   margin: 0;
   max-width: 38ch;
-  font-size: 0.9rem;
+  /* Sans gövde metni bir tık küçüldü (kök ölçek %110'a çıkınca bu
+     kademe de onunla birlikte büyümüştü). */
+  font-size: 0.85rem;
   line-height: 1.7;
   color: var(--color-text-muted);
 }

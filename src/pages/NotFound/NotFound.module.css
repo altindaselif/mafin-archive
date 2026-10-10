@@ -64,7 +64,9 @@
 
 .text {
   color: var(--color-text-muted);
-  font-size: 0.95rem;
+  /* Sans gövde metni bir tık küçüldü (kök ölçek %110'a çıkınca bu
+     kademe de onunla birlikte büyümüştü). */
+  font-size: 0.9rem;
   /* Künye başlık için geniş (72ch), ama paragraf o kadar uzun satırda
      okunmuyor — kendi ölçüsünde, ortalı. */
   max-width: 56ch;

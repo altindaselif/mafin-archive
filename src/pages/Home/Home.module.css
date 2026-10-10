@@ -173,7 +173,9 @@
    then the episode title as the star of the block */
 .ephemerisIntro {
   margin: 0;
-  font-size: 0.9rem; /* a step above the label so the hierarchy stays clear */
+  /* Etiketten (0,82rem) bir kademe yukarıda kalmalı — hiyerarşi ondan
+     okunuyor. Sans gövde metniyle birlikte bir tık küçüldü. */
+  font-size: 0.85rem;
   letter-spacing: 0.04em;
   color: var(--color-text-muted);
 }

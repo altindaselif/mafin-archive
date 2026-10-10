@@ -126,7 +126,9 @@
 
 .cardText {
   margin: 0;
-  font-size: 0.9rem;
+  /* Sans gövde metni bir tık küçüldü (kök ölçek %110'a çıkınca bu
+     kademe de onunla birlikte büyümüştü). */
+  font-size: 0.85rem;
   color: var(--color-text-muted);
 }
 

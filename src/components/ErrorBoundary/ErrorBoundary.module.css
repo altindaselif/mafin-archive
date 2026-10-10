@@ -44,7 +44,9 @@
 
 .text {
   color: var(--color-text-muted);
-  font-size: 0.95rem;
+  /* Sans gövde metni bir tık küçüldü (kök ölçek %110'a çıkınca bu
+     kademe de onunla birlikte büyümüştü). */
+  font-size: 0.9rem;
   margin: 0 0 32px;
 }
 

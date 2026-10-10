@@ -66,7 +66,9 @@
 .snippet {
   margin: 0;
   max-width: 68ch; /* matches .fullText so the width doesn't jump on expand */
-  font-size: 0.9rem;
+  /* Sans gövde metni bir tık küçüldü (kök ölçek %110'a çıkınca bu
+     kademe de onunla birlikte büyümüştü). */
+  font-size: 0.85rem;
   color: var(--color-text-muted);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -126,7 +128,9 @@
   margin: 0;
   padding: 0 8px 30px 104px;
   max-width: 68ch;
-  font-size: 0.95rem;
+  /* Sans gövde metni bir tık küçüldü (kök ölçek %110'a çıkınca bu
+     kademe de onunla birlikte büyümüştü). */
+  font-size: 0.9rem;
   line-height: 1.75;
   color: var(--color-text-main);
 }
