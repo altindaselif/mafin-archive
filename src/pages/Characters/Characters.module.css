@@ -11,7 +11,12 @@
   gap: 24px;
   padding: 24px 0;
   border-bottom: 1px solid var(--color-border);
-  align-items: center;
+  /* ÜSTE HİZALI, ortalı değil: portre metnin tamamına göre ortalanınca
+     biyografi uzadıkça adından kopuyordu (ölçüldü: 768px'te dokuz
+     satırlık bir biyografide portrenin merkezi adın 150px altında).
+     Sol sütunda hizalı portre + sağda künye ve metin listelerin yaygın
+     kalıbı, ama o kalıpta portre başlıkla aynı hizadan başlar. */
+  align-items: start;
 }
 
 /* Monogram medallion — stands in until real portraits arrive */
@@ -20,7 +25,6 @@
   width: 96px;
   height: 96px;
   justify-self: center;
-  align-self: center;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid var(--color-border-strong, #c9b8ae);
@@ -40,7 +44,6 @@
   width: 96px;
   height: 96px;
   justify-self: center;
-  align-self: center;
   border-radius: 50%;
   border: 1px solid var(--color-border-strong, #c9b8ae);
   background: var(--color-accent-soft);
