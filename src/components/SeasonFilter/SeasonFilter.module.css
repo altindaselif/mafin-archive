@@ -36,12 +36,7 @@
   width: 4px;
   height: 4px;
   background: var(--color-accent);
-  /* Yatayda OPTİK merkez, kutu merkezi değil: `letter-spacing` son
-     harften sonra da boşluk bırakıyor (ölçüldü: yazı kutusu 114px ve
-     son 2,36px'i boş), yani harflerin merkezi kutununkinin 1,2px
-     solunda. Baklava 4px eninde olduğu için bu kayma göze çarpıyordu.
-     Yarım harf aralığı kadar sola alınıyor. */
-  transform: translateX(calc(-50% - 0.09em)) rotate(45deg) scale(0);
+  transform: translateX(-50%) rotate(45deg) scale(0);
   transition: var(--transition-smooth);
 }
 
@@ -55,7 +50,7 @@
 }
 
 .active::after {
-  transform: translateX(calc(-50% - 0.09em)) rotate(45deg) scale(1);
+  transform: translateX(-50%) rotate(45deg) scale(1);
 }
 
 /* Bütün etiketleri üst üste tutan yuva: en genişine göre şekilleniyor,
@@ -69,6 +64,18 @@
 
 .slot > span {
   grid-area: 1 / 1;
+  /* `letter-spacing` boşluğu SON harften sonra da ekliyor, yani etiketin
+     kutusunda sağda 0,18em'lik hayalet bir pay var (ölçüldü: yazı kutusu
+     114px, son 2,36px'i boş). Kutu ortalanınca harfler sekmenin 1,18px
+     soluna düşüyor ve altındaki baklava kaymış görünüyor.
+     Yazı yarım harf aralığı SAĞA alınıyor: hayalet pay sağda olduğu
+     için mürekkep kutunun sol yarısında kalıyor, onu sağa itmek
+     gerekiyor. Sonuçta harfler sekmenin tam ortasında, baklava da düz
+     `-50%` ile onların ortasında.
+     Negatif `margin-right` denendi ve OLMADI: ızgara hücreyi dış payıyla
+     değil kenarlık kutusuyla ortalıyor, harfler yine solda kalıyordu.
+     `transform` düzeni hiç bozmadan yalnızca çizimi kaydırıyor. */
+  transform: translateX(0.09em);
 }
 
 .off {
@@ -80,4 +87,19 @@
   color: var(--color-text-muted);
   opacity: 0.5;
   user-select: none;
+}
+
+/* Bu blok temel kurallardan SONRA: eşit özgüllükte kaynak sırası
+   kazanıyor. */
+@media (max-width: 720px) {
+  /* Baklava masaüstünde araç çubuğunun çizgisine oturuyor — 14px'lik
+     alt dolgu onu oraya ulaştırmak için (ölçüldü: baklava merkezi
+     çizginin 0,5px üstünde). Mobilde çubuk sarmalandığı için o çizgi
+     65px aşağıda kalıyor ve baklava hiçbir şeyin üstünde durmadan
+     yazıdan 14,5px uzakta asılı kalıyordu.
+     Yalnızca işaret yukarı alınıyor, DOLGU DEĞİL: dolgu kısılsaydı
+     düğmenin dokunma hedefi 34px'ten 27px'e inerdi. */
+  .season::after {
+    bottom: 4.5px;
+  }
 }
