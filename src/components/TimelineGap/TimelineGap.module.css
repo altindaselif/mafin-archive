@@ -70,12 +70,19 @@
 }
 
 /* Mobilde merkez çizgi sola kayıyor (Timeline.module.css: left 8px),
-   kesikli çizgi de onunla birlikte gitmeli. Künye de sola hizalanıyor
-   ki 8px'lik çizgiyi gereksiz yere delmesin. */
+   kesikli çizgi de onunla birlikte gitmeli.
+
+   Künye çizgiyi masaüstündeki gibi DELİYOR. Önce `.gap`'e 30px sol
+   dolgu verilip künye çizginin sağına çekilmişti; o zaman zemin (54px)
+   çizgiye (32px) hiç değmiyordu ve kesikli çizgi künyenin arkasından
+   kesintisiz geçiyordu — masaüstünde çizgiyi kesen, mobilde kesmeyen
+   iki ayrı davranış. Dolgu artık `.gap`ten alınıp künyenin kendi sol
+   dolgusuna ekleniyor: yazı aynı yerde (72px) duruyor, zemin ise
+   24px'ten başlayıp çizginin üstünü örtüyor. */
 @media (max-width: 720px) {
   .gap {
     text-align: left;
-    padding-left: 30px;
+    padding-left: 0;
   }
 
   .gap::before {
@@ -83,7 +90,8 @@
     transform: none;
   }
 
+  /* Sol dolgu = eski `.gap` dolgusu (30px) + künyenin kendi payı (18px) */
   .inner {
-    padding: 14px 18px;
+    padding: 14px 18px 14px 48px;
   }
 }
