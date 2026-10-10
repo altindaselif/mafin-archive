@@ -359,6 +359,13 @@
   .tileIcon {
     grid-row: span 2;
     margin-bottom: 0;
+    /* Kare kartta 28px doğru orantıydı: ikon 205px'lik boşluğun
+       ortasında tek başınaydı. Satırda 20,8px'lik serif başlığın
+       yanına geçiyor ve o ölçekte çekingen kalıyor. CSS, SVG'nin
+       width/height özniteliklerini eziyor; viewBox sabit olduğu için
+       çizgi kalınlığı da 1,4'ten 1,6'ya çıkıyor — istenen de buydu. */
+    width: 32px;
+    height: 32px;
   }
 
   /* 26ch masaüstündeki kare kart için; satırda genişlik satırın kendisi */
