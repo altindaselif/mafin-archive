@@ -54,10 +54,50 @@
   border-bottom-color: var(--color-accent);
 }
 
+/* ── Sezon şeridi: çapa bağlantıları ─────────────────────────────────
+   SeasonFilter'la aynı tipografik dil (kutusuz, nokta ayraçlı) ama bir
+   kademe sessiz: bu bir kontrol değil, bir içindekiler satırı. */
+.jump {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: -24px 0 40px;
+  font-size: 0.95rem;
+}
+
+.jumpLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.jumpDot {
+  color: var(--color-border);
+}
+
+.jumpLink {
+  font-family: var(--font-family-display);
+  font-size: 1.05rem;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.jumpLink:hover {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
 /* Season divider that segments the single chronological flow */
 .seasonHeader {
   position: relative;
   z-index: 1;
+  /* Üstteki başlık `position: fixed` ve 73px; bu olmadan çapaya atlayınca
+     sezon ayracı onun altında kalıyor. */
+  scroll-margin-top: 96px;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -93,4 +133,46 @@
   opacity: 0.6;
   margin-left: 8px;
   font-size: 0.9em;
+}
+
+/* ── Yukarı dön ──────────────────────────────────────────────────────
+   YALNIZCA MOBİLDE. Masaüstünde kaydırma çubuğu zaten tek hamlede
+   başa götürüyor; orada bu düğme ekranın köşesinde duran gereksiz bir
+   nesne olurdu. Bu yüzden varsayılan `display: none` ve aşağıdaki dar
+   ekran bloğunda açılıyor — tersi değil. */
+.toTop {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .toTop {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    right: 16px;
+    /* Telefon tarayıcılarının alt çubuğunun altında kalmasın */
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    z-index: 90; /* başlık 100; onun altında kalsın */
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    background: var(--color-bg);
+    color: var(--color-accent);
+    box-shadow: var(--shadow-lift);
+    cursor: pointer;
+    /* Görünmezken tıklanamaz: `visibility` olmadan saydam düğme
+       altındaki kartın dokunuşunu yiyor. */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: var(--transition-smooth);
+  }
+
+  .toTopOn {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
 }
