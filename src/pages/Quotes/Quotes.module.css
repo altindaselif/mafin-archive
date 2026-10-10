@@ -2,6 +2,12 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  /* ORTALI: Guía ve Vídeos'ta bu satırda aramanın yanında tema
+     etiketleri de var ve satır doluyor. Burada süzgeç adlara taşındığı
+     için arama tek başına kaldı — sola yaslıyken 380px'lik hap, 580px
+     boşluğun kenarında asılı duruyordu. Ortalanınca altındaki ad
+     seçicisiyle aynı eksene geliyor, ikisi tek bir blok okunuyor. */
+  justify-content: center;
   gap: 16px;
   margin-bottom: 40px;
 }
