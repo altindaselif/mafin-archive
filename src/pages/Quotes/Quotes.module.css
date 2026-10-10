@@ -214,17 +214,31 @@
   }
 }
 
-/* En dar telefonlar (SE gibi, 320px). Dört ad 1,45rem'de 304px istiyor
-   ama 272px var; sarmalanınca "·Mafin" alt satıra geçiyor ve ayraç
-   satırın BAŞINDA, öncesinde hiçbir şey olmadan kalıyordu. Ad bir
-   kademe küçülüp ayraçlar daralınca dördü de tek satırda kalıyor. */
-@media (max-width: 359px) {
+/* Dört ad TEK SATIRDA kalmalı: sarmalanınca "·Mafin" alt satıra geçiyor
+   ve ayraç satırın BAŞINDA, öncesinde hiçbir şey olmadan kalıyor.
+   Vestuario'da iki, Prensa'da üç ad var ve ikisi de rahat sığıyor;
+   dörtle telefonda sığmıyor, o yüzden ad burada bir kademe küçük.
+   KÜÇÜLME DEĞİL: kök ölçek %110 olduğu için 1,3rem = 22,9px, eski
+   1,45rem'in 23,2px'inin pratikte aynısı. */
+@media (max-width: 560px) {
   .name {
     font-size: 1.3rem;
   }
 
   .sep {
     margin: 0 6px;
+  }
+}
+
+/* En dar telefonlar (SE gibi, 320px): orada 272px var, bir kademe daha
+   gerekiyor. */
+@media (max-width: 359px) {
+  .name {
+    font-size: 1.12rem;
+  }
+
+  .sep {
+    margin: 0 4px;
   }
 }
 

@@ -126,3 +126,39 @@
     font-size: 1.3rem;
   }
 }
+
+/* ── Telefon: sayılar kendi satırında ─────────────────────────────────
+   Tek satırda şerit 324,8px istiyor (iki yön düğmesi 73,6 + sayı bloğu
+   157,6 + iki oluk). 320px'lik ekranda 272px var, 375px'te 327 — yani
+   ancak 2px payla sığıyordu ve kök yazı ölçeği %110'a çıkınca o pay da
+   bitti (ölçüldü: sayfa 28px yatay kayıyordu).
+   Sayılar üste, yön düğmeleri altta iki uca: ikisi de rahatça sığıyor
+   ve şerit kitabın sayfa altı gibi simetrik kalıyor.
+   Daraltma yerine bu: "Anterior"/"Siguiente" kelimelerini okla
+   değiştirmek ya da yazıyı küçültmek, sığdırmak için 47px'e inmeyi
+   gerektiriyordu — okunmazdı. Sayı penceresini daraltmak ise JSX
+   değişikliği (buildRange'in sibling'i) ve ekran genişliğini
+   bileşenin içine sokardı. */
+@media (max-width: 480px) {
+  .pager {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "pages pages"
+      "prev  next";
+    gap: 14px 10px;
+  }
+
+  .pages {
+    grid-area: pages;
+  }
+
+  .pager > .step:first-of-type {
+    grid-area: prev;
+    justify-self: start;
+  }
+
+  .pager > .step:last-of-type {
+    grid-area: next;
+    justify-self: end;
+  }
+}

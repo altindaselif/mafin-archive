@@ -26,6 +26,18 @@
 }
 
 html {
+  /* ── Yazı ölçeği ──────────────────────────────────────────────────
+     Sitedeki 132 yazı boyutunun TAMAMI `rem`, yani hepsi bu köke göre
+     ölçülüyor. Burayı büyütmek bütün kademeleri birlikte büyütüyor ve
+     aralarındaki oranı bozmuyor — tek tek boyut değiştirmekten farkı
+     bu.
+     %110 = 17,6px (tarayıcı varsayılanı 16px). Yüzde kullanılıyor,
+     sabit px DEĞİL: ziyaretçi tarayıcısında yazıyı büyüttüyse bu ölçek
+     onun üstüne biniyor, onu ezmiyor.
+     Küçük kademeler (künye etiketleri 0,64rem, italik tarihler 0,8rem)
+     telefonda okunmuyordu; bir de italik + soluk olunca iyice
+     inceliyordu. */
+  font-size: 110%;
   scroll-behavior: smooth;
   /* Reserve the scrollbar's space always, so locking body scroll when a
      modal opens never shifts the page (or the fixed header) sideways. */
@@ -37,7 +49,8 @@ body {
   background: var(--color-bg);
   color: var(--color-text-main);
   font-family: var(--font-family-main);
-  font-size: 16px;
+  /* `rem`, sabit px DEĞİL: yukarıdaki ölçek buraya da uygulansın. */
+  font-size: 1rem;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
