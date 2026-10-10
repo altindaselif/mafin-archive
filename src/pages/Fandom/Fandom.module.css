@@ -296,6 +296,35 @@
   .count {
     margin-left: auto;
   }
+
+  /* İspanyolcada beş sekme 375px'e sığmıyor ve kendi haline bırakılınca
+     üstte dört, altta tek başına "Tendencia" kalıyordu. Arte'den önceki
+     ayraç satır sonu olarak kullanılıyor: `flex-basis: 100%` satırı
+     orada kesiyor, üstte üç altta iki kalıyor.
+     Ayraç mobilde zaten görünmüyor (SectionTabs'te `display: none`);
+     burada geri açılıp YÜKSEKLİKSİZ bir kesiciye çevriliyor, "·" da
+     `overflow: hidden` ile saklanıyor.
+     YALNIZCA İSPANYOLCA: İngilizce etiketler kısa (All / Song / Fanfic
+     / Art / Trend, toplam 243,7px) ve beşi birden tek satıra sığıyor —
+     orada zorla kırmak düzeni bozardı.
+     nth-child(6) = Arte'den önceki ayraç. Fandom.jsx'teki TYPES
+     dizisine tür eklenir ya da sırası değişirse BU SAYI DA DEĞİŞMELİ. */
+  :global(html[lang="es"]) .sectionHeader nav > span:nth-child(6) {
+    display: block;
+    flex-basis: 100%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  /* Kesici kendi başına sıfır yükseklikli bir satır oluşturuyor, yani
+     iki sekme satırının arasında 4px'lik satır oluğundan İKİ tane
+     sayılıyor. Oluk yarıya iniyor ki toplam yine 4px olsun — şerit
+     kendiliğinden sarmalanmış gibi dursun.
+     Negatif `margin-top` denendi ve OLMADI: kesicinin satır yüksekliği
+     zaten sıfır, dış payı sıfırın altına inemiyor. */
+  :global(html[lang="es"]) .sectionHeader nav {
+    row-gap: 2px;
+  }
 }
 
 /* Turnstile kutusu. Widget kendi boyutunu getiriyor; biz sadece
