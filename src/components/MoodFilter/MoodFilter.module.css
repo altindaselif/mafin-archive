@@ -51,3 +51,29 @@
   border-color: var(--color-text-main);
   color: var(--color-bg);
 }
+
+/* Bu blok temel kurallardan SONRA: eşit özgüllükte kaynak sırası
+   kazanıyor. */
+@media (max-width: 720px) {
+  /* Dar ekranda etiketler alt alta sarıyor ve esnek dizilimde her satır
+     kendi genişliklerine göre akıyordu: ilk satırın sol kenarları
+     0/90/168/256, ikincininki 0/87/162 — yani sütunlar 3-6px kayık
+     (ölçüldü).
+     Izgara sütunları eşitliyor, `justify-items: start` ise rozetleri
+     GERMİYOR: her etiket yine kendi kelimesi kadar, ama hepsi aynı
+     sütundan başlıyor. Boyut değişmiyor, hiza geliyor.
+     Sütun tabanı 5,5rem = 88px, en geniş etiketten (Icónico, 82px)
+     biraz fazla; bundan uzun bir tema eklenirse bu taban büyümeli,
+     yoksa o rozet sütununu taşırır. */
+  .group {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(5.5rem, 1fr));
+    justify-items: start;
+    /* ŞART: `.group` esnek bir kabın içinde (`.controls`) ve `flex: 0 1
+       auto` ile genişliği içeriğinden türüyor. Izgaraya çevirince o
+       içerik "bir sütun" oluyordu, yani kutu 88px'e çöküp bütün
+       rozetler alt alta diziliyordu (ölçüldü). Genişlik bağlanınca
+       `auto-fill` gerçek yeri görüyor. */
+    width: 100%;
+  }
+}
