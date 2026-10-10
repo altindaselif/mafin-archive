@@ -110,3 +110,28 @@
 .toolbar {
   margin: 0 0 28px;
 }
+
+/* ── Yatay tutulan telefon ───────────────────────────────────────────
+   Oynatıcı 16/9 ve genişlikten büyüyor: 812x375'te panel 749px oluyor,
+   video 376px yükseliyor ve künyeyle birlikte paneli 505px'e çıkarıyor
+   — 375px'lik ekranda taşıyordu. Burada yükseklik SABİTLENİYOR, genişlik
+   `auto` ile oranından türetiliyor; video ekrana sığan en büyük haline
+   geliyor ve ortalanıyor.
+   159px = perde (2x12) + kenarlık (2) + panel dolgusu (50+18) + oluk
+   (16) + künye (49, iki satır — sayı değişirse burası da değişmeli).
+   `align-self` ŞART: `.player` esnek bir sütun, öğeleri varsayılan
+   olarak geriyor ve `width: auto` tek başına işe yaramıyor. */
+@media (max-height: 560px) {
+  .playerFrame {
+    height: calc(100dvh - 159px);
+    width: auto;
+    max-width: 100%;
+    align-self: center;
+  }
+
+  /* Genişlik `max-width` ile kırpılırsa oran bozulur; `contain` videoyu
+     çerçevenin içinde bütün tutuyor, artan yer zaten siyah. */
+  .playerFrame video {
+    object-fit: contain;
+  }
+}
