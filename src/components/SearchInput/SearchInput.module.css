@@ -15,7 +15,10 @@
 
 .input {
   width: 100%;
-  padding: 11px 16px 11px 42px;
+  /* Dikey dolgu 11px'ti; kök ölçek %110'a çıkınca kutu 43,5px'e
+     vardı ve yanındaki etiketlerin yanında şişkin duruyordu. 9px
+     onu 39,5px'e indiriyor — dokunma hedefi hâlâ rahat. */
+  padding: 9px 16px 9px 42px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   background: var(--color-surface);
