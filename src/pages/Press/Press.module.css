@@ -2,12 +2,15 @@
    Kutu yok, saf tipografi, aralarında nokta. İki sayfa aynı işi yapıyor,
    aynı görünmeli. Üçüncü bir sayfa bu düzeni isterse ortak bir bileşene
    çıkarmanın zamanı gelmiş demektir. */
+/* ALT PAY GENİŞ: kişi seçimi sayfanın ana ayrımı, biçim sekmeleri onun
+   ALTINDA ikinci kademe. 6px'ken ikisi tek bir blok gibi okunuyor ve
+   kademe kayboluyordu. Vestuario'daki seçiciyle aynı sayı. */
 .switcher {
   display: flex;
   align-items: baseline;
   justify-content: center;
   gap: 2px;
-  margin: 34px 0 6px;
+  margin: 34px 0 20px;
 }
 
 .sep {
@@ -21,7 +24,10 @@
   background: none;
   cursor: pointer;
   font-family: var(--font-family-display);
-  font-size: 1.45rem;
+  /* Vestuario'daki karakter seçicisiyle aynı ölçek: ana ayrım altındaki
+     sekmelerden daha yüksek sesle konuşmalı. İki sayfa aynı işi yapıyor,
+     biri değişirse öteki de değişmeli. */
+  font-size: 1.7rem;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
@@ -226,11 +232,11 @@
   }
 
   .switcher {
-    margin-top: 26px;
+    margin: 26px 0 16px;
   }
 
   .name {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
   }
 
   .sep {
