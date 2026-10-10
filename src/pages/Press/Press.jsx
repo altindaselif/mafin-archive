@@ -35,9 +35,13 @@ const L = {
   },
   who: { es: "Elegir a quién entrevistan", en: "Choose who is interviewed" },
   byFormat: { es: "Filtrar por formato", en: "Filter by format" },
-  /* Fandom'daki "Todas las obras" ile aynı kalıp: isim, listelenen şeye
-     göre değişiyor. Orada eser, burada röportaj. */
-  allFormats: { es: "Todas las entrevistas", en: "All interviews" },
+  /* ÇIPLAK "Todas", "Todas las entrevistas" DEĞİL: sekme küçük kapital
+     ve 0,18em harf aralığıyla diziliyor, uzun etiket mobilde tek başına
+     bir satır kaplıyordu (ölçüldü: 210,7px / 327px). Yanındaki sekmeler
+     zaten neyin süzüldüğünü söylüyor, isim tekrar ediyordu.
+     Fandom'daki "Todas" ile aynı — iki sayfa aynı kalıbı kullanıyor.
+     İspanyolca dişil: entrevista da obra da dişil, "Todos" olmaz. */
+  allFormats: { es: "Todas", en: "All" },
   interview: { es: "entrevista", en: "interview" },
   interviews: { es: "entrevistas", en: "interviews" },
   read: { es: "Leer", en: "Read" },

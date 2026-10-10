@@ -13,7 +13,8 @@ const L = {
     en: "Songs, fanfics, art and the trends the fandom has pushed on Twitter, all of it made by the people who keep their story alive. Every submission is reviewed before it appears here.",
   },
 
-  allWorks: { es: "Todas las obras", en: "All works" },
+  /* ÇIPLAK "Todas": gerekçesi Press.jsx'teki allFormats'ta. */
+  allWorks: { es: "Todas", en: "All" },
   filterBy: { es: "Filtrar por sección", en: "Filter by section" },
   work: { es: "obra", en: "work" },
   works: { es: "obras", en: "works" },

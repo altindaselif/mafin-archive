@@ -74,4 +74,25 @@
     justify-content: center;
     width: 100%;
   }
+
+  /* Ayraçlar mobilde YOK: şerit sarmalandığı için satırın son noktası,
+     ardından gelecek sekme alt satıra geçince tek başına asılı
+     kalıyordu — arkasında hiçbir şey olmayan bir ayraç. Esnek oluk
+     (18px) ve etiket kutularındaki pay sekmeleri zaten ayırıyor.
+     `display: none`, `visibility: hidden` DEĞİL: gizli nokta yer
+     kaplamaya devam etseydi iki oluk birden sayılırdı. */
+  .dot {
+    display: none;
+  }
+
+  /* Baklava masaüstünde başlık çubuğunun çizgisine oturuyor — 14px'lik
+     alt dolgu onu oraya ulaştırmak için. Mobilde çubuk sarmalandığı
+     için o çizgi aşağıda kalıyor ve baklava iki satırın arasında,
+     hiçbir şeyin üstünde durmadan asılı kalıyordu.
+     Yalnızca işaret yukarı alınıyor, DOLGU DEĞİL: dolgu kısılsaydı
+     düğmenin dokunma hedefi 34px'ten 27px'e inerdi.
+     SeasonFilter'daki kuralın aynısı. */
+  .tab::after {
+    bottom: 4.5px;
+  }
 }
