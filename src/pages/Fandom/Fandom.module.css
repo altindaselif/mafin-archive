@@ -100,6 +100,10 @@
 }
 
 .empty {
+  /* Okuma ölçeği 1,15rem: display serifiyle dizilen HER cümle orada
+     (Galería, Prensa ve Vestuario'nun boş liste iletileri zaten öyle).
+     Bu yüz küçük puntoda inceliyor, ondan aşağısı okunmuyor. */
+  font-size: 1.15rem;
   margin-top: 40px;
   text-align: center;
   font-family: var(--font-family-display);
