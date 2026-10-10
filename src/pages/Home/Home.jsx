@@ -17,7 +17,7 @@ const SECTIONS = [
     desc: { es: "La relación, momentos clave.", en: "The relationship, milestone by milestone." } },
   { to: "/guide", icon: "episodes",
     title: { es: "Guía", en: "Guide" },
-    desc: { es: "Cada capítulo resumido, con filtros.", en: "Every chapter summarized, with filters." } },
+    desc: { es: "Cada capítulo resumido.", en: "Summaries of every chapter." } },
   { to: "/videos", icon: "videos",
     title: { es: "Vídeos", en: "Videos" },
     desc: { es: "Cada mirada, beso y lágrima, en vídeo.", en: "Every look, kiss and tear, on video." } },

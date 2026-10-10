@@ -29,7 +29,11 @@
 .item {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  /* 6px'ti ve sayı ile etiketi birbirine yapıştırıyordu: rakamın
+     `line-height: 1`i kutuyu harflerin tam dibinde kestiği için
+     oluğun tamamı görünen boşluk oluyor, oysa etiketin kendi satır
+     yüksekliği yok sayılacak kadar küçük. */
+  gap: 12px;
   padding: 0 20px;
 }
 
