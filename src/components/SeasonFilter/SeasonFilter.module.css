@@ -104,6 +104,17 @@
     width: 100%;
   }
 
+  /* Ayraçlar mobilde YOK: şerit sarmalandığı için son nokta, ardından
+     gelecek sekme alt satıra geçince satır sonunda tek başına asılı
+     kalıyordu — arkasında hiçbir şey olmayan bir ayraç. Esnek oluk
+     (18px) ve etiket kutularındaki pay sekmeleri zaten ayırıyor
+     (ölçüldü: mürekkepler arası ~36px).
+     `display: none`, `visibility: hidden` DEĞİL: gizli nokta yer
+     kaplamaya devam etseydi iki oluk birden sayılırdı. */
+  .dot {
+    display: none;
+  }
+
   /* Baklava masaüstünde araç çubuğunun çizgisine oturuyor — 14px'lik
      alt dolgu onu oraya ulaştırmak için (ölçüldü: baklava merkezi
      çizginin 0,5px üstünde). Mobilde çubuk sarmalandığı için o çizgi
