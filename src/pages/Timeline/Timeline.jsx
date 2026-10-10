@@ -114,8 +114,8 @@ export default function Timeline() {
       </ol>
 
       {/* 24 ekranlık bir sayfada yukarı dönmenin tek yolu kaydırmaktı.
-          Masaüstünde CSS onu gizliyor: orada kaydırma çubuğu zaten bu işi
-          görüyor ve sayfanın üstüne bir hamlede gidiliyor.
+          Her genişlikte duruyor: masaüstünde kaydırma çubuğu var ama onu
+          tutup sürüklemek de bir iş, üstelik sağ kenar boş.
           Yumuşak kaydırma global.css'ten geliyor (`scroll-behavior`), o da
           prefers-reduced-motion altında kendiliğinden kapanıyor — burada
           ayrıca kontrol etmeye gerek yok. */}

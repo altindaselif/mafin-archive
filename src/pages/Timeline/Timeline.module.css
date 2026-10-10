@@ -79,15 +79,21 @@
 
 .jumpLink {
   font-family: var(--font-family-display);
-  font-size: 1.05rem;
-  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  /* BORDO, bilerek: soluk griyken rakamlar yazı gibi duruyordu ve
+     tıklanabilir oldukları anlaşılmıyordu. Sitenin "bu bir bağlantı"
+     işareti bu renk — hemen üstteki "Mira las escenas…" satırı da öyle.
+     Etiket soluk kalıyor ki hangisinin tıklanır olduğu ayrışsın. */
+  color: var(--color-accent);
   text-decoration: none;
+  /* Dokunma hedefi: çıplak rakam telefonda 8px genişliğinde kalıyordu.
+     Dolgu satırı büyütmeden hedefi büyütüyor. */
+  padding: 4px 6px;
   border-bottom: 1px solid transparent;
   transition: var(--transition-smooth);
 }
 
 .jumpLink:hover {
-  color: var(--color-accent);
   border-bottom-color: var(--color-accent);
 }
 
@@ -136,43 +142,58 @@
 }
 
 /* ── Yukarı dön ──────────────────────────────────────────────────────
-   YALNIZCA MOBİLDE. Masaüstünde kaydırma çubuğu zaten tek hamlede
-   başa götürüyor; orada bu düğme ekranın köşesinde duran gereksiz bir
-   nesne olurdu. Bu yüzden varsayılan `display: none` ve aşağıdaki dar
-   ekran bloğunda açılıyor — tersi değil. */
+   HER GENİŞLİKTE. Bir ara yalnızca mobildeydi, gerekçe "masaüstünde
+   kaydırma çubuğu var" idi; ama 24 ekranlık bir sayfada çubuğu tutup
+   sürüklemek de bir iş, üstelik sağ kenar zaten boş duruyor. Tek
+   hamlede çıkmak isteyen her yerde çıkabilsin. */
 .toTop {
-  display: none;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  right: 28px;
+  bottom: calc(28px + env(safe-area-inset-bottom, 0px));
+  z-index: 90; /* başlık 100; onun altında kalsın */
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  box-shadow: var(--shadow-lift);
+  cursor: pointer;
+  /* Görünmezken tıklanamaz: `visibility` olmadan saydam düğme
+     altındaki kartın dokunuşunu yiyor. */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: var(--transition-smooth);
 }
 
+.toTop:hover {
+  border-color: var(--color-accent);
+}
+
+.toTopOn {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+/* Bu blok temel kurallardan SONRA: eşit özgüllükte kaynak sırası
+   kazanıyor. */
 @media (max-width: 720px) {
-  .toTop {
-    display: grid;
-    place-items: center;
-    position: fixed;
-    right: 16px;
-    /* Telefon tarayıcılarının alt çubuğunun altında kalmasın */
-    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    z-index: 90; /* başlık 100; onun altında kalsın */
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: 1px solid var(--color-border);
-    border-radius: 50%;
-    background: var(--color-bg);
-    color: var(--color-accent);
-    box-shadow: var(--shadow-lift);
-    cursor: pointer;
-    /* Görünmezken tıklanamaz: `visibility` olmadan saydam düğme
-       altındaki kartın dokunuşunu yiyor. */
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(6px);
-    transition: var(--transition-smooth);
+  /* Tek rakamın dokunma hedefi masaüstü dolgusuyla 18px genişliğinde
+     kalıyordu; parmak için dar. Yanlardan açılıyor — rakamlar arası
+     boşluk büyüyor ama hedef 26px'e çıkıyor. */
+  .jumpLink {
+    padding: 6px 10px;
   }
 
-  .toTopOn {
-    opacity: 1;
-    visibility: visible;
-    transform: none;
+  .toTop {
+    right: 16px;
+    bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    width: 42px;
+    height: 42px;
   }
 }
