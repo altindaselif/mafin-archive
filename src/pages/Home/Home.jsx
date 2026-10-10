@@ -26,7 +26,7 @@ const SECTIONS = [
     desc: { es: "Fotografías de cada capítulo.", en: "Photographs from every chapter." } },
   { to: "/outfits", icon: "outfits",
     title: { es: "Vestuario", en: "The Outfits" },
-    desc: { es: "Los trajes que llevan.", en: "The outfits they wear." } },
+    desc: { es: "Cada conjunto que lleva Mafin.", en: "Every outfit Mafin wears." } },
   { to: "/quotes", icon: "quotes",
     title: { es: "Citas", en: "Quotes" },
     desc: { es: "Las frases que lo definieron todo.", en: "The lines that defined everything." } },
