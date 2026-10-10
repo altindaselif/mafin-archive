@@ -92,7 +92,11 @@
 .text {
   margin: 0;
   font-family: var(--font-family-display);
-  font-size: 1.25rem;
+  /* Diyalog satırlarıyla (.dialogueLine) AYNI boy: ikisi de alıntı,
+     biri tek cümle öteki iki kişilik. 1,25rem'di ve kök ölçek %110'a
+     çıkınca 22px ediyordu — bir adım önde durması gerekiyordu ama o
+     ölçekte öne çıkmayı bırakıp bağırmaya başlamıştı. */
+  font-size: 1.15rem;
   line-height: 1.45;
 }
 
