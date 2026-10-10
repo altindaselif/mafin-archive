@@ -162,3 +162,10 @@
     right: auto;
   }
 }
+
+/* Telefonda eski boyut — gerekçesi global.css'in sonundaki blokta. */
+@media (max-width: 720px) {
+  .cardText {
+    font-size: 0.9rem;
+  }
+}

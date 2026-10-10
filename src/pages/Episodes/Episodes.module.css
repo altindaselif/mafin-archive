@@ -164,3 +164,14 @@
   }
 }
 
+
+/* Telefonda eski boyut — gerekçesi global.css'in sonundaki blokta. */
+@media (max-width: 720px) {
+  .snippet {
+    font-size: 0.9rem;
+  }
+
+  .fullText {
+    font-size: 0.95rem;
+  }
+}

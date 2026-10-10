@@ -192,3 +192,28 @@ body.no-scroll {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ── Telefonda eski yazı ölçeği ──────────────────────────────────────
+   Kök ölçek %110'a çıkarıldığında masaüstü kazandı ama telefonda her
+   şey şişti. Burada kök eski değerine dönüyor; `rem` olan her boyut
+   onunla birlikte geri geliyor.
+   İSTİSNALAR üç tane, hepsi aşağıda ayrıca yazılı: serif okuma
+   kademesi (1,15rem) bir tık yukarıda KALIYOR, küçük serif künyeler
+   (tarihler, notlar) yukarıda kalıyor, ana sayfadaki hero da büyük
+   kalıyor — hero'nun `rem` değerleri bu blokta 1,1 ile çarpılıyor.
+   Bu blok dosyanın SONUNDA: eşit özgüllükte kaynak sırası kazanıyor. */
+@media (max-width: 720px) {
+  html {
+    font-size: 100%;
+  }
+
+  /* Başlığın clamp'i masaüstü için bir kademe indirilmişti; telefonda
+     kök zaten geri döndüğü için ikinci bir indirim fazla olurdu. */
+  .page-title {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+  }
+
+  .page-subtitle {
+    font-size: 0.95rem;
+  }
+}
