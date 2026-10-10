@@ -92,6 +92,18 @@
 /* Bu blok temel kurallardan SONRA: eşit özgüllükte kaynak sırası
    kazanıyor. */
 @media (max-width: 720px) {
+  /* Şerit mobilde sarmalanıyor ve son satırda tek sekme kalıyor; sola
+     yapışınca sağında 195px ölü boşluk bırakıyordu. Ortalanınca iki
+     satır da kendi ekseninde duruyor.
+     `width: 100%` ŞART: şerit araç çubuğunun esnek bir öğesi, kendi
+     içeriği kadar daralırsa ortalanacak bir pay kalmıyor.
+     Masaüstünde ortalanmıyor — orada tek satır ve sağdaki sayının
+     karşısında sola hizalı durması gerekiyor. */
+  .filter {
+    justify-content: center;
+    width: 100%;
+  }
+
   /* Baklava masaüstünde araç çubuğunun çizgisine oturuyor — 14px'lik
      alt dolgu onu oraya ulaştırmak için (ölçüldü: baklava merkezi
      çizginin 0,5px üstünde). Mobilde çubuk sarmalandığı için o çizgi
