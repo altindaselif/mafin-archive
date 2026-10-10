@@ -223,6 +223,10 @@
 @media (max-width: 560px) {
   .grid {
     grid-template-columns: 1fr;
+    /* Satırların eşitlenmesi kare ızgara içindi. Tek sütunda hepsini en
+       uzun açıklamaya eşitlemek, tek satırlık kartlarda başlıkla yazı
+       arasında boşluk bırakıyordu. Her satır kendi boyunda. */
+    grid-auto-rows: auto;
   }
 }
 
@@ -320,4 +324,47 @@
 .ephemerisTitleLink:hover {
   color: var(--color-accent);
   border-bottom-color: var(--color-accent);
+}
+
+/* ── Tek sütunda kart değil SATIR ────────────────────────────────────
+   DİKKAT: bu blok yukarıdaki `.tile` kurallarından ve 1080px bloğundan
+   SONRA durmak ZORUNDA — özgüllük eşit, kazanan kaynak sırası.
+
+   Ortalanmış kart tek sütunda yerin çoğunu boşa harcıyordu: ikon,
+   başlık ve iki satır açıklama alt alta, üstüne 40+40px dikey dolgu
+   (ölçüldü: kart 209px, on kart 2105px — 812px'lik ekranda 2,6 ekran
+   boyu sadece navigasyon için). Dolguyu kısmak işe yaramıyor, çünkü
+   yüksekliği dolgu değil dikey yığın üretiyor (20px'e indirince
+   kazanç yalnızca 36px'ti).
+
+   Satır düzeni ikonu başlığın yanına alıp iki satırı birden siliyor.
+   Izgara düzeni DOM'a dokunmadan kuruluyor: ikon iki satıra yayılıyor,
+   başlık ve açıklama sağda üst üste. Prensa, El Fandom ve
+   Agradecimientos'taki satır diliyle aynı — telefonda arşivin her yeri
+   liste gibi okunuyor. */
+@media (max-width: 560px) {
+  .tile {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 2px 16px;
+    padding: 18px 20px;
+    text-align: left;
+  }
+
+  /* İkon başlık satırına sabit: `span 2` ortalanınca açıklaması iki
+     satır olan kartta aşağı, tek satır olanda yukarı kayıyordu ve on
+     ikon tırtıklı bir sütun oluyordu. `start` + 5px optik pay hepsini
+     başlığın hizasına getiriyor. */
+  .tileIcon {
+    grid-row: span 2;
+    align-self: start;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+
+  /* 26ch masaüstündeki kare kart için; satırda genişlik satırın kendisi */
+  .tileDesc {
+    max-width: none;
+  }
 }
