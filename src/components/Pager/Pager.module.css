@@ -38,6 +38,21 @@
   cursor: default;
 }
 
+/* Dört etiketi üst üste tutan yuva: en genişine göre şekillendiği için
+   iki yön düğmesi eşit enli oluyor ve şerit tam simetrik duruyor. */
+.stepSlot {
+  display: grid;
+  place-items: center;
+}
+
+.stepSlot > span {
+  grid-area: 1 / 1;
+}
+
+.stepOff {
+  visibility: hidden;
+}
+
 /* The page numbers, centred — same italic serif as the old "Page x of y" */
 .pages {
   display: flex;

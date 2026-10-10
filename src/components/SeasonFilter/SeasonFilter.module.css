@@ -36,7 +36,12 @@
   width: 4px;
   height: 4px;
   background: var(--color-accent);
-  transform: translateX(-50%) rotate(45deg) scale(0);
+  /* Yatayda OPTİK merkez, kutu merkezi değil: `letter-spacing` son
+     harften sonra da boşluk bırakıyor (ölçüldü: yazı kutusu 114px ve
+     son 2,36px'i boş), yani harflerin merkezi kutununkinin 1,2px
+     solunda. Baklava 4px eninde olduğu için bu kayma göze çarpıyordu.
+     Yarım harf aralığı kadar sola alınıyor. */
+  transform: translateX(calc(-50% - 0.09em)) rotate(45deg) scale(0);
   transition: var(--transition-smooth);
 }
 
@@ -50,7 +55,24 @@
 }
 
 .active::after {
-  transform: translateX(-50%) rotate(45deg) scale(1);
+  transform: translateX(calc(-50% - 0.09em)) rotate(45deg) scale(1);
+}
+
+/* Bütün etiketleri üst üste tutan yuva: en genişine göre şekilleniyor,
+   böylece sekmeler eşit enli. Gizlenen kopyalar `visibility: hidden`
+   ile erişilebilirlik ağacından da çıkıyor, ekran okuyucu hepsini
+   okumuyor. */
+.slot {
+  display: grid;
+  place-items: center;
+}
+
+.slot > span {
+  grid-area: 1 / 1;
+}
+
+.off {
+  visibility: hidden;
 }
 
 .dot {

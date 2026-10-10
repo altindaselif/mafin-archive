@@ -7,6 +7,27 @@ const L = {
   goto: { es: "Ir a la página", en: "Go to page" },
 };
 
+/* İki yön düğmesi EŞİT enli olmalı. Boşluklar simetrikken bile
+   "Siguiente" (73px) "Anterior"dan (69px) uzun olduğu için şeridin
+   sağ yarısı 4px daha uzağa taşıyor ve sayı dizisi sağa kaymış gibi
+   duruyordu (ölçüldü). Yuva dört etiketi birden taşıyor — iki yön ×
+   iki dil — ve en genişine göre şekilleniyor, yani dil değişince de
+   kaymıyor. Görünmeyen kopyalar `visibility: hidden` ile
+   erişilebilirlik ağacından da çıkıyor. */
+const STEP_LABELS = ["es", "en"].flatMap((code) => [L.prev[code], L.next[code]]);
+
+function StepLabel({ shown }) {
+  return (
+    <span className={styles.stepSlot}>
+      {STEP_LABELS.map((text) => (
+        <span key={text} className={text === shown ? undefined : styles.stepOff}>
+          {text}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 /**
  * Folio pager. The running foot of a book: PREVIOUS on the left, NEXT on
  * the right, and in the middle the page numbers — first and last always
@@ -42,7 +63,7 @@ export default function Pager({ currentPage, totalPages, onPageChange, label }) 
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
-        {t(L.prev)}
+        <StepLabel shown={t(L.prev)} />
       </button>
 
       <ul className={styles.pages}>
@@ -73,7 +94,7 @@ export default function Pager({ currentPage, totalPages, onPageChange, label }) 
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
       >
-        {t(L.next)}
+        <StepLabel shown={t(L.next)} />
       </button>
     </nav>
   );
