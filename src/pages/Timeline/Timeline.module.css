@@ -150,7 +150,13 @@
   display: grid;
   place-items: center;
   position: fixed;
-  right: 28px;
+  /* Sayfanın değil AKIŞIN sağ kenarına hizalı. 430px = `.timeline`in
+     860px'lik azami genişliğinin yarısı; sütun ortalandığı için
+     "merkez + yarı genişlik" tam olarak kartların sağ kenarı.
+     `.timeline`in max-width'i değişirse BU SAYI DA değişmeli.
+     `max()` dar pencerede devreye giriyor: akış sayfa kadar genişlediğinde
+     hesap eksiye düşüyor, o zaman sayfanın kendi 24px'lik payı geçerli. */
+  right: max(24px, calc(50% - 430px));
   bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   z-index: 90; /* başlık 100; onun altında kalsın */
   width: 46px;
@@ -186,6 +192,15 @@
   /* Tek rakamın dokunma hedefi masaüstü dolgusuyla 18px genişliğinde
      kalıyordu; parmak için dar. Yanlardan açılıyor — rakamlar arası
      boşluk büyüyor ama hedef 26px'e çıkıyor. */
+  /* Şerit yukarıdaki başlık bloğuna ait, aşağıdaki listeye değil:
+     sayfanın künyesiyle birlikte okunan bir içindekiler satırı. O yüzden
+     üstteki boşluk küçük, alttaki büyük. Sayılar kutunun kendi 12px'lik
+     dikey dolgusunu da hesaba katıyor — göze görünen boşluk üstte 24px,
+     altta 40px. */
+  .jump {
+    margin: -34px 0 28px;
+  }
+
   .jumpLink {
     padding: 6px 10px;
   }
