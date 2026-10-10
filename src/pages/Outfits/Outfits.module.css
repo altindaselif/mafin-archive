@@ -8,12 +8,15 @@
 /* ── Karakter ayrımı ──────────────────────────────────────────────────
    SeasonFilter'la aynı dil: kutu yok, saf tipografi, aralarında nokta.
    Farkı yalnızca ölçek — sayfanın ana bölünme çizgisi bu. */
+/* ALT PAY GENİŞ: karakter seçimi sayfanın ana ayrımı, sezon sekmeleri
+   onun ALTINDA ikinci kademe. 6px'ken ikisi tek bir blok gibi okunuyor
+   ve kademe kayboluyordu; 20px ayrımı görünür kılıyor. */
 .switcher {
   display: flex;
   align-items: baseline;
   justify-content: center;
   gap: 2px;
-  margin: 34px 0 6px;
+  margin: 34px 0 20px;
 }
 
 .sep {
@@ -27,7 +30,9 @@
   background: none;
   cursor: pointer;
   font-family: var(--font-family-display);
-  font-size: 1.45rem;
+  /* 1,45rem'di ve altındaki sezon sekmeleriyle neredeyse aynı ağırlıkta
+     duruyordu. Ana ayrım daha yüksek sesle konuşmalı. */
+  font-size: 1.7rem;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
@@ -178,11 +183,11 @@
   }
 
   .switcher {
-    margin-top: 26px;
+    margin: 26px 0 16px;
   }
 
   .name {
-    font-size: 1.25rem;
+    font-size: 1.45rem;
   }
 
   .sep {
