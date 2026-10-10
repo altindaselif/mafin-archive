@@ -64,17 +64,22 @@ export default function Characters() {
               </div>
             )}
             <div className={styles.body}>
-              <h3 className={styles.name}>
-                {c.name}
-                {c.deceased && (
-                  /* Hançer (†): basılı arşivlerin ve soyağaçlarının
-                     yüzyıllardır kullandığı "vefat etti" işareti. */
-                  <abbr className={styles.dagger} title={t(L.deceased)}>
-                    †<span className={styles.srOnly}>{t(L.deceased)}</span>
-                  </abbr>
-                )}
-              </h3>
-              <div className={styles.role}>{t(c.role)}</div>
+              {/* Ad ve ünvan AYRI BİR KUTUDA: masaüstünde hiçbir şeyi
+                  değiştirmiyor, mobilde portrenin yanına geçen parça bu
+                  oluyor (gerekçesi Characters.module.css'te). */}
+              <div className={styles.head}>
+                <h3 className={styles.name}>
+                  {c.name}
+                  {c.deceased && (
+                    /* Hançer (†): basılı arşivlerin ve soyağaçlarının
+                       yüzyıllardır kullandığı "vefat etti" işareti. */
+                    <abbr className={styles.dagger} title={t(L.deceased)}>
+                      †<span className={styles.srOnly}>{t(L.deceased)}</span>
+                    </abbr>
+                  )}
+                </h3>
+                <div className={styles.role}>{t(c.role)}</div>
+              </div>
               <p className={styles.bio}>{t(c.bio)}</p>
             </div>
           </li>

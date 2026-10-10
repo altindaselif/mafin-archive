@@ -81,15 +81,51 @@
 }
 
 @media (max-width: 560px) {
+  /* Masaüstünde portre sol sütunda, metnin tamamının karşısında dikeyde
+     ortalı duruyor. Telefonda metin sütunu daraldığı için biyografi
+     5-8 satıra çıkıyor ve portre o sütunun ORTASINDA, adın çok altında
+     asılı kalıyordu — kime ait olduğu okunmuyordu.
+     Yeni düzen: portre adın ve ünvanın SOLUNDA, biyografi ikisinin de
+     altında tam genişlikte. Künye bir arada okunuyor, metin de 68px
+     daha geniş bir sütun buluyor.
+
+     `.body` ŞEFFAF: `display: contents` kutuyu ızgaradan siliyor,
+     böylece içindeki `.head` ve `.bio` doğrudan `.character`'ın
+     hücreleri oluyor. Alternatifi JSX'te iki ayrı sarmalayıcı tutmaktı;
+     bu, masaüstü düzenine hiç dokunmadan aynı sonucu veriyor. */
   .character {
-    grid-template-columns: 76px 1fr;
-    gap: 16px;
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "avatar head"
+      "bio    bio";
+    gap: 14px 16px;
+    align-items: center;
+  }
+
+  .body {
+    display: contents;
   }
 
   .avatar,
   .monogram {
+    grid-area: avatar;
     width: 68px;
     height: 68px;
+  }
+
+  .head {
+    grid-area: head;
+  }
+
+  /* Ünvanın alt payı masaüstünde biyografiyi ayırıyordu; burada o işi
+     ızgaranın satır oluğu yapıyor, pay sıfırlanmazsa künye kutusu
+     portreye göre yukarı kayıyor. */
+  .role {
+    margin-bottom: 0;
+  }
+
+  .bio {
+    grid-area: bio;
   }
 
   .monogram {
