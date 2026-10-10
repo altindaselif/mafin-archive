@@ -223,7 +223,14 @@
     gap: 12px;
   }
 
+  /* Tarih SAĞ KENARA: künye dar ekranda yan yana diziliyor ve tarih
+     yayın organının hemen dibinde kalınca ikisi tek bir metin gibi
+     okunuyordu. Sağa itilince satır bir künye satırı hâline geliyor —
+     solda kim yayımladı, sağda ne zaman — ve tarihler satırlar boyunca
+     tek bir sütunda hizalanıyor.
+     `margin-left: auto` boşluğun tamamını solda topluyor. */
   .date {
+    margin-left: auto;
     font-size: 0.8rem;
   }
 

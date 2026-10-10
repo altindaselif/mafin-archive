@@ -287,6 +287,12 @@
     gap: 12px;
   }
 
+  /* Tarih SAĞ KENARA: Prensa'daki künye satırıyla aynı gerekçe — solda
+     tür, sağda tarih, tarihler satırlar boyunca aynı sütunda. */
+  .date {
+    margin-left: auto;
+  }
+
   /* Masaüstünde sayı sekmelerin KARŞISINDA duruyor — `space-between`
      onu kendiliğinden sağa atıyor. Mobilde başlık sarmalanıyor ve sayı
      kendi satırına düşüyor; tek öğeli bir satırda `space-between`
