@@ -150,13 +150,16 @@
   display: grid;
   place-items: center;
   position: fixed;
-  /* Sayfanın değil AKIŞIN sağ kenarına hizalı. 430px = `.timeline`in
-     860px'lik azami genişliğinin yarısı; sütun ortalandığı için
-     "merkez + yarı genişlik" tam olarak kartların sağ kenarı.
+  /* Akışın İÇİNDE, sağ kenarından 24px içeride — mobildeki davranışın
+     aynısı, orada da düğme içeriğin üstünde duruyor. Yüzen düğmenin
+     yeri burasıdır: dolu zemini ve gölgesi "sayfanın üstünde" diyor,
+     göz de onu sayfa kenarında değil okuduğu sütunda arıyor.
+     Hesap: 430px (= `.timeline`in 860px'lik azami genişliğinin yarısı,
+     yani merkezden kartların sağ kenarına olan mesafe) - 24px içeri pay.
      `.timeline`in max-width'i değişirse BU SAYI DA değişmeli.
-     `max()` dar pencerede devreye giriyor: akış sayfa kadar genişlediğinde
-     hesap eksiye düşüyor, o zaman sayfanın kendi 24px'lik payı geçerli. */
-  right: max(24px, calc(50% - 430px));
+     `max()` dar pencerede devreye giriyor: akış sayfa kadar genişleyince
+     hesap küçülüyor, o zaman 16px'lik taban geçerli. */
+  right: max(16px, calc(50% - 406px));
   bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   z-index: 90; /* başlık 100; onun altında kalsın */
   width: 46px;
