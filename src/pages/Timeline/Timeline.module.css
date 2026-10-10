@@ -150,18 +150,18 @@
   display: grid;
   place-items: center;
   position: fixed;
-  /* Sağdaki KARTIN sağ kenarından 24px içeride — mobildeki davranışın
-     aynısı, orada da düğme içeriğin üstünde duruyor.
+  /* Telefondaki hizanın BİREBİR aynısı. Orada düğme ekran kenarından
+     16px içeride duruyor ve kartın sağ kenarını 8px AŞIYOR (ölçüldü:
+     375px ekranda kart 351, düğme 359). İçeri almak değil, o 8px'lik
+     taşma onu sayfanın üstünde yüzen bir nesne yapan şey.
      Hesap: 430px (= `.timeline`in 860px'lik azami genişliğinin yarısı)
-     - 44px (kartın `.timeline` kenarına olan kendi payı, ölçüldü:
-     ol 1063'te biterken kart 1019'da) - 24px içeri pay = 362px.
-     Bir ara 430'a göre hizalanmıştı ve düğme kartları 20px aşıyordu;
-     `ol` kutusu kartlardan geniş, hizanın dayanağı kart olmalı.
+     - 44px (kartın `.timeline` kenarına olan payı: ol 1063'te biterken
+     kart 1019'da) + 8px taşma = 394px.
      `.timeline`in max-width'i ya da kart payı değişirse BU SAYI DA
      değişmeli.
-     `max()` dar pencerede devreye giriyor: akış sayfa kadar genişleyince
-     hesap küçülüyor, o zaman 16px'lik taban geçerli. */
-  right: max(16px, calc(50% - 362px));
+     `max()` dar pencerede devreye giriyor ve taban 16px — orada akış
+     sayfa kadar genişlediği için aynı ilişki kendiliğinden kuruluyor. */
+  right: max(16px, calc(50% - 394px));
   bottom: calc(28px + env(safe-area-inset-bottom, 0px));
   z-index: 90; /* başlık 100; onun altında kalsın */
   width: 46px;
