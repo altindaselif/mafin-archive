@@ -245,8 +245,14 @@
 
      Yani yatayı 10 kısaltıp dikeyi 10 artırmak gerekti. Kart genişliği
      ya da açıklama metinleri değişirse bu denge yeniden ölçülmeli.
-     Mobilde tek sütunda ezilmesin diye aşağıda geri açılıyor. */
-  padding: 38px 18px;
+     Mobilde tek sütunda ezilmesin diye aşağıda geri açılıyor.
+
+     DİKEY 38→34: kök yazı ölçeği %110'a çıkınca metin 38px dolguyla
+     kareye sığmaz oldu ve `aspect-ratio`nun asgari boyutu devreye
+     girip kartı 205x213'e uzattı. Dört piksel dikey dolgu geri
+     verilince kare yeniden kapanıyor. Yatay 18px DEĞİŞMEDİ — onu
+     kısmak satır sayısını düşürüp kartı yeniden basıklaştırırdı. */
+  padding: 34px 18px;
   /* Kareyi NİYETE çevirir. Bu olmadan yükseklik yalnızca içerikten
      türüyordu: tek bir açıklama 4 satıra çıkınca on kart birden
      205x248'e uzuyordu (ölçüldü). aspect-ratio kartı genişliğine
@@ -347,8 +353,10 @@
     display: grid;
     grid-template-columns: auto 1fr;
     align-items: center;
-    gap: 2px 16px;
-    padding: 18px 20px;
+    /* Dolgu ve oluk, açıklamanın tek satırda kalması için ölçüldü —
+       aşağıdaki `.tileDesc` notuna bakın. */
+    gap: 2px 14px;
+    padding: 18px 16px;
     text-align: left;
   }
 
@@ -368,8 +376,21 @@
     height: 32px;
   }
 
-  /* 26ch masaüstündeki kare kart için; satırda genişlik satırın kendisi */
+  /* 26ch masaüstündeki kare kart için; satırda genişlik satırın kendisi.
+
+     BOYUT: kök ölçek %110'a çıkınca 0,85rem = 14,96px oldu ve en uzun
+     açıklama ("Cada mirada, beso y lágrima, en vídeo.") tek satır için
+     275px istemeye başladı; 390px'lik telefonda 252px vardı, üç karo
+     iki satıra çıktı ve ızgara 989'dan 1059px'e uzadı.
+     Üç yerden yer açıldı: yatay dolgu 20→16, oluk 16→14 ve bu boyut
+     0,85→0,80rem. Sonuç 14,08px — eski ölçekteki 13,6px'ten hâlâ
+     büyük, yani okunurluk kazancı duruyor.
+     Artık 387px ve üstündeki her telefonda on açıklamanın onu da tek
+     satır (ölçüldü). 375px'te en uzun üçü iki satıra çıkıyor; bu
+     ölçek değişmeden önce de böyleydi.
+     Açıklama metinleri değişirse bu üç sayı yeniden ölçülmeli. */
   .tileDesc {
     max-width: none;
+    font-size: 0.8rem;
   }
 }
