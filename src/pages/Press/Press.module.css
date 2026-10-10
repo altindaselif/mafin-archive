@@ -98,11 +98,13 @@
 
 .row {
   display: grid;
-  /* Künye sütunu en uzun tarihe göre (ölçüldü: 85px). 130px'ti ve her
-     satırda 50px'e yakın ölü boşluk bırakıyordu. Sabit genişlik şart:
-     her satır kendi ızgarası olduğu için `max-content` sütunları
-     satırlar arasında hizalamaz. */
-  grid-template-columns: 95px 1fr auto;
+  /* Künye sütunu yayın organının BÖLÜNEMEYEN en uzun kelimesine göre
+     (ölçüldü: "LaCajadMúsica" / "Teleaudiencias", 132px). Çok kelimeli
+     adlar iki satıra kırılabiliyor, tek kelime kırılamıyor; 95px'te
+     bunlar başlığın üstüne taşıyordu. Sabit genişlik şart: her satır
+     kendi ızgarası olduğu için `max-content` sütunları satırlar arasında
+     hizalamaz. */
+  grid-template-columns: 140px 1fr auto;
   /* Oluk 18px'ti ve künye ile başlık dip dibeydi. Sağda zaten fazlasıyla
      yer var, boşluğu oraya değil buraya vermek daha iyi. */
   gap: 32px;
