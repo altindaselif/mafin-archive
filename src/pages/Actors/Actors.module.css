@@ -62,7 +62,10 @@
 .portraitEmpty {
   font-family: var(--font-family-display);
   font-style: italic;
-  font-size: 0.95rem;
+  /* Küçük serif künye kademesi bir tık yukarı: bu yüz italikte ve
+     soluk renkte iyice inceliyor, tarih ve notlar o boyutta
+     okunmuyordu. */
+  font-size: 1rem;
   color: var(--color-text-muted);
   opacity: 0.6;
 }
@@ -193,7 +196,10 @@
   min-width: 58px;
   font-family: var(--font-family-display);
   font-style: italic;
-  font-size: 0.85rem;
+  /* Küçük serif künye kademesi bir tık yukarı: bu yüz italikte ve
+     soluk renkte iyice inceliyor, tarih ve notlar o boyutta
+     okunmuyordu. */
+  font-size: 0.92rem;
   color: var(--color-text-muted);
 }
 
@@ -207,7 +213,10 @@
 .workRole {
   font-family: var(--font-family-display);
   font-style: italic;
-  font-size: 0.9rem;
+  /* Küçük serif künye kademesi bir tık yukarı: bu yüz italikte ve
+     soluk renkte iyice inceliyor, tarih ve notlar o boyutta
+     okunmuyordu. */
+  font-size: 0.95rem;
   color: var(--color-text-muted);
   text-align: right;
 }

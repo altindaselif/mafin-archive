@@ -26,7 +26,10 @@
   z-index: 1;
   font-family: var(--font-family-display);
   font-style: italic;
-  font-size: 0.9rem;
+  /* Küçük serif künye kademesi bir tık yukarı: bu yüz italikte ve
+     soluk renkte iyice inceliyor, tarih ve notlar o boyutta
+     okunmuyordu. */
+  font-size: 0.95rem;
   color: var(--color-text-muted);
   letter-spacing: 0.06em;
 }
