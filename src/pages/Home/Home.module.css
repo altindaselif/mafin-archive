@@ -352,14 +352,12 @@
     text-align: left;
   }
 
-  /* İkon başlık satırına sabit: `span 2` ortalanınca açıklaması iki
-     satır olan kartta aşağı, tek satır olanda yukarı kayıyordu ve on
-     ikon tırtıklı bir sütun oluyordu. `start` + 5px optik pay hepsini
-     başlığın hizasına getiriyor. */
+  /* İkon iki satıra yayılıp ortalanıyor: yazı bloğunun (başlık +
+     açıklama) tam ortasında duruyor. Bir ara başlığın hizasına
+     sabitlenmişti; o zaman ikonun merkezi 37px, yazının merkezi
+     56,5px'teydi ve ikon satırın tepesine yapışmış gibi duruyordu. */
   .tileIcon {
     grid-row: span 2;
-    align-self: start;
-    margin-top: 5px;
     margin-bottom: 0;
   }
 
