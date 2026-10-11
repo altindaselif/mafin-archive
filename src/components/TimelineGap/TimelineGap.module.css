@@ -4,7 +4,7 @@
   position: relative;
   /* Sezon ayracı gibi çizginin ÜSTÜNDE dursun ki zemini onu kessin */
   z-index: 1;
-  margin: 4px 0 52px;
+  margin: 4px 0 56px;
   /* Dolgu kesikli çizginin boyunu belirliyor: künyenin altında ve
      üstünde yeterince uzun bir kesikli parça olmazsa "çizgi burada
      kesildi" okunmuyor, iki üç nokta gibi duruyor. */

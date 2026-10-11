@@ -10,7 +10,7 @@
   align-items: baseline;
   justify-content: center;
   gap: 2px;
-  margin: 34px 0 20px;
+  margin: 32px 0 24px;
 }
 
 .sep {
@@ -65,7 +65,7 @@
 }
 
 .year:first-of-type {
-  margin-top: 30px;
+  margin-top: 32px;
 }
 
 .yearHead {
@@ -254,7 +254,7 @@
   }
 
   .switcher {
-    margin: 26px 0 16px;
+    margin: 24px 0 16px;
   }
 
   .name {

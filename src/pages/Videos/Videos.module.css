@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 16px 24px;
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 .grid {
@@ -64,7 +64,7 @@
 
 /* Small legal note under the subtitle */
 .copyright {
-  margin: -36px 0 0;
+  margin: -32px 0 0;
   font-size: 0.78rem;
   font-style: italic;
   color: var(--color-text-muted);
@@ -112,7 +112,7 @@
 /* Araç çubuğu ile listenin arası — ortak ListToolbar'ın kendi boşluğu yok,
    sayfa kendi ritmine göre veriyor. */
 .toolbar {
-  margin: 0 0 28px;
+  margin: 0 0 32px;
 }
 
 /* ── Yatay tutulan telefon ───────────────────────────────────────────

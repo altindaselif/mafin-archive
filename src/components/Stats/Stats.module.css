@@ -10,7 +10,7 @@
 }
 
 .label {
-  margin-bottom: 30px;
+  margin-bottom: 32px;
   font-size: 0.82rem; /* rhymes with the quote and ephemeris headers */
   font-weight: 600;
   letter-spacing: 0.32em;
@@ -111,7 +111,7 @@
 }
 
 .lead {
-  margin: 60px 0 0;
+  margin: 64px 0 0;
   max-width: 52ch;
   font-family: var(--font-family-display);
   font-style: italic;
@@ -120,7 +120,7 @@
 }
 
 .verdict {
-  margin: 10px 0 20px 0;
+  margin: 10px 0 24px 0;
   font-family: var(--font-family-display);
   font-size: 1.9rem;
   font-weight: 600;

@@ -73,7 +73,7 @@
 }
 
 .heroSubtitle {
-  margin: 22px 0 0;
+  margin: 24px 0 0;
   font-family: var(--font-family-display);
   font-style: italic;
   font-size: clamp(1rem, 2.4vw, 1.3rem);
@@ -113,7 +113,7 @@
 }
 
 .quoteText {
-  margin: 18px 0 14px;
+  margin: 16px 0 14px;
   font-family: var(--font-family-display);
   /* clamp(1,35 / 3vw / 1,7)'ydi. Kök ölçek %110'a çıkınca tavan
      28,2'den 29,9px'e taşındı ve alıntı kartı yutuyordu — kart zaten
@@ -146,7 +146,7 @@
 /* ── En este día ── */
 .ephemeris {
   max-width: var(--page-max);
-  margin: 84px auto 0;
+  margin: 88px auto 0;
   padding: 0 24px;
   display: flex;
   flex-direction: column;

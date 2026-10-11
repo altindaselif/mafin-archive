@@ -7,12 +7,12 @@
 
 /* ── One episode = one plate ── */
 .plate {
-  margin: 26px 0 0;
+  margin: 24px 0 0;
 }
 
 /* First plate sits closer to the volume rule; the rest get breathing room */
 .plate:first-of-type {
-  margin-top: 18px;
+  margin-top: 16px;
 }
 
 .plateHead {
@@ -188,5 +188,5 @@
 /* Araç çubuğu ile listenin arası — ortak ListToolbar'ın kendi boşluğu yok,
    sayfa kendi ritmine göre veriyor. */
 .toolbar {
-  margin: 0 0 28px;
+  margin: 0 0 32px;
 }

@@ -16,7 +16,7 @@
   align-items: baseline;
   justify-content: center;
   gap: 2px;
-  margin: 34px 0 20px;
+  margin: 32px 0 24px;
 }
 
 .sep {
@@ -52,7 +52,7 @@
 }
 
 .toolbar {
-  margin: 0 0 28px;
+  margin: 0 0 32px;
 }
 
 /* ── Levha ızgarası ───────────────────────────────────────────────────
@@ -189,7 +189,7 @@
   }
 
   .switcher {
-    margin: 26px 0 16px;
+    margin: 24px 0 16px;
   }
 
   .name {
