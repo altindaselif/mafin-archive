@@ -109,7 +109,7 @@ export default function Outfits() {
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
 
-      {outfits.length === 0 && <p className={styles.empty}>{t(L.emptyAll)}</p>}
+      {outfits.length === 0 && <p className="empty-note">{t(L.emptyAll)}</p>}
 
       {outfits.length > 0 && (
         <>
@@ -144,7 +144,7 @@ export default function Outfits() {
           </ListToolbar>
 
           {shown.length === 0 && (
-            <p className={styles.empty}>{t(L.emptyVolume)}</p>
+            <p className="empty-note">{t(L.emptyVolume)}</p>
           )}
 
           <ul className={styles.grid}>

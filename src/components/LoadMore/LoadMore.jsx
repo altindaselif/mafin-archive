@@ -19,7 +19,7 @@ export default function LoadMore({ remaining, onClick }) {
 
   return (
     <div className={styles.wrap}>
-      <button className={styles.button} onClick={onClick}>
+      <button className="pill-button" onClick={onClick}>
         {t(L.more)} ({remaining} {t(L.remaining)})
       </button>
     </div>

@@ -228,7 +228,7 @@ export default function Episodes() {
         label={t(L.pagerAria)}
       />
 
-      {filtered.length === 0 && <p className={styles.empty}>{t(L.empty)}</p>}
+      {filtered.length === 0 && <p className="empty-note">{t(L.empty)}</p>}
     </div>
   );
 }

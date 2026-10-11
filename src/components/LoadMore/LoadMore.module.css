@@ -3,19 +3,3 @@
   place-items: center;
   margin-top: 48px;
 }
-
-.button {
-  padding: 12px 32px;
-  border: 1px solid var(--color-accent);
-  border-radius: var(--radius-pill);
-  background: transparent;
-  color: var(--color-accent);
-  font: 500 0.85rem var(--font-family-main);
-  letter-spacing: 0.06em;
-  transition: var(--transition-smooth);
-}
-
-.button:hover {
-  background: var(--color-accent);
-  color: var(--color-bg);
-}

@@ -231,7 +231,7 @@ export default function Videos() {
       </div>
 
       {filtered.length === 0 && (
-        <p className={styles.status}>{t(L.empty)}</p>
+        <p className="empty-note">{t(L.empty)}</p>
       )}
 
       <LoadMore

@@ -97,7 +97,7 @@ export default function Gallery() {
       <p className="page-subtitle">{t(L.subtitle)}</p>
 
       {galleries.length === 0 && (
-        <p className={styles.empty}>{t(L.emptyAll)}</p>
+        <p className="empty-note">{t(L.emptyAll)}</p>
       )}
 
       {galleries.length > 0 && (
@@ -111,7 +111,7 @@ export default function Gallery() {
           </ListToolbar>
 
           {inSeason.length === 0 && (
-            <p className={styles.empty}>{t(L.emptyVolume)}</p>
+            <p className="empty-note">{t(L.emptyVolume)}</p>
           )}
 
           {shown.map((g) => (

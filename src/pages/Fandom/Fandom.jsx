@@ -329,14 +329,14 @@ export default function Fandom() {
       </ul>
 
       {visible.length === 0 && (
-        <p className={styles.empty}>{t(L.empty)}</p>
+        <p className="empty-note">{t(L.empty)}</p>
       )}
 
       {/* ── Invitation ── */}
       <section className={styles.invite}>
         <p className={styles.inviteLine}>{t(L.inviteLine)}</p>
         <button
-          className={styles.inviteButton}
+          className="pill-button"
           onClick={() => setFormOpen(true)}
         >
           {t(L.donate)}

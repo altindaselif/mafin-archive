@@ -206,18 +206,6 @@
   background: var(--color-accent); /* the wine seal — the archive's own colour for the ship */
 }
 
-.empty {
-  /* Okuma ölçeği 1,15rem: display serifiyle dizilen HER cümle orada
-     (Galería, Prensa ve Vestuario'nun boş liste iletileri zaten öyle).
-     Bu yüz küçük puntoda inceliyor, ondan aşağısı okunmuyor. */
-  font-size: var(--text-reading);
-  margin-top: 40px;
-  text-align: center;
-  font-family: var(--font-family-display);
-  font-style: italic;
-  color: var(--color-text-muted);
-}
-
 @media (max-width: 720px) {
   .row {
     grid-template-columns: 1fr auto;

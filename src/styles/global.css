@@ -217,6 +217,43 @@ body.no-scroll {
   }
 }
 
+/* ── Boş liste iletisi ───────────────────────────────────────────────
+   Yedi sayfada aynı iş: süzgeç hiçbir şey getirmeyince söylenen cümle.
+   Yedisi de kendi modülünde ayrı ayrı yazılıydı ve İKİ FARKLI sürüme
+   ayrılmıştı — dördü italik ve ortalı, üçü düz ve sola yaslı. Üstelik
+   italik olanların yorumunda "Galería, Prensa ve Vestuario zaten öyle"
+   yazıyordu, ki değillerdi.
+   Hepsi italik ve ortalı: ileti listenin YOKLUĞUNU anlatıyor, listenin
+   kendisi değil — akan metinden ayrılması gerekiyor.
+   `.page` ve `.page-title` gibi global, çünkü sayfaya değil siteye ait. */
+.empty-note {
+  margin-top: 40px;
+  text-align: center;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--text-reading);
+  color: var(--color-text-muted);
+}
+
+/* ── Hap düğmesi ─────────────────────────────────────────────────────
+   "Cargar más" ile Fandom'un gönderi düğmesi birebir aynıydı: iki ayrı
+   dosyada, sekizer bildirim. */
+.pill-button {
+  padding: 12px 32px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--color-accent);
+  font: 500 0.85rem var(--font-family-main);
+  letter-spacing: 0.06em;
+  transition: var(--transition-smooth);
+}
+
+.pill-button:hover {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
 .page-title {
   font-family: var(--font-family-display);
   font-weight: 500;

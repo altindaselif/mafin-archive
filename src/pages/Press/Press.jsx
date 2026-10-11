@@ -148,7 +148,7 @@ export default function Press() {
         />
       </ListToolbar>
 
-      {shown.length === 0 && <p className={styles.empty}>{t(L.empty)}</p>}
+      {shown.length === 0 && <p className="empty-note">{t(L.empty)}</p>}
 
       {byYear.map(([year, items]) => (
         <section key={year} className={styles.year}>
