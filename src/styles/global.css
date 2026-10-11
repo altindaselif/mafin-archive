@@ -177,14 +177,6 @@ body.no-scroll {
 /* Mafin line drawing in the top-right margin, level with the page title.
    Decorative only; hidden where there is no room (narrow screens). */
 .page::after {
-  /* YAYIN ÖNCESİ GİZLİ — bkz. LAUNCH-CHECKLIST.md
-     Dokuz sayfanın köşe çizimi tek yerden kapatılıyor: her sayfa kendi
-     --page-art değerini vermeye devam ediyor, yalnızca çizilmiyor.
-     Duotone filtresi kesiti bordoya boyuyor ama pozu gizlemiyor, o yüzden
-     kapak fotoğrafıyla birlikte yayına kadar kapalı duruyorlar.
-     Geri açmak: bu tek satırı sil. */
-  display: none;
-
   content: "";
   position: absolute;
   top: 120px;

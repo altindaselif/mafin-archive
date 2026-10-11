@@ -368,9 +368,9 @@ Kopyalanan sabitler:
 > silinmedi. **Bu iki madde kapatılmazsa site kapaksız ve köşe çizimsiz
 > yayına çıkar.**
 
-- [ ] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır (ana sayfa kapak fotoğrafı)
+- [x] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır (ana sayfa kapak fotoğrafı) ✅ 11 Eki
 
-- [ ] `src/styles/global.css` → `.page::after` içindeki `display: none;` satırını sil (köşe çizimleri)
+- [x] `src/styles/global.css` → `.page::after` içindeki `display: none;` satırını sil (köşe çizimleri) ✅ 11 Eki
 
 > Köşe çizimleri neden kapalı: duotone filtresi kesiti bordoya boyuyor ama
 > pozu gizlemiyor — bakan biri ne olduğunu anlıyor. Yani kapak fotoğrafıyla

@@ -12,17 +12,10 @@
      doubles as the fallback while the image loads (or is absent). */
   position: absolute;
   inset: 0;
-  /* YAYIN ÖNCESİ GİZLİ — bkz. LAUNCH-CHECKLIST.md
-     Site duyurulana kadar kapak fotoğrafı devre dışı: siteye giren biri
-     ilk ekranda diziden bir kare görmesin. Altındaki gradyanlar zaten
-     bu katmanın yedeğiydi, o yüzden hero boş değil — kasıtlı duruyor.
-     Geri açmak: aşağıdaki url(...) satırının yorumunu kaldır. */
   background:
-    /* url("/hero.webp") center / cover no-repeat, */
+    url("/hero.webp") center / cover no-repeat,
     radial-gradient(ellipse at 68% 30%, rgba(114, 47, 55, 0.45), transparent 55%),
     linear-gradient(160deg, #3a3330 0%, #241f1d 55%, #16130f 100%);
-  /* The still carries baked-in letterbox bars (120px of 2160). Scaling
-     the layer by 2160/1920 pushes them past the hero's clipped edges. */
 }
 
 .heroOverlay {
@@ -408,6 +401,31 @@
    çarpıldı, yani ekranda bugünküyle BİREBİR aynı boyda çiziliyor.
    `vw` terimleri çarpılmadı — onlar köke bağlı değil. */
 @media (max-width: 720px) {
+  /* YAZININ ARKASI MOBİLDE KARARTILIYOR.
+     Temel katmanın dikey gradyanı %45'te EN ZAYIF (0,32) ve bordo halka
+     da tam orada şeffaf — yani korumanın en az olduğu nokta, yazının
+     durduğu nokta. Masaüstünde sorun çıkarmıyordu çünkü kadrajın
+     merkezi oradan karanlık.
+     Mobilde değil: fotoğraf 2:1, dikey ekranda `cover` ortadaki %23'lük
+     dilime iniyor ve oraya aydınlık bir yüz geliyor. Başlık ve altındaki
+     cümle okunmuyordu.
+     Yalnızca orta durak kalkıyor (0,32 → 0,52); üst ve alt neredeyse
+     aynı kalıyor ki fotoğraf komple çamurlaşmasın. */
+  .heroOverlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.55) 0%,
+        rgba(0, 0, 0, 0.52) 45%,
+        rgba(0, 0, 0, 0.66) 100%
+      ),
+      radial-gradient(
+        ellipse at 50% 42%,
+        rgba(114, 47, 55, 0) 40%,
+        rgba(114, 47, 55, 0.42) 100%
+      );
+  }
+
   .heroEyebrow {
     font-size: 0.858rem;
   }
