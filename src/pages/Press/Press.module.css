@@ -150,12 +150,21 @@
 }
 
 .date {
-  font-family: var(--font-family-display);
-  font-style: italic;
-  /* 0.85rem'di (13.6px) ve tam tarih o boyutta okunmuyordu. Actrices'te
-     o ölçek dört haneli bir yıl taşıyor, burada "20 de enero de 2026".
-     Sonra bir tık daha büyüdü: italik + soluk, 0,95rem'de inceydi. */
-  font-size: 1rem;
+  /* SANS, italik serif DEĞİL — ve Fandom'un tarihiyle BİREBİR aynı değer.
+     İki sayfa da aynı şeyi gösteriyordu (bir kaydın tarihi) ama iki ayrı
+     dille: burada Cormorant italik 1rem, Fandom'da Inter 0,75rem. Aynı
+     türden bilgi aynı görünmeli.
+     Serif bu satırda gereksiz kalabalık yapıyordu: yanındaki yayın organı
+     zaten büyük kapital, altındaki başlık zaten display serif — tarih de
+     karakterli olunca künye üç ayrı sesle konuşuyordu.
+     1rem SADECE serif yüzündendi: Cormorant'ın x-yüksekliği düşük,
+     17,6px'te Inter'in ~13px'i kadar görünüyor ve italikte iyice
+     inceliyordu. Punto o inceliği telafi etmek için çıkmıştı. Sans'ta o
+     sorun yok, o yüzden 0,75rem ekranda bugünküyle hemen hemen aynı
+     büyüklükte duruyor — küçülmüş gibi görünmüyor.
+     TARİHİN AYRINTISI AYNI KALIYOR: burada gün+ay+yıl, Fandom'da ay+yıl.
+     Röportajın günü var, fandom kaydının yok. Eşitlenen yazı, veri değil. */
+  font-size: 0.75rem;
   color: var(--color-text-muted);
 }
 
@@ -235,7 +244,9 @@
      `margin-left: auto` boşluğun tamamını solda topluyor. */
   .date {
     margin-left: auto;
-    font-size: 0.88rem;
+    /* Punto BURADA DA geçersiz kılınmıyor: 0,88rem serifin mobil
+       telafisiydi. Fandom'un mobil kuralında da yalnızca hizalama var;
+       iki tarih masaüstünde olduğu gibi telefonda da aynı. */
   }
 
   .cta {
