@@ -33,9 +33,12 @@ const L = {
     es: "Cada momento de la historia Mafin, en vídeo. Busca, o filtra por temática para encontrar los momentos que te apetece revivir.",
     en: "Every milestone of the Mafin story, in video. Search, or filter by mood to find the moments you feel like reliving.",
   },
+  /* "no capítulos completos" KALDIRILDI: "solo ... escenas breves"
+     dışlamayı zaten yapıyor, ikinci yarı aynı şeyi bir daha söylüyordu.
+     İngilizcesinden de çıktı — iki dil aynı şeyi demeli. */
   copyright: {
-    es: "Por motivos de derechos de autor, solo compartimos escenas breves, no capítulos completos.",
-    en: "For copyright reasons, we share only short scenes, not full episodes.",
+    es: "Por motivos de derechos de autor, solo compartimos escenas breves.",
+    en: "For copyright reasons, we share only short scenes.",
   },
   credit: {
     es: "Cortes y subtítulos por",
