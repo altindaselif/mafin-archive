@@ -62,9 +62,21 @@
   color: var(--color-text-muted);
 }
 
-/* Small legal note under the subtitle */
+/* Sayfanın dibindeki kolofon: solda telif notu, sağda kesen kişi.
+   Dar ekranda sarmalanıp alt alta geçiyorlar. */
+.colophon {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 24px;
+  margin: 40px 0 0;
+}
+
 .copyright {
-  margin: -32px 0 0;
+  margin: 0;
+  /* Ölçü: tek satırda kalmaya çalışmasın, künyeyi sıkıştırmasın */
+  max-width: 56ch;
   font-size: 0.78rem;
   font-style: italic;
   color: var(--color-text-muted);
@@ -72,7 +84,13 @@
 
 /* Link to the matching moments on the timeline */
 .storyLink {
-  margin: 14px 0 48px;
+  /* Yukarı çekme payı telif notundan DEVRALINDI: o satır buradan
+     çıkınca bağlantı altyazının hemen altına geçti ve
+     `.page-subtitle`'ın 48px'lik alt payı arada ölü bir boşluk
+     bırakıyordu. Aynı -32px bağlantıyı altyazıdan 16px aşağıda
+     tutuyor — yani sayfanın başı eskisiyle aynı ritimde, sadece bir
+     satır eksik. */
+  margin: -32px 0 48px;
   font-size: 0.9rem;
 }
 
@@ -90,7 +108,12 @@
 /* Attribution for the video cuts and subtitles — sits at the very foot,
    right-aligned, like the credit on the actors page */
 .credit {
-  margin: 40px 0 0;
+  /* Pay ve hizalama artık .colophon'un işi; burada yalnızca ses kalıyor.
+     `margin-left: auto` tek satıra sığmadıklarında bile künyeyi sağda
+     tutuyor. */
+  margin: 0;
+  margin-left: auto;
+  white-space: nowrap;
   text-align: right;
   font-size: 0.8rem;
   font-style: italic;

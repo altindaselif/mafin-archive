@@ -179,7 +179,11 @@ export default function Videos() {
     >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
-      <p className={styles.copyright}>{t(L.copyright)}</p>
+      {/* Telif notu BURADA DEĞİL, sayfanın dibinde: göz atmaya başlamadan
+          önce okunması gereken bir şey değil, "bu videolar neden kısa"
+          sorusu ancak listeyi gördükten sonra doğuyor. Orada zaten aynı
+          sesle konuşan bir künye satırı vardı, ikisi birlikte kolofon
+          oluyor. */}
       <p className={styles.storyLink}>
         <Link to="/timeline">{t(L.seeInStory)}</Link>
       </p>
@@ -232,12 +236,18 @@ export default function Videos() {
         onClick={() => setVisibleCount((c) => c + PAGE_SIZE)}
       />
 
-      <p className={styles.credit}>
-        {t(L.credit)}{" "}
-        <a href="https://x.com/starryskyEN" target="_blank" rel="noopener noreferrer">
-          @starryskyEN
-        </a>
-      </p>
+      {/* Sayfanın kolofonu: solda videoların neden kısa olduğu, sağda
+          onları kesen kişi. İkisi de aynı türden bilgi — "bu videolar
+          nasıl oldu" — ve ikisi de listeden SONRA okunur. */}
+      <div className={styles.colophon}>
+        <p className={styles.copyright}>{t(L.copyright)}</p>
+        <p className={styles.credit}>
+          {t(L.credit)}{" "}
+          <a href="https://x.com/starryskyEN" target="_blank" rel="noopener noreferrer">
+            @starryskyEN
+          </a>
+        </p>
+      </div>
 
       <Modal
         open={playing !== null}
