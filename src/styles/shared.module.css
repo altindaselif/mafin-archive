@@ -1,0 +1,31 @@
+/*
+ * Sayfalar arası paylaşılan kural gövdeleri.
+ *
+ * Buraya yalnızca BİREBİR tekrar eden ve aynı işi yapan şeyler giriyor.
+ * Aynı değeri taşıyıp farklı iş yapanlar (Milestone'un kart metni ile
+ * ana sayfanın alıntı künyesi gibi) BİLEREK dışarıda: onları birbirine
+ * bağlamak, birini değiştirince ötekini de habersiz değiştirmek olurdu.
+ *
+ * Global sınıf değil `composes`, çünkü bu kuralları kullanan sayfaların
+ * çoğu üstüne bir şey ekliyor (Characters listeye üst çizgi koyuyor,
+ * Prensa `.list li:last-child .row` diye iç seçici yazıyor). Yerel sınıf
+ * yerinde kalmazsa o seçiciler kırılır.
+ */
+
+/* Liste sıfırlaması: beş sayfa kendi listesinde aynı üç satırı yazıyordu */
+.bareList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Arama + etiket şeridi: Guía ve Vídeos'ta birebir aynı.
+   Citas BURAYA BAĞLI DEĞİL: oradaki şerit tam genişlikte tek bir arama
+   kutusu taşıyor, oluğu ve üstündeki negatif payı farklı. */
+.controlsRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  margin-bottom: 40px;
+}

@@ -56,9 +56,7 @@
    yayın organı ve başlık tarıyor, tarihleri alt alta karşılaştırıyor.
    Sütunlar sabit genişlikte ki adlar ve tarihler hizalansın. */
 .list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  composes: bareList from "../../styles/shared.module.css";
 }
 
 .row {

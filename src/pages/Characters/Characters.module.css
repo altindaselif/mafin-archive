@@ -1,7 +1,7 @@
 .list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  composes: bareList from "../../styles/shared.module.css";
+  /* Listenin başındaki çizgi yalnızca burada: satırlar kendi üst
+     çizgilerini taşımıyor, Characters'ta ilk satırın üstü boş kalıyordu. */
   border-top: 1px solid var(--color-border);
 }
 

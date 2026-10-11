@@ -1,9 +1,5 @@
 .controls {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 24px;
-  margin-bottom: 40px;
+  composes: controlsRow from "../../styles/shared.module.css";
 }
 
 .grid {
