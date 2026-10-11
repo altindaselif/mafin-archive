@@ -18,7 +18,9 @@
 
 /* ── Collection ledger: museum-inventory rows, no boxes ── */
 .ledger {
-  composes: bareList from "../../styles/shared.module.css";
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .row {

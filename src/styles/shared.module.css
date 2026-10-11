@@ -1,27 +1,36 @@
 /*
  * Sayfalar arası paylaşılan kural gövdeleri.
  *
- * Buraya yalnızca BİREBİR tekrar eden ve aynı işi yapan şeyler giriyor.
- * Aynı değeri taşıyıp farklı iş yapanlar (Milestone'un kart metni ile
- * ana sayfanın alıntı künyesi gibi) BİLEREK dışarıda: onları birbirine
- * bağlamak, birini değiştirince ötekini de habersiz değiştirmek olurdu.
+ * ÖLÇÜ: buraya giren şey tekrar eden bir KARAR olmalı, tekrar eden
+ * karakterler değil. Soru şu — "bu değer değişirse hepsi birlikte mi
+ * değişmeli?" Cevap hayırsa burada işi yok.
  *
- * Global sınıf değil `composes`, çünkü bu kuralları kullanan sayfaların
- * çoğu üstüne bir şey ekliyor (Characters listeye üst çizgi koyuyor,
- * Prensa `.list li:last-child .row` diye iç seçici yazıyor). Yerel sınıf
- * yerinde kalmazsa o seçiciler kırılır.
+ * Bu yüzden DIŞARIDA kalanlar:
+ *
+ *   Liste sıfırlaması (`list-style/margin/padding`). Beş sayfada aynı
+ *   üç satır olarak duruyor. Bir ara buraya alındı, sonra geri kondu:
+ *   kazanılan 12 satırın karşılığında her sayfaya bu dosyaya giden bir
+ *   yol eklendi. Üç satırlık bir sıfırlamayı anlamak için ikinci bir
+ *   dosya açmak, o üç satırı tekrar yazmaktan pahalı. Hiçbir sayfa
+ *   ötekine bakarak listesini nasıl sıfırlayacağına karar vermiyor —
+ *   yani ortada paylaşılan bir karar yok.
+ *
+ *   Aynı değeri taşıyıp farklı iş yapanlar: Milestone'un kart metni ile
+ *   ana sayfanın alıntı künyesi ikisi de 0,85rem soluk, ama biri kart
+ *   gövdesi biri künye. Bağlasaydık birini değiştiren ötekini habersiz
+ *   değiştirirdi.
+ *
+ * Global sınıf değil `composes`: sayfalar bu kuralı kendi `.controls`
+ * sınıfları üzerinden alıyor, yani JSX'te `styles.controls` yazmaya
+ * devam ediyor ve sayfa isterse üstüne ekleyebiliyor.
  */
 
-/* Liste sıfırlaması: beş sayfa kendi listesinde aynı üç satırı yazıyordu */
-.bareList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Arama + etiket şeridi: Guía ve Vídeos'ta birebir aynı.
-   Citas BURAYA BAĞLI DEĞİL: oradaki şerit tam genişlikte tek bir arama
-   kutusu taşıyor, oluğu ve üstündeki negatif payı farklı. */
+/* Arama kutusu + ruh hâli etiketleri şeridi — Guía ve Vídeos'ta aynı.
+   İki sayfa da aynı soruyu cevaplıyor: "listenin üstündeki süzgeç
+   şeridi nasıl dizilir." Biri değişirse öteki de değişmeli.
+   CITAS BURAYA BAĞLI DEĞİL: oradaki şerit etiket taşımıyor, tam
+   genişlikte tek bir arama kutusu var; oluğu ve üstündeki negatif pay
+   o yüzden farklı ve farklı kalmalı. */
 .controlsRow {
   display: flex;
   flex-wrap: wrap;
