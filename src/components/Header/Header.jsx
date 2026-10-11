@@ -29,6 +29,14 @@ const L = {
 };
 
 /*
+ * ARIA MENÜ ROLLERİ YOK (`role="menu"` / `menuitem"` / `aria-haspopup`).
+ * Bunlar uygulama menüleri için — ok tuşlarıyla gezilen, bir öğe seçilen
+ * şeyler. Buradakiler gezinme bağlantısı; ekran okuyucuya menü diye
+ * tanıtmak yanlış vaat. Geriye `aria-expanded` kalıyor, ki açılır bir
+ * blok için doğru olan da o.
+ * Ayrıca mobilde düğme hiç çizilmiyor: orada bağlantılar menünün
+ * içinde düz duruyor, yani açılacak bir menü de yok.
+ *
  * Dil seçici iki yerde görünüyor ama işaretlemesi tek yerde: masaüstünde
  * "Más" açılırının içinde, mobilde menünün en altında. Her genişlikte
  * yalnızca biri `display: flex`; diğeri `display: none` olduğu için ne
@@ -143,7 +151,6 @@ export default function Header() {
           <div className={styles.more} ref={moreRef}>
             <button
               className={`${styles.link} ${styles.moreButton} ${moreActive ? styles.linkActive : ""}`}
-              aria-haspopup="true"
               aria-expanded={moreOpen}
               onClick={() => setMoreOpen((v) => !v)}
             >
@@ -166,13 +173,11 @@ export default function Header() {
             </button>
             <div
               className={`${styles.dropdown} ${moreOpen ? styles.dropdownOpen : ""}`}
-              role="menu"
             >
               {MORE_LINKS.map((l) => (
                 <NavLink
                   key={l.to}
                   to={l.to}
-                  role="menuitem"
                   className={({ isActive }) =>
                     isActive
                       ? `${styles.dropLink} ${styles.dropLinkActive}`

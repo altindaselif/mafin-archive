@@ -261,25 +261,41 @@
     justify-items: start;
   }
 
-  /* KAPALIYKEN AKIŞTAN ÇIKIYOR. Masaüstünde açılır menü
-     `position: absolute` ve kapalıyken `visibility: hidden` yetiyor —
-     zaten yer kaplamıyor. Mobilde `static` olduğu için kapalı menü
-     görünmez ama 334px yüksekliğinde boş bir blok olarak duruyordu:
-     menünün 605px'inin yarıdan fazlası hiçbir şeydi ve dil seçimi o
-     boşluğun altına düşüyordu (ölçüldü).
-     `display` ile açılıp kapanıyor, `visibility` ile değil; geçiş
-     efekti kayboluyor ama menünün kendi açılışı zaten yumuşak. */
+  /* "MÁS" DÜĞMESİ MOBİLDE YOK. O düğme masaüstünde var olmasının bir
+     sebebi vardı: yatay çubuk on iki bağlantıyı taşıyamıyor, sekizi
+     bir açılıra giriyor. Menü alt alta dizildiğinde taşacak bir şey
+     kalmıyor — düğme yalnızca her bağlantıya fazladan bir dokunuş
+     ekliyordu, üstelik hangi sayfaların orada saklı olduğunu açmadan
+     göremiyordun. */
+  .moreButton {
+    display: none;
+  }
+
+  /* Açılır mobilde HER ZAMAN AÇIK ve kutusu yok: artık bir açılır
+     değil, menünün devamı. Masaüstünden gelen konumlandırma, gölge,
+     çerçeve ve giriş animasyonunun üçü de sıfırlanıyor. */
   .dropdown {
     position: static;
-    display: none;
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
     box-shadow: none;
     border: none;
     background: transparent;
-    padding: 0 0 0 16px;
+    /* İÇERİ KAYDIRMA YOK: bu bağlantılar artık bir alt seviye değil,
+       öbürleriyle aynı hizadan başlıyorlar. */
+    padding: 0;
   }
 
-  .dropdownOpen {
-    display: block;
+  /* Alt bağlantılar üsttekilerle aynı görünüyor — aralarında bir fark
+       kalmadığı için tipografileri de ayrışmamalı. `.nav .link` ile
+       birebir aynı değerler. */
+  .dropLink {
+    padding: 10px 0;
+    font: 500 0.85rem/1 var(--font-family-main);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   /* Dil seçimi "Más" açılırının içine gömülü kalmasın: menüde tek başına

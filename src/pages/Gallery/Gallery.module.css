@@ -168,12 +168,14 @@
     gap: 10px;
   }
 
-  /* 1,08rem'di (17,28px). Masaüstünde başlık 1,5'ten 1,2rem'e
-     indirilmişti — orada sayfa başlığıyla yarışıyordu — ve indirim
-     mobile de yansımıştı. Telefonda öyle bir yarış yok; levha başlığı
-     oturum başındaki 20,8px'e dönüyor. */
+  /* Başlık ile künyesinin ORANI masaüstüyle aynı tutuluyor: orada
+     21,12 / 15,84 = 1,33. Mobilde künye 13,6px, yani başlık 18,1px
+     olmalı — 1,15rem tam oraya düşüyor (18,4px, oran 1,35).
+     Bir ara 1,3rem'e (20,8px) çıkarıldı ve telefonda fazla geldi; oran
+     1,53'e fırlıyor ve başlık dört fotoğrafı toplayan bir ARA levhanın
+     başlığı olmaktan çıkıp sayfa başlığı gibi duruyordu. */
   .plateTitle {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
 
   .plateCap {
