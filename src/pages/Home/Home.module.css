@@ -401,30 +401,6 @@
    çarpıldı, yani ekranda bugünküyle BİREBİR aynı boyda çiziliyor.
    `vw` terimleri çarpılmadı — onlar köke bağlı değil. */
 @media (max-width: 720px) {
-  /* YAZININ ARKASI MOBİLDE KARARTILIYOR.
-     Temel katmanın dikey gradyanı %45'te EN ZAYIF (0,32) ve bordo halka
-     da tam orada şeffaf — yani korumanın en az olduğu nokta, yazının
-     durduğu nokta. Masaüstünde sorun çıkarmıyordu çünkü kadrajın
-     merkezi oradan karanlık.
-     Mobilde değil: fotoğraf 2:1, dikey ekranda `cover` ortadaki %23'lük
-     dilime iniyor ve oraya aydınlık bir yüz geliyor. Başlık ve altındaki
-     cümle okunmuyordu.
-     Yalnızca orta durak kalkıyor (0,32 → 0,52); üst ve alt neredeyse
-     aynı kalıyor ki fotoğraf komple çamurlaşmasın. */
-  .heroOverlay {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.55) 0%,
-        rgba(0, 0, 0, 0.52) 45%,
-        rgba(0, 0, 0, 0.66) 100%
-      ),
-      radial-gradient(
-        ellipse at 50% 42%,
-        rgba(114, 47, 55, 0) 40%,
-        rgba(114, 47, 55, 0.42) 100%
-      );
-  }
 
   .heroEyebrow {
     font-size: 0.858rem;
@@ -452,5 +428,57 @@
      diyeydi; kök geri dönünce o baskı kalktı, eski boyut geri geliyor. */
   .tileDesc {
     font-size: 0.85rem;
+  }
+}
+
+/* ── Telefon: hero'nun karesi değişiyor ──────────────────────────────
+   Masaüstündeki fotoğraf 2:1 ve iki kadın karede yan yana duruyor.
+   Dikey ekranda `cover` o karenin ortadaki %23'ünü bırakıyor ve o dilime
+   iki yüzden yalnızca biri giriyordu — resim hep "yarım" çıkıyordu.
+   Karartmayı artırmak yalnızca yazıyı kurtarıyordu, fotoğrafı değil.
+   Çözüm kareyi değiştirmek: hero-mobile.webp aynı sahnenin başka bir
+   planı — ikisi alın alına, boydan boya, dar bir sütunda. Dikey kadrajda
+   kaybedilen şey arka plandaki depo oluyor, öznenin kendisi değil.
+
+   KADRAJ DOSYADA, CSS'TE DEĞİL. Dosya (815x1390) zaten istenen kare;
+   burada yalnızca `center` var. Bir ara bunun yerine `background-position`
+   yüzdesi aranmıştı, o yol yanlıştı: `cover` ile görünen dilimin
+   genişliği EKRAN ORANINA bağlı, yani tek bir yüzde her telefonda başka
+   yeri ortalıyor. Kare dosyada sabitlenince `center` tanımı gereği doğru.
+
+   ORAN 0,586 VE BU ÖNEMLİ: en "geniş" telefon portresi 0,5625 (375x667
+   ve 360x640). Dosyanın oranı bunun üstünde olduğu için her telefonda
+   TAM YÜKSEKLİK görünüyor, kırpma yalnızca yanlardan oluyor — yani en
+   alttaki birleşen eller hiçbir telefonda kesilmiyor. Dosya değişirse
+   kontrol edilecek şey bu: oran 0,5625'in altına düşerse eller gider.
+
+   480px SINIRI: bu orandan geniş bir pencerede (tabletler, yatay
+   telefon) `cover` yüksekliği kırpmaya başlar. 480'in üstünde geniş kare
+   kullanılmaya devam ediyor; en büyük telefon 440px. */
+@media (max-width: 480px) {
+  .heroImage {
+    background:
+      url("/hero-mobile.webp") center / cover no-repeat,
+      linear-gradient(160deg, #3a3330 0%, #241f1d 55%, #16130f 100%);
+  }
+
+  /* Orta durak 0,55, tahminle değil ölçerek: yazının arkasındaki en
+     parlak piksel (pembe elbise) 375x812 ve 375x667'de ayrı ayrı
+     ölçüldü, ikisinde de 5,3:1 çıkıyor (ortalama 13:1). İkisinin aynı
+     çıkması dosyanın kesilmiş olmasından — kadraj artık cihaza göre
+     değişmiyor. 0,46 ikisinde de 4,0:1 ile eşiğin altında kalıyor. */
+  .heroOverlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.55) 45%,
+        rgba(0, 0, 0, 0.62) 100%
+      ),
+      radial-gradient(
+        ellipse at 50% 42%,
+        rgba(114, 47, 55, 0) 30%,
+        rgba(114, 47, 55, 0.42) 100%
+      );
   }
 }
