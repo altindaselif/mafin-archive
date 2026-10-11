@@ -181,15 +181,31 @@ body.no-scroll {
   position: absolute;
   top: 120px;
   right: 24px;
-  width: 300px;
-  aspect-ratio: 1690 / 970;
-  background: var(--page-art) no-repeat right top / contain;
+  /* YÜKSEKLİK SABİT, GENİŞLİK BOL. Eskiden `width: 300px` +
+     `aspect-ratio: 1690/970` + `contain` vardı ve bu, silüetin en-boy
+     oranına GİZLİCE bağımlıydı: `contain` resmi kutunun dar olan
+     eksenine sığdırır, yani oranı 1,7423'ü geçen bir silüet yüksekliğe
+     değil genişliğe oturuyor ve altta boş bir şerit bırakıyordu
+     (ep561 saydam alt boşluğundan arınınca 1,8149'a çıktı: 6,9px boşluk).
+     Aşağıdaki maske o boşlukta eridiği için buğu kayboluyordu.
+     `auto 100%` bunu açıkça söylüyor: resmin YÜKSEKLİĞİ kutunun
+     yüksekliği olsun, genişlik kendi oranından gelsin. Böylece resim
+     kutunun altına her zaman değiyor ve maske her zaman ÇİZİMİN
+     üstüne düşüyor. 380px, 2,2:1'e kadar silüete yetecek pay —
+     sağa yaslı olduğu için soldaki fazlalık görünmüyor.
+     ÖBÜR SAYFALAR DEĞİŞMİYOR: hepsi zaten yüksekliğe sığıyordu. */
+  width: 380px;
+  height: 172px;
+  background: var(--page-art) no-repeat right top / auto 100%;
   opacity: 0.9;
   pointer-events: none;
   /* Bordeaux wash applied in CSS (not baked into the image), so any raw
      cut-out still dropped into /img/silhouettes/ is tinted automatically.
      Mono #722f37 duotone approximation; alpha/transparency is preserved. */
   filter: url(#mafin-duo);
+  /* Alttaki buğu. TUZAK: silüetin altında saydam boşluk VARSA bu 7px
+     o boşluğa düşer ve buğu görünmez — ep574'te 112 satır boşluk vardı.
+     Yeni silüet eklerken alt kenar çizimle bitmeli. */
   -webkit-mask-image: linear-gradient(
     to bottom,
     black calc(100% - 7px),

@@ -383,6 +383,14 @@ Kopyalanan sabitler:
 > zincirin sonundaki sayfa olduğu için en yüksek numara oraya düştü.
 > Sıradaki sayfa için yeni bir kesit hazırlanması gerekiyor.
 >
+> **Yeni kesit hazırlarken iki kural** (ikisi de 11 Eki'de ısırdı):
+> 1. Çizimin ALTINDA saydam boşluk kalmasın. Köşedeki buğu bir CSS
+>    maskesi: kutunun en alt 7px'ini eritiyor. Resmin altında boşluk
+>    varsa maske boşluğu eritir, çizim keskin kalır (ep574'te 112 satır
+>    boşluk vardı).
+> 2. En-boy oranı 2,2:1'i geçmesin. Kutu 380x172px ve resim yüksekliğe
+>    göre ölçekleniyor; daha geniş bir kesit soldan kırpılır.
+>
 > Vestuario araya girdiğinde (Galería 145 ile Citas arasına) o aralıktan
 > yeni bir kesit aranmadı: 159 Citas'tan devralındı ve ondan sonraki her
 > sayfa bir kaydı. Araya sayfa eklemenin doğru yolu bu — yeni sayfa için
