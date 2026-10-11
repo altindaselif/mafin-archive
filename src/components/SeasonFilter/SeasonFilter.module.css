@@ -1,62 +1,27 @@
+/* Görünümün ortak kısmı tabStrip'ten geliyor — SectionTabs'la
+   paylaşılıyor. Aşağıda yalnızca BU bileşene özgü olan kalıyor:
+   sekmeleri eşit enli tutan yuva. */
 .filter {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 4px 18px;
+  composes: strip from "../../styles/tabStrip.module.css";
 }
 
 .season {
-  position: relative;
-  padding: 4px 2px 14px;
-  border: none;
-  background: none;
-  font-family: var(--font-family-display);
-  font-size: var(--tab-size);
-  font-weight: var(--tab-weight);
-  letter-spacing: var(--tab-tracking);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  opacity: 0.6;
-  transition: var(--transition-smooth);
-}
-
-.season:hover {
-  opacity: 1;
-  color: var(--color-text-main);
-}
-
-/* A tiny lozenge rises under the active volume and sits on the header
-   rule like a bookmark — the same mark that closes the footer. */
-.season::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -2.5px; /* centered on the header hairline below */
-  width: 4px;
-  height: 4px;
-  background: var(--color-accent);
-  transform: translateX(-50%) rotate(45deg) scale(0);
-  transition: var(--transition-smooth);
+  composes: tab from "../../styles/tabStrip.module.css";
 }
 
 .active {
-  opacity: 1;
-  color: var(--color-accent);
+  composes: active from "../../styles/tabStrip.module.css";
 }
 
-.active:hover {
-  color: var(--color-accent);
-}
-
-.active::after {
-  transform: translateX(-50%) rotate(45deg) scale(1);
+.dot {
+  composes: dot from "../../styles/tabStrip.module.css";
 }
 
 /* Bütün etiketleri üst üste tutan yuva: en genişine göre şekilleniyor,
-   böylece sekmeler eşit enli. Gizlenen kopyalar `visibility: hidden`
-   ile erişilebilirlik ağacından da çıkıyor, ekran okuyucu hepsini
-   okumuyor. */
+   böylece sekmeler eşit enli ve seçim değişince sıra yerinden
+   oynamıyor. Gizlenen kopyalar `visibility: hidden` ile erişilebilirlik
+   ağacından da çıkıyor, ekran okuyucu hepsini okumuyor.
+   SectionTabs'ta bu yok: oradaki etiketler zaten sabit. */
 .slot {
   display: grid;
   place-items: center;
@@ -80,49 +45,4 @@
 
 .off {
   visibility: hidden;
-}
-
-.dot {
-  font-family: var(--font-family-display);
-  color: var(--color-text-muted);
-  opacity: 0.5;
-  user-select: none;
-}
-
-/* Bu blok temel kurallardan SONRA: eşit özgüllükte kaynak sırası
-   kazanıyor. */
-@media (max-width: 720px) {
-  /* Şerit mobilde sarmalanıyor ve son satırda tek sekme kalıyor; sola
-     yapışınca sağında 195px ölü boşluk bırakıyordu. Ortalanınca iki
-     satır da kendi ekseninde duruyor.
-     `width: 100%` ŞART: şerit araç çubuğunun esnek bir öğesi, kendi
-     içeriği kadar daralırsa ortalanacak bir pay kalmıyor.
-     Masaüstünde ortalanmıyor — orada tek satır ve sağdaki sayının
-     karşısında sola hizalı durması gerekiyor. */
-  .filter {
-    justify-content: center;
-    width: 100%;
-  }
-
-  /* Ayraçlar mobilde YOK: şerit sarmalandığı için son nokta, ardından
-     gelecek sekme alt satıra geçince satır sonunda tek başına asılı
-     kalıyordu — arkasında hiçbir şey olmayan bir ayraç. Esnek oluk
-     (18px) ve etiket kutularındaki pay sekmeleri zaten ayırıyor
-     (ölçüldü: mürekkepler arası ~36px).
-     `display: none`, `visibility: hidden` DEĞİL: gizli nokta yer
-     kaplamaya devam etseydi iki oluk birden sayılırdı. */
-  .dot {
-    display: none;
-  }
-
-  /* Baklava masaüstünde araç çubuğunun çizgisine oturuyor — 14px'lik
-     alt dolgu onu oraya ulaştırmak için (ölçüldü: baklava merkezi
-     çizginin 0,5px üstünde). Mobilde çubuk sarmalandığı için o çizgi
-     65px aşağıda kalıyor ve baklava hiçbir şeyin üstünde durmadan
-     yazıdan 14,5px uzakta asılı kalıyordu.
-     Yalnızca işaret yukarı alınıyor, DOLGU DEĞİL: dolgu kısılsaydı
-     düğmenin dokunma hedefi 34px'ten 27px'e inerdi. */
-  .season::after {
-    bottom: 4.5px;
-  }
 }

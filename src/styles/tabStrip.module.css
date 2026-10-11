@@ -1,0 +1,116 @@
+/*
+ * Sekme şeridi — SeasonFilter ve SectionTabs'ın ORTAK görünümü.
+ *
+ * İki bileşen ayrı duruyor çünkü SÖZLEŞMELERİ farklı: SeasonFilter
+ * sekmeleri eşit enli tutmak için her düğmeye bütün etiketleri
+ * yerleştiren bir yuva kullanıyor (seçim değişince sıra oynamasın
+ * diye), SectionTabs ise düz etiketler ve bir "hepsi" seçeneği taşıyor.
+ * Ama GÖRÜNÜMLERİ aynıydı ve iki dosyada harfi harfine aynı kurallar
+ * yazılıydı — mobil blokların yorumları dahil.
+ *
+ * Görünüm buraya taşındı, sözleşmeler kendi dosyalarında kaldı.
+ * Üçüncü bir şerit gerekirse buradan beslenmeli.
+ *
+ * `composes` KULLANILIYOR, global sınıf değil: bu bir bileşenin iç
+ * görünümü, sayfaların doğrudan takacağı bir şey değil. CSS Modules
+ * composes'u iki sınıf adını birden basıyor, yani `.active::after`
+ * gibi birbirine bağlı kurallar aynı dosyada kaldığı sürece çalışıyor.
+ */
+
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: flex-start;
+  gap: 4px 18px;
+}
+
+.tab {
+  position: relative;
+  padding: 4px 2px 14px;
+  border: none;
+  background: none;
+  font-family: var(--font-family-display);
+  font-size: var(--tab-size);
+  font-weight: var(--tab-weight);
+  letter-spacing: var(--tab-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.6;
+  transition: var(--transition-smooth);
+}
+
+.tab:hover {
+  opacity: 1;
+  color: var(--color-text-main);
+}
+
+/* Baklava mührü seçili sekmenin altında yükselip başlık çizgisine
+   oturuyor — altlığı kapatan işaretin aynısı. */
+.tab::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -2.5px; /* altındaki başlık kılçizgisinde ortalı */
+  width: 4px;
+  height: 4px;
+  background: var(--color-accent);
+  transform: translateX(-50%) rotate(45deg) scale(0);
+  transition: var(--transition-smooth);
+}
+
+.active {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.active:hover {
+  color: var(--color-accent);
+}
+
+.active::after {
+  transform: translateX(-50%) rotate(45deg) scale(1);
+}
+
+.dot {
+  font-family: var(--font-family-display);
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  user-select: none;
+}
+
+/* Bu blok temel kuralların ALTINDA durmak zorunda: eşit özgüllükte
+   kaynak sırası kazanıyor. */
+@media (max-width: 720px) {
+  /* Şerit mobilde sarmalanıyor ve son satırda bir ya da iki sekme
+     kalıyor; sola yapışınca sağlarında ölü boşluk bırakıyorlardı.
+     Ortalanınca her satır kendi ekseninde duruyor.
+     `width: 100%` ŞART: şerit, üstündeki başlık çubuğunun esnek bir
+     öğesi; kendi içeriği kadar daralırsa ortalanacak pay kalmıyor.
+     Masaüstünde ortalanmıyor — orada tek satır ve sağdaki sayının
+     karşısında sola hizalı durması gerekiyor. */
+  .strip {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Ayraçlar mobilde YOK: şerit sarmalandığı için satırın son noktası,
+     ardından gelecek sekme alt satıra geçince tek başına asılı
+     kalıyordu — arkasında hiçbir şey olmayan bir ayraç. Esnek oluk
+     (18px) ve etiket kutularındaki pay sekmeleri zaten ayırıyor.
+     `display: none`, `visibility: hidden` DEĞİL: gizli nokta yer
+     kaplamaya devam etseydi iki oluk birden sayılırdı. */
+  .dot {
+    display: none;
+  }
+
+  /* Baklava masaüstünde çubuğun çizgisine oturuyor — 14px'lik alt dolgu
+     onu oraya ulaştırmak için. Mobilde çubuk sarmalandığı için o çizgi
+     aşağıda kalıyor ve baklava hiçbir şeyin üstünde durmadan asılı
+     kalıyordu.
+     Yalnızca işaret yukarı alınıyor, DOLGU DEĞİL: dolgu kısılsaydı
+     düğmenin dokunma hedefi 34px'ten 27px'e inerdi. */
+  .tab::after {
+    bottom: 4.5px;
+  }
+}

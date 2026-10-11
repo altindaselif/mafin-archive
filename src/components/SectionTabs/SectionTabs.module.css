@@ -1,98 +1,18 @@
+/* Görünümün tamamı tabStrip'ten geliyor — SeasonFilter'la paylaşılıyor.
+   Bu dosyada yalnızca eşleme var; bir sekme şeridinin nasıl göründüğünü
+   değiştirmek isteyen src/styles/tabStrip.module.css'e dokunsun. */
 .tabs {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: flex-start;
-  gap: 4px 18px;
+  composes: strip from "../../styles/tabStrip.module.css";
 }
 
 .tab {
-  position: relative;
-  padding: 4px 2px 14px;
-  border: none;
-  background: none;
-  font-family: var(--font-family-display);
-  font-size: var(--tab-size);
-  font-weight: var(--tab-weight);
-  letter-spacing: var(--tab-tracking);
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  opacity: 0.6;
-  transition: var(--transition-smooth);
-}
-
-.tab:hover {
-  opacity: 1;
-  color: var(--color-text-main);
-}
-
-/* Lozenge bookmark on the header rule — the archive's shared mark */
-.tab::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -2.5px;
-  width: 4px;
-  height: 4px;
-  background: var(--color-accent);
-  transform: translateX(-50%) rotate(45deg) scale(0);
-  transition: var(--transition-smooth);
+  composes: tab from "../../styles/tabStrip.module.css";
 }
 
 .active {
-  opacity: 1;
-  color: var(--color-accent);
-}
-
-.active:hover {
-  color: var(--color-accent);
-}
-
-.active::after {
-  transform: translateX(-50%) rotate(45deg) scale(1);
+  composes: active from "../../styles/tabStrip.module.css";
 }
 
 .dot {
-  font-family: var(--font-family-display);
-  color: var(--color-text-muted);
-  opacity: 0.5;
-  user-select: none;
-}
-
-/* Bu blok temel kuralların ALTINDA durmak zorunda: eşit özgüllükte
-   kaynak sırası kazanıyor. */
-@media (max-width: 720px) {
-  /* Şerit mobilde sarmalanıyor ve son satırda bir ya da iki sekme
-     kalıyor; sola yapışınca sağlarında ölü boşluk bırakıyorlardı.
-     Ortalanınca her satır kendi ekseninde duruyor. SeasonFilter'daki
-     kuralın aynısı — iki şerit aynı dili konuşuyor.
-     `width: 100%` ŞART: şerit üstündeki başlık çubuğunun esnek bir
-     öğesi, kendi içeriği kadar daralırsa ortalanacak pay kalmıyor.
-     Masaüstünde ortalanmıyor — orada tek satır ve sağdaki sayının
-     karşısında sola hizalı durması gerekiyor. */
-  .tabs {
-    justify-content: center;
-    width: 100%;
-  }
-
-  /* Ayraçlar mobilde YOK: şerit sarmalandığı için satırın son noktası,
-     ardından gelecek sekme alt satıra geçince tek başına asılı
-     kalıyordu — arkasında hiçbir şey olmayan bir ayraç. Esnek oluk
-     (18px) ve etiket kutularındaki pay sekmeleri zaten ayırıyor.
-     `display: none`, `visibility: hidden` DEĞİL: gizli nokta yer
-     kaplamaya devam etseydi iki oluk birden sayılırdı. */
-  .dot {
-    display: none;
-  }
-
-  /* Baklava masaüstünde başlık çubuğunun çizgisine oturuyor — 14px'lik
-     alt dolgu onu oraya ulaştırmak için. Mobilde çubuk sarmalandığı
-     için o çizgi aşağıda kalıyor ve baklava iki satırın arasında,
-     hiçbir şeyin üstünde durmadan asılı kalıyordu.
-     Yalnızca işaret yukarı alınıyor, DOLGU DEĞİL: dolgu kısılsaydı
-     düğmenin dokunma hedefi 34px'ten 27px'e inerdi.
-     SeasonFilter'daki kuralın aynısı. */
-  .tab::after {
-    bottom: 4.5px;
-  }
+  composes: dot from "../../styles/tabStrip.module.css";
 }
