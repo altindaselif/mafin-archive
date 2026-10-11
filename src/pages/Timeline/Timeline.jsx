@@ -29,6 +29,26 @@ const anchorOf = (season) => `temporada-${season}`;
    JSON'a girince şerit kendiliğinden büyüyor. */
 const SEASONS = [...new Set(milestones.map((m) => seasonOf(m.episode)))];
 
+/*
+ * Anların merkez çizginin hangi yanına düşeceği sırayla belirleniyor —
+ * ama sıra YALNIZCA anları saymalı.
+ *
+ * Boşluk kayıtları (`kind: "gap"`) tam genişlikte, çizginin ortasında
+ * çiziliyor; bir yan tutmuyorlar. Dizideki ham sıra (`i`) kullanılınca
+ * yine de bir basamak yiyorlar ve boşluğun İKİ YANINDAKİ an aynı tarafa
+ * düşüyor. Ölçüldü: 611 "Llega Bianca" ile 670 "Se va Bianca" ikisi de
+ * sağda kalıyordu — oysa biri gelişi, öteki gidişi anlatıyor; karşı
+ * karşıya durmaları gerekiyor.
+ *
+ * Burada hesaplanıyor çünkü `milestones` build'de sabitleniyor, her
+ * render'da yeniden saymanın anlamı yok. Boşluklara -1 veriliyor; onu
+ * Milestone hiç görmüyor, TimelineGap'in de yana ihtiyacı yok.
+ */
+const SIDE_INDEX = (() => {
+  let n = 0;
+  return milestones.map((m) => (m.kind === "gap" ? -1 : n++));
+})();
+
 /* Düğme iki ekran kaydırıldıktan SONRA beliriyor. Daha erken çıkarsa
    sayfanın başında, kimsenin yukarı çıkmak istemediği yerde duruyor. */
 const TO_TOP_AFTER = 2;
@@ -106,7 +126,7 @@ export default function Timeline() {
               {item.kind === "gap" ? (
                 <TimelineGap item={item} />
               ) : (
-                <Milestone item={item} index={i} />
+                <Milestone item={item} index={SIDE_INDEX[i]} />
               )}
             </Fragment>
           );
