@@ -70,6 +70,27 @@
   color: var(--color-text-muted);
 }
 
+/* Kolofon: kapanış cümlesiyle aynı ölçü ve genişlikte, ama DİK —
+   kapanış italik. İtalik bu sayfada minnetin sesi (hem yapılan işler
+   hem kapanış cümlesi öyle); kolofon minnet değil kayıt, o yüzden dik
+   duruyor. İki cümle üst üste aynı yüzle dizilseydi ikincisi
+   birincinin devamı gibi okunurdu.
+   Pay 24px, kapanışın kendi 40px'inden dar: ikisi sayfanın dibinde tek
+   bir künye bloğu, birbirinden kopuk iki paragraf değil.
+
+   PUNTO OKUMA KADEMESİNİN ALTINDA (1rem, 17,6px): sayfadaki her şey
+   1,15rem — iş satırları, kapanış cümlesi. Kolofon onlarla aynı sesle
+   konuşursa listenin bir parçası gibi duruyor. 1rem sitede sessiz
+   serif notların kademesi; burada da aynı işi yapıyor — okunur ama öne
+   çıkmaz, çünkü sayfanın konusu değil, kaydı. */
+.colophon {
+  margin: 24px 0 0;
+  max-width: 640px;
+  font-family: var(--font-family-display);
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
 .closing {
   margin: 40px 0 0;
   max-width: 640px;

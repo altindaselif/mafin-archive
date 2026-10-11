@@ -132,6 +132,41 @@ const L = {
     es: "Y a quienes ayudaron sin aparecer en esta lista, y a quienes lo leen: gracias.",
     en: "And to everyone who helped without appearing on this list, and to everyone who reads it: thank you.",
   },
+  /* KOLOFON, LİSTE DEĞİL. Listeye girmek için bir sebep yok: sayfanın
+     altyazısı "todo lo que hay aquí se lo debe a ellas" diyor ve arşivi
+     yapan kişi o cümlenin öznesi olamaz — kendine teşekkür etmiş olur.
+     Kitaplar bunu ayırır: teşekkür sayfası başkalarını anar, kolofon
+     kitabı kimin yaptığını kaydeder. Bu satır ikincisi.
+     Ses de ona göre: teşekkür cümlesi değil, künye. Fiil yok, isim
+     öbekleri var ve listedeki satırlarla aynı ayraçla (·) diziliyor. */
+  /* CÜMLE, KÜNYE SATIRI DEĞİL. Önce listenin satır dilinde yazılmıştı
+     (solda hesap, sağda italik iş) ama o biçim listeyi bitirmiyor,
+     uzatıyordu — on ikinci bir teşekkür satırı gibi okunuyordu.
+     Cümle olunca sayfanın dışına çıkıyor: liste kimlere teşekkür
+     edildiğini sayar, bu satır arşivi kimin yaptığını söyler.
+     İspanyolcası sayfanın altyazısındaki kalıbı sürdürüyor —
+     "LO escribieron, LO tradujeron, LO fotografiaron" — burada da
+     "LO diseñó y LO programó". Aynı ses, farklı iş.
+     Hesap adı cümlenin ortasında bağlantı olduğu için metin ikiye
+     bölünmüş durumda; iki dilde de virgül `after`ın başında. */
+  colophonBefore: {
+    /* "Este/This", "El/The" DEĞİL: sayfa kendinden bahsederken zaten
+       böyle diyor ("Compañera en la idea de este archivo"). İki dil de
+       aynı sözcükle başlasın. */
+    es: "Este archivo lo diseñó y lo programó ",
+    en: "This archive was designed and built by ",
+  },
+  colophonAfter: {
+    es: ", que también escribió las sinopsis y reunió las entrevistas.",
+    en: ", who also wrote the synopses and gathered the interviews.",
+  },
+};
+
+/* Arşivi yapan kişi. Ayrı duruyor, PEOPLE'a girmiyor — gerekçesi
+   yukarıda. */
+const AUTHOR = {
+  handle: "@annadewitt125",
+  url: "https://x.com/annadewitt125",
 };
 
 export default function Acknowledgements() {
@@ -165,6 +200,20 @@ export default function Acknowledgements() {
       </dl>
 
       <p className={styles.closing}>{t(L.closing)}</p>
+
+      {/* Sayfanın kolofonu: kapanış cümlesinden sonra, düz bir cümle. */}
+      <p className={styles.colophon}>
+        {t(L.colophonBefore)}
+        <a
+          className={styles.link}
+          href={AUTHOR.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {AUTHOR.handle}
+        </a>
+        {t(L.colophonAfter)}
+      </p>
     </div>
   );
 }
