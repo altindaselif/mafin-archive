@@ -4,6 +4,7 @@ import SearchInput from "../../components/SearchInput/SearchInput.jsx";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import Pager from "../../components/Pager/Pager.jsx";
 import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
+import NameSwitcher from "../../components/NameSwitcher/NameSwitcher.jsx";
 import quotes from "../../data/quotes.js";
 import { SEASONS, seasonOf } from "../../data/seasonInfo.js";
 import { useLang } from "../../i18n.js";
@@ -112,29 +113,15 @@ export default function Quotes() {
         />
       </div>
 
-      {/* Konuşan seçimi: Vestuario'daki karakter ve Prensa'daki kişi
-          seçicisiyle birebir aynı dil — kutu yok, saf tipografi,
-          aralarında nokta. Üç sayfa aynı işi yapıyor, aynı görünüyor.
-          ÜÇÜNCÜ KEZ TEKRARLANDI: bir dördüncüsü gelirse ortak bir
-          bileşene çıkarmanın zamanı gelmiş demektir. */}
-      <nav className={styles.switcher} aria-label={t(L.voice)}>
-        {SPEAKERS.map((name, i) => (
-          <span key={name}>
-            {i > 0 && (
-              <span className={styles.sep} aria-hidden="true">
-                ·
-              </span>
-            )}
-            <button
-              className={`${styles.name} ${name === speaker ? styles.nameActive : ""}`}
-              aria-pressed={name === speaker}
-              onClick={() => setSpeaker(name)}
-            >
-              {name === "All" ? t(L.all) : name}
-            </button>
-          </span>
-        ))}
-      </nav>
+      {/* Ana ayrım: Vestuario ve Prensa'yla aynı bileşen */}
+      <NameSwitcher
+        className={styles.switcher}
+        options={SPEAKERS}
+        active={speaker}
+        onChange={setSpeaker}
+        ariaLabel={t(L.voice)}
+        labelOf={(name) => (name === "All" ? t(L.all) : name)}
+      />
 
       <ListToolbar
         count={`${filtered.length} ${

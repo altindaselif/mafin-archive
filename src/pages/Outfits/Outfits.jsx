@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import styles from "./Outfits.module.css";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
+import NameSwitcher from "../../components/NameSwitcher/NameSwitcher.jsx";
 import Modal from "../../components/Modal/Modal.jsx";
 import outfits, { charactersIn } from "../../data/outfits.js";
 import { photoUrl } from "../../lib/photos.js";
@@ -116,24 +117,14 @@ export default function Outfits() {
           {/* Karakter ayrımı: SeasonFilter'la aynı dil (kutusuz, saf
               tipografi) ama bir kademe büyük — sayfanın bölünme çizgisi
               bu, sezon ondan sonra geliyor. */}
-          <nav className={styles.switcher} aria-label={t(L.who)}>
-            {characters.map((c, i) => (
-              <span key={c}>
-                {i > 0 && (
-                  <span className={styles.sep} aria-hidden="true">
-                    ·
-                  </span>
-                )}
-                <button
-                  className={`${styles.name} ${c === character ? styles.nameActive : ""}`}
-                  aria-pressed={c === character}
-                  onClick={() => setCharacter(c)}
-                >
-                  {DISPLAY_NAME[c]}
-                </button>
-              </span>
-            ))}
-          </nav>
+          <NameSwitcher
+            className={styles.switcher}
+            options={characters}
+            active={character}
+            onChange={setCharacter}
+            ariaLabel={t(L.who)}
+            labelOf={(c) => DISPLAY_NAME[c]}
+          />
 
           <ListToolbar className={styles.toolbar} count={count(shown.length)}>
             <SeasonFilter

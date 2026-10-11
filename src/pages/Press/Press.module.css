@@ -2,45 +2,11 @@
    Kutu yok, saf tipografi, aralarında nokta. İki sayfa aynı işi yapıyor,
    aynı görünmeli. Üçüncü bir sayfa bu düzeni isterse ortak bir bileşene
    çıkarmanın zamanı gelmiş demektir. */
-/* ALT PAY GENİŞ: kişi seçimi sayfanın ana ayrımı, biçim sekmeleri onun
-   ALTINDA ikinci kademe. 6px'ken ikisi tek bir blok gibi okunuyor ve
-   kademe kayboluyordu. Vestuario'daki seçiciyle aynı sayı. */
+/* Seçicinin KONUMU sayfanın işi; görünümü NameSwitcher'ın.
+   Buradaki tek şey dış pay: seçici altyazıdan ayrılmalı ve altındaki
+   sezon sekmelerinden daha belirgin durmalı. */
 .switcher {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
   margin: 32px 0 24px;
-}
-
-.sep {
-  margin: 0 14px;
-  color: var(--color-border);
-}
-
-.name {
-  padding: 2px 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  font-family: var(--font-family-display);
-  /* Vestuario'daki karakter seçicisiyle aynı ölçek: ana ayrım altındaki
-     sekmelerden daha yüksek sesle konuşmalı. Üç sayfa aynı işi yapıyor,
-     biri değişirse ötekiler de değişmeli. */
-  font-size: var(--switcher-size);
-  letter-spacing: var(--switcher-tracking);
-  color: var(--color-text-muted);
-  border-bottom: 1px solid transparent;
-  transition: var(--transition-smooth);
-}
-
-.name:hover {
-  color: var(--color-accent);
-}
-
-.nameActive {
-  color: var(--color-text-main);
-  border-bottom-color: var(--color-accent);
 }
 
 .toolbar {
@@ -251,13 +217,5 @@
 
   .switcher {
     margin: 24px 0 16px;
-  }
-
-  .name {
-    font-size: var(--switcher-size-sm);
-  }
-
-  .sep {
-    margin: 0 10px;
   }
 }

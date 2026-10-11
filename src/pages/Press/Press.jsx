@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import styles from "./Press.module.css";
 import SectionTabs from "../../components/SectionTabs/SectionTabs.jsx";
 import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
+import NameSwitcher from "../../components/NameSwitcher/NameSwitcher.jsx";
 import press from "../../data/press.js";
 import { formatDate, useLang } from "../../i18n.js";
 
@@ -115,25 +116,14 @@ export default function Press() {
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
 
-      {/* Ana ayrım: Vestuario'daki karakter seçicisiyle aynı dil */}
-      <nav className={styles.switcher} aria-label={t(L.who)}>
-        {WHO.map((name, i) => (
-          <span key={name}>
-            {i > 0 && (
-              <span className={styles.sep} aria-hidden="true">
-                ·
-              </span>
-            )}
-            <button
-              className={`${styles.name} ${name === who ? styles.nameActive : ""}`}
-              aria-pressed={name === who}
-              onClick={() => setWho(name)}
-            >
-              {name}
-            </button>
-          </span>
-        ))}
-      </nav>
+      {/* Ana ayrım: Vestuario'daki karakter seçicisiyle aynı bileşen */}
+      <NameSwitcher
+        className={styles.switcher}
+        options={WHO}
+        active={who}
+        onChange={setWho}
+        ariaLabel={t(L.who)}
+      />
 
       <ListToolbar className={styles.toolbar} count={count(shown.length)}>
         <SectionTabs

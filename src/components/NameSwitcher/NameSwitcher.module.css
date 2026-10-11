@@ -1,0 +1,77 @@
+/*
+ * Ad seçicisi — Vestuario, Prensa ve Citas'ın ortak ana ayrımı.
+ *
+ * Kutu yok, saf tipografi, adların arasında nokta. Sekmelerden bir
+ * kademe yüksek sesle konuşuyor: sekme bir süzgeç, bu ise sayfanın
+ * bölünme çizgisi.
+ *
+ * DIŞ PAY BURADA YOK: her sayfa kendi `className`'iyle veriyor, çünkü
+ * Vestuario ve Prensa'da seçici altyazıdan sonra geliyor (üstte boşluk
+ * gerekiyor), Citas'ta ise arama kutusundan hemen sonra (gerekmiyor).
+ * Tipografi ortak, konumlandırma sayfanın işi.
+ */
+
+.switcher {
+  display: flex;
+  /* SARMALAMA ŞART: Citas'ta dört ad var ("Todos · Marta · Fina ·
+     Mafin") ve 320px'lik ekranda 304px istiyorlar, 272px yer var.
+     Sarmalanmasaydı adlar birbirine sıkışıp satır İÇİNDE kırılıyordu
+     (ölçüldü: "Marta" 86,7 → 72,9px). Ayraç kendi adıyla aynı kutuda
+     olduğu için satır sonunda tek başına asılı kalmıyor.
+     İki ve üç adlı sayfalarda hiç devreye girmiyor, zararsız. */
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px 2px;
+}
+
+.sep {
+  margin: 0 14px;
+  color: var(--color-border);
+}
+
+.name {
+  padding: 2px 0;
+  /* Ad satır içinde KIRILMASIN: dar ekranda sarmalama adların arasından
+     geçmeli, ortalarından değil. */
+  white-space: nowrap;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-family-display);
+  font-size: var(--switcher-size);
+  letter-spacing: var(--switcher-tracking);
+  color: var(--color-text-muted);
+  border-bottom: 1px solid transparent;
+  transition: var(--transition-smooth);
+}
+
+.name:hover {
+  color: var(--color-accent);
+}
+
+.nameActive {
+  color: var(--color-text-main);
+  border-bottom-color: var(--color-accent);
+}
+
+@media (max-width: 720px) {
+  .name {
+    font-size: var(--switcher-size-sm);
+  }
+
+  .sep {
+    margin: 0 10px;
+  }
+}
+
+/* En dar telefonlar: dört adlı Citas burada da sığsın */
+@media (max-width: 359px) {
+  .name {
+    font-size: 1.12rem;
+  }
+
+  .sep {
+    margin: 0 4px;
+  }
+}

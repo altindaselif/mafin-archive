@@ -25,60 +25,11 @@
   max-width: 60ch;
 }
 
-/* ── Konuşan seçimi ───────────────────────────────────────────────────
-   Vestuario ve Prensa'daki seçicilerle birebir aynı: kutu yok, saf
-   tipografi, aralarında nokta. Önce "PERSONAJE [Todos ▾]" diye bir
-   açılır kutuydu ve arama kutusunun yanında bir form alanı gibi
-   duruyordu; oysa bu sayfanın ana ayrımı o.
-   ÜST PAY YOK: üstündeki `.controls` 40px alt pay taşıyor ve kardeş
-   payları birleştiği için ikisi 40px ediyor.
-   ALT PAY GENİŞ: altındaki sezon sekmeleri ikinci kademe, ayrımın
-   görünmesi gerekiyor. */
+/* Seçicinin KONUMU sayfanın işi; görünümü NameSwitcher'ın.
+   Buradaki tek şey dış pay: seçici altyazıdan ayrılmalı ve altındaki
+   sezon sekmelerinden daha belirgin durmalı. */
 .switcher {
-  display: flex;
-  /* SARMALANIYOR, Vestuario ve Prensa'dakilerin aksine: burada dört ad
-     var (orada iki ve üç) ve 320px'lik ekranda 304px istiyorlar, 272px
-     yer var. Sarmalanmasaydı adlar birbirine sıkışıp satır içinde
-     kırılıyordu (ölçüldü: "Marta" 86,7 → 72,9px).
-     Ayraç kendi adıyla aynı kutuda olduğu için satır sonunda tek
-     başına asılı kalmıyor. */
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: center;
-  gap: 4px 2px;
   margin: 0 0 24px;
-}
-
-.sep {
-  margin: 0 14px;
-  color: var(--color-border);
-}
-
-.name {
-  padding: 2px 0;
-  /* Ad satır içinde KIRILMASIN: dar ekranda sarmalama adların arasından
-     geçmeli, ortalarından değil. */
-  white-space: nowrap;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  font-family: var(--font-family-display);
-  /* Vestuario ve Prensa'daki seçicilerle aynı ölçek — üçü birden
-     değişir. */
-  font-size: var(--switcher-size);
-  letter-spacing: var(--switcher-tracking);
-  color: var(--color-text-muted);
-  border-bottom: 1px solid transparent;
-  transition: var(--transition-smooth);
-}
-
-.name:hover {
-  color: var(--color-accent);
-}
-
-.nameActive {
-  color: var(--color-text-main);
-  border-bottom-color: var(--color-accent);
 }
 
 .list {
@@ -224,14 +175,6 @@
   .switcher {
     margin-bottom: 16px;
   }
-
-  .name {
-    font-size: var(--switcher-size-sm);
-  }
-
-  .sep {
-    margin: 0 10px;
-  }
 }
 
 /* Dört ad TEK SATIRDA kalmalı: sarmalanınca "·Mafin" alt satıra geçiyor
@@ -243,13 +186,4 @@
 
 /* En dar telefonlar (SE gibi, 320px): orada 272px var, bir kademe daha
    gerekiyor. */
-@media (max-width: 359px) {
-  .name {
-    font-size: 1.12rem;
-  }
-
-  .sep {
-    margin: 0 4px;
-  }
-}
 

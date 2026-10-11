@@ -1,47 +1,11 @@
 /* ── Karakter ayrımı ──────────────────────────────────────────────────
    SeasonFilter'la aynı dil: kutu yok, saf tipografi, aralarında nokta.
    Farkı yalnızca ölçek — sayfanın ana bölünme çizgisi bu. */
-/* ALT PAY GENİŞ: karakter seçimi sayfanın ana ayrımı, sezon sekmeleri
-   onun ALTINDA ikinci kademe. 6px'ken ikisi tek bir blok gibi okunuyor
-   ve kademe kayboluyordu; 20px ayrımı görünür kılıyor. */
+/* Seçicinin KONUMU sayfanın işi; görünümü NameSwitcher'ın.
+   Buradaki tek şey dış pay: seçici altyazıdan ayrılmalı ve altındaki
+   sezon sekmelerinden daha belirgin durmalı. */
 .switcher {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
   margin: 32px 0 24px;
-}
-
-.sep {
-  margin: 0 14px;
-  color: var(--color-border);
-}
-
-.name {
-  padding: 2px 0;
-  border: 0;
-  background: none;
-  cursor: pointer;
-  font-family: var(--font-family-display);
-  /* Ana ayrım, altındaki sezon sekmelerinden yüksek sesle konuşmalı —
-     ama bir zamanlar 1,7rem'di ve kök ölçek %110'a çıkınca 29,9px'e
-     vardı; dört adlı Citas'ta şerit sayfanın yarısını kaplıyordu.
-     Üç sayfada da aynı: Prensa ve Citas'taki seçiciler bunun kopyası,
-     biri değişirse öteki ikisi de değişmeli. */
-  font-size: var(--switcher-size);
-  letter-spacing: var(--switcher-tracking);
-  color: var(--color-text-muted);
-  border-bottom: 1px solid transparent;
-  transition: var(--transition-smooth);
-}
-
-.name:hover {
-  color: var(--color-accent);
-}
-
-.nameActive {
-  color: var(--color-text-main);
-  border-bottom-color: var(--color-accent);
 }
 
 .toolbar {
@@ -183,13 +147,5 @@
 
   .switcher {
     margin: 24px 0 16px;
-  }
-
-  .name {
-    font-size: var(--switcher-size-sm);
-  }
-
-  .sep {
-    margin: 0 10px;
   }
 }
