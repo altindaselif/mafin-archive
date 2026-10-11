@@ -139,7 +139,26 @@
    gerektiriyordu — okunmazdı. Sayı penceresini daraltmak ise JSX
    değişikliği (buildRange'in sibling'i) ve ekran genişliğini
    bileşenin içine sokardı. */
+/* Oluk telefonlarda 24 → 12px. Yatay dizilim için gereken şerit
+   278px (ölçüldü: iki adım 67'şer, numaralar 144) ve 24px'lik iki oluk
+   bunu 326px'e çıkarıyordu — sayfa dolgusuyla birlikte 374px'lik bir
+   ekran demek, yani 375px'lik bir telefonda TEK PİKSEL pay. 12px'le
+   gereken ekran 350px'e iniyor ve 360px'lik Android'lerde de 10px pay
+   kalıyor. */
 @media (max-width: 480px) {
+  .pager {
+    gap: 12px;
+  }
+}
+
+/* YIĞILMIŞ DÜZEN SADECE EN DAR TELEFONLARDA. Bu düzen dün, kök yazı
+   ölçeği %110'a çıkarılırken kondu: büyüyen yazıyla sayfalayıcı yatayda
+   taşıyordu. Sonra mobil eski ölçeğe geri alındı ama bu çözüm kaldı —
+   artık olmayan bir sorunu çözüyor ve ileri/geri düğmelerini numaraların
+   altına indiriyordu.
+   Eşik 480 → 359px: 360px ve üstünde üçü yan yana sığıyor, altında
+   sığmıyor (320px'te 30px taşıyor). */
+@media (max-width: 359px) {
   .pager {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:

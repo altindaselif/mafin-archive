@@ -57,6 +57,35 @@
   margin: 40px 0 0;
 }
 
+/* Telefonda ikisi alt alta düşüyor ve sarmalama sırayı DOM sırasında
+   bırakıyordu: solda tam genişlikte telif notu, altında sağa yaslı
+   künye. İki farklı hizadan iki satır, ortada kırık bir kenar.
+   İkisi de sağa yaslanıyor ve künye üste alınıyor: önce kim kesti,
+   altında videoların neden kısa olduğu. Sağ kenar tek bir hizaya
+   oturuyor.
+   DOM sırası masaüstü için doğru (solda telif, sağda künye), o yüzden
+   `order` ile yalnızca ÇİZİM sırası değişiyor. İki kısa künye satırı
+   için okuma sırasıyla çizim sırasının ayrılması kabul edilebilir. */
+@media (max-width: 720px) {
+  .colophon {
+    flex-direction: column;
+    align-items: flex-end;
+    /* 6px'ti ve iki satır birbirine yapışıktı — aynı cümlenin sarmalanmış
+       devamı gibi okunuyorlardı. 12px ikisini ayrı iki not yapıyor ama
+       hâlâ tek bir künye bloğu olarak tutuyor. */
+    gap: 12px;
+  }
+
+  .credit {
+    order: -1;
+  }
+
+  .copyright {
+    max-width: none;
+    text-align: right;
+  }
+}
+
 .copyright {
   margin: 0;
   /* Ölçü: tek satırda kalmaya çalışmasın, künyeyi sıkıştırmasın */

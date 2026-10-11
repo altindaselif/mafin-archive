@@ -230,6 +230,14 @@
     visibility: hidden;
     transform: translateY(-8px);
     transition: var(--transition-smooth);
+    /* GÜVENLİK AĞI: menü on iki bağlantı + dil satırı taşıyor ve
+       bunların hepsi kısa bir telefonda ekrana sığmayabilir. `dvh`
+       kullanılıyor çünkü tarayıcı çubuğu kayarken `vh` sabit kalıyor
+       ve menü ekranın altından taşıyor. Normalde devreye girmiyor:
+       375x667'de bile 44px pay kalıyor (ölçüldü). */
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 
   .navOpen {
@@ -238,11 +246,18 @@
     transform: translateY(0);
   }
 
+  /* 10px'ti ve on iki satır alt alta gelince menü tek bir yığın gibi
+     okunuyordu. 12px her satıra 4px ekliyor, dokunma hedefi 33,6 →
+     37,6px'e çıkıyor (44px'lik öneriye yaklaşıyor).
+     Tek başına yetmez — punto aynı kalırsa sadece DAHA UZUN bir yığın
+     olur. Asıl işi aşağıdaki gruplama yapıyor. */
+  .nav .link,
+  .dropLink {
+    padding: 12px 0;
+  }
+
   .nav .link {
     color: var(--color-text-main);
-    /* 12px'ti; altı satırla menü gereğinden uzundu. 10px her satırdan
-       4px alıyor ve dokunma hedefi 33,6px'te kalıyor. */
-    padding: 10px 0;
   }
 
   /* Alt alta menüde dolgu 12px, yani temel kuraldaki pay burada
@@ -259,6 +274,19 @@
      Sola yaslayınca hepsi aynı hizadan başlıyor. */
   .nav .link > span {
     justify-items: start;
+  }
+
+  /* ÜÇ ÖBEK. Düzleştirince bağlantılar arasındaki her ayrım da
+     kalkmıştı: on iki eşit satır, hiçbir yapı. Artık üç öbek var —
+     arşivin ana dört sayfası, geri kalan sekizi, sonra dil. Kıl
+     çizgiler yer kaplamıyor ama gözün tutunacağı bir şey veriyor.
+     `width: 100%` ŞART: `.more` esnek sütunun bir öğesi, kendi
+     içeriği kadar daralırsa çizgi menüyü boydan boya geçmiyor. */
+  .more {
+    width: 100%;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--color-border);
   }
 
   /* "MÁS" DÜĞMESİ MOBİLDE YOK. O düğme masaüstünde var olmasının bir
@@ -292,7 +320,6 @@
        kalmadığı için tipografileri de ayrışmamalı. `.nav .link` ile
        birebir aynı değerler. */
   .dropLink {
-    padding: 10px 0;
     font: 500 0.85rem/1 var(--font-family-main);
     letter-spacing: 0.08em;
     text-transform: uppercase;
