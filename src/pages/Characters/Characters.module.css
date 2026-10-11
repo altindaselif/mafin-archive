@@ -81,7 +81,7 @@
   /* 1,1rem'di. Metin display serifiyle diziliyor ve o yüz bu ölçekte
      ince kalıyor — sitenin okuma ölçeği 1,15rem (Actrices'in biyografi
      paragrafı da öyle), bu paragraf da oraya ait. */
-  font-size: 1.15rem;
+  font-size: var(--text-reading);
   line-height: 1.7;
   color: var(--color-text-main);
 }

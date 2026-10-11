@@ -30,6 +30,40 @@
      sayfanın kendi işi: Prensa'da 33 kayıt var ve satırları sıkı,
      Fandom'da birkaç tane var ve ferah. Tutarlı olması gereken
      TİPOGRAFİ, yoğunluk değil. */
+  /* ── Sayfalar arası ortak kademeler ──────────────────────────────
+     Aşağıdakilerin hepsi birden çok modülde, birebir aynı değerle
+     tekrar ediyordu. Her sayfanın kendi CSS modülü olduğu için
+     aralarında hiçbir bağ yoktu: biri değişince ötekiler kalıyordu ve
+     fark ancak gözle yakalanıyordu.
+     Rol bazında yazıldılar, değer bazında değil. `0.72rem` sitede on
+     iki yerde geçiyor ama hepsi aynı iş değil — yalnızca gerçekten
+     aynı rolü paylaşanlar aynı token'a bağlandı. */
+
+  /* Display serifiyle dizilen HER cümle: karakter ve oyuncu
+     biyografileri, alıntılar, teşekkür satırları ve yedi sayfanın boş
+     liste iletisi. On beş yerde geçiyordu, on beşi de aynı kademe. */
+  --text-reading: 1.15rem;
+
+  /* Sezon ve bölüm sekmeleri. SeasonFilter ile SectionTabs'ın CSS'i
+     harfi harfine aynıydı — iki ayrı bileşen, tek bir görünüm. */
+  --tab-size: 0.82rem;
+  --tab-weight: 600;
+  --tab-tracking: 0.18em;
+
+  /* Ad seçicisi: Vestuario, Prensa ve Citas. Üçü aynı kalıbı
+     kullanıyor; üçüncüsü eklenince kopyalanmıştı. */
+  --switcher-size: 1.5rem;
+  --switcher-size-sm: 1.3rem;
+  --switcher-tracking: 0.06em;
+
+  /* Araç çubuğundaki toplam ("269 capítulos") */
+  --count-size: 0.72rem;
+  --count-tracking: 0.08em;
+
+  /* Bölüm başındaki sayı (Galería'da levha, Prensa'da yıl) */
+  --section-count-size: 0.78rem;
+  --section-count-tracking: 0.02em;
+
   --row-title-size: 1.2rem;
   --row-title-weight: 600;
   --row-label-size: 0.78rem;

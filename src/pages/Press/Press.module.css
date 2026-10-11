@@ -27,8 +27,8 @@
   /* Vestuario'daki karakter seçicisiyle aynı ölçek: ana ayrım altındaki
      sekmelerden daha yüksek sesle konuşmalı. Üç sayfa aynı işi yapıyor,
      biri değişirse ötekiler de değişmeli. */
-  font-size: 1.5rem;
-  letter-spacing: 0.06em;
+  font-size: var(--switcher-size);
+  letter-spacing: var(--switcher-tracking);
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
   transition: var(--transition-smooth);
@@ -50,7 +50,7 @@
 .empty {
   color: var(--color-text-muted);
   font-family: var(--font-family-display);
-  font-size: 1.15rem;
+  font-size: var(--text-reading);
   margin: 32px 0;
 }
 
@@ -88,8 +88,8 @@
   margin-left: auto;
   flex: none;
   color: var(--color-text-muted);
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
+  font-size: var(--section-count-size);
+  letter-spacing: var(--section-count-tracking);
 }
 
 /* ── Satırlar ────────────────────────────────────────────────────────
@@ -261,7 +261,7 @@
   }
 
   .name {
-    font-size: 1.3rem;
+    font-size: var(--switcher-size-sm);
   }
 
   .sep {

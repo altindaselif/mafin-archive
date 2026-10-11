@@ -12,9 +12,9 @@
   border: none;
   background: none;
   font-family: var(--font-family-display);
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
+  font-size: var(--tab-size);
+  font-weight: var(--tab-weight);
+  letter-spacing: var(--tab-tracking);
   text-transform: uppercase;
   color: var(--color-text-muted);
   opacity: 0.6;

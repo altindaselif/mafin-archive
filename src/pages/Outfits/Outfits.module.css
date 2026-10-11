@@ -1,7 +1,7 @@
 .empty {
   color: var(--color-text-muted);
   font-family: var(--font-family-display);
-  font-size: 1.15rem;
+  font-size: var(--text-reading);
   margin: 32px 0;
 }
 
@@ -35,8 +35,8 @@
      vardı; dört adlı Citas'ta şerit sayfanın yarısını kaplıyordu.
      Üç sayfada da aynı: Prensa ve Citas'taki seçiciler bunun kopyası,
      biri değişirse öteki ikisi de değişmeli. */
-  font-size: 1.5rem;
-  letter-spacing: 0.06em;
+  font-size: var(--switcher-size);
+  letter-spacing: var(--switcher-tracking);
   color: var(--color-text-muted);
   border-bottom: 1px solid transparent;
   transition: var(--transition-smooth);
@@ -193,7 +193,7 @@
   }
 
   .name {
-    font-size: 1.3rem;
+    font-size: var(--switcher-size-sm);
   }
 
   .sep {

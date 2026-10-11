@@ -52,8 +52,8 @@
 }
 
 .name {
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
+  font-size: var(--count-size);
+  letter-spacing: var(--count-tracking);
   text-transform: uppercase;
   color: var(--color-text-muted);
 }
