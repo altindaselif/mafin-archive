@@ -46,9 +46,16 @@
 }
 
 .type {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  /* Prensa'daki .outlet ile BİREBİR aynı: iki sayfa da aynı iskeleti
+     kullanıyor (solda künye sütunu, ortada başlık, sağda eylem) ve bu
+     etiket ikisinde de aynı işi yapıyor — satırın ne türden bir şey
+     olduğunu söylüyor, bordo küçük kapitalle.
+     0,68rem/600/0,22em'di: Prensa'nınkinden 1,76px küçük ve bir ağırlık
+     ince, üstelik harf aralığı daha genişti. Yan yana konunca Fandom'un
+     listesi soluk kalıyordu. Biri değişirse ötekiyle birlikte değişmeli. */
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--color-accent);
 }
@@ -90,9 +97,10 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+  /* Prensa'daki .cta ile aynı: satırın sağ ucundaki sessiz davet
+     ("Leer ↗" / "Escuchar ↗"). 0,8rem/500/0,05em idi — yarım punto
+     küçük ama bir ağırlık kalın, yani hem ufak hem gürültülü. */
+  font-size: 0.82rem;
   color: var(--color-text-muted);
   white-space: nowrap;
   transition: var(--transition-smooth);
