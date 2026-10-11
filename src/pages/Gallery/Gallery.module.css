@@ -168,8 +168,12 @@
     gap: 10px;
   }
 
+  /* 1,08rem'di (17,28px). Masaüstünde başlık 1,5'ten 1,2rem'e
+     indirilmişti — orada sayfa başlığıyla yarışıyordu — ve indirim
+     mobile de yansımıştı. Telefonda öyle bir yarış yok; levha başlığı
+     oturum başındaki 20,8px'e dönüyor. */
   .plateTitle {
-    font-size: 1.08rem;
+    font-size: 1.3rem;
   }
 
   .plateCap {

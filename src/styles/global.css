@@ -53,7 +53,11 @@
   /* Ad seçicisi: Vestuario, Prensa ve Citas. Üçü aynı kalıbı
      kullanıyor; üçüncüsü eklenince kopyalanmıştı. */
   --switcher-size: 1.5rem;
-  --switcher-size-sm: 1.3rem;
+  /* 1,3rem'di (mobilde 20,8px). Masaüstünde seçiciyi bir kademe
+     indirmiştik ve o indirim mobile de taşınmıştı; telefonda seçici
+     oturum başındaki 23,2px'in altına düşüyordu. 1,45rem onu geri
+     getiriyor — masaüstündeki 1,5rem'e dokunmadan. */
+  --switcher-size-sm: 1.45rem;
   --switcher-tracking: 0.06em;
 
   /* Araç çubuğundaki toplam ("269 capítulos") */

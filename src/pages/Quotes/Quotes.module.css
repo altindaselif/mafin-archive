@@ -175,6 +175,21 @@
   .switcher {
     margin-bottom: 16px;
   }
+
+  /* Alıntılar telefonda okuma kademesinin BİR ÜSTÜNDE: 1,25rem.
+     Masaüstünde 1,25'ten 1,15'e indirilmişlerdi çünkü kök ölçek %110'a
+     çıkınca 22px edip bağırıyorlardı. Mobilde kök %100, yani o gerekçe
+     yok — orada indirim alıntıyı 20px'ten 18,4px'e düşürmekten başka
+     bir şey yapmıyordu.
+     `--text-reading` token'ı DEĞİŞTİRİLMEDİ: o kademe biyografileri,
+     teşekkürleri ve yedi sayfanın boş iletisini de taşıyor. Burada
+     değişmesi gereken yalnızca alıntılar.
+     İkisi birlikte: .text tek cümlelik alıntı, .dialogueLine iki
+     kişilik olanın satırı — ayrılmamalılar. */
+  .text,
+  .dialogueLine {
+    font-size: 1.25rem;
+  }
 }
 
 /* Dört ad TEK SATIRDA kalmalı: sarmalanınca "·Mafin" alt satıra geçiyor
