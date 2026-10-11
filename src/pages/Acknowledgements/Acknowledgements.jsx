@@ -173,7 +173,16 @@ export default function Acknowledgements() {
   const { t } = useLang();
 
   return (
-    <div className="page page-no-art">
+    /* Köşe çizimi: zincirin SONU. Silüet sırası gezinme sırasıyla
+       birlikte artıyor (34 · 61 · 99 · 145 · 159 · 269 · 363 · 561 ·
+       566) ve bu sayfa menüdeki son durak, o yüzden yedekte bekleyen
+       574 buraya düşüyor.
+       Actrices zincirin dışında: köşeyi kendi oyuncu seçicisi
+       kullanıyor, bu yüzden `page-no-art` onda kalıyor. */
+    <div
+      className="page"
+      style={{ "--page-art": "url(/img/silhouettes/silhouette-ep574.webp)" }}
+    >
       <h1 className="page-title">{t(L.title)}</h1>
       <p className="page-subtitle">{t(L.subtitle)}</p>
 

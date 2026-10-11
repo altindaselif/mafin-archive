@@ -378,8 +378,10 @@ Kopyalanan sabitler:
 >
 > Sıraları gezinme sırasıyla birlikte artıyor:
 > 34 · 61 · 99 · 145 · 159 · 269 · 363 · (Actrices köşeyi kendi kullanıyor) ·
-> 561 · 566. Yeni bir sayfa eklenirse silüeti de bu artan sıraya oturmalı.
-> Yedekte duran kesit: ep574.
+> 561 · 566 · 574. Yeni bir sayfa eklenirse silüeti de bu artan sıraya
+> oturmalı. **Yedek kalmadı** — ep574 Agradecimientos'a verildi (11 Eki),
+> zincirin sonundaki sayfa olduğu için en yüksek numara oraya düştü.
+> Sıradaki sayfa için yeni bir kesit hazırlanması gerekiyor.
 >
 > Vestuario araya girdiğinde (Galería 145 ile Citas arasına) o aralıktan
 > yeni bir kesit aranmadı: 159 Citas'tan devralındı ve ondan sonraki her
