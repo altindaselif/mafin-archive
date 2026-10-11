@@ -59,8 +59,8 @@
 .title {
   margin: 0;
   font-family: var(--font-family-display);
-  font-size: 1.3rem;
-  font-weight: 600;
+  font-size: var(--row-title-size);
+  font-weight: var(--row-title-weight);
 }
 
 .snippet {
