@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Pelayo hablan sobre Darío. Marta y Fina hablan sobre Darío. Marta le dice a Fina que Darío es el ex de Pelayo.",
+    "es": "Marta y Pelayo hablan sobre Darío. Más tarde, Marta le cuenta a Fina que Darío es el ex de Pelayo.",
     "en": "Marta and Pelayo talk about Darío. Marta and Fina talk about Darío. Marta tells Fina that Darío is Pelayo's ex."
   },
+  "noMafin": false,
   "airDate": "2025-04-02"
 }
