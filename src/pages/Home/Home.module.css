@@ -1,7 +1,14 @@
 /* ── Hero ── */
 .hero {
   position: relative;
+  /* `dvh` ÖNEMLİ, `vh` DEĞİL: iOS Safari'de `100vh` adres çubuğu
+     GÖRÜNÜRKEN bile çubuğun gizli olduğu yüksekliği veriyor, yani hero
+     ekrandan taşıyor ve altındaki alıntı kartının ucu görünmüyor.
+     `dvh` o anki gerçek yüksekliği veriyor. `vh` altta duruyor çünkü
+     `dvh` tanımayan eski tarayıcı ikinciyi yok sayıp birinciyi kullanır.
+     Aynı kalıp global.css'teki `.app` kuralında da var. */
   height: 100vh;
+  height: 100dvh;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -402,8 +409,21 @@
     font-size: 0.858rem;
   }
 
+  /* TABAN `rem` DEĞİL `vw`, çünkü taşmaya sebep olan taban idi.
+     4,4rem her telefonda 70,4px demekti ve başlığın mürekkebi o boyda
+     326px tutuyor — 320px'lik ekranda yazıya kalan yer 272px (iki yanda
+     24px dolgu). Yani başlık 54px taşıyor ve `.hero`nun `overflow:
+     hidden`ı N'yi kesiyordu; altındaki cümle de aynı kutuda olduğu için
+     o da kesiliyordu. 360px'te 14px taşma vardı, 375px'te tam sınırda.
+     17,5vw ekranla birlikte küçülüyor: 320'de 56px (mürekkep 259px),
+     360'ta 63px, 375'te 65,6px. 402px'ten sonra bugünkü boyu geçiyor,
+     yani büyük telefonlarda başlık KÜÇÜLMÜYOR.
+     Tavan 5,9rem: 540px ve üstünde 13vw'nin bugün verdiği boya oturuyor,
+     tablet genişliğinde başlık birden büyümesin diye.
+     Mürekkep/punto oranı 4,63 — dosya ya da harf aralığı değişirse
+     yeniden ölçülmeli. */
   .heroTitle {
-    font-size: clamp(4.4rem, 13vw, 9.35rem);
+    font-size: clamp(3.5rem, 17.5vw, 5.9rem);
   }
 
   .heroSubtitle {
