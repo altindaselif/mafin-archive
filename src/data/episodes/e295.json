@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Gema les dice a las chicas de la tienda que tiene una enfermedad del corazón que le impide tener hijos.",
+    "es": "Gema les cuenta a las chicas de la tienda que tiene una enfermedad del corazón que le impide tener hijos.",
     "en": "Gema tells the girls at the store that she has a heart condition that prevents her from having children."
   },
+  "noMafin": false,
   "airDate": "2025-04-25"
 }
