@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina y Marta hablan sobre los rumores y el matrimonio en Mafinca. En ausencia de Carmen, Marta nombra a Fina temporalmente supervisora de la tienda.",
+    "es": "Fina y Marta hablan sobre los rumores y el matrimonio en la Mafinca. En ausencia de Carmen, Marta nombra a Fina temporalmente supervisora de la tienda.",
     "en": "Fina and Marta talk about the gossip and the marriage at Mafinca. In Carmen's absence, Marta temporarily makes Fina the store supervisor."
   },
+  "noMafin": false,
   "airDate": "2025-01-31"
 }
