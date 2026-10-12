@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Fina le expresa a Marta sus miedos sobre tener un hijo. Fina le muestra a Claudia las fotos que le hizo. Gema ve las fotos y le pregunta si Fina le haría fotos a su hijo.",
+    "es": "Fina le expresa a Marta sus miedos ante la posibilidad de tener un hijo. Más tarde, le enseña a Claudia las fotos que le hizo y Gema, al verlas, le pregunta si también le haría fotos a su hijo.",
     "en": "Fina expresses to Marta her fears about having a child. Fina shows Claudia the photos she took of her. Gema sees the photos and asks whether Fina would photograph her son."
   },
+  "noMafin": false,
   "airDate": "2025-07-08"
 }
