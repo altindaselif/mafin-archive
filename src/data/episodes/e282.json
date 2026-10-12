@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Pelayo le dice a Marta que él y Darío pasaron la noche juntos y que quiere darle una oportunidad a su relación con Darío. La familia de la Reina se entera del testamento de Jesús. Jesús ha transferido las acciones de Julia a María hasta que Julia sea mayor de edad.",
+    "es": "Pelayo le cuenta a Marta que él y Darío pasaron la noche juntos y que quiere darle una oportunidad a su relación. La familia de la Reina descubre el contenido del testamento de Jesús: ha transferido las acciones de Julia a María hasta que la niña alcance la mayoría de edad.",
     "en": "Pelayo tells Marta that he and Darío spent the night together and that he wants to give his relationship with Darío a chance. The de la Reina family learns of Jesús's will. Jesús has transferred Julia's shares to María until Julia comes of age."
   },
+  "noMafin": false,
   "airDate": "2025-04-07"
 }
