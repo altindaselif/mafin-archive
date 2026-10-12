@@ -10,8 +10,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Fina y Carmen hablan en la tienda sobre tener un hijo. Pelayo, Marta y Fina hablan en el despacho sobre ello. Después de que Pelayo se va, Marta y Fina siguen hablando del tema.",
+    "es": "Fina y Carmen hablan en la tienda sobre la posibilidad de tener un hijo. Más tarde, Pelayo, Marta y Fina hablan del tema en el despacho. Cuando Pelayo se marcha, Marta y Fina continúan la conversación a solas.",
     "en": "Fina and Carmen talk at the store about having a child. Pelayo, Marta, and Fina talk in the office about it. After Pelayo leaves, Marta and Fina talk about it further."
   },
+  "noMafin": false,
   "airDate": "2025-07-14"
 }
