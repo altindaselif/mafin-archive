@@ -10,8 +10,9 @@
     "argue"
   ],
   "description": {
-    "es": "Marta va a la habitación de Fina. Le cuenta lo de la propuesta de Pelayo de tener un hijo, y discuten.",
+    "es": "Marta va a la habitación de Fina para contarle la propuesta de Pelayo de tener un hijo y discuten al respecto.",
     "en": "Marta comes to Fina's room. She tells her about Pelayo's suggestion of having a child, and they argue."
   },
+  "noMafin": false,
   "airDate": "2025-07-02"
 }
