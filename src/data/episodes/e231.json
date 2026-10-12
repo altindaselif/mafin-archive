@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Fina reciben a Pelayo en Mafinca. No saben cómo comportarse la una con la otra delante de Pelayo, y Pelayo les dice que estén tranquilas. Después de que Fina se va, Pelayo le propone matrimonio a Marta.",
+    "es": "Marta y Fina reciben a Pelayo en la Mafinca. No saben cómo comportarse la una con la otra delante de Pelayo, y Pelayo les dice que estén tranquilas. Tras irse Fina, Pelayo le propone matrimonio a Marta.",
     "en": "Marta and Fina host Pelayo at Mafinca. They do not know how to behave toward each other in front of Pelayo, and Pelayo tells them to relax. After Fina leaves, Pelayo proposes marriage to Marta."
   },
+  "noMafin": false,
   "airDate": "2025-01-24"
 }
