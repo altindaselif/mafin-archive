@@ -363,14 +363,19 @@ Kopyalanan sabitler:
 
 **Gizlenen görseller — yayın günü GERİ AÇ:**
 
-> Site duyurulana kadar diziden kare gösteren iki görsel kapalı: siteye
-> giren biri konuyu ilk bakışta anlamasın. İkisi de tek satır, kod
-> silinmedi. **Bu iki madde kapatılmazsa site kapaksız ve köşe çizimsiz
-> yayına çıkar.**
+> Diziden kare gösteren iki görsel kapalı: siteye giren biri konuyu ilk
+> bakışta anlamasın. İkisi de tek satır, kod silinmedi. **Bu iki madde
+> kapatılmazsa site kapaksız ve köşe çizimsiz yayına çıkar.**
+>
+> 11 Eki'de ikisi de açıldı (`a1f6d8f`), 12 Eki'de **tekrar kapatıldı**:
+> arşiv portföyde gösterilecek ve orada iki kadının birlikteliği
+> görünmesin isteniyor. Yani bu maddeler artık "yayına kadar" değil,
+> "Elif söyleyene kadar" kapalı. Üç yer var, ikisi hero'da:
+> temel `.heroImage` ve dosyanın sonundaki 480px bloğundaki `.heroImage`.
 
-- [x] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır (ana sayfa kapak fotoğrafı) ✅ 11 Eki
+- [ ] `src/pages/Home/Home.module.css` → `.heroImage` içindeki `url("/hero.webp")` satırının yorumunu kaldır **ve** 480px bloğundaki `.heroImage` kuralını yorumdan çıkar (ana sayfa kapak fotoğrafı, masaüstü + telefon)
 
-- [x] `src/styles/global.css` → `.page::after` içindeki `display: none;` satırını sil (köşe çizimleri) ✅ 11 Eki
+- [ ] `src/styles/global.css` → `.page::after` içindeki `display: none;` satırını sil (köşe çizimleri)
 
 > Köşe çizimleri neden kapalı: duotone filtresi kesiti bordoya boyuyor ama
 > pozu gizlemiyor — bakan biri ne olduğunu anlıyor. Yani kapak fotoğrafıyla
