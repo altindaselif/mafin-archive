@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Fina miran vestidos de novia en un catálogo. Mientras se imaginan su propia boda, Clara se da cuenta de lo unidas que están y empieza a sospechar. Esa noche, Pelayo va al despacho de Marta y le dice que echa de menos a Fina, ¿verdad? Marta responde que se han visto muy poco desde el compromiso y que la echa de menos. Pelayo dice que su madre se ha dado cuenta de que hay algo entre ellas, pero que es mejor que lo sepa.",
+    "es": "Marta y Fina miran vestidos de novia en un catálogo. Mientras se imaginan su propia boda, Clara se da cuenta de lo unidas que están y sospecha más. Esa noche, Pelayo va al despacho de Marta y le pregunta si echa de menos a Fina. Marta responde que se han visto muy poco desde el compromiso y que sí la echa de menos. Pelayo dice que su madre se ha dado cuenta de que hay algo entre ellas, pero que es mejor que lo sepa.",
     "en": "Marta and Fina look at wedding dresses in a catalog. As they imagine their own wedding, Clara notices how close they are and grows suspicious. That evening Pelayo comes to Marta's office and says she misses Fina, doesn't she. Marta replies that they have seen very little of each other since the engagement, and that she misses her. Pelayo says that his mother has realized there is something between them, but that it is better that she knows."
   },
+  "noMafin": false,
   "airDate": "2025-02-27"
 }
