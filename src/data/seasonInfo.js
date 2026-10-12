@@ -5,7 +5,7 @@
  * Bu tablo ELLE DÜZENLENMEZ: `npm run sync:dates` onu TVMaze'den yeniden
  * üretiyor. Eskiden elle güncelleniyordu ve bayatlıyordu — 3. sezon
  * "612'de biter" yazarken sezon hâlâ devam ediyordu, yani o tarihten
- * sonraki her bölüm yanlış sezona düşüyordu. Last synced: 2026-10-11, 671 episodes.
+ * sonraki her bölüm yanlış sezona düşüyordu. Last synced: 2026-10-12, 671 episodes.
  *
  * Shared by every page that needs to map an episode number to a season
  * (quotes, videos, …) so the boundaries live in exactly one place.
