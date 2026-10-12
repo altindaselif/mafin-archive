@@ -9,7 +9,7 @@
 
 ## 🔗 Links
 
-- **Preview:** [archivo.universomafin.workers.dev](https://archivo.universomafin.workers.dev)
+- **Live Site:** [View Live Demo](https://archivo.universomafin.workers.dev)
 - **Code:** [View GitHub Repository](https://github.com/altindaselif/mafin-archive)
 
 ---
