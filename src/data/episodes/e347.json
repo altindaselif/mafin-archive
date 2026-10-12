@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Pelayo y Marta hablan sobre el trabajo de Pelayo. Marta le dice a Pelayo que quiere tener un hijo.",
+    "es": "Pelayo y Marta hablan sobre el trabajo de él. Durante la conversación, Marta le comunica que acepta la propuesta de tener un hijo.",
     "en": "Pelayo and Marta talk about Pelayo's work. Marta tells Pelayo that she wants to have a child."
   },
+  "noMafin": false,
   "airDate": "2025-07-10"
 }
