@@ -9,8 +9,9 @@
     "argue"
   ],
   "description": {
-    "es": "Marta y Fina discuten sobre el detective. Fina le pide a Marta que despida al detective. Marta le promete que hablará con Damián y hará que despidan al hombre. Marta le pide a Damián que despida al detective, pero Damián no está por la labor, y discuten.",
+    "es": "Marta y Fina discuten sobre el detective. Fina le pide a Marta que consiga que lo despidan y Marta le promete que hablará con Damián para lograrlo. Sin embargo, cuando Marta se lo pide a Damián, él se niega, lo que provoca una discusión entre ambos.",
     "en": "Marta and Fina argue about the detective. Fina asks Marta to fire the detective. Marta promises to talk with Damián and have the man fired. Marta asks Damián to fire the detective, but Damián is unwilling, and they argue."
   },
+  "noMafin": false,
   "airDate": "2025-05-06"
 }
