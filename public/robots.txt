@@ -1,0 +1,14 @@
+# Arama motorları arşivin tamamını gezebilir.
+#
+# /admin kapalı: CMS'in giriş ekranı, dizinlenecek bir içerik değil.
+# Zaten GitHub girişi istiyor ama arama sonuçlarında çıkması anlamsız.
+#
+# /media/* kapalı: videolar ve 4K fotoğraflar R2'den geliyor. Bir
+# tarayıcı botunun 90 MB'lık klipleri indirmesinin kimseye faydası yok.
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /media/
+
+Sitemap: https://archivo.universomafin.workers.dev/sitemap.xml

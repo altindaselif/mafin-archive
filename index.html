@@ -3,7 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Archivo Mafin</title>
+    <title>Archivo Mafin · Marta y Fina en Sueños de Libertad</title>
+
+    <!-- ÖNİZLEME KARTI VE ARAMA.
+         SPA olduğumuz için bunlar SABİT: paylaşılan adres hangi sayfa
+         olursa olsun kart aynı çıkıyor. Sayfa başına kart istenirse
+         sunucu tarafında render gerekir, o ayrı bir iş.
+
+         ADRES TAŞINIRKEN: aşağıda universomafin.workers.dev geçen üç yer
+         var (canonical, og:url, og:image) ve bir de public/robots.txt ile
+         public/sitemap.xml. Alan adı bağlanınca beşi birden değişmeli.
+
+         og:image mutlak adres olmak ZORUNDA — göreli yol veren kart
+         hiçbir yerde resim göstermez. Kart 1200x630: Facebook,
+         LinkedIn, WhatsApp ve X'in hepsinin istediği ölçü. -->
+    <meta
+      name="description"
+      content="Archivo bilingüe dedicado a Marta y Fina: cada capítulo resumido, las frases que quedaron, los momentos clave en vídeo, la galería y el vestuario."
+    />
+    <link rel="canonical" href="https://archivo.universomafin.workers.dev/" />
+    <meta name="theme-color" content="#16130f" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Archivo Mafin" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:title" content="Archivo Mafin · Marta y Fina" />
+    <meta
+      property="og:description"
+      content="Archivo bilingüe dedicado a Marta y Fina: cada capítulo resumido, las frases que quedaron, los momentos clave en vídeo, la galería y el vestuario."
+    />
+    <meta property="og:url" content="https://archivo.universomafin.workers.dev/" />
+    <meta
+      property="og:image"
+      content="https://archivo.universomafin.workers.dev/img/og-card.jpg"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Archivo Mafin — 1958 · Toledo" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Archivo Mafin · Marta y Fina" />
+    <meta
+      name="twitter:description"
+      content="Cada capítulo resumido, las frases que quedaron y los momentos clave en vídeo."
+    />
+    <meta
+      name="twitter:image"
+      content="https://archivo.universomafin.workers.dev/img/og-card.jpg"
+    />
 
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon.webp" />
 
