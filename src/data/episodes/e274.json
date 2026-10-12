@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Carmen le hace a Marta una propuesta de negocio, sugiriendo que, para aumentar las ventas, podrían ir de puerta en puerta vendiendo después del horario de trabajo.",
+    "es": "Carmen le propone un negocio a Marta sugiriendo que, para aumentar las ventas, podrían salir a vender de puerta en puerta después de su jornada laboral.",
     "en": "Carmen makes Marta a business proposal, suggesting that to increase sales they could go door to door selling after work hours."
   },
+  "noMafin": false,
   "airDate": "2025-03-26"
 }
