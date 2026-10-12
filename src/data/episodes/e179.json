@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras Isidro cuida el jardín de Mafinca, él y Fina hablan. Llega Marta, y ella e Isidro hablan. Isidro le dice a Marta que, cuando la mira, ve a alguien muy distinto de la mujer que creía haber conocido durante años. Marta dice que por fin puede comportarse como ella misma, y que la persona que lo ha hecho posible es Fina. Cuando Fina llega también, Isidro dice que se irá y las dejará solas en su primera noche, y Marta se avergüenza.",
+    "es": "Mientras Isidro cuida el jardín de la Mafinca, él y Fina hablan. Llega Marta, y ella e Isidro hablan. Isidro le dice a Marta que, cuando la mira, ve a alguien muy distinto de la mujer que creía haber conocido durante años. Marta dice que por fin puede comportarse como ella misma, y que la persona que lo ha hecho posible es Fina. Cuando Fina llega también, Isidro dice que se irá y las dejará solas en su primera noche y a Marta le da vergüenza.",
     "en": "While Isidro is tending the garden at Mafinca, he and Fina talk. Marta arrives, and she and Isidro talk. Isidro tells Marta that when he looks at her, he sees someone very different from the woman he thought he had known for years. Marta says that she can finally act like herself, and that the person who has made this possible is Fina. When Fina arrives too, Isidro says he will go and leave them alone on their first night, and Marta is embarrassed."
   },
+  "noMafin": false,
   "airDate": "2024-11-06"
 }
