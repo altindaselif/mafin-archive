@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le cuenta a Claudia lo del teatro al que fue con Marta.",
+    "es": "Fina le cuenta a Claudia su ida al teatro con Marta y bromean con que a la doña no le gusta \"el género chico\".",
     "en": "Fina tells Claudia about the theater she and Marta went to."
   },
+  "noMafin": false,
   "airDate": "2025-05-16"
 }
