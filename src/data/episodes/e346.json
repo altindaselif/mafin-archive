@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Fina les cuenta a Carmen y a Claudia lo del plan de tener un hijo. A las dos les parece un poco raro. Marta y Fina se informan con Luz sobre la fecundación in vitro y deciden tener un hijo.",
+    "es": "Fina les cuenta a Carmen y a Claudia el plan de tener un hijo y a las dos les parece un poco extraño. Más tarde, Marta y Fina consultan con Luz sobre la fecundación in vitro y deciden seguir adelante con la idea de tener un hijo.",
     "en": "Fina tells Carmen and Claudia about the plan to have a child. They both find it a little odd. Marta and Fina get information from Luz about in vitro fertilization and decide to have a child."
   },
+  "noMafin": false,
   "airDate": "2025-07-09"
 }
