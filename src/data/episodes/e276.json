@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta se enfrenta a Joaquín por haber nombrado director a Don Pedro. Marta se entera de que Don Pedro aceptó la propuesta de Carmen, pero que no le dio ningún apoyo económico.",
+    "es": "Marta se enfrenta a Joaquín por haber nombrado director a Don Pedro. Además, descubre que este aceptó la propuesta de Carmen, pero sin ofrecerle ningún apoyo económico.",
     "en": "Marta confronts Joaquín for making Don Pedro director. Marta learns that Don Pedro accepted Carmen's proposal but did not provide any financial support for it."
   },
+  "noMafin": false,
   "airDate": "2025-03-28"
 }
