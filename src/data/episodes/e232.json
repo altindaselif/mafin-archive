@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta y Fina hablan en Mafinca. Marta le cuenta a Fina la petición de matrimonio de Pelayo. Pelayo va a la casa. Fina y Marta rechazan la petición de matrimonio de Pelayo.",
+    "es": "Marta y Fina hablan en la Mafinca. Marta le cuenta a Fina la petición de matrimonio de Pelayo. Pelayo va a la casa. Fina y Marta rechazan la petición de matrimonio de Pelayo.",
     "en": "Marta and Fina talk at Mafinca. Marta tells Fina about Pelayo's marriage proposal. Pelayo comes to the house. Fina and Marta reject Pelayo's marriage proposal."
   },
+  "noMafin": false,
   "airDate": "2025-01-27"
 }
