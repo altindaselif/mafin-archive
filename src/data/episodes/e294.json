@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta le cuenta a Fina las últimas novedades sobre la empresa. Como Marta no para de hablar de Pelayo, Fina se molesta. Marta le propone a Fina ir a Mafinca el fin de semana.",
+    "es": "Marta le cuenta a Fina las últimas novedades de la empresa, pero Fina se molesta porque Marta no para de hablar de Pelayo. Después, Marta le propone pasar el fin de semana juntas en Mafinca.",
     "en": "Marta tells Fina about the latest developments concerning the company. Because Marta keeps talking about Pelayo, Fina gets annoyed. Marta suggests to Fina that they go to Mafinca for the weekend."
   },
+  "noMafin": false,
   "airDate": "2025-04-24"
 }
