@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras Marta y Damián hablan sobre Pelayo, entra Pelayo, y hablan todos juntos. Marta invita a Pelayo a Mafinca, donde charlan. Cuando entra una antigua clienta que la reconoce, Fina saca fuerzas de ello y vuelve a trabajar en la tienda.",
+    "es": "Mientras Marta y Damián hablan sobre Pelayo, entra Pelayo, y hablan todos juntos. Marta invita a Pelayo a la Mafinca, donde charlan. Cuando entra una antigua clienta que la reconoce, Fina saca fuerzas de ello y vuelve a trabajar en la tienda.",
     "en": "As Marta and Damián are talking about Pelayo, Pelayo comes in, and they all talk together. Marta invites Pelayo to Mafinca, where they chat. When an old customer who recognizes her comes in, Fina takes courage from it and returns to working at the store."
   },
+  "noMafin": false,
   "airDate": "2025-01-20"
 }
