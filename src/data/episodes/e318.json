@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta y Fina se sientan en un banco y hablan sobre Clara. Marta menciona la inversión inmobiliaria de Clara. Fina dice que ella podría comprar una casa. Marta y Fina van a ver la ubicación de la casa. Fina se lleva la cámara de fotos que le dejó su padre y le hace fotos a Marta. Se dan cuenta de que no hay ninguna construcción en el lugar que mencionó Clara y comprenden que a Clara la han estafado.",
+    "es": "Marta y Fina se sientan en un banco y hablan sobre Clara. Marta le cuenta a Fina lo de la inversión inmobiliaria, y Fina comenta que ella podría comprar una casa por lo que ambas van a visitar el lugar donde supuestamente se encuentra la propiedad. Fina lleva la cámara de fotos que le dejó su padre y aprovecha para fotografiar a Marta. Al llegar, descubren que no hay ninguna construcción en el lugar que Clara les había indicado y se dan cuenta de que ha sido víctima de una estafa.",
     "en": "Marta and Fina sit on a bench and talk about Clara. Marta mentions Clara's real estate investment. Fina says that she could buy a house. Marta and Fina go to look at the location of the house. Fina brings along the camera that her father left her and takes photos of Marta. They notice that there is no house construction at the place Clara mentioned and realize that Clara has been scammed."
   },
+  "noMafin": false,
   "airDate": "2025-05-30"
 }
