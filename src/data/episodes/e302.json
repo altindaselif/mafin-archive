@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta vuelve a sacarle a Pelayo el tema de incluir a Fina en su testamento como heredera. Pelayo dice que, si lo hace, saldrán rumores y las pondrá a todas en riesgo, y discuten.",
+    "es": "Marta vuelve a plantearle a Pelayo la posibilidad de incluir a Fina en su testamento como heredera. Pelayo se opone, argumentando que eso desataría rumores y les pondría en riesgo. Ambos terminan discutiendo.",
     "en": "Marta brings up with Pelayo again the matter of adding Fina to her will as an heir. Pelayo says that if she does this, gossip will start and she will put them all at risk, and they argue."
   },
+  "noMafin": false,
   "airDate": "2025-05-08"
 }
