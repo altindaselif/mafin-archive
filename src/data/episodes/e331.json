@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Claudia llega a un punto en que no puede con la guardería y le pide ayuda a Fina. Fina ayuda a Claudia.",
+    "es": "Claudia, desbordada por las responsabilidades de la guardería, le pide ayuda a Fina, quien accede a echarle una mano.",
     "en": "Claudia becomes unable to cope with the nursery and asks Fina for help. Fina helps Claudia."
   },
+  "noMafin": false,
   "airDate": "2025-06-18"
 }
