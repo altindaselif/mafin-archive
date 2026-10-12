@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Damián ha contratado a Rojas (el detective privado que Jesús había contratado para hacer las fotos de Marta y Fina) para investigar a Don Pedro. El detective va a la tienda y habla con Fina. Luego escucha a escondidas la conversación de Marta y Fina. Marta empieza a sospechar del detective y le pregunta a Andrés por él, y Andrés le dice la verdad. Marta discute con Damián sobre ello.",
+    "es": "Damián contrata a Rojas para investigar a Don Pedro. Se trata del mismo detective privado al que Jesús había recurrido para fotografiar a Marta y Fina. Rojas va a la tienda y habla con Fina, y después escucha a escondidas una conversación entre ella y Marta. Marta empieza a sospechar de él y le pregunta a Andrés al respecto. Andrés le cuenta la verdad y Marta se enfrenta a Damián por haberlo contratado.",
     "en": "Damián has hired Rojas (the private detective Jesús had hired to take the photos of Marta and Fina) to investigate Don Pedro. The detective comes to the store and talks with Fina. Then he secretly listens in on Marta and Fina's conversation. Marta grows suspicious of the detective and asks Andrés about him, and Andrés tells her the truth. Marta argues with Damián about it."
   },
+  "noMafin": false,
   "airDate": "2025-04-30"
 }
