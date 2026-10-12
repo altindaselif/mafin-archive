@@ -1,6 +1,6 @@
 # 👋 #MAFIN — Fan Archive
 
-> _Four years of a daily drama, indexed — every episode, every quote, every milestone, in two languages._  
+> _Three seasons of a daily drama, indexed — every episode, every quote, every milestone, in two languages._  
 > A bilingual archive for the Mafin storyline of _Sueños de Libertad_ — built on Cloudflare Workers with a headless CMS, self-hosted media on R2, and a moderated fan-submission pipeline.
 
 > ⚠️ **Work in progress — not launched yet.** The engineering is complete and deployed, but the archive is still being filled with real content. The Gallery, the Outfits page and the Fandom section currently hold placeholder images and sample records, and the final domain (`universomafin.com`) is not connected yet. Treat the preview below as a technical demo, not a finished publication.
@@ -23,7 +23,7 @@
 
 ## 🎭 What Is This?
 
-A fan-made archive devoted to **Marta** and **Fina**, the central couple of the Spanish daily drama _Sueños de Libertad_. Four years of a daily broadcast is a lot of story to lose track of, so the archive indexes it all: a summary for every episode, the quotes worth keeping, the milestone moments with video, a photo gallery, a wardrobe index of both women season by season, a character and cast directory, an interview index, a credits page for the people the archive was built on, and a section where fans submit their own work.
+A fan-made archive devoted to **Marta** and **Fina**, the central couple of the Spanish daily drama _Sueños de Libertad_. Nearly seven hundred episodes, broadcast every weekday since February 2024, are a lot of story to lose track of, so the archive indexes it all: a summary for every episode, the quotes worth keeping, the milestone moments with video, a photo gallery, a wardrobe index of both women season by season, a character and cast directory, an interview index, a credits page for the people the archive was built on, and a section where fans submit their own work.
 
 It is written for two audiences at once. Every human-readable string in the dataset is stored as `{ es, en }`, so the whole archive — including the data, not just the interface — switches between **Spanish and English** instantly. And because the people who maintain it are fans rather than developers, the entire catalogue is editable through a **headless CMS at `/admin`**: no pull requests, no JSON by hand, no deploy step.
 
