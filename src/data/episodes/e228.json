@@ -9,8 +9,9 @@
     "argue"
   ],
   "description": {
-    "es": "Marta y Fina hablan en Mafinca, y Marta le hace cosquillas a Fina. Luego Marta le dice a Fina que Pelayo ha ido a la casa. Fina le pregunta cómo puede fiarse de Pelayo, y discuten. Pelayo va a la tienda, y Fina lo trata con frialdad.",
+    "es": "Marta y Fina hablan en la Mafinca, y Marta le hace cosquillas a Fina. Luego Marta le dice a Fina que Pelayo ha ido a la casa. Fina le pregunta cómo puede fiarse de Pelayo y discuten. Pelayo va a la tienda y Fina lo trata con frialdad.",
     "en": "Marta and Fina talk at Mafinca, and Marta tickles Fina. Then Marta tells Fina that Pelayo came to the house. Fina asks how she can trust Pelayo, and they argue. Pelayo comes to the store, and Fina treats him coldly."
   },
+  "noMafin": false,
   "airDate": "2025-01-21"
 }
