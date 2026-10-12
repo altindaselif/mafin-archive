@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Carmen y Fina le dicen a Marta que Don Agustín ha asustado a las empleadas y que se opone al proyecto de venta a domicilio. Marta discute con Don Agustín sobre ello.",
+    "es": "Carmen y Fina le cuentan a Marta que Don Agustín ha asustado a las empleadas y que se opone al proyecto de venta a domicilio. Marta discute con Don Agustín sobre ello.",
     "en": "Carmen and Fina tell Marta that Don Agustín has frightened the female employees and is opposing the door-to-door sales project. Marta argues with Don Agustín about it."
   },
+  "noMafin": false,
   "airDate": "2025-04-16"
 }
