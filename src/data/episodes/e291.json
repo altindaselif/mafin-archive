@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Carmen les dice a Fina y a Claudia que, como Don Agustín las ha asustado, las empleadas no van de puerta en puerta a vender. Carmen y Fina le dicen entonces que pueden ayudar a Carmen hasta que encuentre a gente nueva.",
-    "en": "Carmen tells Fina and Claudia that, because Don Agustín has frightened them, the female employees are not going door to door for sales. Carmen and Fina then say that they can help Carmen until she finds some new people."
+    "es": "Carmen les cuenta a Fina y a Claudia que, después de que Don Agustín las asustara, las empleadas ya no quieren salir a vender de puerta en puerta. Fina y Claudia se ofrecen a ayudarla hasta que encuentre a otras personas.",
+    "en": "Carmen tells Fina and Claudia that, because Don Agustín has frightened them, the female employees are not going door to door for sales. Claudia and Fina then say that they can help Carmen until she finds some new people."
   },
+  "noMafin": false,
   "airDate": "2025-04-21"
 }
