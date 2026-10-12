@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Pelayo intenta convencer a Fina de que diga que sí a la idea de tener un hijo. Fina quiere pensárselo.",
+    "es": "Pelayo intenta convencer a Fina de que apoye la idea de tener un hijo, pero ella prefiere pensárselo antes de darle una respuesta.",
     "en": "Pelayo tries to persuade Fina to say yes to the idea of having a child. Fina wants to think it over."
   },
+  "noMafin": false,
   "airDate": "2025-07-07"
 }
