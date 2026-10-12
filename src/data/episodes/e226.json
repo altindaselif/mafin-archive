@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Fina hablan sobre Pelayo en Mafinca. Fina cree que Pelayo impidió la detención de Marta porque está interesado en ella. Marta le cuenta a Damián lo de Pelayo. Damián teme que Pelayo pueda usar el secreto de Marta en su propio beneficio. Marta le pregunta a Pelayo por qué la ayudó. Pelayo dice que él también es homosexual y que tienen que protegerse el uno al otro.",
+    "es": "Marta y Fina hablan sobre Pelayo en la Mafinca. Fina cree que Pelayo impidió la detención de Marta porque está interesado en ella. Marta le cuenta a Damián lo de Pelayo. Damián teme que Pelayo pueda usar el secreto de Marta en su propio beneficio. Marta le pregunta a Pelayo por qué la ayudó. Pelayo dice que él también es homosexual y que tienen que protegerse el uno al otro.",
     "en": "Marta and Fina talk about Pelayo at Mafinca. Fina thinks Pelayo prevented Marta's arrest because he is interested in her. Marta tells Damián about the Pelayo situation. Damián worries that Pelayo may use Marta's secret for his own benefit. Marta asks Pelayo why he helped her. Pelayo says that he is homosexual too and that they need to protect each other."
   },
+  "noMafin": false,
   "airDate": "2025-01-17"
 }
