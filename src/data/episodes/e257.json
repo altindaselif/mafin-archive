@@ -2,7 +2,7 @@
   "id": "e257",
   "number": 257,
   "title": {
-    "es": "El de cuando Fina duda de la boda",
+    "es": "El de cuando Fina duda sobre la boda",
     "en": "The One Where Fina Doubts the Marriage"
   },
   "moods": [],
@@ -10,5 +10,6 @@
     "es": "Marta y Fina hablan sobre la boda. Fina dice que la boda le pareció sensata al principio, pero que ahora tiene dudas, que su matrimonio parece que las va a distanciar. Marta se queda sin salida ante esta situación y habla con Pelayo. Le dice que le dijo a Fina que se apartara, cuando él había dicho que protegería su relación con Fina. Pelayo le pide perdón. Fina va al despacho, y Marta le dice que ha hablado con Pelayo y que ha resuelto el problema.",
     "en": "Marta and Fina talk about the marriage. Fina says that the marriage seemed sensible at first but that she now has doubts about it, that their marriage looks as though it will drive them apart. Marta is left helpless in this situation and talks with Pelayo. She tells him that he told Fina to step back, when he had said that he would protect her relationship with Fina. Pelayo apologizes. Fina comes to the office, and Marta tells her that she has talked with Pelayo and resolved the problem."
   },
+  "noMafin": false,
   "airDate": "2025-03-03"
 }
