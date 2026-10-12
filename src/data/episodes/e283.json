@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Fina va al despacho de Marta. Hablan sobre el testamento de Jesús y sobre Pelayo y Darío.",
+    "es": "Fina va al despacho de Marta donde hablan sobre el testamento de Jesús y sobre la relación entre Pelayo y Darío.",
     "en": "Fina comes to Marta's office. They talk about Jesús's will and about Pelayo and Darío."
   },
+  "noMafin": false,
   "airDate": "2025-04-08"
 }
