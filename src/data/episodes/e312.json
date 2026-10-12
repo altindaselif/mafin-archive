@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta se ve obligada a informar de lo ocurrido en el robo de la furgoneta a Don Pedro y a la Guardia Civil. Clara percibe la tensión entre Marta y Pelayo y decide quedarse en la casa grande una semana más.",
+    "es": "Marta se ve obligada a informar a Don Pedro y a la Guardia Civil sobre lo ocurrido con el robo de la furgoneta. Clara percibe la tensión entre Marta y Pelayo, por lo que decide quedarse una semana más en la casa grande.",
     "en": "Marta is forced to report what happened in the van robbery to Don Pedro and the Civil Guard. Clara senses the tension between Marta and Pelayo and decides to stay at the big house for another week."
   },
+  "noMafin": false,
   "airDate": "2025-05-22"
 }
