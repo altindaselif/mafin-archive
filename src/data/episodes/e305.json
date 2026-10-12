@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina y Carmen quieren ayudar a Luis a crear un nuevo perfume. Mientras Fina se peina, se da un pequeño tirón del pelo, se acuerda del ataque de Santiago y se angustia.",
+    "es": "Fina y Carmen quieren ayudar a Luis a crear un nuevo perfume. Mientras se peina, Fina se da un pequeño tirón del pelo y recuerda el ataque de Santiago, lo que le provoca angustia.",
     "en": "Fina and Carmen want to help Luis create a new perfume. As Fina is combing her hair, she tugs it a little and remembers Santiago's attack and becomes distressed."
   },
+  "noMafin": false,
   "airDate": "2025-05-13"
 }
