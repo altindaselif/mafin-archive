@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina se encuentra con Pelayo, se disculpa con él y le dice que su secreto está a salvo con ella. Pelayo y Marta hablan de negocios en el despacho. Marta invita a Pelayo a Mafinca.",
+    "es": "Fina se encuentra con Pelayo, se disculpa con él y le dice que su secreto está a salvo con ella. Pelayo y Marta hablan de negocios en el despacho. Marta invita a Pelayo a la Mafinca.",
     "en": "Fina runs into Pelayo, apologizes to him, and tells him that his secret is safe with her. Pelayo and Marta talk about business in the office. Marta invites Pelayo to Mafinca."
   },
+  "noMafin": false,
   "airDate": "2025-01-23"
 }
