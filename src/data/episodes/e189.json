@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le dice a Digna que tiene una relación con Marta. Fina va al despacho de Marta y le dice que le ha contado a Digna lo de su relación. Marta y Fina fantasean con volver a Mafinca y hablan sobre ello.",
+    "es": "Fina le dice a Digna que tiene una relación con Marta. Fina va al despacho de Marta y le dice que le ha contado a Digna lo de su relación. Marta y Fina fantasean con volver a la Mafinca y hablan sobre ello.",
     "en": "Fina tells Digna that she is in a relationship with Marta. Fina comes to Marta's office and tells her that she has told Digna about their relationship. Marta and Fina dream about returning to Mafinca and talk about it."
   },
+  "noMafin": false,
   "airDate": "2024-11-21"
 }
