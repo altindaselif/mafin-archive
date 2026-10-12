@@ -19,14 +19,8 @@
      doubles as the fallback while the image loads (or is absent). */
   position: absolute;
   inset: 0;
-  /* PORTFOLYO İÇİN GİZLİ — bkz. LAUNCH-CHECKLIST.md
-     Kapak fotoğrafı devre dışı: siteye giren biri ilk ekranda diziden bir
-     kare görmesin. Altındaki gradyanlar zaten bu katmanın yedeğiydi, o
-     yüzden hero boş değil — kasıtlı duruyor.
-     Geri açmak: aşağıdaki url(...) satırının yorumunu kaldır VE dosyanın
-     sonundaki 480px bloğundaki .heroImage kuralını geri aç. */
   background:
-    /* url("/hero.webp") center / cover no-repeat, */
+    url("/hero.webp") center / cover no-repeat,
     radial-gradient(ellipse at 68% 30%, rgba(114, 47, 55, 0.45), transparent 55%),
     linear-gradient(160deg, #3a3330 0%, #241f1d 55%, #16130f 100%);
 }
@@ -460,17 +454,11 @@
    oluyor ve alttaki eller kesilmiyor. Dosya değişirse bakılacak şey bu.
    480px sınırı: üstünde `cover` yüksekliği kırpmaya başlar. */
 @media (max-width: 480px) {
-  /* PORTFOLYO İÇİN GİZLİ — kural komple yorumda. Masaüstündeki kapak da
-     kapalı olduğu için telefona ayrı bir kare vermenin anlamı yok: temel
-     katmandaki gradyan (bordo halkasıyla birlikte) burada da geçerli.
-     Geri açmak: bu yorumu kaldır. */
-  /*
   .heroImage {
     background:
       url("/hero-mobile.webp") center / cover no-repeat,
       linear-gradient(160deg, #3a3330 0%, #241f1d 55%, #16130f 100%);
   }
-  */
 
   /* Orta durak 0,55, tahminle değil ölçerek: yazının arkasındaki en
      parlak piksel (pembe elbise) 375x812 ve 375x667'de ayrı ayrı
