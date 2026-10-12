@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Tasio le da a Marta el número de un matón a sueldo llamado Eladio. Marta y Fina hablan en el jardín de Mafinca. Claudia y Mateo tienen un accidente, y Mateo muere.",
+    "es": "Tasio le da a Marta el número de un matón a sueldo llamado Eladio. Marta y Fina hablan en el jardín de la Mafinca. Claudia y Mateo tienen un accidente y Mateo muere.",
     "en": "Tasio gives Marta the number of a hired thug named Eladio. Marta and Fina talk in the garden at Mafinca. Claudia and Mateo have an accident, and Mateo dies."
   },
+  "noMafin": false,
   "airDate": "2024-12-18"
 }
