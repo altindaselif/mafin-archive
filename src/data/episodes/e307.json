@@ -9,8 +9,9 @@
     "argue"
   ],
   "description": {
-    "es": "Cuando Pelayo está a punto de irse a Valencia para una cena de negocios, le propone a Marta que lo acompañe. Marta se niega, diciendo que tiene planes de ir a Madrid con Fina, y discuten.",
+    "es": "Cuando Pelayo está a punto de viajar a Valencia para una cena de negocios, le propone a Marta que lo acompañe. Marta se niega porque tiene planes de ir a Madrid con Fina, lo que provoca una discusión entre ambos.",
     "en": "As Pelayo is about to leave for Valencia for a business dinner, he suggests that Marta come with him. Marta declines, saying that she has plans to go to Madrid with Fina, and they argue."
   },
+  "noMafin": false,
   "airDate": "2025-05-15"
 }
