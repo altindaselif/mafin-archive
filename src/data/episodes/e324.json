@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "A pesar del apoyo de Marta y Begoña, Andrés se siente responsable del accidente de María. Marta intenta defender a su hermano frente a María, que deja abierta la posibilidad de presentar una denuncia contra Andrés.",
+    "es": "A pesar del apoyo de Marta y Begoña, Andrés se siente culpable por el accidente de María. Marta intenta defender a su hermano ante María, quien no descarta presentar una denuncia contra él.",
     "en": "Despite the support of Marta and Begoña, Andrés feels responsible for María's accident. Marta tries to defend her brother against María, who leaves open the possibility of filing a complaint against Andrés."
   },
+  "noMafin": false,
   "airDate": "2025-06-09"
 }
