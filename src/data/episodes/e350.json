@@ -9,8 +9,9 @@
     "baby"
   ],
   "description": {
-    "es": "Marta y Pelayo hablan sobre el trabajo de Pelayo. Pelayo le dice a Marta que ya está todo listo para el procedimiento de fecundación in vitro y que pueden ponerse en camino dentro de dos días.",
+    "es": "Marta y Pelayo hablan sobre el trabajo de éste. Pelayo le cuenta que ya está todo listo para el procedimiento de fecundación in vitro y que pueden ponerse en camino dentro de dos días.",
     "en": "Marta and Pelayo talk about Pelayo's work. Pelayo tells Marta that everything is ready for the in vitro procedure and that they can set off in two days."
   },
+  "noMafin": false,
   "airDate": "2025-07-15"
 }
