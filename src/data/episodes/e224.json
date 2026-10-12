@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Pelayo y Marta discuten por negocios en la cafetería. Pelayo dice que esto no habría pasado si ella hubiera aceptado su invitación a cenar, y Marta le contesta con brusquedad. Mientras todo esto ocurre, Santiago los escucha desde la mesa de al lado. Mientras Marta escribe en su diario en el jardín de Mafinca, Fina le pregunta si algún día le dejará leer lo que escribe. Santiago los observa desde lejos.",
+    "es": "Pelayo y Marta discuten por negocios en la cafetería. Pelayo dice que esto no habría pasado si ella hubiera aceptado su invitación a cenar, y Marta le contesta con brusquedad. Mientras todo esto ocurre, Santiago los escucha desde la mesa de al lado. Mientras Marta escribe en su diario en el jardín de la Mafinca, Fina le pregunta si algún día le dejará leer lo que escribe. Santiago las observa desde lejos.",
     "en": "Pelayo and Marta argue about business at the café. Pelayo says that this would not have happened if she had accepted his dinner invitation, and Marta snaps at him. While all this is happening, Santiago listens in from the next table. As Marta is writing in her diary in the garden at Mafinca, Fina asks whether she will ever let her read what she writes one day. Santiago watches them from a distance."
   },
+  "noMafin": false,
   "airDate": "2025-01-15"
 }
