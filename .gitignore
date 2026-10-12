@@ -8,3 +8,16 @@ src/data/generated/
 # kesimler. Sitenin parçası değil, kaynak malzeme — depoyu şişirmesin.
 # Diskte duruyor; ayrıca yedeklemek iyi olur.
 Photos/
+
+# Ortam değişkenleri. Depoda bir .env YOK ve olmamalı — bütün sırlar
+# Cloudflare'de (`wrangler secret`) duruyor. Bu satır bir gün biri
+# yerelde .env açarsa kazara commit'lenmesin diye.
+.env
+.env.*
+!.env.example
+
+# Yayın öncesi kontrol listesi. Depo herkese açık ve bu dosya HENÜZ
+# YAPILMAMIŞ güvenlik maddelerini sayıyor (R2 CORS, Turnstile hostname),
+# yani okuyana "burası daha sağlamlaştırılmadı" listesi veriyor.
+# Diskte duruyor, git'e girmiyor.
+LAUNCH-CHECKLIST.md
