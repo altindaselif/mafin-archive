@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina e Isidro hablan en la cocina sobre la oferta de la casa en la montaña que ha hecho Damián. Marta y Damián hablan sobre la casa, y Marta acepta la oferta.",
+    "es": "Fina e Isidro hablan en la cocina sobre la oferta de la casa en los montes que ha hecho Damián. Marta y Damián hablan sobre la casa y Marta acepta la oferta.",
     "en": "Fina and Isidro talk in the kitchen about Damián's offer of the mountain house. Marta and Damián talk about the house, and Marta accepts the offer."
   },
+  "noMafin": false,
   "airDate": "2024-10-31"
 }
