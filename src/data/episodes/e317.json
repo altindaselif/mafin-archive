@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Clara les dice a Marta y a Andrés que el hijo de una amiga suya tiene un negocio inmobiliario en Toledo y que ella ha invertido en él. Los anima a que Marta y Andrés inviertan también.",
+    "es": "Clara cuenta a Marta y a Andrés que ha invertido en el negocio inmobiliario en Toledo del hijo de una amiga suya y los anima a hacer lo mismo.",
     "en": "Clara tells Marta and Andrés that the son of a friend of hers has a real estate business in Toledo and that she has invested in it. She encourages Marta and Andrés to invest as well."
   },
+  "noMafin": false,
   "airDate": "2025-05-29"
 }
