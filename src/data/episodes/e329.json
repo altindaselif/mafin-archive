@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "La familia de la Reina conoce a su primo Gabriel, y todos cenan juntos en familia.",
+    "es": "La familia de la Reina conoce al primo Gabriel y todos cenan juntos en familia.",
     "en": "The de la Reina family meets their cousin Gabriel, and they all have dinner together as a family."
   },
+  "noMafin": false,
   "airDate": "2025-06-16"
 }
