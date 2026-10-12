@@ -4,22 +4,15 @@ import { useLang } from "../../i18n.js";
 /*
  * Agradecimientos — arşive emeği geçenler.
  *
- * Kolofon sayfası: ana sayfadaki ızgarada BİLEREK yok (orası tam 10 karo
- * = 5x2, on birincisi düzeni bozar), yalnızca üst menüdeki "Más"
- * listesinden ve künyeden geçiliyor. Kitabın sonundaki teşekkür sayfası
- * gibi — arayan bulur, arayan olmayanı rahatsız etmez.
+ * Ana sayfadaki ızgarada bilerek yok (orası tam 10 karo = 5x2), yalnızca
+ * "Más" listesinden geçiliyor: kitabın sonundaki teşekkür sayfası gibi.
  *
- * NEDEN İŞE GÖRE DEĞİL KİŞİYE GÖRE: önce işe göre gruplanmıştı
- * ("Contenido: @a, @b, @c"). Liste tamamlanınca görüldü ki aynı kişi
- * birden fazla iş yapıyor — biri üç grupta birden geçiyordu. Teşekkür
- * sayfasında aynı ismi üç kez görmek listeyi insanların değil işlerin
- * listesine çeviriyor. Şimdi herkes bir kez, yaptığı işler yanında.
+ * İşe göre değil kişiye göre gruplu. Önce işe göreydi, ama aynı kişi
+ * birden fazla iş yapıyor — biri üç grupta birden geçiyordu ve liste
+ * insanların değil işlerin listesine dönüşmüştü.
  *
- * YENİ KİŞİ EKLEMEK: aşağıdaki PEOPLE dizisine bir satır ekle, başka
- * hiçbir yere dokunma. Sıra listedeki sıra — alfabetik değil, bilerek.
- *
- * `url` isteğe bağlı: bağlantısı olmayan biri düz metin olarak çizilir
- * (herkesin sosyal hesabı olmak zorunda değil).
+ * Yeni kişi: PEOPLE dizisine bir satır, başka yere dokunma. Sıra
+ * listedeki sıra, alfabetik değil. `url` isteğe bağlı.
  */
 
 const PEOPLE = [
@@ -139,16 +132,11 @@ const L = {
      kitabı kimin yaptığını kaydeder. Bu satır ikincisi.
      Ses de ona göre: teşekkür cümlesi değil, künye. Fiil yok, isim
      öbekleri var ve listedeki satırlarla aynı ayraçla (·) diziliyor. */
-  /* CÜMLE, KÜNYE SATIRI DEĞİL. Önce listenin satır dilinde yazılmıştı
-     (solda hesap, sağda italik iş) ama o biçim listeyi bitirmiyor,
-     uzatıyordu — on ikinci bir teşekkür satırı gibi okunuyordu.
-     Cümle olunca sayfanın dışına çıkıyor: liste kimlere teşekkür
-     edildiğini sayar, bu satır arşivi kimin yaptığını söyler.
-     İspanyolcası sayfanın altyazısındaki kalıbı sürdürüyor —
-     "LO escribieron, LO tradujeron, LO fotografiaron" — burada da
-     "LO diseñó y LO programó". Aynı ses, farklı iş.
-     Hesap adı cümlenin ortasında bağlantı olduğu için metin ikiye
-     bölünmüş durumda; iki dilde de virgül `after`ın başında. */
+  /* Cümle, künye satırı değil. Satır dilinde yazılınca listeyi
+     bitirmiyor, on ikinci bir teşekkür satırı gibi uzatıyordu.
+     İspanyolcası altyazıdaki kalıbı sürdürüyor ("LO escribieron…" →
+     "LO diseñó y LO programó"). Hesap adı cümlenin ortasında bağlantı
+     olduğu için metin ikiye bölük; virgül iki dilde de `after`da. */
   colophonBefore: {
     /* "Este/This", "El/The" DEĞİL: sayfa kendinden bahsederken zaten
        böyle diyor ("Compañera en la idea de este archivo"). İki dil de

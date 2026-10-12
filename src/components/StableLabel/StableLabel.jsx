@@ -2,21 +2,15 @@ import styles from "./StableLabel.module.css";
 import { useLang } from "../../i18n.js";
 
 /**
- * Dil değişince genişliği değişmeyen etiket.
+ * Dil değişince genişliği değişmeyen etiket. "Temporada"/"Season" farklı
+ * genişlikte, menü ve sekmeler dil değişince kayıyordu.
  *
- * Sorun: "Temporada" ile "Season", "Inicio" ile "Home" farklı genişlikte.
- * Dil değişince menü ve sekmeler yanlara kayıyor.
+ * İki dilin metni de aynı ızgara hücresinde; hücre geniş olana göre
+ * şekilleniyor, aktif olmayan `visibility: hidden`. Elle "hangisi uzun"
+ * hesabı gerekmiyor, üçüncü bir dilde de çalışır — ayrıca `hidden`
+ * erişilebilirlik ağacından da çıkarıyor, metin iki kez okunmuyor.
  *
- * Çözüm: iki dilin metnini de aynı ızgara hücresine koy. Hücre her zaman
- * GENİŞ olana göre şekillenir, aktif olmayan `visibility: hidden` ile
- * gizlenir. "Hangisi daha uzun" diye elle hesaplamak gerekmiyor — üçüncü
- * bir dil eklense de kendiliğinden çalışır.
- *
- * `visibility: hidden` erişilebilirlik ağacından da çıkarır, yani ekran
- * okuyucu metni iki kez okumaz.
- *
- * `align`: dar açılır menülerde metin sola hizalı olmalı; ortalanınca
- * kısa metin içeri kaçmış gibi durur.
+ * `align`: dar menülerde sola hizalı olmalı, ortalanınca içeri kaçıyor.
  */
 export default function StableLabel({ field, align = "center" }) {
   const { lang } = useLang();

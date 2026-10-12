@@ -128,23 +128,15 @@
 }
 
 /* ── Telefon: sayılar kendi satırında ─────────────────────────────────
-   Tek satırda şerit 324,8px istiyor (iki yön düğmesi 73,6 + sayı bloğu
-   157,6 + iki oluk). 320px'lik ekranda 272px var, 375px'te 327 — yani
-   ancak 2px payla sığıyordu ve kök yazı ölçeği %110'a çıkınca o pay da
-   bitti (ölçüldü: sayfa 28px yatay kayıyordu).
-   Sayılar üste, yön düğmeleri altta iki uca: ikisi de rahatça sığıyor
-   ve şerit kitabın sayfa altı gibi simetrik kalıyor.
-   Daraltma yerine bu: "Anterior"/"Siguiente" kelimelerini okla
-   değiştirmek ya da yazıyı küçültmek, sığdırmak için 47px'e inmeyi
-   gerektiriyordu — okunmazdı. Sayı penceresini daraltmak ise JSX
-   değişikliği (buildRange'in sibling'i) ve ekran genişliğini
-   bileşenin içine sokardı. */
-/* Oluk telefonlarda 24 → 12px. Yatay dizilim için gereken şerit
-   278px (ölçüldü: iki adım 67'şer, numaralar 144) ve 24px'lik iki oluk
-   bunu 326px'e çıkarıyordu — sayfa dolgusuyla birlikte 374px'lik bir
-   ekran demek, yani 375px'lik bir telefonda TEK PİKSEL pay. 12px'le
-   gereken ekran 350px'e iniyor ve 360px'lik Android'lerde de 10px pay
-   kalıyor. */
+   Tek satırda şerit 324,8px istiyor, 320px'lik ekranda 272px var. Kök
+   yazı ölçeği %110'a çıkınca kalan 2px'lik pay da bitti ve sayfa 28px
+   yatay kaydı. Sayılar üste, yön düğmeleri altta iki uca.
+   Alternatifler elendi: kelimeleri okla değiştirmek ya da yazıyı
+   küçültmek 47px'e inmeyi gerektiriyordu (okunmazdı), sayı penceresini
+   daraltmak ise ekran genişliğini bileşenin içine sokardı. */
+/* Oluk 24 → 12px: 24'le gereken ekran 374px, yani 375px'lik telefonda
+   tek piksel pay. 12px'le 350px'e iniyor, 360px'lik Android'lerde de
+   10px pay kalıyor. */
 @media (max-width: 480px) {
   .pager {
     gap: 12px;

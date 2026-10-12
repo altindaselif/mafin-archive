@@ -102,20 +102,15 @@ const VERB = {
 const MONTH_YEAR = { month: "long", year: "numeric" };
 
 /*
- * Turnstile betiğini yalnızca form açıldığında yüklüyoruz. Sayfa
- * açılışında yüklemek diğer sayfalara da maliyet bindirirdi; bu form
- * ise ziyaretçilerin çoğunun hiç açmadığı bir yer.
- *
- * `render=explicit`: widget'ı biz elle çiziyoruz, çünkü kimliğini
- * saklayıp gönderimden sonra sıfırlamamız gerekiyor (jetonlar tek
- * kullanımlık; modal açık kaldığı için ikinci deneme aynı jetonla
- * gelirse sunucu reddeder).
+ * Turnstile betiği yalnızca form açılınca yükleniyor: ziyaretçilerin
+ * çoğu bu formu hiç açmıyor. `render=explicit` çünkü widget'ın
+ * kimliğini saklayıp gönderimden sonra sıfırlamamız gerekiyor —
+ * jetonlar tek kullanımlık, modal açık kalınca ikinci deneme aynı
+ * jetonla gelir ve sunucu reddeder.
  */
-/* Turnstile API'sinin hazır olduğunu haber verecek genel fonksiyonun adı.
-   Betiğin kendi `onload`'u YETMİYOR: `api.js?render=explicit` bir
-   yükleyici, kendi onload'u tetiklendiğinde `window.turnstile` henüz
-   atanmamış oluyor. Cloudflare bunun için `onload=` parametresini
-   tanımlıyor — asıl API hazır olunca burayı çağırıyor. */
+/* API hazır olunca çağrılacak genel fonksiyonun adı. Betiğin kendi
+   `onload`'u yetmiyor: `api.js?render=explicit` bir yükleyici, onload'u
+   tetiklendiğinde `window.turnstile` henüz atanmamış oluyor. */
 const TURNSTILE_READY = "__mafinTurnstileReady";
 const TURNSTILE_SRC =
   `https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=${TURNSTILE_READY}`;

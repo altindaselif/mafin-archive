@@ -15,29 +15,15 @@
   --shadow-soft: 0 8px 30px rgba(43, 43, 43, 0.06);
   --shadow-lift: 0 16px 40px rgba(43, 43, 43, 0.12);
   /* ── Liste satırı ────────────────────────────────────────────────
-     Guía, Prensa ve Fandom aynı iskeleti kullanıyor: solda künye,
-     ortada kaydın adı, sağda sessiz bir davet.
-     AMA ÜÇÜ AYRI CSS MODÜLÜ. Prensa'nın `.title`'ı ile Guía'nın
-     `.title`'ı AYNI SINIF DEĞİL — yalnızca adaşlar, ayrı dosyalarda
-     ayrı ayrı yazılmışlar. CSS Modules her birine kendi karmasını
-     veriyor (`_title_a1b2c_59`). Bu yüzden değerleri zamanla
-     birbirinden koptu: başlık üç sayfada 1,15 / 1,3 / 1,3 olmuştu,
-     kategori etiketi 0,68 ile 0,78 arasında.
-     Artık değerler BURADA. Bir satır rolünün boyutunu değiştirmek
-     isteyen buraya dokunsun; üç sayfa birden takip eder. Dördüncü bir
-     liste eklenirse o da buradan beslenmeli.
-     Boyut dışındaki her şey (ızgara sütunları, satır dolgusu, renk)
-     sayfanın kendi işi: Prensa'da 33 kayıt var ve satırları sıkı,
-     Fandom'da birkaç tane var ve ferah. Tutarlı olması gereken
-     TİPOGRAFİ, yoğunluk değil. */
+     Guía, Prensa ve Fandom aynı satırı çiziyor ama üçü ayrı CSS
+     modülü: `.title`'ları aynı sınıf değil, ayrı dosyalarda yazılmış
+     adaşlar. Bu yüzden kaymışlardı (başlık 1,15 / 1,3 / 1,3).
+     Tipografi burada, yoğunluk sayfanın kendi işi — Prensa'nın 33
+     satırı sıkı, Fandom'un birkaç satırı ferah olmalı. */
   /* ── Sayfalar arası ortak kademeler ──────────────────────────────
-     Aşağıdakilerin hepsi birden çok modülde, birebir aynı değerle
-     tekrar ediyordu. Her sayfanın kendi CSS modülü olduğu için
-     aralarında hiçbir bağ yoktu: biri değişince ötekiler kalıyordu ve
-     fark ancak gözle yakalanıyordu.
-     Rol bazında yazıldılar, değer bazında değil. `0.72rem` sitede on
-     iki yerde geçiyor ama hepsi aynı iş değil — yalnızca gerçekten
-     aynı rolü paylaşanlar aynı token'a bağlandı. */
+     Role göre bağlandılar, değere göre değil: `0.72rem` sitede on iki
+     yerde geçiyor ama hepsi aynı iş değil. Değere göre bağlamak mood
+     etiketlerini bölüm sayacına sonsuza kadar bağlardı. */
 
   /* Display serifiyle dizilen HER cümle: karakter ve oyuncu
      biyografileri, alıntılar, teşekkür satırları ve yedi sayfanın boş

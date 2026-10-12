@@ -241,23 +241,13 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  /* Dolgunun iki değeri birbirine BAĞLI, tek tek değiştirilmemeli:
-     yatayı kısmak açıklamanın satır sayısını düşürür, bu da kartı
-     kısaltır — kare bozulur. Ölçümle bulunan denge (kart 205px geniş):
-
-       28px 28px -> açıklama 149px, bir kart 3 satır, kart 205x207
-       28px 18px -> açıklama 169px, hepsi 2 satır, kart 205x185 (basık)
-       38px 18px -> açıklama 169px, hepsi 2 satır, kart 205x205  ✓
-
-     Yani yatayı 10 kısaltıp dikeyi 10 artırmak gerekti. Kart genişliği
-     ya da açıklama metinleri değişirse bu denge yeniden ölçülmeli.
-     Mobilde tek sütunda ezilmesin diye aşağıda geri açılıyor.
-
-     DİKEY 38→34: kök yazı ölçeği %110'a çıkınca metin 38px dolguyla
-     kareye sığmaz oldu ve `aspect-ratio`nun asgari boyutu devreye
-     girip kartı 205x213'e uzattı. Dört piksel dikey dolgu geri
-     verilince kare yeniden kapanıyor. Yatay 18px DEĞİŞMEDİ — onu
-     kısmak satır sayısını düşürüp kartı yeniden basıklaştırırdı. */
+  /* İki değer birbirine bağlı, tek tek değiştirilmemeli: yatayı kısmak
+     açıklamanın satır sayısını düşürür, kart kısalır, kare bozulur.
+     205px genişlikte ölçülen denge 34px/18px — yatayı 10 kısaltıp
+     dikeyi 10 artırmak gerekti (28/28 kartı 3 satıra çıkarıyor, 28/18
+     ise 205x185 basık bırakıyor). Kök ölçek %110'a çıkınca dikey 38'den
+     34'e indi; yatay 18 sabit kaldı. Kart genişliği ya da metinler
+     değişirse yeniden ölçülmeli. */
   padding: 34px 18px;
   /* Kareyi NİYETE çevirir. Bu olmadan yükseklik yalnızca içerikten
      türüyordu: tek bir açıklama 4 satıra çıkınca on kart birden
@@ -438,29 +428,17 @@
 }
 
 /* ── Telefon: hero'nun karesi değişiyor ──────────────────────────────
-   Masaüstündeki fotoğraf 2:1 ve iki kadın karede yan yana duruyor.
-   Dikey ekranda `cover` o karenin ortadaki %23'ünü bırakıyor ve o dilime
-   iki yüzden yalnızca biri giriyordu — resim hep "yarım" çıkıyordu.
-   Karartmayı artırmak yalnızca yazıyı kurtarıyordu, fotoğrafı değil.
-   Çözüm kareyi değiştirmek: hero-mobile.webp aynı sahnenin başka bir
-   planı — ikisi alın alına, boydan boya, dar bir sütunda. Dikey kadrajda
-   kaybedilen şey arka plandaki depo oluyor, öznenin kendisi değil.
+   Masaüstü fotoğrafı 2:1; dikey ekranda `cover` ortadaki %23'ü bırakıyor
+   ve iki yüzden yalnızca biri giriyor. Çözüm kareyi değiştirmek, kadrajı
+   CSS'te aramak değil — dosya zaten istenen kare, burada sadece `center`
+   var. `background-position` yüzdesi denenmişti: `cover` ile görünen
+   dilimin genişliği ekran oranına bağlı olduğu için tek bir yüzde her
+   telefonda başka yeri ortalıyor.
 
-   KADRAJ DOSYADA, CSS'TE DEĞİL. Dosya (815x1390) zaten istenen kare;
-   burada yalnızca `center` var. Bir ara bunun yerine `background-position`
-   yüzdesi aranmıştı, o yol yanlıştı: `cover` ile görünen dilimin
-   genişliği EKRAN ORANINA bağlı, yani tek bir yüzde her telefonda başka
-   yeri ortalıyor. Kare dosyada sabitlenince `center` tanımı gereği doğru.
-
-   ORAN 0,586 VE BU ÖNEMLİ: en "geniş" telefon portresi 0,5625 (375x667
-   ve 360x640). Dosyanın oranı bunun üstünde olduğu için her telefonda
-   TAM YÜKSEKLİK görünüyor, kırpma yalnızca yanlardan oluyor — yani en
-   alttaki birleşen eller hiçbir telefonda kesilmiyor. Dosya değişirse
-   kontrol edilecek şey bu: oran 0,5625'in altına düşerse eller gider.
-
-   480px SINIRI: bu orandan geniş bir pencerede (tabletler, yatay
-   telefon) `cover` yüksekliği kırpmaya başlar. 480'in üstünde geniş kare
-   kullanılmaya devam ediyor; en büyük telefon 440px. */
+   Oran 0,5625'in (en geniş telefon portresi) ALTINA düşmemeli: üstünde
+   kaldığı sürece her telefonda tam yükseklik görünüyor, kırpma yanlardan
+   oluyor ve alttaki eller kesilmiyor. Dosya değişirse bakılacak şey bu.
+   480px sınırı: üstünde `cover` yüksekliği kırpmaya başlar. */
 @media (max-width: 480px) {
   /* PORTFOLYO İÇİN GİZLİ — kural komple yorumda. Masaüstündeki kapak da
      kapalı olduğu için telefona ayrı bir kare vermenin anlamı yok: temel

@@ -1,25 +1,12 @@
 /*
- * Sitenin sunucu tarafı.
+ * Sitenin sunucu tarafı: R2'deki medyayı servis ediyor ve Fandom
+ * formunun gönderimlerini alıyor. Statik dosyalar buraya uğramıyor,
+ * yalnızca eşleşmeyen yollar düşüyor (/media/* ve sayfa adresleri).
  *
- * İki iş yapıyor: R2'deki medyayı servis etmek ve Fandom formunun
- * gönderimlerini almak. Statik dosyalar (HTML, JS, CSS, yerel resimler)
- * buraya hiç uğramıyor — Cloudflare onları doğrudan servis ediyor.
- *
- * ── Medya sunucusu ──
- *
- * Fotoğraf ve videolar Cloudflare R2'de duruyor. Eskiden tarayıcı onları
- * doğrudan `pub-*.r2.dev` adresinden çekiyordu — Cloudflare'in geliştirme
- * adresi. O adres hız sınırlı, önbelleksiz ve Türkiye'den kararsız
- * çalışıyordu: aynı fotoğraf bazen açılıyor bazen açılmıyordu.
- *
- * Site Cloudflare'e taşınınca R2 kovaları doğrudan bu Worker'a bağlanabildi.
- * Artık medya sitenin kendi adresinden geliyor (`/media/...`), r2.dev hiç
- * devreye girmiyor: kararsızlık da, hız sınırı da yok, üstelik Cloudflare'in
- * kendi önbelleği devreye giriyor.
- *
- * Statik dosyalar (HTML, JS, CSS, yerel resimler) bu koda hiç uğramıyor —
- * Cloudflare onları doğrudan servis ediyor. Buraya yalnızca eşleşmeyen
- * yollar düşüyor: /media/* ve React Router'ın çözdüğü sayfa adresleri.
+ * Medya neden Worker üzerinden: kovalar doğrudan bağlı olduğu için
+ * dosyalar sitenin kendi adresinden geliyor ve Cloudflare'in önbelleğine
+ * giriyor. Eskiden `pub-*.r2.dev` kullanılıyordu — hız sınırlı,
+ * önbeleksiz, Türkiye'den kararsız.
  */
 
 import { handleFandom } from "./fandom.js";

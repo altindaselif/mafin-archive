@@ -70,22 +70,18 @@ const MILESTONE_BY_EPISODE = new Map(
 );
 
 /*
- * Katalog doğrudan import ediliyor. Eskiden çalışma anında fetch ediliyordu
- * ve yorumda "~1000 kayıt bundle'ı şişirir" yazıyordu — gerçek sayı 54,
- * dosya 4 KB. Karşılığında ekstra bir gidiş-geliş, yükleniyor durumu, hata
- * durumu, iskelet ve AbortController taşınıyordu. Bu sayfa zaten lazy bir
- * chunk; 4 KB oraya girince hiçbir şeyi etkilemiyor.
- * (Katalog gerçekten binlere çıkarsa fetch'e dönmek doğru olur.)
+ * Katalog doğrudan import ediliyor. Eski yorum "~1000 kayıt bundle'ı
+ * şişirir" diyordu; gerçek sayı 54, dosya 4 KB — karşılığında bir
+ * gidiş-geliş, yükleniyor/hata durumu ve AbortController taşınıyordu.
+ * Binlere çıkarsa fetch'e dönmek doğru olur.
  *
- * Kayıtlar burada, modül seviyesinde bir kez normalize ediliyor: sayfanın
- * geri kalanı veriye koşulsuz güveniyor, filtrelerde dağınık `?? []`
- * kontrolleri olmuyor.
+ * Normalizasyon modül seviyesinde bir kez: sayfanın geri kalanında
+ * dağınık `?? []` kontrolleri olmasın.
  *
- * Başlık ve temalar bölüm numarasından devralınıyor — video kaydında
- * tekrarlanan veri yok. episodes.js'in tamamı (409 KB) yerine build'de
- * üretilen meta indeksi (62 KB) kullanılıyor: bu sayfa bölüm açıklamalarını
- * hiç göstermiyor, açıklamalar da verinin dörtte üçü. Sezon da numaradan
- * seasonOf() ile türüyor, indekste saklanmıyor.
+ * Başlık ve temalar bölüm numarasından devralınıyor. episodes.js'in
+ * tamamı (409 KB) değil build'de üretilen meta indeksi (62 KB)
+ * kullanılıyor — bu sayfa açıklamaları hiç göstermiyor, açıklamalar da
+ * verinin dörtte üçü.
  */
 const VIDEOS = catalogue.map((v) => {
   const ep = episodeMeta[v.episode];

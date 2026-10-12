@@ -12,21 +12,16 @@ import { useLang } from "../../i18n.js";
 /*
  * Kostüm levhaları: Marta ve Fina'nın dizi boyunca giydiği kıyafetler.
  *
- * NEDEN KÜNYE YOK: aynı kıyafet bir sürü bölümde görünüyor, o yüzden
- * katalogda bölüm numarası tutulmuyor (gerekçesi src/data/outfits.js'te).
- * Elimizde levha numarasından başka veri olmadığı için sayfa bilerek saf
- * görsel: her karenin altında yalnızca numara var, bölüm satırı ya da
- * Guía bağlantısı yok. Şıklık metadatadan değil ritimden geliyor.
+ * Künye yok çünkü veri yok: aynı kıyafet bir sürü bölümde görünüyor,
+ * katalogda bölüm numarası tutulmuyor (gerekçesi outfits.js'te). Sayfa
+ * bu yüzden bilerek saf görsel — karenin altında yalnızca numara.
  *
- * İKİ KADEMELİ SÜZGEÇ: karakter sayfanın ANA ayrımı (süzgeç değil), sezon
- * onun altında ikinci kademe. "İkisi birden" diye bir seçenek YOK: ortak
- * bir sıralama ekseni olmadığı için iki listeyi karıştırmak sıra değil
- * gürültü üretiyor.
+ * Karakter sayfanın ana ayrımı, sezon ikinci kademe. "İkisi birden"
+ * yok: ortak bir sıralama ekseni olmadan iki liste karışınca gürültü
+ * çıkıyor.
  *
- * Köşe çizimi ep159. Silüetlerin sırası gezinme sırasıyla birlikte artıyor;
- * bu sayfa Galería (145) ile Citas arasına girdiği için 159'u Citas'tan
- * devraldı ve ondan sonraki her sayfa bir kaydı. Actrices zincirin dışında:
- * köşeyi kendi oyuncu seçicisi kullanıyor. Tablo LAUNCH-CHECKLIST.md'de.
+ * Köşe çizimi ep159 — silüet sırası gezinme sırasını takip ediyor,
+ * tablo LAUNCH-CHECKLIST.md'de.
  */
 
 const L = {

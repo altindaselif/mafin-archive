@@ -1,20 +1,11 @@
 /*
- * Sekme şeridi — SeasonFilter ve SectionTabs'ın ORTAK görünümü.
+ * SeasonFilter ve SectionTabs'ın ortak görünümü.
  *
- * İki bileşen ayrı duruyor çünkü SÖZLEŞMELERİ farklı: SeasonFilter
- * sekmeleri eşit enli tutmak için her düğmeye bütün etiketleri
- * yerleştiren bir yuva kullanıyor (seçim değişince sıra oynamasın
- * diye), SectionTabs ise düz etiketler ve bir "hepsi" seçeneği taşıyor.
- * Ama GÖRÜNÜMLERİ aynıydı ve iki dosyada harfi harfine aynı kurallar
- * yazılıydı — mobil blokların yorumları dahil.
+ * Bileşenler ayrı kalıyor çünkü sözleşmeleri farklı (SeasonFilter her
+ * düğmeye bütün etiketleri koyup eşit en tutturuyor, SectionTabs düz
+ * etiketler + "hepsi" taşıyor). Görünümleri ise harfi harfine aynıydı.
  *
- * Görünüm buraya taşındı, sözleşmeler kendi dosyalarında kaldı.
- * Üçüncü bir şerit gerekirse buradan beslenmeli.
- *
- * `composes` KULLANILIYOR, global sınıf değil: bu bir bileşenin iç
- * görünümü, sayfaların doğrudan takacağı bir şey değil. CSS Modules
- * composes'u iki sınıf adını birden basıyor, yani `.active::after`
- * gibi birbirine bağlı kurallar aynı dosyada kaldığı sürece çalışıyor.
+ * Global sınıf değil `composes`: bu bir bileşenin iç görünümü.
  */
 
 .strip {

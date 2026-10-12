@@ -1,28 +1,13 @@
 /*
- * Sayfalar arası paylaşılan kural gövdeleri.
+ * Sayfaların paylaştığı kural gövdeleri.
  *
- * ÖLÇÜ: buraya giren şey tekrar eden bir KARAR olmalı, tekrar eden
- * karakterler değil. Soru şu — "bu değer değişirse hepsi birlikte mi
- * değişmeli?" Cevap hayırsa burada işi yok.
+ * Ölçü: tekrar eden bir KARAR mı, yoksa sadece tekrar eden karakterler
+ * mi? Bu değer değişirse hepsi birlikte değişmeli mi? Hayırsa burada
+ * işi yok — liste sıfırlaması ve aynı değeri taşıyıp farklı iş yapanlar
+ * (kart metni / alıntı künyesi) bu yüzden dışarıda kaldı.
  *
- * Bu yüzden DIŞARIDA kalanlar:
- *
- *   Liste sıfırlaması (`list-style/margin/padding`). Beş sayfada aynı
- *   üç satır olarak duruyor. Bir ara buraya alındı, sonra geri kondu:
- *   kazanılan 12 satırın karşılığında her sayfaya bu dosyaya giden bir
- *   yol eklendi. Üç satırlık bir sıfırlamayı anlamak için ikinci bir
- *   dosya açmak, o üç satırı tekrar yazmaktan pahalı. Hiçbir sayfa
- *   ötekine bakarak listesini nasıl sıfırlayacağına karar vermiyor —
- *   yani ortada paylaşılan bir karar yok.
- *
- *   Aynı değeri taşıyıp farklı iş yapanlar: Milestone'un kart metni ile
- *   ana sayfanın alıntı künyesi ikisi de 0,85rem soluk, ama biri kart
- *   gövdesi biri künye. Bağlasaydık birini değiştiren ötekini habersiz
- *   değiştirirdi.
- *
- * Global sınıf değil `composes`: sayfalar bu kuralı kendi `.controls`
- * sınıfları üzerinden alıyor, yani JSX'te `styles.controls` yazmaya
- * devam ediyor ve sayfa isterse üstüne ekleyebiliyor.
+ * Global sınıf değil `composes`: sayfalar kendi `.controls`'ü üzerinden
+ * alıyor, üstüne ekleyebiliyor.
  */
 
 /* Arama kutusu + ruh hâli etiketleri şeridi — Guía ve Vídeos'ta aynı.

@@ -2,21 +2,15 @@ import styles from "./NameSwitcher.module.css";
 
 /**
  * Sayfanın ana ayrımı: Marta / Fina, Marta / Alba / Alma,
- * Todos / Marta / Fina / Mafin.
+ * Todos / Marta / Fina / Mafin. Üç sayfada kopyala-yapıştır duruyordu.
  *
- * Üç sayfada da aynı işaretleme vardı — kopyala-yapıştır, üç nüsha.
- * Üçüncüsü eklenirken dosyaya "bir dördüncüsü gelirse ortak bir
- * bileşene çıkarmanın zamanı gelmiş demektir" diye not düşülmüştü;
- * dördüncüyü beklemeye gerek kalmadı.
+ * `labelOf` ayrı bir prop çünkü gösterilen ad saklanan değerden farklı
+ * olabiliyor: Vestuario'da değer "marta" etiket "Marta", Citas'ta "All"
+ * dile göre "Todos"/"All" yazılıyor, Prensa'da ikisi aynı (varsayılan
+ * birim işlev, o yüzden Prensa hiçbir şey vermiyor).
  *
- * `labelOf` AYRI BİR PROP, çünkü üç sayfada da gösterilen ad saklanan
- * değerden farklı olabiliyor: Vestuario'da değer "marta", etiket
- * "Marta"; Citas'ta "All" değeri dile göre "Todos"/"All" yazılıyor;
- * Prensa'da ikisi aynı. Varsayılanı birim işlev, yani Prensa hiçbir şey
- * vermiyor.
- *
- * Ayraç KENDİ ADIYLA aynı `<span>` içinde: sarmalanınca satır sonunda
- * tek başına asılı kalmasın diye.
+ * Ayraç kendi adıyla aynı `<span>` içinde: sarmalanınca satır sonunda
+ * asılı kalmasın.
  */
 export default function NameSwitcher({
   options = [],

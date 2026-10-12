@@ -9,22 +9,13 @@ import { formatDate, useLang } from "../../i18n.js";
 /*
  * Prensa — Marta ve Alba'nın röportajları.
  *
- * ÜÇ EKSEN, İKİ KONTROL: kim (ana ayrım, üstte), biçim (ikinci kademe
- * süzgeç) ve yıl (aradaki ayraçlar). Vestuario'daki iskeletin aynısı,
- * bilerek: ziyaretçinin öğreneceği ikinci bir düzen olmasın.
+ * Üç eksen, iki kontrol: kim (üstte), biçim (süzgeç), yıl (ayraç).
+ * Vestuario'nun iskeletiyle aynı, bilerek. Yıl süzgeç değil başlık,
+ * çünkü sürekli artıyor; sekme olsa her yıl bir sekme daha eklenirdi.
  *
- * NEDEN YIL SÜZGEÇ DEĞİL BAŞLIK: yıl sürekli artıyor. Sekme yapılsaydı
- * her yıl bir sekme daha eklenir ve asıl istenen şey kaybolurdu —
- * zaman içinde kayarak gezmek. Başlıklar arşivin şeklini gösteriyor.
- *
- * NEDEN BİÇİMDE "TODAS" VAR AMA KİŞİDE YOK: biçim bir mod — kimi okumak
- * ister, kimi izlemek, kimi ikisini birden. Kişi ise sayfanın ayrımı;
- * Vestuario'da Marta/Fina nasıl zorunlu bir seçimse burada da öyle.
- *
- * SEKMELER AYRIK: "Alba" yalnızca Alba'nın tek başına konuştuklarını
- * getiriyor, ikisinin birlikte olduğu röportajlar "Alma"da. Kapsayıcı
- * olsaydı ortak röportajlar üç sekmede birden çıkar ve sekme sayıları
- * toplamı listeyi aşardı. Ayrı bir "ikisi" değeri veride YOK; Alma,
+ * Sekmeler AYRIK: "Alba" yalnızca tek başına konuştuklarını getiriyor,
+ * ikisi birlikteyse "Alma"da. Kapsayıcı olsaydı ortak röportajlar üç
+ * sekmede birden çıkardı. Veride ayrı bir "ikisi" değeri yok — Alma,
  * `people` iki isim birden içeriyor demek.
  */
 
