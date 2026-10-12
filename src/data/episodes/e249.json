@@ -9,8 +9,9 @@
     "kiss"
   ],
   "description": {
-    "es": "Marta va a la habitación de Fina y la besa en el cuello. Hablan sobre Pelayo y la boda. Fina bromea diciendo que quizá ella también se case con alguien, y por un momento Marta se lo cree y se queda desconcertada. Marta le dice a Fina que su boda con Pelayo no va a cambiar nada entre ellas. Marta dice que Gema va a empezar a trabajar, y Fina se opone a ello.",
+    "es": "Marta va a la habitación de Fina y la besa en el cuello. Hablan sobre Pelayo y la boda. Fina bromea diciendo que quizá ella también se case con alguien, y por un momento Marta se lo cree y se queda desconcertada. Marta le dice a Fina que su boda con Pelayo no va a cambiar nada entre ellas. Marta dice que Gema va a empezar a trabajar en la tienda, lo que a Fina no le hace ninguna gracia.",
     "en": "Marta comes to Fina's room and kisses her on the neck. They talk about Pelayo and the marriage. Fina jokes that maybe she will marry someone too, and for a moment Marta believes her and is startled. Marta tells Fina that her marriage to Pelayo will not change anything between them. Marta says that Gema is going to start working, and Fina objects to this."
   },
+  "noMafin": false,
   "airDate": "2025-02-19"
 }
