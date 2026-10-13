@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina le da a Gema las fotos de su hijo. A Gema, Carmen y Claudia les gustan mucho las fotos. Por la noche, en la tienda, Marta y Fina miran las fotos que hizo Fina, y a Marta también le gustan mucho.",
+    "es": "Fina le entrega a Gema las fotografías que hizo de su hijo. A Gema, Carmen y Claudia les encantan. Por la noche, en la tienda, Marta y Fina las miran juntas y a Marta también le gustan mucho.",
     "en": "Fina gives Gema the photos of her son. Gema, Carmen, and Claudia like the photos very much. In the evening at the store, Marta and Fina look at the photos Fina took, and Marta likes them very much too."
   },
+  "noMafin": false,
   "airDate": "2025-07-24"
 }
