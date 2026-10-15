@@ -239,8 +239,13 @@
     position: fixed;
     top: 72px;
     right: 0;
-    bottom: 0;
     left: 0;
+    /* `bottom: 0` DEĞİL `height: 100vh`. `bottom: 0` görünür alanın o
+       anki altına yapışıyor; telefonda adres çubuğu kayarken o sınır
+       hareket ediyor ve altta perdesiz bir şerit beliriyor. `vh` en
+       büyük yüksekliği verdiği için perde bilerek TAŞIYOR — fazlası
+       ekranın dışında kalıyor, boşluk hiç oluşmuyor. */
+    height: 100vh;
     background: rgba(22, 19, 15, 0.38);
     opacity: 0;
     visibility: hidden;

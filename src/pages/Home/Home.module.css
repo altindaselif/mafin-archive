@@ -1,14 +1,21 @@
 /* ── Hero ── */
 .hero {
   position: relative;
-  /* `dvh` ÖNEMLİ, `vh` DEĞİL: iOS Safari'de `100vh` adres çubuğu
-     GÖRÜNÜRKEN bile çubuğun gizli olduğu yüksekliği veriyor, yani hero
-     ekrandan taşıyor ve altındaki alıntı kartının ucu görünmüyor.
-     `dvh` o anki gerçek yüksekliği veriyor. `vh` altta duruyor çünkü
-     `dvh` tanımayan eski tarayıcı ikinciyi yok sayıp birinciyi kullanır.
-     Aynı kalıp global.css'teki `.app` kuralında da var. */
+  /* `svh`, `dvh` DEĞİL — ÜÇÜ DE FARKLI ŞEY:
+       vh  → adres çubuğu GİZLİYKENKİ yükseklik (hep en büyüğü)
+       dvh → O ANKİ yükseklik, çubuk kayarken DEĞİŞİR
+       svh → adres çubuğu GÖRÜNÜRKENKİ yükseklik (hep en küçüğü)
+     `vh` ilk hâliydi: çubuk görünürken hero ekrandan taşıyor, altındaki
+     alıntı kartının ucu görünmüyordu. `dvh` onu çözdü ama yenisini
+     açtı — telefonda ilk kaydırmada çubuk gizlenince `dvh` büyüyor ve
+     hero gözle görülür biçimde UZUYOR, sayfa sıçrıyor.
+     `svh` sabit: çubuk açılıp kapanırken değişmiyor, yani sıçrama yok.
+     Karşılığında çubuk gizlendiğinde altta biraz boşluk kalıyor — ama
+     orada zaten alıntı kartı var, görünmesi istenen şey o.
+     `vh` altta değil ÜSTTE duruyor: `svh` tanımayan eski tarayıcı ikinci
+     satırı yok sayıp birincide kalıyor. */
   height: 100vh;
-  height: 100dvh;
+  height: 100svh;
   display: grid;
   place-items: center;
   overflow: hidden;
