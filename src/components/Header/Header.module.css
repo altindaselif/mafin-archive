@@ -225,12 +225,22 @@
      menüyü kapatmanın tek yolu hamburger düğmesiydi.
      Menünün ALTINDA (z-index), sayfanın ÜSTÜNDE: menüye yapılan
      tıklamalar perdeye düşmüyor, sayfaya yapılanlar düşüyor.
-     Başlığın kendisi z-index 100'de ve bu perde onun içinde, yani
-     `inset: 0` tüm ekranı kaplıyor. */
+
+     `top: 72px`, `inset: 0` DEĞİL. Perde bu başlığın İÇİNDE duruyor ve
+     `.header`ın arka planı onun ebeveyni — ekranın tamamını kaplayınca
+     başlık çubuğunu da karartıyordu. Marka ve hamburger `.inner`
+     içinde olduğu için (perdeden SONRA boyanıyorlar) kendileri
+     kararmıyor, ama arkalarındaki şerit kararıyordu: yarım karartılmış,
+     kirli bir çubuk. Çubuk menünün bir parçası, perdelenecek olan şey
+     ARKADAKİ SAYFA.
+     72px `.inner`ın yüksekliği; menü de zaten oradan başlıyor. */
   .scrim {
     display: block;
     position: fixed;
-    inset: 0;
+    top: 72px;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: rgba(22, 19, 15, 0.38);
     opacity: 0;
     visibility: hidden;
