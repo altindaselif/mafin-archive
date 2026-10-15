@@ -261,6 +261,18 @@
     pointer-events: auto;
   }
 
+  /* MENÜ AÇIKKEN BAŞLIK DA TAM OPAK.
+     `.solid` %92 opak ve bu normalde doğru — kaydırırken arkadaki
+     sayfanın bir tutam sızması isteniyor. Ama menü açıkken başlığın
+     arkasında koyu hero duruyor: %92'lik şerit grileşiyor, hemen
+     altındaki %98'lik menü başka bir griye düşüyor ve iki farklı gri
+     yan yana geliyor. Menü açıkken sızdıracak bir şey yok, panel ile
+     şerit tek bir yüzey olmalı. */
+  .menuOpenHeader {
+    background: var(--color-bg);
+    border-bottom-color: transparent;
+  }
+
   .nav {
     position: absolute;
     top: 72px;
@@ -270,7 +282,8 @@
     align-items: flex-start;
     gap: 0;
     padding: 12px 24px 20px;
-    background: rgba(249, 248, 246, 0.98);
+    /* Tam opak: hem arkasındaki hero hem de perde sızıyordu. */
+    background: var(--color-bg);
     border-bottom: 1px solid var(--color-border);
     opacity: 0;
     visibility: hidden;

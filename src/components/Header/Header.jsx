@@ -72,6 +72,15 @@ export default function Header() {
   const [moreOpen, setMoreOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const moreRef = useRef(null);
+  const burgerRef = useRef(null);
+
+  // Closing by Escape or by tapping the scrim leaves focus nowhere, so a
+  // keyboard user is dropped at the top of the document. Send it back to
+  // the control that opened the menu.
+  const closeMenu = () => {
+    setMenuOpen(false);
+    burgerRef.current?.focus();
+  };
 
   // Solid vs transparent: only the Home page starts transparent over the hero.
   useEffect(() => {
@@ -97,12 +106,24 @@ export default function Header() {
     };
   }, [moreOpen]);
 
+  // Scroll lock. Without it the page keeps moving under an open menu,
+  // and on a phone the scroll usually lands on the page rather than the
+  // menu, so the thing you are reading slides away while you aim at it.
+  // `no-scroll` already exists in global.css for the modal.
+  useEffect(() => {
+    if (!menuOpen) return;
+    document.body.classList.add("no-scroll");
+    return () => document.body.classList.remove("no-scroll");
+  }, [menuOpen]);
+
   // Escape closes the phone menu. The "More" dropdown has had this since
   // it was written; the menu itself never did, so once it was open the
   // only way out was the burger again.
   useEffect(() => {
     if (!menuOpen) return;
-    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    const onKey = (e) => {
+      if (e.key === "Escape") closeMenu();
+    };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [menuOpen]);
@@ -126,14 +147,16 @@ export default function Header() {
 
   return (
     <header
-      className={`${styles.header} ${solid ? styles.solid : styles.transparent}`}
+      className={`${styles.header} ${solid ? styles.solid : styles.transparent} ${
+        menuOpen ? styles.menuOpenHeader : ""
+      }`}
     >
       {/* Perde. `.inner`den ÖNCE duruyor ki menü onun üstünde boyansın:
           ikisi de konumlandırılmış kardeş, sonraki kazanıyor. Dekoratif
           olduğu için düğme değil — klavyeyle kapatmak Escape'te. */}
       <div
         className={`${styles.scrim} ${menuOpen ? styles.scrimOpen : ""}`}
-        onClick={() => setMenuOpen(false)}
+        onClick={closeMenu}
         aria-hidden="true"
       />
 
@@ -143,8 +166,10 @@ export default function Header() {
         </Link>
 
         <button
+          ref={burgerRef}
           className={styles.burger}
           aria-expanded={menuOpen}
+          aria-controls="site-nav"
           aria-label={t(L.openMenu)}
           onClick={() => setMenuOpen((v) => !v)}
         >
@@ -153,7 +178,10 @@ export default function Header() {
           <span />
         </button>
 
-        <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}>
+        <nav
+          id="site-nav"
+          className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`}
+        >
           <NavLink to="/" end className={linkClass} onClick={scrollTopIfHome}>
             <StableLabel field={L.home} />
           </NavLink>
