@@ -84,6 +84,12 @@
   color: var(--color-accent);
 }
 
+/* Perde yalnızca telefon menüsüne ait; masaüstünde menü hep açık
+   olduğu için çizilmiyor bile. */
+.scrim {
+  display: none;
+}
+
 /* ── "More" dropdown ── */
 .more {
   position: relative;
@@ -215,6 +221,31 @@
     display: flex;
   }
 
+  /* PERDE. Menünün dışına basınca kapansın diye — daha önce hiç yoktu,
+     menüyü kapatmanın tek yolu hamburger düğmesiydi.
+     Menünün ALTINDA (z-index), sayfanın ÜSTÜNDE: menüye yapılan
+     tıklamalar perdeye düşmüyor, sayfaya yapılanlar düşüyor.
+     Başlığın kendisi z-index 100'de ve bu perde onun içinde, yani
+     `inset: 0` tüm ekranı kaplıyor. */
+  .scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(22, 19, 15, 0.38);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scrimOpen {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
   .nav {
     position: absolute;
     top: 72px;
@@ -229,7 +260,22 @@
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
-    transition: var(--transition-smooth);
+    /* GEÇİŞ TEK TEK SAYILIYOR, `all` DEĞİL. `all` olsaydı
+       `pointer-events` de geçişe girer ve kapanırken eski değerini
+       300ms boyunca korurdu — yani menü kapandıktan sonra çeyrek
+       saniye daha tıklanabilir kalırdı. */
+    transition:
+      opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* HAYALET DÜĞME KAPISI. `visibility: hidden` tek başına YETMİYOR:
+       visibility kalıtsal ve bir çocuk onu `visible`a geri çevirebiliyor
+       — aşağıdaki `.dropdown` tam olarak bunu yapıyordu. `opacity: 0`
+       ise ezilemediği için bağlantılar GÖRÜNMEZ ama TIKLANABİLİR
+       kalıyordu; kapalı menü sayfanın yarısını yiyordu.
+       `pointer-events` kalıtsal değil ve çocuk tarafından geri
+       açılmadıkça kapalı kalır. Asıl kilit bu. */
+    pointer-events: none;
     /* GÜVENLİK AĞI: menü on iki bağlantı + dil satırı taşıyor ve
        bunların hepsi kısa bir telefonda ekrana sığmayabilir. `dvh`
        kullanılıyor çünkü tarayıcı çubuğu kayarken `vh` sabit kalıyor
@@ -244,6 +290,7 @@
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
   }
 
   /* 10px'ti ve on iki satır alt alta gelince menü tek bir yığın gibi
@@ -306,7 +353,10 @@
     position: static;
     display: block;
     opacity: 1;
-    visibility: visible;
+    /* `visible` DEĞİL `inherit`: mobilde bu bağlantılar menünün bir
+       parçası, kendi başlarına bir açılır değil. `visible` yazmak
+       kapalı menünün `hidden`ını eziyordu. */
+    visibility: inherit;
     transform: none;
     box-shadow: none;
     border: none;

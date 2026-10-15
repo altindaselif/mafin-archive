@@ -97,6 +97,16 @@ export default function Header() {
     };
   }, [moreOpen]);
 
+  // Escape closes the phone menu. The "More" dropdown has had this since
+  // it was written; the menu itself never did, so once it was open the
+  // only way out was the burger again.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
   // Reset transient UI state on navigation.
   useEffect(() => {
     setMoreOpen(false);
@@ -118,6 +128,15 @@ export default function Header() {
     <header
       className={`${styles.header} ${solid ? styles.solid : styles.transparent}`}
     >
+      {/* Perde. `.inner`den ÖNCE duruyor ki menü onun üstünde boyansın:
+          ikisi de konumlandırılmış kardeş, sonraki kazanıyor. Dekoratif
+          olduğu için düğme değil — klavyeyle kapatmak Escape'te. */}
+      <div
+        className={`${styles.scrim} ${menuOpen ? styles.scrimOpen : ""}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+
       <div className={styles.inner}>
         <Link to="/" className={styles.brand} onClick={scrollTopIfHome}>
           Mafin
