@@ -161,7 +161,16 @@ npm run build    # production build in /dist
 
 ## 🤝 How This Was Built
 
-I designed and built this archive myself, with **Claude Code** as a pair programmer. The architecture, the data model, and every product decision are mine — including the ones that came from watching real editors struggle, like removing manual numbering from the CMS after a friend hit the insert-in-the-middle problem. AI sped up implementation, refactors and performance work; the measurements, the trade-offs and the review were mine. The codebase is commented throughout (in Turkish, for my own future reference) with the reasoning behind each non-obvious decision — most of the "why" paragraphs in the section above are lifted from those comments.
+I designed and built this archive myself, with **Claude Code** as a pair
+programmer. The architecture, the data model and every product decision are
+mine, including the ones that came from watching a real editor struggle, like
+removing manual numbering from the CMS after a friend hit the
+insert-in-the-middle problem. AI helped with implementation, refactors and
+performance work; the measurements, the trade-offs and the review were mine.
+
+The code is commented throughout, in Turkish for my own later reference, with
+the reason behind every decision that is not obvious. Most of the explanations
+in the section above come from those comments.
 
 ---
 
