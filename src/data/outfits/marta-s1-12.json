@@ -1,7 +1,6 @@
 {
-  "_sample": true,
   "character": "marta",
   "season": 1,
   "order": 12,
-  "photo": "https://picsum.photos/seed/mafin-marta-s1-12/900/1200"
+  "photo": "outfits/marta-s1-12.jpg"
 }
