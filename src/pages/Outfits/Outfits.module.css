@@ -56,6 +56,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Üstten hizalı, ortalı değil. Kaynaklar 9:16 telefon kareleri, çerçeve
+     3:4 — yüksekliğin dörtte biri kırpılıyor. Ortalanınca bunun yarısı
+     üstten gidiyordu ve yüz hep kesiliyordu. Üstten hizalayınca kırpmanın
+     tamamı etekte kalıyor; eteğin tamamı zaten büyütünce görünüyor. */
+  object-position: top;
   transition: var(--transition-smooth);
 }
 
