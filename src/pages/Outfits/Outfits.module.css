@@ -154,3 +154,28 @@
     margin: 24px 0 16px;
   }
 }
+
+/* Derleyenin künyesi — Vídeos'taki `.credit` ile aynı ses ve aynı yer:
+   listenin ayağında, sağa yaslı, italik ve soluk. Orada iki not yan yana
+   durduğu için bir `.colophon` kuşağı var; burada tek not olduğundan
+   `margin-left: auto` tek başına yetiyor. */
+.credit {
+  margin: 40px 0 0;
+  margin-left: auto;
+  text-align: right;
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+}
+
+.credit a {
+  color: var(--color-accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  font-style: normal;
+  transition: var(--transition-smooth);
+}
+
+.credit a:hover {
+  border-bottom-color: var(--color-accent);
+}

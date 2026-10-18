@@ -45,6 +45,10 @@ const L = {
     es: "Todavía no hay conjuntos en este volumen.",
     en: "No outfits in this volume yet.",
   },
+  credit: {
+    es: "Vestuario recopilado por",
+    en: "Wardrobe compiled by",
+  },
 };
 
 /* Adlar iki dilde de aynı — özel isim, çeviri sözlüğüne girmiyorlar. */
@@ -156,6 +160,16 @@ export default function Outfits() {
           </ul>
         </>
       )}
+
+      {/* Kıyafetleri tek tek bulup derleyen kişi. Vídeos'taki künyeyle
+          aynı yerde ve aynı seste: listeden sonra, sağa yaslı. Süzgeçten
+          bağımsız — sayfanın tamamına ait bir not, o anki sekmeye değil. */}
+      <p className={styles.credit}>
+        {t(L.credit)}{" "}
+        <a href="https://x.com/iamsway88" target="_blank" rel="noopener noreferrer">
+          @iamsway88
+        </a>
+      </p>
 
       <Modal open={!!open} onClose={close} wide label={t(L.title)}>
         {open && (
