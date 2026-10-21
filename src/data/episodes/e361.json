@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina y Carmen hablan sobre fotografía en la tienda. Fina dice que le gustaría revelar ella misma las fotos, pero que necesita un cuarto oscuro. Carmen se lo dice a Gaspar, y Gaspar encuentra una habitación.",
+    "es": "Fina y Carmen hablan de fotografía en la tienda. Fina comenta que le gustaría revelar las fotos ella misma, pero que necesita un cuarto oscuro. Carmen se lo cuenta a Gaspar, quien cede un espacio en la cantina que puede servir para ello.",
     "en": "Fina and Carmen talk about photography at the store. Fina says that she would like to develop the photos herself but that she needs a darkroom. Carmen tells this to Gaspar, and Gaspar finds a room."
   },
+  "noMafin": false,
   "airDate": "2025-07-30"
 }
