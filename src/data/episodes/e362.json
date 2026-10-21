@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Las chicas de la tienda han convertido la habitación que encontró Gaspar en un cuarto oscuro para Fina. Se lo enseñan a Fina, y Fina se pone muy contenta.",
+    "es": "Las chicas de la tienda convierten la habitación que cedió Gaspar en un cuarto oscuro para Fina. Cuando se lo enseñan, Fina se pone muy contenta.",
     "en": "The girls at the store have turned the room Gaspar found into a darkroom for Fina. They show it to Fina, and Fina is overjoyed."
   },
+  "noMafin": false,
   "airDate": "2025-07-31"
 }
