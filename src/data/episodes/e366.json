@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta se da cuenta de que hay un error en el reparto de beneficios del perfume y lo consulta con Pelayo.",
+    "es": "Marta detecta un error en el reparto de beneficios del perfume y lo consulta con Pelayo.",
     "en": "Marta notices that there is an error in the profit-sharing for the perfume and consults Pelayo about it."
   },
+  "noMafin": false,
   "airDate": "2025-08-06"
 }
