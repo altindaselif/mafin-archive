@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Como Fina no consigue revelar las fotos, una persona no queda satisfecha con sus fotos. Por eso, la confianza de Fina en su fotografía baja. Se desahoga con Carmen y Claudia al respecto. Intenta revelar fotos en el cuarto oscuro y de nuevo no lo consigue. Carmen y Claudia apoyan a Fina.",
+    "es": "Como Fina no consigue revelar las fotografías, la persona que se las encargó queda insatisfecha con el resultado. Esto hace que Fina pierda confianza en su trabajo y se desahogue con Carmen y Claudia. Más tarde, vuelve a intentarlo en el cuarto oscuro, pero tampoco lo consigue. Carmen y Claudia la apoyan.",
     "en": "Because Fina cannot manage to develop photos, one person is not satisfied with her photos. Because of this, Fina's confidence in her photography drops. She pours out her troubles about it to Carmen and Claudia. She tries to develop photos in the darkroom and again cannot manage it. Carmen and Claudia support Fina."
   },
+  "noMafin": false,
   "airDate": "2025-08-04"
 }
