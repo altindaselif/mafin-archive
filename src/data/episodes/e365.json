@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Fina de nuevo no consigue revelar las fotos en el cuarto oscuro. Con esto, su confianza baja aún más. Para aumentar la confianza de Fina, Carmen y Claudia deciden coger los negativos de las fotos que hizo, hacerlas revelar por un fotógrafo profesional como sorpresa y montar una exposición en la colonia.",
+    "es": "Fina vuelve a fracasar al intentar revelar las fotografías en el cuarto oscuro, lo que hace que pierda aún más confianza en sí misma. Para animarla, Carmen y Claudia deciden llevar los negativos de sus fotos a un fotógrafo profesional para que las revele y, como sorpresa, organizar una exposición en la colonia.",
     "en": "Fina again cannot manage to develop photos in the darkroom. As a result, her confidence drops even further. To boost Fina's confidence, Carmen and Claudia decide to take the negatives of the photos she took, have them developed by a professional photographer as a surprise, and hold an exhibition in the colony."
   },
+  "noMafin": false,
   "airDate": "2025-08-05"
 }
