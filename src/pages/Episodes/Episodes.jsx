@@ -1,4 +1,11 @@
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import {
+  Fragment,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useSearchParams } from "react-router-dom";
 import styles from "./Episodes.module.css";
 import SearchInput from "../../components/SearchInput/SearchInput.jsx";
@@ -6,8 +13,10 @@ import MoodFilter from "../../components/MoodFilter/MoodFilter.jsx";
 import SeasonFilter from "../../components/SeasonFilter/SeasonFilter.jsx";
 import MoodTags from "../../components/MoodTags/MoodTags.jsx";
 import Pager from "../../components/Pager/Pager.jsx";
+import EpisodeGap from "../../components/EpisodeGap/EpisodeGap.jsx";
 import ListToolbar from "../../components/ListToolbar/ListToolbar.jsx";
 import episodes from "../../data/episodes.js";
+import episodeGaps from "../../data/episodeGaps.js";
 import { formatDate, useLang } from "../../i18n.js";
 import { seasonsIn } from "../../data/seasonInfo.js";
 import {
@@ -48,6 +57,23 @@ const PAGE_SIZE = 30; // keeps each "page" of the guide a comfortable scroll
 
 const ALL_MOODS = orderMoods(episodes.flatMap((e) => e.moods));
 const SEASONS = seasonsIn(episodes);
+
+/* Kasıtlı boşlukların listedeki yeri. Veri sabit olduğu için bir kez,
+   modül seviyesinde hesaplanıyor.
+
+   `after`: boşluğun ARDINDAN geleceği satır — atlanan aralıktan önceki
+   son kataloglanmış bölüm. `to`: aralığın son bölümü, bir sonraki
+   kataloglanmış bölümden türüyor; o bölüm henüz yoksa null kalıyor ve
+   künye aralığı açık uçlu yazıyor. */
+const GAPS = episodeGaps.map((gap) => {
+  const before = episodes.filter((e) => e.number < gap.from).at(-1);
+  const after = episodes.find((e) => e.number > gap.from);
+  return {
+    ...gap,
+    after: before?.number ?? null,
+    to: after ? after.number - 1 : null,
+  };
+});
 
 export default function Episodes() {
   const { lang, t } = useLang();
@@ -90,7 +116,8 @@ export default function Episodes() {
     setSearchParams({}, { replace: true });
   }, [searchParams, setSearchParams]);
 
-  const toggleMood = (mood) => setActiveMoods((prev) => toggleMoodIn(prev, mood));
+  const toggleMood = (mood) =>
+    setActiveMoods((prev) => toggleMoodIn(prev, mood));
 
   /* Guía açıklamalarda da arıyor — Vídeos'tan tek farkı bu. */
   const filtered = useMemo(
@@ -110,6 +137,12 @@ export default function Episodes() {
     (currentPage - 1) * PAGE_SIZE,
     currentPage * PAGE_SIZE,
   );
+
+  /* Boşluk yalnızca liste arşivin kendi sırasını gösterirken anlamlı.
+     Arama ya da tema süzgeci açıkken satırlar zaten eleniyor — orada
+     "arada atlanan bölümler var" demek süzgecin yaptığını arşivin
+     tercihi gibi gösterirdi. */
+  const showGaps = !deferredQuery.trim() && activeMoods.size === 0;
 
   const goToPage = (next) => {
     setPage(next);
@@ -164,59 +197,66 @@ export default function Episodes() {
       <ul className={styles.list}>
         {paged.map((ep) => {
           const expanded = expandedId === ep.id;
+          /* Boşluk kendi yerini bölüm numarasından buluyor, sıradan
+             değil: sayfalama değişse de 611'in hemen ardında kalıyor. */
+          const gap = showGaps ? GAPS.find((g) => g.after === ep.number) : null;
           return (
-            <li
-              key={ep.id}
-              id={`guide-ep-${ep.number}`}
-              className={`${styles.row} ${expanded ? styles.rowOpen : ""}`}
-            >
-              {/* Whole row toggles the accordion */}
-              <div
-                className={styles.rowMain}
-                role="button"
-                tabIndex={0}
-                onClick={() => setExpandedId(expanded ? null : ep.id)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    setExpandedId(expanded ? null : ep.id);
-                  }
-                }}
-                aria-expanded={expanded}
-                aria-label={`${t(L.readAria)} ${ep.number}`}
+            <Fragment key={ep.id}>
+              <li
+                id={`guide-ep-${ep.number}`}
+                className={`${styles.row} ${expanded ? styles.rowOpen : ""}`}
               >
-                <span className={styles.number}>
-                  {String(ep.number).padStart(2, "0")}
-                </span>
+                {/* Whole row toggles the accordion */}
+                <div
+                  className={styles.rowMain}
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setExpandedId(expanded ? null : ep.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setExpandedId(expanded ? null : ep.id);
+                    }
+                  }}
+                  aria-expanded={expanded}
+                  aria-label={`${t(L.readAria)} ${ep.number}`}
+                >
+                  <span className={styles.number}>
+                    {String(ep.number).padStart(2, "0")}
+                  </span>
 
-                <div className={styles.middle}>
-                  <MoodTags moods={ep.moods} />
-                  <h2 className={styles.title}>{t(ep.title)}</h2>
-                  {/* Clamped snippet hides while the accordion is open */}
-                  {!expanded && (
-                    <p className={styles.snippet}>{t(ep.description)}</p>
+                  <div className={styles.middle}>
+                    <MoodTags moods={ep.moods} />
+                    <h2 className={styles.title}>{t(ep.title)}</h2>
+                    {/* Clamped snippet hides while the accordion is open */}
+                    {!expanded && (
+                      <p className={styles.snippet}>{t(ep.description)}</p>
+                    )}
+                  </div>
+
+                  {ep.airDate && (
+                    <time className={styles.date} dateTime={ep.airDate}>
+                      <span className={styles.dateDay}>
+                        {fmtDay(ep.airDate)}
+                      </span>
+                      <span className={styles.dateMonth}>
+                        {fmtMonthYear(ep.airDate, lang)}
+                      </span>
+                    </time>
                   )}
                 </div>
 
-                {ep.airDate && (
-                  <time className={styles.date} dateTime={ep.airDate}>
-                    <span className={styles.dateDay}>{fmtDay(ep.airDate)}</span>
-                    <span className={styles.dateMonth}>
-                      {fmtMonthYear(ep.airDate, lang)}
-                    </span>
-                  </time>
-                )}
-              </div>
-
-              {/* Accordion: grid-rows 0fr → 1fr for a smooth height animation */}
-              <div
-                className={`${styles.accordion} ${expanded ? styles.accordionOpen : ""}`}
-              >
-                <div className={styles.accordionInner}>
-                  <p className={styles.fullText}>{t(ep.description)}</p>
+                {/* Accordion: grid-rows 0fr → 1fr for a smooth height animation */}
+                <div
+                  className={`${styles.accordion} ${expanded ? styles.accordionOpen : ""}`}
+                >
+                  <div className={styles.accordionInner}>
+                    <p className={styles.fullText}>{t(ep.description)}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+              {gap && <EpisodeGap item={gap} to={gap.to} />}
+            </Fragment>
           );
         })}
       </ul>

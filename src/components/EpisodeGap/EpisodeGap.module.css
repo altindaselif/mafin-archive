@@ -1,0 +1,60 @@
+/* Listedeki kasıtlı boşluk. Komşu satırlarla aynı aileden: aynı alt
+   kenarlık, aynı liste genişliği. Ayrımı rengi veya çerçevesi değil
+   HİZASI yapıyor — bölümler sola dizili, bu ortada. Göz sırayı
+   kaybetmeden "burada bir şey yok" diyor. */
+.gap {
+  border-bottom: 1px solid var(--color-border);
+  padding: 46px 8px;
+  text-align: center;
+  /* Satırların `:hover` tepkisi yok: tıklanacak bir şey yok. */
+  background: transparent;
+}
+
+/* Eksiltme işareti — arşivde atlanmış malzemenin geleneksel işareti,
+   TimelineGap'tekiyle aynı. */
+.mark {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-accent);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  opacity: 0.65;
+}
+
+.label {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.text {
+  margin: 10px auto 0;
+  max-width: 44ch;
+  font-family: var(--font-family-display);
+  font-style: italic;
+  font-size: var(--text-reading);
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* Atlanan aralık. Bölüm satırlarındaki tarih rozetiyle aynı ses:
+   küçük, aralıklı, soluk — künye değil, kayıt bilgisi. */
+.range {
+  display: block;
+  margin-top: 14px;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  opacity: 0.8;
+}
+
+@media (max-width: 720px) {
+  .gap {
+    padding: 34px 8px;
+  }
+}
