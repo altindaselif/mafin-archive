@@ -18,7 +18,11 @@ const episodeGaps = [
   {
     id: "gap-612",
     from: 612,
-    title: { es: "La pesadilla", en: "The Nightmare" },
+    /* "La pesadilla" DEĞİL: 559. bölümün adı zaten o ("El de la
+       pesadilla"), ikisi aynı listede karışıyordu. "Laguna" arşivcilikte
+       kayıt boşluğunun kendi terimi (laguna documental) — soğuk, teknik
+       ve tam da bu yüzden sert. */
+    title: { es: "La laguna", en: "The Lacuna" },
     text: {
       es: "Estos capítulos se emitieron. Este archivo ha decidido no recordarlos.",
       en: "These chapters aired. This archive has chosen not to remember them.",
