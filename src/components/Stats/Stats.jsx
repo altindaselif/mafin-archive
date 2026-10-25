@@ -27,9 +27,11 @@ const THIRD_PARTIES = [
   { name: "Jaime", chapters: 98 },
   { name: "Pelayo", chapters: 326 },
   { name: "Cloe", chapters: 180 },
-  /* Bianca'nın hikâyesi arşivde bitti: geldiği bölümden sonrası siteye
-     alınmıyor, o yüzden "en curso" değil kapalı bir sayı. */
-  { name: "Bianca", chapters: 60 },
+  /* Bianca henüz gitmedi. Kapalı bir sayı yazılmıştı çünkü arşiv onun
+     veda bölümünü kataloglamıştı; dizi öyle bitirmedi, o bölümler de
+     siteden çıktı. Sayı yok demek "en curso" demek — sayaç dizi onu
+     uğurladığında yazılır. */
+  { name: "Bianca", chapters: null },
 ];
 
 const L = {
