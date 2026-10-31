@@ -33,12 +33,14 @@
   min-width: 0; /* ızgara hücrelerinin varsayılan min-width: auto'su sütunu taşırıyor */
 }
 
-/* Çerçeve Actrices'teki portrenin aynısı: 3:4, ince kenar, surface zemin.
-   Oran sabit olduğu için arkadaşın kırpmaları birbirinden biraz farklı
-   çıksa bile ızgara bozulmuyor — `cover` fazlasını kırpıyor. */
+/* Çerçeve 2:3 — kıyafet için doğru oran. 3:4 bir figürün etrafına fazla
+   arka plan alıyor, 9:16 (eski kaynakların oranı) omuzlarda ve kloş
+   eteklerde sıkıyor. Yeni kırpmalar da 2:3 üretiliyor, yani çerçeveyle
+   kaynak aynı: `cover` hiçbir şeyi atmıyor. Oran sabit olduğu için
+   kırpmalar birbirinden biraz farklı çıksa bile ızgara bozulmuyor. */
 .plate {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 3;
   padding: 0;
   overflow: hidden;
   cursor: pointer;
@@ -56,10 +58,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* Üstten hizalı, ortalı değil. Kaynaklar 9:16 telefon kareleri, çerçeve
-     3:4 — yüksekliğin dörtte biri kırpılıyor. Ortalanınca bunun yarısı
-     üstten gidiyordu ve yüz hep kesiliyordu. Üstten hizalayınca kırpmanın
-     tamamı etekte kalıyor; eteğin tamamı zaten büyütünce görünüyor. */
+  /* Üstten hizalı, ortalı değil. Yeni kırpmalar çerçeveyle aynı oranda
+     (2:3), onlarda hiçbir şey kırpılmıyor. Ama eski 9:16 kaynaklar hâlâ
+     çerçeveden dar: onlarda yükseklik kırpılıyor ve ortalanınca kırpmanın
+     yarısı üstten gidip yüzü kesiyordu. Üstten hizalayınca kırpmanın
+     tamamı etekte kalıyor; eteğin tamamı büyütünce görünüyor. */
   object-position: top;
   transition: var(--transition-smooth);
 }
