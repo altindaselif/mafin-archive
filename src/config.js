@@ -27,6 +27,26 @@ export const TIMELINE_PATH = "timeline";
 export const PHOTO_RESIZE = false;
 
 /*
+ * PHOTO_VERSION: fotoğraf adreslerinin sonuna eklenen sürüm etiketi.
+ *
+ * Bir fotoğrafın üstüne AYNI adla yenisi yazıldığında tarayıcı bunu
+ * fark etmiyor — adres değişmediği için tekrar sormuyor ve elindeki
+ * eski kopyayı gösteriyor. Sayfayı daha önce açmış olanlar günlerce
+ * eski görseli görüyor; 2026-11'de Fina'nın kıyafetlerinde böyle oldu.
+ *
+ * Buradaki sayı artınca adres değişiyor, tarayıcı "bunu görmedim"
+ * deyip yeniden indiriyor. R2'de hiçbir şeyi değiştirmeye gerek yok.
+ *
+ * NE ZAMAN ARTIR: var olan bir dosyanın üstüne yeni görsel yazdıysan.
+ * Yeni ADLA yüklediysen gerek yok, o zaten yeni bir adres.
+ *
+ * BEDELİ: artırınca bütün fotoğraflar bir kez yeniden iniyor, sadece
+ * değişenler değil. O yüzden her yüklemede değil, gerçekten üzerine
+ * yazdığında artır.
+ */
+export const PHOTO_VERSION = "2";
+
+/*
  * Turnstile site anahtarı — Fandom bağış formundaki bot koruması.
  * Bu değer herkese açık, sayfaya gömülüyor; gizli olan Secret Key
  * Worker'da `TURNSTILE_SECRET` olarak duruyor.

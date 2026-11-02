@@ -16,10 +16,18 @@ const BUCKETS = {
   photos: "PHOTOS",
 };
 
-/* Medya dosyaları aynı adla değişmiyor (yeni fotoğraf = yeni ad), o yüzden
-   uzun önbellek güvenli. Bir dosyanın üstüne yazılırsa yayılması bir hafta
-   sürer — nadiren olan bir şey, karşılığında her ziyaret için tasarruf. */
-const MEDIA_CACHE = "public, max-age=604800";
+/* Videolar aynı adla değişmiyor, uzun önbellek güvenli.
+
+   Fotoğraflarda öyle olmadı: var olan bir dosyanın üstüne yenisi yazıldı
+   ve sayfayı daha önce açmış olanlar günlerce eskisini gördü (2026-11,
+   Fina'nın kıyafetleri). Bir gün sonra tarayıcı tekrar soruyor; dosya
+   değişmediyse aşağıdaki etag sayesinde 304 alıp yeniden indirmiyor,
+   yani maliyeti küçük bir soru. Asıl çözüm config.js'teki PHOTO_VERSION,
+   bu onun emniyet kemeri. */
+const MEDIA_CACHE = {
+  videos: "public, max-age=604800",
+  photos: "public, max-age=86400",
+};
 
 async function serveMedia(request, env, url) {
   if (request.method !== "GET" && request.method !== "HEAD") {
@@ -48,7 +56,7 @@ async function serveMedia(request, env, url) {
   object.writeHttpMetadata(headers); // content-type, content-encoding…
   headers.set("etag", object.httpEtag);
   headers.set("accept-ranges", "bytes");
-  headers.set("cache-control", MEDIA_CACHE);
+  headers.set("cache-control", MEDIA_CACHE[kind] ?? MEDIA_CACHE.photos);
 
   // Gövde yoksa koşullu istek eşleşmiş demektir: içerik değişmemiş.
   if (!("body" in object) || object.body === null) {

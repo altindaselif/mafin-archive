@@ -6,7 +6,15 @@
  * duruyordu; ikinci sayfa gelince kopyalamak yerine buraya taşındı —
  * ListToolbar ve LoadMore'un buraya taşınmasıyla aynı gerekçe.
  */
-import { PHOTO_BASE_URL, PHOTO_RESIZE } from "../config.js";
+import { PHOTO_BASE_URL, PHOTO_RESIZE, PHOTO_VERSION } from "../config.js";
+
+/* Sürüm etiketi yalnızca KENDİ adreslerimize ekleniyor; tanımadığımız
+   sunuculardaki adreslere karışmıyoruz. Worker anahtarı yoldan okuduğu
+   için (url.pathname) soru işaretinden sonrası R2'ye hiç gitmiyor —
+   yani bu etiket dosya adını değiştirmiyor, sadece tarayıcının gözünde
+   adresi farklı kılıyor. */
+const surumle = (u) =>
+  PHOTO_VERSION ? `${u}${u.includes("?") ? "&" : "?"}v=${PHOTO_VERSION}` : u;
 
 /* CMS fotoğrafı seçince kayda TAM adresi yazıyor. Hangi tam adres olduğu
    zamanla değişti (önce pub-*.r2.dev, şimdi kendi /media/photos yolumuz) ve
@@ -25,11 +33,11 @@ export const absUrl = (p) => {
   if (/^https?:\/\//i.test(s)) {
     for (const re of OWN_PHOTO) {
       const m = s.match(re);
-      if (m) return `${PHOTO_BASE_URL}/${m[1]}`;
+      if (m) return surumle(`${PHOTO_BASE_URL}/${m[1]}`);
     }
     return s;
   }
-  return `${PHOTO_BASE_URL}/${s.replace(/^\/+/, "")}`;
+  return surumle(`${PHOTO_BASE_URL}/${s.replace(/^\/+/, "")}`);
 };
 
 /* Varsayılan olarak orijinal boyut. Bir genişlik verilirse küçültülmüş
