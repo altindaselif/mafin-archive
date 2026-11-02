@@ -89,6 +89,14 @@ const PEOPLE = [
     },
   },
   {
+    handle: "@GuadaQuis",
+    url: "https://x.com/GuadaQuis",
+    work: {
+      es: "Fotografías del vestuario de Fina",
+      en: "Fina's outfit photographs",
+    },
+  },
+  {
     handle: "@SeRechista",
     url: "https://x.com/SeRechista",
     work: {
