@@ -10,8 +10,9 @@
     "miento"
   ],
   "description": {
-    "es": "Fina se ve obligada a aceptar la propuesta de Pelayo de irse a Buenos Aires, pero queda destrozada. Carmen y Claudia van a la habitación de Fina y la apoyan. Fina le dice a Marta que quiere ir a Mafinca. Pasan su última noche en Mafinca y hacen el amor.",
+    "es": "Fina se ve obligada a aceptar el chantaje de Pelayo y marcharse a Buenos Aires, aunque la decisión la deja destrozada. Carmen y Claudia van a su habitación para acompañarla y darle su apoyo, pues creen que está asustada por la fuga de Santiago. Más tarde, Fina le dice a Marta que quiere ir a la Mafinca. Allí pasan su última noche juntas y hacen el amor.",
     "en": "Fina is forced to accept Pelayo's Buenos Aires proposal but is devastated. Carmen and Claudia come to Fina's room and support her. Fina tells Marta that she wants to go to Mafinca. They spend their last night at Mafinca and make love."
   },
+  "noMafin": false,
   "airDate": "2025-08-22"
 }
