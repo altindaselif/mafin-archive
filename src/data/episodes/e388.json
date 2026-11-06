@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "El ministerio llama a Marta y le dice que van a hacerle una inspección a la empresa. Sin esperarse esta inspección, Marta y Andrés intentan encontrar una solución al problema. Andrés le pregunta a Marta si podrían conseguir el apoyo de Miguel Ángel Vaca, pero Marta cree que él no ayudará con esto.",
+    "es": "El Ministerio llama a Marta para comunicarle que la empresa será sometida a una inspección. Ante la inesperada noticia, Marta y Andrés intentan encontrar una solución al problema. Andrés le pregunta si podrían conseguir el apoyo de Miguel Ángel Vaca, pero Marta no cree que esté dispuesto a ayudarlos.",
     "en": "The ministry calls Marta and tells her that the company is going to be audited. Not expecting this audit, Marta and Andrés try to find a solution to the problem. Andrés asks Marta whether they could get support from Miguel Ángel Vaca, but Marta thinks he will not help with this."
   },
+  "noMafin": false,
   "airDate": "2025-09-08"
 }
