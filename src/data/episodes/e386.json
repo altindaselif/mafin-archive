@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Carmen hablan sobre el anuncio del perfume. Carmen le dice a Marta que, cuando Fina entre en una perfumería y vea la foto que ella misma hizo y el eslogan \"Pasión Oculta\", se acordará de este lugar. Marta le dice a Carmen que va a tomarse un pequeño descanso del trabajo. Carmen le dice que si no sería mejor que trabajara más.",
+    "es": "Marta y Carmen hablan sobre el anuncio del perfume. Carmen le dice que, cuando Fina entre en una perfumería y vea la fotografía que ella misma hizo junto al eslogan \"Pasión Oculta\", recordará este lugar. Marta le cuenta que piensa tomarse un pequeño descanso del trabajo, pero Carmen le pregunta si no sería mejor que se mantuviera ocupada y trabajara más.",
     "en": "Marta and Carmen talk about the perfume advertisement. Carmen tells Marta that when Fina goes into a perfume shop and sees the photo she herself took and the slogan \" Pasión Oculta\" she will remember this place. Marta tells Carmen that she is going to take a little break from work. Carmen says, wouldn't it be better if she worked more. Marta writes an entry about Fina in her diary."
   },
+  "noMafin": false,
   "airDate": "2025-09-04"
 }
