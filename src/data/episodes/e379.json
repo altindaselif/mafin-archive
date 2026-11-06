@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta les dice a Carmen y a Claudia que Fina se fue a París porque tenía miedo de Santiago. Marta le dice a Andrés que Fina se ha ido. Pelayo le dice a Marta que ha contratado a un detective.",
+    "es": "Marta les cuenta a Carmen y Claudia que Fina se ha marchado a París porque tenía miedo de Santiago. También le comunica a Andrés que Fina se ha ido. Por su parte, Pelayo le informa a Marta que ha contratado a un detective para investigar su marcha.",
     "en": "Marta tells Carmen and Claudia that Fina went to Paris because she was afraid of Santiago. Marta tells Andrés that Fina has left. Pelayo tells Marta that he has hired a detective."
   },
+  "noMafin": false,
   "airDate": "2025-08-26"
 }
