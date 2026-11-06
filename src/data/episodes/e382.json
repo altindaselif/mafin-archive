@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "La policía habla con Carmen y Claudia sobre Santiago. Carmen le dice a Claudia que Marta no sabe dónde está Fina. Marta llega y les dice a las dos que Santiago no puede hacerle nada a Fina. Marta le pregunta a Pelayo por el detective, y Pelayo dice que el detective no ha encontrado ningún rastro, y discuten. Pelayo se convierte en gobernador civil.",
+    "es": "La policía interroga a Carmen y Claudia sobre Santiago. Carmen le comenta a Claudia que Marta no sabe dónde está Fina. Cuando Marta llega, les asegura que Santiago no puede hacerle daño a Fina. Más tarde, Marta le pregunta a Pelayo por el detective. Él le dice que no ha encontrado ningún rastro de Fina, lo que provoca una discusión entre ambos. Finalmente, Pelayo se convierte en gobernador civil.",
     "en": "The police talk with Carmen and Claudia about Santiago. Carmen tells Claudia that Marta does not know where Fina is. Marta comes and tells them both that Santiago cannot do anything to Fina. Marta asks Pelayo about the detective, and Pelayo says the detective has found no trace, and they argue. Pelayo becomes civil governor."
   },
+  "noMafin": false,
   "airDate": "2025-08-29"
 }
