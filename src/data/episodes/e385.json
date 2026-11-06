@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Damián discuten sobre Fina. Damián dice que Fina volverá, y Marta dice que no volverá. Fina no le envió ninguna carta a Marta; Marta mintió diciendo que había llegado una carta. Pelayo le dice a Marta que el detective perdió a Fina en la frontera francesa y que sigue buscándola.",
+    "es": "Marta y Damián discuten sobre Fina. Damián cree que volverá, pero Marta está convencida de que no lo hará. En realidad, Fina no le ha enviado ninguna carta a Marta; ella ha mentido al decir que había recibido una. Más tarde, Pelayo le cuenta a Marta que el detective perdió el rastro de Fina en la frontera francesa, pero que continúa buscándola.",
     "en": "Marta and Damián argue about Fina. Damián says that Fina will come back, and Marta says that she will not. Fina did not send Marta a letter; Marta lied that a letter had come. Pelayo tells Marta that the detective lost Fina at the French border and is still searching."
   },
+  "noMafin": false,
   "airDate": "2025-09-03"
 }
