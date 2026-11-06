@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Mientras Marta bebe en su despacho, escribe una entrada sobre Fina en su diario.",
+    "es": "Marta bebe en su despacho mientras escribe en su diario una entrada sobre Fina.",
     "en": "As Marta drinks in her office, she writes an entry about Fina in her diary."
   },
+  "noMafin": false,
   "airDate": "2025-09-05"
 }
