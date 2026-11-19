@@ -9,8 +9,9 @@
     "iconic"
   ],
   "description": {
-    "es": "Marta va a recoger las cosas de Fina del cuarto oscuro. Pelayo va al cuarto oscuro. Le pide a Marta que por fin pase página con lo de Fina y siga con su vida. Discuten. Marta se desploma en el suelo y llora.",
+    "es": "Marta va al cuarto oscuro para recoger las cosas de Fina. Pelayo aparece y le pide que, de una vez por todas, pase página y siga adelante con su vida. Ambos discuten y, finalmente, Marta se derrumba, cae al suelo y rompe a llorar.",
     "en": "Marta goes to gather Fina's things in the darkroom. Pelayo comes to the darkroom. He asks Marta to finally close the chapter on Fina and get on with her life. They argue. Marta collapses to the floor and cries."
   },
+  "noMafin": false,
   "airDate": "2025-09-29"
 }
