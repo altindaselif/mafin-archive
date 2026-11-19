@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta le comunica a Tasio que va a apartarse temporalmente de sus funciones. Le cede su papel en la empresa a Carmen.",
+    "es": "Marta le comunica a Tasio que va a apartarse temporalmente de sus funciones y delega sus responsabilidades en la empresa en Carmen.",
     "en": "Marta informs Tasio that she is going to step away from her duties temporarily. She hands over her role in the company to Carmen."
   },
+  "noMafin": false,
   "airDate": "2025-09-30"
 }
