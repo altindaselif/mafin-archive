@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Pelayo hablan sobre Fina. Pelayo le dice a Marta que, dentro de un tiempo, Fina se pondrá en contacto con ella y volverá aquí, y que por eso debe ser fuerte.",
+    "es": "Marta y Pelayo hablan sobre Fina. Pelayo le asegura que, con el tiempo, Fina se pondrá en contacto con ella y regresará, por lo que le pide que sea fuerte.",
     "en": "Marta and Pelayo talk about Fina. Pelayo tells Marta that after a while Fina will get in touch with her and come back here, and that she should therefore be strong."
   },
+  "noMafin": false,
   "airDate": "2025-09-15"
 }
