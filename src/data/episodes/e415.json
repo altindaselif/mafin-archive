@@ -7,8 +7,9 @@
   },
   "moods": [],
   "description": {
-    "es": "Marta y Pelayo regresan de Madrid. Le cuentan a Damián que el viaje ha ido bien. Marta le asegura a Damián que ya se ha recuperado, que ha dejado el alcohol y que nunca volverá a rebajarse tanto por nadie. La familia se da cuenta de que Marta está mucho mejor que antes.",
+    "es": "Marta y Pelayo regresan de Madrid y le cuentan a Damián que el viaje ha ido bien. Marta le asegura que ya se ha recuperado, que ha dejado de beber y que nunca volverá a rebajarse tanto por nadie. La familia nota que Marta está mucho mejor que antes.",
     "en": "Marta and Pelayo return from Madrid. They tell Damián that the trip went well. Marta assures Damián that she has recovered, quit drinking, and will never stoop that low for anyone again. The family notices that Marta is doing much better than before."
   },
+  "noMafin": false,
   "airDate": "2025-10-15"
 }
